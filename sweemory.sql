@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 02, 2023 at 03:20 AM
+-- Generation Time: Apr 02, 2023 at 03:33 AM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -34,7 +34,7 @@ CREATE TABLE `user` (
   `user_id` int(11) NOT NULL,
   `username` varchar(50) NOT NULL,
   `password_hash` varchar(72) NOT NULL,
-  `user_type` varchar(15) NOT NULL
+  `user_type` varchar(12) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -42,7 +42,7 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`user_id`, `username`, `password_hash`, `user_type`) VALUES
-(1, 'itspecialist', '$2y$10$1wo7rsmlRwg4JNAMH1K.POwMRSLEc.wFvNH4WnBJTqoZLUVG3TtzC', 'itspecialist');
+(1, 'itspecialist', '$2y$10$pfRMoKFjKDZUlPK0zmaD1O77qsFpu32IliJGRYQE75e1trgptkYuy', 'itspecialist');
 
 --
 -- Indexes for dumped tables

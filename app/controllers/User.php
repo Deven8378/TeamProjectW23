@@ -18,18 +18,7 @@ class User extends \app\core\Controller
                     {
                         //the user is correct
                         $_SESSION['user_id'] = $user->user_id;
-
-                        $profile = new \app\models\Profile();
-                        $profile = $profile->getByUserId($_SESSION['user_id']);
-                        if($profile)
-                        {
-                            header('location:/Main/index');
-                            $this->view('Main/index', $profile);
-                        } 
-                        else 
-                        {
-                            header('location:/Profile/create');
-                        }
+                        header('location:/Main/index');
                     } 
                     else 
                     {

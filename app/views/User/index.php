@@ -4,10 +4,10 @@
 <div class="main">
 	<p class="sign" align="center">Welcome Sweemory Team!</p>
 	<p class="loginH" align="center">Please login to access your account</p>
-	<form class="form1">
-		<input class="username" type="text" align="center" placeholder="Username">
-		<input class="password" type="password" align="center" placeholder="Password">
-		<a id="submitLink" class="submit" align="center">Sign in</a>
+	<form method="post" action="" class="form1">
+		<input class="username" type="text" align="center" placeholder="Username" name="username">
+		<input class="password" type="password" align="center" placeholder="Password" name="password">
+		<input type="submit" id="submitLink" name="action" class="submit" align="center" value="Sign in">
 	</form>
 </div>
 
