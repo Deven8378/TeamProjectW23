@@ -8,7 +8,7 @@ class Model
 	public function __construct()
 	{
 		$host = 'localhost';
-		$dbname = 'cliquebait';
+		$dbname = 'sweemory';
 		$user = 'root';
 		$pass = '';
 		try 
