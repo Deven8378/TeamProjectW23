@@ -71,7 +71,7 @@ class User extends \app\core\Controller
                         $user->password_hash = password_hash($_POST['password'], PASSWORD_DEFAULT);
                         $user->user_id = $user->insert();
                         $_SESSION['user_id'] = $user->user_id;
-                        header('location:/Profile/create');
+                        header('location:/User/index');
                     }
                     else
                     {
