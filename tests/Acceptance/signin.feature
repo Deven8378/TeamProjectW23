@@ -1,11 +1,24 @@
 Feature: signin
-  In order to sign into the webpage 
+  In order to sign into the webpage as admin
   As a user of the application
   I need to enter criteria
 
-  Scenario: try signin as admin
-    Given I am on the sign in page
-    When I input my "username"
-    And I input "password" 
+  Scenario: try sign in as admin
+    Given I am on page "/User/index"
+    And I fill field "admin" in "username"
+    And I fill field "1234" in "password"
     And I click "Sign in"
-    Then I should be redirected to the product page
+    When I click on "Products" 
+    Then I see "Products"
+  Scenario: try sign in as employee
+    Given I am on page "/User/index"
+    And I fill field "employee" in "username"
+    And I fill field "1234" in "password"
+    When I click "Sign in"
+    Then I see "employee"
+  Scenario: try sign in as IT specialist
+    Given I am on page "/User/index"
+    And I fill field "itspecialist" in "username"
+    And I fill field "1234" in "password"
+    When I click "Sign in"
+    Then I see "itspecialist"

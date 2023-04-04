@@ -27,48 +27,36 @@ class AcceptanceTester extends \Codeception\Actor
      * Define custom actions here
      */
 
-     /**
-     * @Given I am on the sign in page
+    /**
+     * @Given I am on page :arg1
      */
-     public function iAmOnTheSignInPage()
+     public function iAmOnPage($arg1)
      {
-         // throw new \PHPUnit\Framework\IncompleteTestError("Step `I am on the sign in page` is not defined");
-        $this->wantTo('sign in');
+        $this->amOnPage($arg1);
      }
 
     /**
-     * @When I input my :username
+     * @Given I fill field :value :fieldName
      */
-     public function iInputMy($username)
+     public function iFillField($value, $fieldName)
      {
-         // throw new \PHPUnit\Framework\IncompleteTestError("Step `I input my :arg1` is not defined");
-
+        $this->fillField($fieldName, $value);
      }
 
     /**
-     * @When I input :arg1
+     * @When I click :text
      */
-     public function iInput($arg1)
+     public function iClick($text)
      {
-         // throw new \PHPUnit\Framework\IncompleteTestError("Step `I input :arg1` is not defined");
-
+        $this->click($text);
      }
 
     /**
-     * @When I click :arg1
+     * @Then I see :text
      */
-     public function iClick($arg1)
+     public function iSee($text)
      {
-         // throw new \PHPUnit\Framework\IncompleteTestError("Step `I click :arg1` is not defined");
-
+        $this->see($text);
      }
 
-    /**
-     * @Then I should be redirected to the product page
-     */
-     public function iShouldBeRedirectedToTheProductPage()
-     {
-         // throw new \PHPUnit\Framework\IncompleteTestError("Step `I should be redirected to the product page` is not defined");
-        
-     }
 }

@@ -1,0 +1,79 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-04-04 11:42-0400\n"
+"PO-Revision-Date: 2023-04-04 11:46-0400\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: fr_CA\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Generator: Poedit 3.2.2\n"
+
+#: app/views/Client/create.php:1
+msgid "Create a new client record"
+msgstr "Créer un nouveau dossier client"
+
+#: app/views/Client/create.php:11
+msgid "First Name"
+msgstr "Prénom:"
+
+#: app/views/Client/create.php:16
+msgid "Middle Name"
+msgstr "Patronyme:"
+
+#: app/views/Client/create.php:21
+msgid "Last Name"
+msgstr "Nom:"
+
+#: app/views/Client/create.php:24
+msgid "Create"
+msgstr "Créer"
+
+#: app/views/Client/create.php:25
+msgid "Cancel"
+msgstr "Annuler"
+
+#: app/views/Client/index.php:1
+msgid "List of clients"
+msgstr "Liste des clients"
+
+#: app/views/Client/index.php:2
+msgid "Create a new client"
+msgstr "Créer un nouveau dossier client"
+
+#: app/views/Client/index.php:4
+msgid "First name"
+msgstr "Prénom:"
+
+#: app/views/Client/index.php:4
+msgid "Last name"
+msgstr "Nom:"
+
+#: app/views/Client/index.php:4
+msgid "Middle name"
+msgstr "Patronyme:"
+
+#: app/views/Client/index.php:4
+msgid "actions"
+msgstr "actions"
+
+#: app/views/Client/index.php:11
+msgid "delete"
+msgstr "Effacer"
+
+#: app/views/shared/header.php:2
+msgid "ltr"
+msgstr "ltr"
+
+#: app/views/shared/header.php:2
+msgid "en"
+msgstr "fr"

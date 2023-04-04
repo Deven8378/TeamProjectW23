@@ -6,6 +6,8 @@ class Main extends \app\core\Controller
     #[\app\filters\Login]
     public function index()
     {
-        $this->view('Main/index');
+        $user = new \app\models\User();
+        $user = $user->getByUserId($_SESSION['user_id']);
+        $this->view('Main/index', $user);
     }
 }
