@@ -8,7 +8,7 @@ class Login implements \app\core\AccessFilter
 	{
 		if (!isset($_SESSION['user_id']))
 		{
-			header('location:/User/index?error=Please log in to use this feature.');
+			header('location:/User/index');
 			return true;
 		}
 		return false;
