@@ -13,12 +13,12 @@
 
 
 <?php 
-	// if($data->user_type == "admin"){ ?>
-		<!-- <h1>Welcome Admin</h1> -->
+	 if($data->user_type == "admin"){ ?>
+		<h1>Welcome Admin</h1>
 	<?php } else if ($data->user_type == "itspecialist"){ ?>
-		<!-- <h1>Welcome IT specialist</h1> -->
+		<h1>Welcome IT specialist</h1>
 	<?php } else { ?>
-		<!-- <h1>Welcome Employee</h1> -->
+		<h1>Welcome Employee</h1>
 	<?php }
 ?>
 <?php $this->view('shared/footer'); ?>
