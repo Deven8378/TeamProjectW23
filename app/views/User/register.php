@@ -7,18 +7,21 @@
 	<form method="post" action="" class="form1">
 		<input class="username" type="text" align="center" placeholder="Username" name="username">
 		<input class="password" type="password" align="center" placeholder="Password" name="password">
-		<input type="submit" id="submitLink" name="action" class="submit" align="center" value="Sign in">
+		<br>
+
+
+		<select name="user_type" id="user_type">
+			<option selected disabled>--Select a User Type--</option>
+			<option value="admin" name="admin">Admin</option>
+			<option value="employee" name="employee">Employee</option>
+			<option value="itspecialist" value="itspecialist">IT Specialist</option>
+		</select>
+
+		<br>
+
+		<input type="submit" id="submitLink" name="action" class="submit" align="center" value="Register">
 	</form>
 </div>
 
 
-<?php 
-	 if($data->user_type == "admin"){ ?>
-		<h1>Welcome Admin</h1>
-	<?php } else if ($data->user_type == "itspecialist"){ ?>
-		<h1>Welcome IT specialist</h1>
-	<?php } else { ?>
-		<h1>Welcome Employee</h1>
-	<?php }
-?>
 <?php $this->view('shared/footer'); ?>

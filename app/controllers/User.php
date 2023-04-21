@@ -59,6 +59,7 @@ class User extends \app\core\Controller
                     {
                         $user->username = $_POST['username'];
                         $user->password_hash = password_hash($_POST['password'], PASSWORD_DEFAULT);
+                        $user->user_type = $_POST['user_type'];
                         $user->user_id = $user->insert();
                         $_SESSION['user_id'] = $user->user_id;
                         header('location:/User/index');

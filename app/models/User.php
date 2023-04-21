@@ -28,11 +28,12 @@ class User extends \app\core\Model
 	
 	public function insert()
 	{
-		$SQL = 'INSERT INTO user(username, password_hash) VALUES (:username, :password_hash)';
+		$SQL = 'INSERT INTO user(user_type, username, password_hash) VALUES (:user_type, :username, :password_hash)';
 		$STH = $this->connection->prepare($SQL);
 
 		$STH->execute(['username'=>$this->username,
-						'password_hash'=>$this->password_hash]);
+						'password_hash'=>$this->password_hash,
+						'user_type'=>$this->user_type]);
 		return $this->connection->lastInsertId();
 	}
 }
