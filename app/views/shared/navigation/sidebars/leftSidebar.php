@@ -1,9 +1,10 @@
 <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar2" aria-controls="offcanvasNavbar2">
   <span class="navbar-toggler-icon"></span>
 </button>
+
 <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar2" aria-labelledby="offcanvasNavbarLabel">
   <div class="offcanvas-header">
-    <h5 class="offcanvas-title" id="offcanvasNavbarLabel"></h5>
+    <h5 class="offcanvas-title" id="offcanvasNavbarLabel"><img src="/resources/logo.png" alt="Cliquebait Logo" class="d-inline-block align-text-top" style="width: 50px; height: 50px;"></h5>
     <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
   </div>
 

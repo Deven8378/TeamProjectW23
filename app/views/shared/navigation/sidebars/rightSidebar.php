@@ -1,6 +1,7 @@
 <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
   <span class="bi bi-bell"></span>
 </button>
+
 <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
   <div class="offcanvas-header">
     <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Notifications</h5>
