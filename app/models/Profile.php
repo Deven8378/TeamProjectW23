@@ -14,11 +14,9 @@ class Profile extends \app\core\Model
 	
 	public function insert()
 	{
-		echo 'before SQL';
 		$SQL = 'INSERT INTO profile(user_id, first_name, middle_name, last_name, email, phone_number, status) 
 				VALUES (:user_id, :first_name, :middle_name, :last_name, :email, :phone_number, :status)';
 		$STH = $this->connection->prepare($SQL);
-		echo 'before data in models';
 		$data = [
 				'user_id'=>$this->user_id,
 				'first_name'=>$this->first_name,
@@ -30,7 +28,6 @@ class Profile extends \app\core\Model
 		];
 
 		$STH->execute($data);
-		echo 'after execute data';
 
 		return $STH->rowCount();
 	}
