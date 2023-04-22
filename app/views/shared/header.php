@@ -15,6 +15,16 @@
 	<script class="jsbin" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
 	<script class="jsbin" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.0/jquery-ui.min.js"></script>
 
+	<style type="text/css">
+		.split-screen {
+		    display: flex;
+		}
+
+		.split-screen__half {
+		    flex: 1;
+}
+	</style>
+
 	<title><?=htmlentities($data)?></title>
 </head>
 
