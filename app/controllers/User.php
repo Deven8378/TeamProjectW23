@@ -18,6 +18,7 @@ class User extends \app\core\Controller
                     {
                         //the user is correct
                         $_SESSION['user_id'] = $user->user_id;
+                        $_SESSION['user_type'] = $user->user_type;
 
                         header('location:/Main/index');
                     } 

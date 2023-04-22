@@ -1,0 +1,1 @@
+<h1><?= $_SESSION['user_type']?></h1>
