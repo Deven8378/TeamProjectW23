@@ -16,7 +16,6 @@ class Message extends \app\core\Model{
 					'message'=>$this->message];
 		$STH->execute($data);
 		$this->message_id = self::$connection->lastInsertId();
-		//TODO: id needed get the timestamp
 	}
 
 
