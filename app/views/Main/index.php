@@ -9,13 +9,12 @@
 
     <!-- Right content -->
     <div class="right_side">
-    	<h2>Welcome Back Sweemory Team!</h2>
- 		User: <?= $data->user_type ?>
+    	<h2 id="home_header"><?= _('Welcome back Sweemory Team!') ?></h2><br><br>
     </div>
 </div>
 
 <br>
-<h1>What would you like to do today?</h1>
+<h1><?= _('What would you like to do today?') ?></h1>
 <br>
 
 
@@ -23,18 +22,17 @@
 	<div class="container text-center">
 	  <div class="row align-items-start">
 	    <div class="col">
-	      <a class="btn" id="home_links" href="/Messages/index" role="button" style="background-color: #ebdefa;">Message</a>
+	      <a class="btn" id="home_links" href="/Messages/index" role="button" style="background-color: #e8c8e7;"><?= _('Messages') ?></a>
 	    </div>
 	    <div class="col">
-	      <a class="btn" id="home_links" href="/Inventory/index" role="button" style="background-color: #ebdefa;">Inventory</a>
+	      <a class="btn" id="home_links" href="/Inventory/index" role="button" style="background-color: #e8c8e7;"><?= _('Inventory') ?></a>
 	    </div>
 	    <div class="col">
-	      <a class="btn" id="home_links" href="Recipes/index" role="button" style="background-color: #ebdefa;">Recipes</a>
+	      <a class="btn" id="home_links" href="Recipes/index" role="button" style="background-color: #e8c8e7;"><?= _('Recipes') ?></a>
 	    </div>
 	  </div>
 	</div>
 </div>
-<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 
 
 <?php $this->view('shared/footer'); ?>

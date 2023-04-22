@@ -32,26 +32,20 @@
 		  	width: 50%;
 		  	color: white;
 		  	height: 562px;
+		  	line-height: 562px;
 		}
 		body{
 			position: relative;
 			top: 50px;
 		}
 
-		.home_links{
-			height: 100px;
-			margin: auto;
-			padding: 10px;
-		}
-
 		#home_links{
 			width: 150px;
-			height: 75px;
-			text-align: center; 
-			margin: auto;
 		}
 
-
+		#home_header {
+			line-height: 562px;
+		}
 	</style>
 
 	<title><?=htmlentities($data)?></title>
