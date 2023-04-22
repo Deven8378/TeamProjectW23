@@ -2,25 +2,26 @@
 <?php $this->view('shared/errorAndSuccessMessages'); ?>
 
 <div class="main">
-	<h2>create profile</h2>
+	<!-- <h2>create profile for <?=$data->username?></h2> -->
 	<p class="sign" align="center">Welcome Sweemory Team!</p>
-	<p class="loginH" align="center">Create a profile for the User</p>
+	<p class="loginH" align="center">Create a profile for the <?=$data->username?></p>
 	<form method="post" action="" class="form1">
-		<input class="username" type="text" align="center" placeholder="Username" name="username">
-		<input class="password" type="password" align="center" placeholder="Password" name="password">
+		<input class="" type="text" align="center" placeholder="first_name" name="first_name">
+		<input class="" type="text" align="center" placeholder="middle_name" name="middle_name">
+		<input class="" type="text" align="center" placeholder="last_name" name="last_name">
+		<input class="" type="text" align="center" placeholder="email" name="email">
+		<input class="" type="text" align="center" placeholder="phone_number" name="phone_number">
+		
 		<br>
-
-
-		<select name="user_type" id="user_type">
-			<option selected disabled>--Select a User Type--</option>
-			<option value="admin" name="admin">Admin</option>
-			<option value="employee" name="employee">Employee</option>
-			<option value="itspecialist" value="itspecialist">IT Specialist</option>
+		<select name="status" id="status">
+			<option selected disabled>--Select a User Status--</option>
+			<option value="admin" name="admin">active</option>
+			<option value="employee" name="employee">inactive</option>
 		</select>
 
 		<br>
 
-		<input type="submit" id="submitLink" name="action" class="submit" align="center" value="Register">
+		<input type="submit" id="submitLink" name="action" class="submit" align="center" value="Create Profile">
 	</form>
 </div>
 

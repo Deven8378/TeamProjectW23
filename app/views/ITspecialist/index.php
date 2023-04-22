@@ -4,14 +4,14 @@
 <div class="p-4 mt-5 border d-flex">
 
 	<div class="border">
-		<a href="/ITspecialist/createUser">Add User</a>
+		<a href="/ITspecialist/createUser"><?=_('Add User')?></a>
 		
 	</div>
 	<div class="spacer" style="width: 8px; flex-shrink: 0; margin: 0; padding: 0;"></div>
 
 	<div class="border">
 		
-		<h2>List of Employee and Admin</h2>
+		<h2><?=_('List of Employee and Admin')?></h2>
 
 		<table class="table table-striped table-bordered">
             <thead>
