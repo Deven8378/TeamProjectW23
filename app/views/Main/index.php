@@ -4,7 +4,7 @@
 <div class="split-screen">
     <!-- Left content -->
     <div class="left_side">
-    	<img src="/resources/sweemory1.png" width="100%">
+    	<img src="/resources/sweemory1.png" height="563px" width="500px">
     </div>
 
     <!-- Right content -->
@@ -22,7 +22,7 @@
 	<div class="container text-center">
 	  <div class="row align-items-start">
 	    <div class="col">
-	      <a class="btn" id="home_links" href="/Messages/index" role="button" style="background-color: #e8c8e7;"><?= _('Messages') ?></a>
+	      <a class="btn" id="home_links" href="/Message/index" role="button" style="background-color: #e8c8e7;"><?= _('Messages') ?></a>
 	    </div>
 	    <div class="col">
 	      <a class="btn" id="home_links" href="/Inventory/index" role="button" style="background-color: #e8c8e7;"><?= _('Inventory') ?></a>

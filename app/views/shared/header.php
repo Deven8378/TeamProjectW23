@@ -24,16 +24,6 @@
 		    flex: 1;
 		}
 
-		.messages_split {
-			display: flex;
-		}
-
-		
-
-		.messages_side {
-			background-color: lightpink;
-		}
-
 		.right_side {
 		    flex: 1;
 		   	margin: auto;
@@ -59,8 +49,26 @@
 		}
 
 		#inbox_side {
-			background-color: grey;
-			width: 100%;
+			margin-left: 20px;
+		  	background-color: #e6e3e3;
+		  	text-align: center;
+		  	border-radius: 25px;
+		  	padding: 20px;
+		  	width: 100%;
+		}
+
+		#messages_side {
+			margin-left: 20px;
+			margin-right: 20px;
+		  	background-color: #e6e3e3;
+		  	text-align: center;
+		  	border-radius: 25px;
+		  	padding: 20px;	
+		  	height: 1020%;
+		}
+
+		#message_heading {
+			margin: 20px 0px 10px 30px;
 		}
 	</style>
 

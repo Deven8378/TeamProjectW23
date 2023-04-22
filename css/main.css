@@ -113,11 +113,45 @@ body {
 }
 
 /*sidebar----------------------------------*/
-
 .split-screen {
     display: flex;
 }
 
-.split-screen__half {
+.left_side {
     flex: 1;
+}
+
+
+
+.messages_side {
+  background-color: lightpink;
+}
+
+.right_side {
+    flex: 1;
+    margin: auto;
+    background-color: black;
+    padding: 10px;
+    width: 50%;
+    color: white;
+    height: 562px;
+    line-height: 562px;
+}
+
+body{
+  position: relative;
+  top: 50px;
+}
+
+#home_links{
+  width: 150px;
+}
+
+#home_header {
+  line-height: 562px;
+}
+
+#inbox_side {
+  background-color: grey;
+  width: 100%;
 }
