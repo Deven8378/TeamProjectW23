@@ -34,9 +34,9 @@ class ITspecialist extends \app\core\Controller
                         $user->password_hash = password_hash($_POST['password'], PASSWORD_DEFAULT);
                         $user->user_type = $_POST['user_type'];
                         $user->user_id = $user->insert();
-                        $_SESSION['user_type'] = $user->user_type;
-                        // header('location:/User/index');
-                        header('location:/ITspecialist/createProfile');
+                        // $_SESSION['user_type'] = $user->user_type; //We don't want to change the session user_type when we create a new user
+
+                        header('location:/ITspecialist/createProfile/' . $user->user_id . '');
                     }
                     else
                     {
@@ -67,6 +67,43 @@ class ITspecialist extends \app\core\Controller
 	public function createProfile($user_id)
 	{
 		//Once the User is created, You will create a profile for them
+        if(isset($_POST['action']))
+            {
+                //BIG ISSSUE !!!! IF THE IT CREATE THE USER, THEY WILL BE SENT HERE. HOWEVER, IF THEY DECIDE TO GO BACK TO THE LANDING PAGE, THE USER WILL STILL BE CREATED BUT WILL NOT BE VISIBLE. SO WE WONT KNOW WHERE IT IS.
+                if($_POST['first_name'] != '' && $_POST['last_name'] != '' && $_POST['email'] != '' && $_POST['phone_number'] != '' && $_POST['status'] != ''
+                    && $_POST['first_name'] != null && $_POST['last_name'] != null && $_POST['email'] != null && $_POST['phone_number'] != null && $_POST['status'] != null){
+
+                    $profile = new \app\models\Profile();
+                    $profile->user_id = $user_id;
+                    $profile->first_name = $_POST['first_name'];
+                    $profile->middle_name = $_POST['middle_name'];
+                    $profile->last_name = $_POST['last_name'];
+                    $profile->email = $_POST['email'];
+                    $profile->phone_number = $_POST['phone_number'];
+                    $profile->status = $_POST['status'];
+
+                    $success = $profile->insert();
+
+                    if($success)
+                    {
+
+                        header('location:/ITspecialist/index?success=New User Created');
+                    }else{
+
+                        header('location:/ITspecialist/createProfile/' . $user_id.'?error=Something went wrong');
+                    }
+                }else{
+                    header('location:/ITspecialist/createProfile/' . $user_id.'?error=Fill up the dam things, except for middle name');
+                }
+
+            } 
+            else 
+            {
+                // $this->view('User/register');
+                $user = new \app\models\User();
+                $usercheck = $user->getByUserId($user_id);
+                $this->view('ITspecialist/createProfile', $usercheck);
+            }
 
 	}
 

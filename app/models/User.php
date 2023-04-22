@@ -39,11 +39,9 @@ class User extends \app\core\Model
 
 	public function getAllUsers()
 	{
-		// $SQL = "SELECT * FROM user WHERE user_type <> :user_type";
-		// $STH = $this->connection->prepare($SQL);
-		//$STH->execute(['user_type'=>$_SESSION['user_type']]);
 
-		// $SQL = "SELECT * FROM user WHERE user_type IN ('admin','employee')";
+
+		// $SQL = "SELECT * FROM user WHERE user_type IN ('admin','employee')"; //KEEP THIS HERE FOR DEBUGGING SOME ISSUE
 		$SQL = "SELECT * FROM user JOIN profile ON user.user_id = profile.user_id WHERE
 				user.user_type IN ('admin', 'employee')";
 		$STH = $this->connection->prepare($SQL);
@@ -53,5 +51,3 @@ class User extends \app\core\Model
 		return $STH->fetchAll();
 	}
 }
-
-//INSERT INTO `profile` (`user_id`, `first_name`, `middle_name`, `last_name`, `email`, `phone_number`, `status`) VALUES ('2', 'adminFirstName', 'adminMiddleName', 'adminLastName', 'mubeen.khan@gmail.com', '514-123-4567', 'active');
