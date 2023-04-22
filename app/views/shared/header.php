@@ -24,6 +24,16 @@
 		    flex: 1;
 		}
 
+		.messages_split {
+			display: flex;
+		}
+
+		
+
+		.messages_side {
+			background-color: lightpink;
+		}
+
 		.right_side {
 		    flex: 1;
 		   	margin: auto;
@@ -34,6 +44,7 @@
 		  	height: 562px;
 		  	line-height: 562px;
 		}
+
 		body{
 			position: relative;
 			top: 50px;
@@ -45,6 +56,11 @@
 
 		#home_header {
 			line-height: 562px;
+		}
+
+		#inbox_side {
+			background-color: grey;
+			width: 100%;
 		}
 	</style>
 
