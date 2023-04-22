@@ -20,9 +20,38 @@
 		    display: flex;
 		}
 
-		.split-screen__half {
+		.left_side {
 		    flex: 1;
-}
+		}
+
+		.right_side {
+		    flex: 1;
+		   	margin: auto;
+		   	background-color: black;
+		  	padding: 10px;
+		  	width: 50%;
+		  	color: white;
+		  	height: 562px;
+		}
+		body{
+			position: relative;
+			top: 50px;
+		}
+
+		.home_links{
+			height: 100px;
+			margin: auto;
+			padding: 10px;
+		}
+
+		#home_links{
+			width: 150px;
+			height: 75px;
+			text-align: center; 
+			margin: auto;
+		}
+
+
 	</style>
 
 	<title><?=htmlentities($data)?></title>
