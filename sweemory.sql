@@ -2,8 +2,8 @@
 -- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Generation Time: Apr 22, 2023 at 08:01 PM
+-- Host: 127.0.0.1
+-- Generation Time: Apr 22, 2023 at 09:26 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -121,13 +121,21 @@ CREATE TABLE `product_quantity` (
 DROP TABLE IF EXISTS `profile`;
 CREATE TABLE `profile` (
   `user_id` int(11) NOT NULL,
-  `first_name` int(50) NOT NULL,
-  `middle_name` int(50) NOT NULL,
-  `last_name` int(50) NOT NULL,
-  `email` int(80) NOT NULL,
-  `phone_number` int(10) NOT NULL,
+  `first_name` varchar(50) NOT NULL,
+  `middle_name` varchar(50) NOT NULL,
+  `last_name` varchar(50) NOT NULL,
+  `email` varchar(80) NOT NULL,
+  `phone_number` varchar(10) NOT NULL,
   `status` varchar(8) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `profile`
+--
+
+INSERT INTO `profile` (`user_id`, `first_name`, `middle_name`, `last_name`, `email`, `phone_number`, `status`) VALUES
+(2, 'adminFirstName', 'adminMiddleName', 'adminLastName', 'mubeen.khan@gmail.com', '5141234567', 'active'),
+(3, 'employeeFirstName', 'employeeMiddleName', 'employeeLastName', 'employeeOne@gmail.com', '5141234567', 'active');
 
 -- --------------------------------------------------------
 
@@ -162,7 +170,9 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`user_id`, `user_type`, `username`, `password_hash`) VALUES
-(1, 'itspecialist', 'itspecialist', '$2y$10$RUJd5d.C02znWlNyzZeGgOasNkkvXrwV.lr3p2V5BWAHQD4Px4GG2');
+(1, 'itspecialist', 'itspecialist', '$2y$10$RUJd5d.C02znWlNyzZeGgOasNkkvXrwV.lr3p2V5BWAHQD4Px4GG2'),
+(2, 'admin', 'admin1', '$2y$10$gDf8JpyjeZAZpnTuaYahFOEkSpXiTAKatWIpI7/R3wjtK4vRv/Df.'),
+(3, 'employee', 'employee1', '$2y$10$fGEbvGHj40tQaAdu1bWkWendnnXrUVeeKEnTwKQIwnuUCFATtYN6u');
 
 --
 -- Indexes for dumped tables
@@ -276,7 +286,7 @@ ALTER TABLE `recipe`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Constraints for dumped tables
