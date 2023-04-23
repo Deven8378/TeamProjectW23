@@ -2,8 +2,8 @@
 <?php $this->view('shared/errorAndSuccessMessages'); ?>
 
 <div class="main">
-	<p class="sign" align="center"><?=_('Welcome Sweemory Team!')?></p>
-	<p class="loginH" align="center"><?=_('Create a new user')?></p>
+	
+	<p class="sign" align="center"><?=_('Create a new user')?></p>
 	<form method="post" action="" class="form1">
 		<input class="username" type="text" align="center" placeholder="<?=_('Username')?>" name="username">
 		<input class="password" type="password" align="center" placeholder="<?=_('Password')?>" name="password">

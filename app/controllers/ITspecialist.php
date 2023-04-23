@@ -8,8 +8,9 @@ class ITspecialist extends \app\core\Controller
 	{
 		//see all the employees and admins from the User table
         $user = new \app\models\User();
-        // $user = $user->getByUserId($_SESSION['user_id']);
-        $users = $user->getAllUsers();
+        $users = $user->getAllUserInfo();
+
+        
         $this->view('ITspecialist/index', $users);
 	
 	}
