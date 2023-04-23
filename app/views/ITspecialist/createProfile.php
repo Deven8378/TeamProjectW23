@@ -15,8 +15,8 @@
 		<br>
 		<select name="status" id="status">
 			<option selected disabled>--Select a User Status--</option>
-			<option value="admin" name="admin">active</option>
-			<option value="employee" name="employee">inactive</option>
+			<option value="active" name="active">active</option>
+			<option value="inactive" name="inactive">inactive</option>
 		</select>
 
 		<br>

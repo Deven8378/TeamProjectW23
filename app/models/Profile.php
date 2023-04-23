@@ -41,19 +41,18 @@ class Profile extends \app\core\Model
 		return $STH->fetch();
 	}
 
-	public function getAllProfiles()
+	public function getProfile($user_id)
 	{
 
 		$SQL = "SELECT * FROM profile WHERE user_id=:user_id"; 
-		// $SQL = "SELECT * FROM user JOIN profile ON user.user_id = profile.user_id WHERE user.user_type IN ('admin', 'employee')";
 		$STH = $this->connection->prepare($SQL);
 		$data = [
-			'user_id'=>$this->user_id,
+			'user_id'=>$user_id
 		];
 		$STH->execute($data);
 		$STH->setFetchMode(\PDO::FETCH_CLASS, 'app\\models\\Profile');
 		
-		return $STH->fetchAll();
+		return $STH->fetch();
 	}
 
 

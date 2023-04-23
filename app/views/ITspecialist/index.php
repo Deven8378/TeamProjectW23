@@ -31,7 +31,7 @@
             	<?php foreach ($data as $user) { ?>
 	                <tr>
 	                    <th scope="row"><?=$user->status?></th>
-	                    <td><a href=""><?=$user->user_id?></a></td>
+	                    <td><a href="/ITspecialist/viewUserDetails/<?=$user->user_id?>"><?=$user->user_id?></a></td>
 	                    <td><?=$user->username?></td>
 	                    <td><?=$user->first_name?></td>
 	                    <td><?=$user->middle_name?></td>

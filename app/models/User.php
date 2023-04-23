@@ -62,5 +62,23 @@ class User extends \app\core\Model
 		return $STH->fetchAll();
 	}
 
+	public function getUserInfo($user_id)
+	{
+		
+		$SQL = "SELECT p.status, u.user_id, u.username, p.first_name, p.middle_name, p.last_name, p.email, p.phone_number
+			FROM user u
+			LEFT JOIN profile p ON u.user_id = p.user_id
+			WHERE u.user_id=:user_id";
+
+		$STH = $this->connection->prepare($SQL);
+		$data = [
+			'user_id'=>$user_id
+		];
+		$STH->execute($data);
+		$STH->setFetchMode(\PDO::FETCH_CLASS, 'app\\models\\User');
+		return $STH->fetch();
+	}
+
+
 
 }
