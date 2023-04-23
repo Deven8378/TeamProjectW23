@@ -32,5 +32,14 @@ class Profile extends \app\core\Model
 		return $STH->rowCount();
 	}
 
+	public function getByEmail($email)
+	{
+		$SQL = 'SELECT * FROM `profile` WHERE `email` = :email';
+		$STH = self::$connection->prepare($SQL);
+		$STH->execute(['email'=>$email]);
+		$STH->setFetchMode(\PDO::FETCH_CLASS, 'app\\models\\Profile');
+		return $STH->fetch();
+	}
+
 
 }

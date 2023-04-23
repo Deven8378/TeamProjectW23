@@ -12,6 +12,14 @@
 	<title><?= $data ?></title>
 
 	<style type="text/css">
+		#loginDiv {
+		  	background-color: white;
+		  	text-align: center;
+		  	border-radius: 25px;
+		  	padding: 20px;
+		  	width: 500px;
+		  	height: 450px;
+		}
 		.split-screen {
 		    display: flex;
 		}
@@ -205,7 +213,7 @@
 			font-weight: 500;
 			letter-spacing: 3px;
 		}
-		input[type=text], select, textarea {
+		#messageInput {
 			width: 100%;
 			padding: 12px;
 			border: 1px solid #ccc;
@@ -215,7 +223,7 @@
 			margin-bottom: 16px;
 			resize: vertical;
 		}
-		input[type="submit"] {
+		#messageSubmit {
 			background-color: #413b3b;
 			color: #fff;
 			padding: 15px 50px;

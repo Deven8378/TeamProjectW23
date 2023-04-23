@@ -13,7 +13,7 @@
                         <!-- BEGIN INBOX MENU -->
                         <div class="col-md-3">
                             <h2 class="grid-title"><i class="fa fa-inbox"></i> Inbox</h2>
-                            <a class="btn" href="#divOne" role="button" style="background-color: #e8c8e7;"><?= _('New Message') ?></a>
+                            <a class="btn" href="#sendMessage" role="button" style="background-color: #e8c8e7;"><?= _('New Message') ?></a>
 
                             <hr>
 
@@ -58,27 +58,28 @@
                             </div>
                             <!-- END INBOX CONTENT -->
                         </div>
+
+                        <div class="overlay" id="sendMessage">
+                            <div class="wrapper">
+                                <h2>Send a new Message</h2><a class="close" href="/Message/index">&times;</a>
+                                <div class="content">
+                                    <div class="container">
+                                        <form  method="post" action="">
+                                            <label>To</label>
+                                            <input placeholder="Recipient" type="text" name="receiver" id="messageInput">
+                                            <label>Message</label> 
+                                            <textarea placeholder="Write something..." name="message" id="messageInput"></textarea>
+                                            <input class="btn" type="submit" name="action" value='Send' style="background-color: #e8c8e7;" id="messageSubmit">
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
                     </div>
                 </div>
             </div>
             <!-- END INBOX -->
-        </div>
-    </div>
-</div>
-
-<div class="overlay" id="divOne">
-    <div class="wrapper">
-        <h2>Send a new Message</h2><a class="close" href="#">&times;</a>
-        <div class="content">
-            <div class="container">
-                <form>
-                    <label>To</label>
-                    <input placeholder="Your name.." type="text">
-                    <label>Message</label> 
-                    <textarea placeholder="Write something.."></textarea>
-                    <input type="submit" value="Submit">
-                </form>
-            </div>
         </div>
     </div>
 </div>

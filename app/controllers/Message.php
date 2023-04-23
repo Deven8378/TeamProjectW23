@@ -4,31 +4,28 @@ namespace app\controllers;
 
 class Message extends \app\core\Controller
 {
-	public function index(){
-		$this->view('/Message/index');
-	}
 
-	public function send()
+	public function index()
 	{
 		if(isset($_POST['action']))
 		{
 			$receiver = $_POST['receiver'] ?? '';
-			$user = new \app\models\User();
-			$user = $user->getByUsername($receiver);
+			$profile = new \app\models\profile();
+			$profile = $profile->getByEmail($receiver);
 
-			if($user){
+			if($profile){
 				$message = new \app\models\Message();
-				$message->receiver = $user->user_id;
+				$message->receiver = $profile->user_id;
 				//setting the FK to a PK value
 				$message->sender = $_SESSION['user_id'];
 				$message->message = $_POST['message'];
 				$message->insert();
-				header('location:/User/profile?success=Message Sent.');
+				header('location:/Message/index?success=Message Sent.');
 			} else {
-				header('location:/User/profile?error=' . "$receiver is not a valid user. No message sent.");
+				header('location:/Message/index?error=' . "$receiver is not a valid user. No message sent.");
 			}
 		} else {
-			header('location:/User/profile');
+			$this->view('/Message/index');
 		}
 	}
 
