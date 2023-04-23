@@ -1,5 +1,9 @@
 Options -MultiViews
 
+<Files .env>
+Deny from all
+</Files>
+
 RewriteEngine On
 
 RewriteBase /
