@@ -25,7 +25,10 @@ class Message extends \app\core\Controller
 				header('location:/Message/index?error=' . "$receiver is not a valid user. No message sent.");
 			}
 		} else {
-			$this->view('/Message/index');
+			$message = new \app\models\Message();
+			$inbox = $message->getInbox($_SESSION['user_id']);
+			$sent = $message->getSent($_SESSION['user_id']);
+			$this->view('/Message/index', [$inbox, $sent]);
 		}
 	}
 

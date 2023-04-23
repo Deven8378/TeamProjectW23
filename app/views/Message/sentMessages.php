@@ -24,12 +24,12 @@
                               </div>
                               <div class="row">
                                 <div class="col">
-                                  <a href="/Message/index" id="opt1" style="color: black; text-decoration: none;"><i class="fa fa-inbox"></i> Inbox</a>
+                                  <a href="/Message/index" id="opt1"><i class="fa fa-inbox"></i>Inbox</a>
                                 </div>
                               </div>
                               <div class="row">
                                 <div class="col">
-                                  <a href="/Message/sentMessages" id="opt1" style="color: black; text-decoration: none;"><i class="fa fa-mail-forward"></i> Sent</a>
+                                  <a href="/Message/sent" id="opt1"><i class="fa fa-mail-forward"></i> Sent</a>
                                 </div>
                               </div>
                             </div>
@@ -46,7 +46,7 @@
                                     <table class="table">
                                         <tbody>
                                             <div class="step1">
-                                                <?php $this->view('Message/previewMessage', $data[0]); ?>
+                                                <?php $this->view('Message/previewMessage', $data[1]); ?>
                                             </div>
                                         </tbody>
                                     </table>
