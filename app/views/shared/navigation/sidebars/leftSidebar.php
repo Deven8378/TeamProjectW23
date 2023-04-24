@@ -30,7 +30,7 @@
         </ul>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#"><i class="bi bi-file-earmark-text"></i> Recipes</a>
+        <a class="nav-link" href="/Recipe/index"><i class="bi bi-file-earmark-text"></i> Recipes</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="#"><i class="bi bi-gear"></i> Settings</a>
