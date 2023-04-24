@@ -1,35 +1,20 @@
 <?php $this->view('shared/header','IT Home Page'); ?>
 <?php $this->view('shared/navigation/itnav'); ?>
 
-<div class="viewUsers" style="">
+<div class="container" style="padding-top: 20px;">
+	<div class="p-4 mt-5 border d-flex">
+		<div class="spacer" style="width: 8px; flex-shrink: 0; margin: 0; padding: 0;"></div>
 
-	<!-- <div class="p-4 mt-5 border d-flex"> -->
-
-		<div class="itContent-left">
-			<h3>Filters</h3>
-			<div class="" style="">
-				<input class="" type="radio" name="" id="">
-				<label class="" for="">Admin</label>
-			</div>
-			<div class="" style="">
-				<input class="" type="radio" name="" id="" checked>
-				<label class="" for="">Employee</label>
-			</div>
-
-		</div>
-
-		<div class="spacer" style="width: 20px; flex-shrink: 0; margin: 0; padding: 0;"></div>
-
-		<div class="itContent-right" style="">
+		<div class="" style="">
 			
 			<h2><?=_('List of Employee and Admin')?></h2>
 
-			<!-- <div class="" style=""> -->
+			<div class="" style="border: 1px solid grey; border-radius: 10px;">
 
-				<table class="table table-bordered table-hover " style="">
+				<table class="table table-striped " style="">
 					<!-- table-striped table-bordered -->
-		            <thead class="table-secondary">
-		                <tr class="">
+		            <thead class="thead-dark">
+		                <tr >
 		                    <th scope="col">Status</th>
 		                    <th scope="col">ID</th>
 		                    <th scope="col">Username</th>
@@ -41,26 +26,10 @@
 
 		                </tr>
 		            </thead>
-		            <tbody class="table-light">
+		            <tbody class="">
 		            	<?php foreach ($data as $user) { ?>
 			                <tr>
-                    <th scope="row">
-                    	<div style="
-                    	border: 2px solid #8CC39E;
-                    	border-radius: 10px; 
-                    	background: #AFF4C6;
-/*                    	align-content: center;*/
-                    	display: flex;
-                    	justify-content: center;
-/*                    	text-align: center;*/
-						align-items: center;
-                    	height: 50px;
-                    	width: 100px;
-                    	">
-                    		<?=$user->status?>
-                    	</div>
-                    </th>
-
+			                    <th scope="row"><?=$user->status?></th>
 			                    <td><a href="/ITspecialist/viewUserDetails/<?=$user->user_id?>"><?=$user->user_id?></a></td>
 			                    <td><?=$user->username?></td>
 			                    <td><?=$user->first_name?></td>
@@ -75,10 +44,10 @@
 		            
 		            </tbody>
 		        </table>
-		    <!-- </div> -->
+		    </div>
 		</div>
 	
-	<!-- </div> -->
+	</div>
 
 </div>
 <?php $this->view('shared/footer'); ?>
