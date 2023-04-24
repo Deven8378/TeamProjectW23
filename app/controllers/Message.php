@@ -34,13 +34,13 @@ class Message extends \app\core\Controller
 
 	public function delete($message_id)
 	{
-		$user_id = $_SESSION['user_id'];
 		$message = new \app\models\Message();
-		$success = $message->delete($message_id, $user_id);
+
+		$success = $message->delete($message_id, $_SESSION['user_id']);
 		if($success){
-			header('location:/User/profile?success=Message deleted.');
+			header('location:/Message/index?success=Message deleted.');
 		} else {
-			header('location:/User/profile?error=Not accessible.');
+			header('location:/Message/index?error=Could not delete message.');
 		}
 	}
 }

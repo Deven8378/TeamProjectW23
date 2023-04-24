@@ -2,6 +2,21 @@
 <?php $this->view('shared/navigation/nav'); ?>
 
 
+
+<?php foreach ($data[0] as $message) {
+    echo "Message ID: ";
+    echo $message->message_id;
+    echo "<br>";
+    echo "Receiver ID: ";
+    echo $message->receiver;
+    echo "<br>";
+} ?>
+<?php
+echo "Session: ";
+echo $_SESSION['user_id'];
+?>
+
+
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
 <div class="container" style="padding-top: 50px;">
     <div class="row">
@@ -46,12 +61,26 @@
                                 <div id="container" style="width:100%; height:150px;">
                                     <div class="table-responsive">
                                         <table class="table">
+                                            <thead>
+                                                <tr>
+                                                <th scope="col"><?= _('FROM') ?></th>
+                                                <th scope="col"><?= _('MESSAGE') ?></th>
+                                                <th scope="col"><?= _('TIME') ?></th>
+                                                <th scope="col"></th>
+                                                </tr>
+                                            </thead>
+
                                             <tbody>
                                                 <?php foreach ($data[0] as $message) { ?>
                                                     <tr>
-                                                        <td class="name"><?= $message->sender_fname ?> <?= $message->sender_fname  ?></td>
+                                                        <td class="name"><?= $message->sender_fname ?> <?= $message->sender_lname  ?></td>
                                                         <td class="subject"><?= $message->message ?></td>
                                                         <td class="time"><?= $message->timestamp ?></td>
+                                                        <td>
+                                                            <a href='/Message/delete/<?=$message->message_id?>'>
+                                                                <i class="bi bi-x"></i>
+                                                            </a>
+                                                        </td>
                                                     </tr>
                                                 <?php } ?>
                                             </tbody>
@@ -61,12 +90,26 @@
                                 <div id="inboxHTML"  style="display: none; height:20px;">
                                     <div class="table-responsive">
                                         <table class="table">
+                                            <thead>
+                                                <tr>
+                                                <th scope="col"><?= _('FROM') ?></th>
+                                                <th scope="col"><?= _('MESSAGE') ?></th>
+                                                <th scope="col"><?= _('TIME') ?></th>
+                                                <th scope="col"></th>
+                                                </tr>
+                                            </thead>
+
                                             <tbody>
                                                 <?php foreach ($data[0] as $message) { ?>
                                                     <tr>
-                                                        <td class="name"><?= $message->sender_fname ?> <?= $message->sender_fname  ?></td>
+                                                        <td class="name"><?= $message->sender_fname ?> <?= $message->sender_lname  ?></td>
                                                         <td class="subject"><?= $message->message ?></td>
                                                         <td class="time"><?= $message->timestamp ?></td>
+                                                        <td>
+                                                            <a href='/Message/delete/<?=$message->message_id?>'>
+                                                                <i class="bi bi-x"></i>
+                                                            </a>
+                                                        </td>
                                                     </tr>
                                                 <?php } ?>
                                             </tbody>
@@ -75,10 +118,18 @@
                                 </div>
                                 <div id="sentMessagesHTML"  style="display: none; height:20px;"><div class="table-responsive">
                                         <table class="table">
+                                            <thead>
+                                                <tr>
+                                                <th scope="col"><?= _('FROM') ?></th>
+                                                <th scope="col"><?= _('MESSAGE') ?></th>
+                                                <th scope="col"><?= _('TIME') ?></th>
+                                                </tr>
+                                            </thead>
+
                                             <tbody>
                                                 <?php foreach ($data[1] as $message) { ?>
                                                     <tr>
-                                                        <td class="name"><?= $message->sender_fname ?> <?= $message->sender_fname  ?></td>
+                                                        <td class="name"><?= $message->sender_fname ?> <?= $message->sender_lname  ?></td>
                                                         <td class="subject"><?= $message->message ?></td>
                                                         <td class="time"><?= $message->timestamp ?></td>
                                                     </tr>
