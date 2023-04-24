@@ -16,7 +16,7 @@ class Profile extends \app\core\Model
 	{
 		$SQL = 'INSERT INTO profile(user_id, first_name, middle_name, last_name, email, phone_number, status) 
 				VALUES (:user_id, :first_name, :middle_name, :last_name, :email, :phone_number, :status)';
-		$STH = $this->connection->prepare($SQL);
+		$STH = self::$connection->prepare($SQL);
 		$data = [
 				'user_id'=>$this->user_id,
 				'first_name'=>$this->first_name,
@@ -35,7 +35,7 @@ class Profile extends \app\core\Model
 	public function getByEmail($email)
 	{
 		$SQL = 'SELECT * FROM `profile` WHERE `email` = :email';
-		$STH = $this->connection->prepare($SQL);
+		$STH = self::$connection->prepare($SQL);
 		$STH->execute(['email'=>$email]);
 		$STH->setFetchMode(\PDO::FETCH_CLASS, 'app\\models\\Profile');
 		return $STH->fetch();
@@ -45,7 +45,7 @@ class Profile extends \app\core\Model
 	{
 
 		$SQL = "SELECT * FROM profile WHERE user_id=:user_id"; 
-		$STH = $this->connection->prepare($SQL);
+		$STH = self::$connection->prepare($SQL);
 		$data = [
 			'user_id'=>$user_id
 		];
@@ -58,7 +58,7 @@ class Profile extends \app\core\Model
 	public function delete($user_id)
 	{
 		$SQL = "DELETE FROM profile WHERE user_id=:user_id";
-		$STH = $this->connection->prepare($SQL);
+		$STH = self::$connection->prepare($SQL);
 		$data = [
 			'user_id'=>$user_id
 		];

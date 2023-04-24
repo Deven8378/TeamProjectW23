@@ -13,7 +13,7 @@ class User extends \app\core\Model
 		$SQL = 'SELECT * FROM user 
 				WHERE username = :username';
 		
-		$STH = $this->connection->prepare($SQL);
+		$STH = self::$connection->prepare($SQL);
 		$STH->execute(['username'=>$username]);
 		$STH->setFetchMode(\PDO::FETCH_CLASS, 'app\\models\\User');
 		return $STH->fetch();
@@ -24,7 +24,7 @@ class User extends \app\core\Model
 		$SQL = 'SELECT * FROM user 
 				WHERE user_id = :user_id';
 		
-		$STH = $this->connection->prepare($SQL);
+		$STH = self::$connection->prepare($SQL);
 		$STH->execute(['user_id'=>$user_id]);
 		$STH->setFetchMode(\PDO::FETCH_CLASS, 'app\\models\\User');
 		return $STH->fetch();
@@ -35,11 +35,11 @@ class User extends \app\core\Model
 		$SQL = 'INSERT INTO user(user_type, username, password_hash) 
 				VALUES (:user_type, :username, :password_hash)';
 		
-		$STH = $this->connection->prepare($SQL);
+		$STH = self::$connection->prepare($SQL);
 		$STH->execute(['username'=>$this->username,
 						'password_hash'=>$this->password_hash,
 						'user_type'=>$this->user_type]);
-		return $this->connection->lastInsertId();
+		return self::$connection->lastInsertId();
 	}
 
 	public function getAllUserInfo()
@@ -55,7 +55,7 @@ class User extends \app\core\Model
 			LEFT JOIN profile p ON u.user_id = p.user_id
 			WHERE u.user_type <> 'itspecialist'";
 
-		$STH = $this->connection->prepare($SQL);
+		$STH = self::$connection->prepare($SQL);
 		$STH->execute();
 		$STH->setFetchMode(\PDO::FETCH_CLASS, 'app\\models\\User');
 		
@@ -70,7 +70,7 @@ class User extends \app\core\Model
 			LEFT JOIN profile p ON u.user_id = p.user_id
 			WHERE u.user_id=:user_id";
 
-		$STH = $this->connection->prepare($SQL);
+		$STH = self::$connection->prepare($SQL);
 		$data = [
 			'user_id'=>$user_id
 		];
@@ -82,14 +82,12 @@ class User extends \app\core\Model
 	public function delete($user_id)
 	{
 		$SQL = "DELETE FROM user WHERE user_id=:user_id";
-		$STH = $this->connection->prepare($SQL);
+		$STH = self::$connection->prepare($SQL);
 		$data = [
 			'user_id'=>$user_id
 		];
 		$STH->execute($data);
 		return $STH->rowCount();
 	}
-
-
 
 }
