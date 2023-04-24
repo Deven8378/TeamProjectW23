@@ -13,25 +13,22 @@ body {
 
 .left_side {
     flex: 1;
-}
-
-.right_side {
-    flex: 1;
     margin: auto;
     background-color: black;
     padding: 10px;
     width: 50%;
     color: white;
     height: 562px;
-    line-height: 562px;
+    display: flex;
+    align-items: center;
+}
+
+.right_side {
+    flex: 1;
 }
 
 #home_links{
   width: 150px;
-}
-
-#home_header {
-  line-height: 562px;
 }
 
 /*-------END--------*/

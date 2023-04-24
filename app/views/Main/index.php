@@ -4,12 +4,12 @@
 <div class="split-screen">
     <!-- Left content -->
     <div class="left_side">
-    	<img src="/resources/sweemory1.png" height="100%" width="100%">
+        <p style="font-size: 50px; " id="home_header"><?= _('Welcome Sweemory Team!') ?></p><br><br>
     </div>
 
     <!-- Right content -->
     <div class="right_side">
-    	<h2 id="home_header"><?= _('Welcome back Sweemory Team!') ?></h2><br><br>
+      <img class="" src="/resources/sweemory1.png" height="563px" width="100%">
     </div>
 </div>
 
@@ -19,19 +19,19 @@
 
 
 <div class="home_links">
-	<div class="container text-center">
-	  <div class="row align-items-start">
-	    <div class="col">
-	      <a class="btn" id="home_links" href="/Message/index" role="button" style="background-color: #e8c8e7;"><?= _('Messages') ?></a>
-	    </div>
-	    <div class="col">
-	      <a class="btn" id="home_links" href="/Inventory/index" role="button" style="background-color: #e8c8e7;"><?= _('Inventory') ?></a>
-	    </div>
-	    <div class="col">
-	      <a class="btn" id="home_links" href="/Recipe/index" role="button" style="background-color: #e8c8e7;"><?= _('Recipes') ?></a>
-	    </div>
-	  </div>
-	</div>
+  <div class="container text-center">
+    <div class="row align-items-start">
+      <div class="col">
+        <a class="btn" id="home_links" href="/Message/index" role="button" style="background-color: #e8c8e7;"><?= _('Messages') ?></a>
+      </div>
+      <div class="col">
+        <a class="btn" id="home_links" href="/Inventory/index" role="button" style="background-color: #e8c8e7;"><?= _('Inventory') ?></a>
+      </div>
+      <div class="col">
+        <a class="btn" id="home_links" href="Recipes/index" role="button" style="background-color: #e8c8e7;"><?= _('Recipes') ?></a>
+      </div>
+    </div>
+  </div>
 </div>
 
 

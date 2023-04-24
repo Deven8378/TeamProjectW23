@@ -15,7 +15,7 @@ class Message extends \app\core\Model{
 					'receiver'=>$this->receiver,
 					'message'=>$this->message];
 		$STH->execute($data);
-		$this->message_id = $this->connection->lastInsertId();
+		$this->message_id = self::$connection->lastInsertId();
 	}
 
 
