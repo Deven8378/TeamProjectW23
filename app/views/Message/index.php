@@ -12,7 +12,7 @@
                     <div class="row">
                         <!-- BEGIN INBOX MENU -->
                         <div class="col-md-3">
-                            <h2 class="grid-title"><i class="fa fa-inbox"></i> Inbox</h2>
+                            <h2 class="grid-title"><i class="fa fa-inbox"></i> <?= _('Inbox') ?></h2>
                                 <a class="btn" href="#sendMessage" role="button" style="background-color: #e8c8e7;"><?= _('New Message') ?></a>
                             <hr>
 
@@ -24,12 +24,12 @@
                               </div>
                               <div class="row">
                                 <div class="col">
-                                    <a class="glyphicon glyphicon-cutlery" onclick="fixScroll('inboxHTML');"><i class="fa fa-inbox"> Inbox</i></a>
+                                    <a class="glyphicon glyphicon-cutlery" onclick="fixScroll('inboxHTML');"><i class="fa fa-inbox"> <?= _('Inbox') ?></i></a>
                                 </div>
                               </div>
                               <div class="row">
                                 <div class="col">
-                                    <a class="glyphicon glyphicon-cutlery" onclick="fixScroll('sentMessagesHTML');"><i class="fa fa-mail-forward"> Sent</i></a>
+                                    <a class="glyphicon glyphicon-cutlery" onclick="fixScroll('sentMessagesHTML');"><i class="fa fa-mail-forward"> <?= _('Sent') ?></i></a>
                                 </div>
                               </div>
                             </div>
@@ -97,11 +97,11 @@
                                 <div class="content">
                                     <div class="container">
                                         <form  method="post" action="">
-                                            <label>To</label>
+                                            <label><?= _('To') ?></label>
                                             <input placeholder="Recipient" type="text" name="receiver" id="messageInput">
-                                            <label>Message</label> 
+                                            <label><?= _('Message') ?></label> 
                                             <textarea placeholder="Write something..." name="message" id="messageInput"></textarea>
-                                            <input class="btn" type="submit" name="action" value='Send' style="background-color: #e8c8e7;" id="messageSubmit">
+                                            <input class="btn" type="submit" name="action" value='<?= _('Send') ?>' style="background-color: #e8c8e7;" id="messageSubmit">
                                         </form>
                                     </div>
                                 </div>

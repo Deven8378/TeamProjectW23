@@ -1,6 +1,8 @@
 body {
   background-color: #FFFFFF;
   font-family: 'Ubuntu', sans-serif;
+  position: relative;
+  top: 50px;
 }
 
 .main {
@@ -130,12 +132,6 @@ form.form1 {
     color: white;
     height: 562px;
     line-height: 562px;
-}
-
-body{
-  position: relative;
-  top: 50px;
-  background:#eee;
 }
 
 #home_links{
