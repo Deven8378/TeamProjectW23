@@ -9,6 +9,7 @@
 	<script type="text/javascript" src="jquery-3.3.1.js"></script>
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
 	<link rel="stylesheet" type="text/css" href="/css/main.css">
+	<link rel="stylesheet" type="text/css" href="/css/IT.css">
 
 	<title><?= $data ?></title>
 

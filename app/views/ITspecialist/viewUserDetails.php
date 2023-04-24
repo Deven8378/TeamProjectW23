@@ -1,6 +1,5 @@
 <?php $this->view('shared/header','User Profile'); ?>
 <?php $this->view('shared/navigation/nav'); ?>
-<!-- <?php $this->view('shared/errorAndSuccessMessages'); ?> -->
 
 <div class="userDetails">
     
@@ -16,10 +15,10 @@
           		<h3><?= $data->username?> (<?= $data->user_id?>)</h3>
 	        </div>
 
-	        <dl class="" style="display: flex; border: 1px solid black;">
+	        <dl class="dl-viewUserDetails" style="">
 
 	          	<!-- Left side -->
-	          	<div class="" style="flex: 70%;">
+	          	<div class="" style="flex: 70%; " >
 	          		<!-- col-sm-3 -->
 	          		<!-- <div class=""> -->
 
@@ -55,11 +54,17 @@
 			            	<dt  class="dt-label">Status</dt>
 			            	<dd  class="dd-left"><?= $data->status?></dd>
 		          	<!-- </div> -->
+		          	<div class="col-4">
+	            <a href="/ITspecialist/index" type="submit" class="">Back</a>
+          	</div>
 
 				</div>
 				<!-- Right side -->
-				<div class="" style="flex: 30%;">
+				<div class="" style="flex: 30%; border: 1px solid black;" >
 					<!-- <div class=""> -->
+						<div style=" height: 230px;">
+							
+						</div>
 		            	<dt class="dt-label">ID</dt>
 		            	<dd class="dd-right"><?=$data->user_id?></dd>
 		          	<!-- </div> -->
@@ -73,6 +78,10 @@
 			            	<dt  class="dt-label">Password</dt>
 			            	<dd  class="dd-right"><?= $data->password_hash?></dd>
 		          	<!-- </div> -->
+		          	<div class="col-4">
+		            	<button type="submit" class="">Edit</button>
+			            <button type="submit" class="">Delete</button>
+		          	</div>
 				</div>
 				
 
@@ -82,14 +91,9 @@
 	        </dl>
 
 
-	        <div class="col-4">
-	            <a href="/ITspecialist/index" type="submit" class="">Back</a>
-          	</div>
+	        
 
-          	<div class="col-4">
-	            <button type="submit" class="">Edit</button>
-	            <button type="submit" class="">Delete</button>
-          	</div>
+          	
 	       
       	<!-- </div> -->
 
