@@ -50,7 +50,7 @@ class User extends \app\core\Model
 		// 		JOIN profile ON user.user_id = profile.user_id 
 		// 		WHERE user.user_type IN ('admin', 'employee')";
 		
-		$SQL = "SELECT p.status, u.user_id, u.username, p.first_name, p.middle_name, p.last_name, p.email, p.phone_number
+		$SQL = "SELECT p.status, u.user_id, u.user_type, u.username, p.first_name, p.middle_name, p.last_name, p.email, p.phone_number
 			FROM user u
 			LEFT JOIN profile p ON u.user_id = p.user_id
 			WHERE u.user_type <> 'itspecialist'";
@@ -65,7 +65,7 @@ class User extends \app\core\Model
 	public function getUserInfo($user_id)
 	{
 		
-		$SQL = "SELECT p.status, u.user_id, u.username, p.first_name, p.middle_name, p.last_name, p.email, p.phone_number
+		$SQL = "SELECT p.status, u.user_id, u.user_type,  u.username, p.first_name, p.middle_name, p.last_name, p.email, p.phone_number
 			FROM user u
 			LEFT JOIN profile p ON u.user_id = p.user_id
 			WHERE u.user_id=:user_id";

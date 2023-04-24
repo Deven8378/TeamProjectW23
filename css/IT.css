@@ -6,6 +6,7 @@
 
 }
 
+
 table {
     table-layout: fixed;
     width: 100%;   
@@ -20,6 +21,33 @@ th,td {
     /*display: flex;
     align-items: center;*/
 }
+
+.status-active {
+  border: 4px solid #8CC39E; 
+  border-radius: 20px;
+  background: #AFF4C6;
+  color: black;
+
+  height: 50px;
+  width: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.status-inactive {
+  border: 4px solid #C23A1B; 
+  border-radius: 20px;
+  background: #F24822;
+  color: white;
+
+  height: 50px;
+  width: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 /*-----------Create User Page-----------*/
 .createUser {
   background-color: #F3EBF6;

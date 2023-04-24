@@ -24,12 +24,12 @@
 		            <thead class="table-secondary">
 		                <tr >
 		                    <th scope="col">Status</th>
-		                    <th scope="col">ID</th>
+		                    <th scope="col" style="width:7%;">ID</th>
 		                    <th scope="col">Username</th>
 		                    <th scope="col">First Name</th>
 		                    <th scope="col">Middle Name</th>
 		                    <th scope="col">Last Name</th>
-		                    <th scope="col">email</th>
+		                    <th scope="col" style="width:20%;">email</th>
 		                    <th scope="col">Phone Number</th>
 
 		                </tr>
@@ -37,9 +37,40 @@
 		            <tbody class="">
 		            	<?php foreach ($data as $user) { ?>
 			                <tr>
-			                    <th scope="row"><?=$user->status?></th>
-			                    <td><a href="/ITspecialist/viewUserDetails/<?=$user->user_id?>"><?=$user->user_id?></a></td>
-			                    <td style=""><?=$user->username?></td>
+			                    <th scope="row" style="display: flex; align-items: center; justify-content: center;">
+
+				            	<?php
+				            		if($user->status == "active") {
+				            			echo "<div class='status-active' style=''>$user->status</div>";
+				            		}else{
+				            			echo "<div class='status-inactive' style=''>$user->status</div>";
+				            		}
+
+				            	?>
+
+		                    	</th>
+			                    <td>
+		                    	<?php
+				            		if($user->user_type == "admin") {
+				            			echo "<a href='/ITspecialist/viewUserDetails/$user->user_id'>AD$user->user_id</a>";
+				            		}else if ($user->user_type == "employee"){
+				            			echo "<a href='/ITspecialist/viewUserDetails/$user->user_id'>EM$user->user_id</a>";
+				            		}else{
+				            			echo "ERROR";
+				            		}
+
+				            	?>
+			                    	<!-- <a href="/ITspecialist/viewUserDetails/<?=$user->user_id?>">
+			                    		<?=$user->user_id?>
+			                    			
+		                    		</a> -->
+		                    	</td>
+			                    <td align="" style="
+/*			                    text-align: center;*/
+/*			                    display: flex; */
+/*			                    align-items: center; */
+/*			                    justify-content: center;*/
+			                    "><?=$user->username?></td>
 			                    <td><?=$user->first_name?></td>
 			                    <td><?=$user->middle_name?></td>
 			                    <td><?=$user->last_name?></td>
