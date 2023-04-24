@@ -7,7 +7,7 @@
 
 		<input class="createInput" type="text" align="" placeholder="<?=_('Title')?>" name="title">
 
-		<textarea class="createInput"name="description"> </textarea>
+		<textarea class="createInput"name="description" placeholder="<?=_('Description')?>" rows="10" cols="50"> </textarea>
 
 
 		<input class="createInput" type="file" align="" placeholder="<?=_('Picture')?>" name="recipePicture">

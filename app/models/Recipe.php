@@ -22,7 +22,7 @@ class Recipe extends \app\core\Model {
 		$STH = self::$connection->prepare($SQL);
 		$data = ['title'=>$this->title,
 				'description'=>$this->description,
-				'picture'=>$this->picure];
+				'picture'=>$this->picture];
 		$STH->execute($data);
 		return self::$connection->lastInsertId();		
 	}
