@@ -71,7 +71,7 @@
 .dl-viewUserDetails {
   display: flex; 
   padding-top: 5px;
-/*  border: 1px solid black;*/
+  border: 1px solid black;
 }
 
 .dt-label {
