@@ -29,7 +29,7 @@ class Message extends \app\core\Model{
 	}
 
 	public function getInbox($user_id){
-		$SQL = "SELECT `message`.`message_id`, `message`.`message`, `message`.`timestamp`, sendertable.`email` AS `sender_email`, sendertable.`first_name` AS `sender_fname`, sendertable.`last_name` AS `sender_lname` FROM `message` JOIN `profile` AS `sendertable` ON `message`.`sender` = sendertable.`user_id` WHERE receiver=:receiver;";
+		$SQL = "SELECT `message`.`message_id`, `message`.`message`, `message`.`timestamp`, sendertable.`email` AS `sender_email`, sendertable.`first_name` AS `sender_fname`, sendertable.`last_name` AS `sender_lname` FROM `message` JOIN `profile` AS `sendertable` ON `message`.`receiver` = sendertable.`user_id` WHERE receiver=:receiver;";
 		$STH = $this->connection->prepare($SQL);
 		$data = ['receiver'=>$user_id];
 		$STH->execute($data);

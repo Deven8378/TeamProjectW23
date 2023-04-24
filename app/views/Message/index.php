@@ -12,7 +12,7 @@
                     <div class="row">
                         <!-- BEGIN INBOX MENU -->
                         <div class="col-md-3">
-                            <h2 class="grid-title"><i class="fa fa-inbox"></i> Inbox</h2>
+                            <h2 class="grid-title"><i class="fa fa-inbox"></i> <?= _('Inbox') ?></h2>
                                 <a class="btn" href="#sendMessage" role="button" style="background-color: #e8c8e7;"><?= _('New Message') ?></a>
                             <hr>
 
@@ -24,12 +24,12 @@
                               </div>
                               <div class="row">
                                 <div class="col">
-                                  <a href="/Message/index" id="opt1" style="color: black; text-decoration: none;"><i class="fa fa-inbox"></i> Inbox</a>
+                                    <a class="glyphicon glyphicon-cutlery" onclick="fixScroll('inboxHTML');"><i class="fa fa-inbox"> <?= _('Inbox') ?></i></a>
                                 </div>
                               </div>
                               <div class="row">
                                 <div class="col">
-                                  <a href="/Message/sentMessages" id="opt1" style="color: black; text-decoration: none;"><i class="fa fa-mail-forward"></i> Sent</a>
+                                    <a class="glyphicon glyphicon-cutlery" onclick="fixScroll('sentMessagesHTML');"><i class="fa fa-mail-forward"> <?= _('Sent') ?></i></a>
                                 </div>
                               </div>
                             </div>
@@ -39,18 +39,54 @@
                         <!-- BEGIN INBOX CONTENT -->
                         <div class="col-md-9">
                             <div class="row">
-
                                 <div style="padding-top: 50px;"></div>
 
-                                <div class="table-responsive">
-                                    <table class="table">
-                                        <tbody>
-                                            <div class="step1">
-                                                <?php $this->view('Message/previewMessage', $data[0]); ?>
-                                            </div>
-                                        </tbody>
-                                    </table>
-                                </div>                      
+                                <div id="inboxOrSentMessages"></div> 
+
+                                <div id="container" style="width:100%; height:150px;">
+                                    <div class="table-responsive">
+                                        <table class="table">
+                                            <tbody>
+                                                <?php foreach ($data[0] as $message) { ?>
+                                                    <tr>
+                                                        <td class="name"><?= $message->sender_fname ?> <?= $message->sender_fname  ?></td>
+                                                        <td class="subject"><?= $message->message ?></td>
+                                                        <td class="time"><?= $message->timestamp ?></td>
+                                                    </tr>
+                                                <?php } ?>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                <div id="inboxHTML"  style="display: none; height:20px;">
+                                    <div class="table-responsive">
+                                        <table class="table">
+                                            <tbody>
+                                                <?php foreach ($data[0] as $message) { ?>
+                                                    <tr>
+                                                        <td class="name"><?= $message->sender_fname ?> <?= $message->sender_fname  ?></td>
+                                                        <td class="subject"><?= $message->message ?></td>
+                                                        <td class="time"><?= $message->timestamp ?></td>
+                                                    </tr>
+                                                <?php } ?>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                <div id="sentMessagesHTML"  style="display: none; height:20px;"><div class="table-responsive">
+                                        <table class="table">
+                                            <tbody>
+                                                <?php foreach ($data[1] as $message) { ?>
+                                                    <tr>
+                                                        <td class="name"><?= $message->sender_fname ?> <?= $message->sender_fname  ?></td>
+                                                        <td class="subject"><?= $message->message ?></td>
+                                                        <td class="time"><?= $message->timestamp ?></td>
+                                                    </tr>
+                                                <?php } ?>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>                 
                             </div>
                             <!-- END INBOX CONTENT -->
                         </div>
@@ -61,11 +97,11 @@
                                 <div class="content">
                                     <div class="container">
                                         <form  method="post" action="">
-                                            <label>To</label>
+                                            <label><?= _('To') ?></label>
                                             <input placeholder="Recipient" type="text" name="receiver" id="messageInput">
-                                            <label>Message</label> 
+                                            <label><?= _('Message') ?></label> 
                                             <textarea placeholder="Write something..." name="message" id="messageInput"></textarea>
-                                            <input class="btn" type="submit" name="action" value='Send' style="background-color: #e8c8e7;" id="messageSubmit">
+                                            <input class="btn" type="submit" name="action" value='<?= _('Send') ?>' style="background-color: #e8c8e7;" id="messageSubmit">
                                         </form>
                                     </div>
                                 </div>
