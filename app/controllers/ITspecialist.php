@@ -28,7 +28,9 @@ class ITspecialist extends \app\core\Controller
                     if ($_POST['username'] != '' 
                         && $_POST['username'] != null 
                         && $_POST['password'] != '' 
-                        && $_POST['password'] != null) 
+                        && $_POST['password'] != null
+                        && $_POST['user_type'] != ''
+                        && $_POST['user_type'] != null) 
                     {
                         $user->username = $_POST['username'];
                         $user->password_hash = password_hash($_POST['password'], PASSWORD_DEFAULT);
@@ -39,7 +41,7 @@ class ITspecialist extends \app\core\Controller
                     }
                     else
                     {
-                        header('location:/ITspecialist/createUser?error=Please enter in a username and password.');
+                        header('location:/ITspecialist/createUser?error=Please enter all criteria.');
                     }
                     
                 } 

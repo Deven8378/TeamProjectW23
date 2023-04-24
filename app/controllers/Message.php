@@ -19,6 +19,7 @@ class Message extends \app\core\Controller
 				//setting the FK to a PK value
 				$message->sender = $_SESSION['user_id'];
 				$message->message = $_POST['message'];
+				$message->full_name = $profile->first_name . ' ' . $profile->middle_name . ' ' . $profile->last_name;
 				$message->insert();
 				header('location:/Message/index?success=Message Sent.');
 			} else {

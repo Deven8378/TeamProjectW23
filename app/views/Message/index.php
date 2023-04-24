@@ -1,6 +1,7 @@
 <?php $this->view('shared/header', "Read your Messages"); ?>
 <?php $this->view('shared/navigation/nav'); ?>
 
+
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
 <div class="container" style="padding-top: 50px;">
     <div class="row">
@@ -57,7 +58,7 @@
                                             <tbody>
                                                 <?php foreach ($data[0] as $message) { ?>
                                                     <tr>
-                                                        <td class="name"><?= $message->sender_fname ?> <?= $message->sender_lname  ?></td>
+                                                        <td class="name"><?= $message->full_name?></td>
                                                         <td class="subject"><?= $message->message ?></td>
                                                         <td class="time"><?= $message->timestamp ?></td>
                                                         <td>
@@ -104,9 +105,10 @@
                                         <table class="table">
                                             <thead>
                                                 <tr>
-                                                <th scope="col"><?= _('FROM') ?></th>
+                                                <th scope="col"><?= _('TO') ?></th>
                                                 <th scope="col"><?= _('MESSAGE') ?></th>
                                                 <th scope="col"><?= _('TIME') ?></th>
+                                                <th scope="col"></th>
                                                 </tr>
                                             </thead>
 
@@ -116,6 +118,8 @@
                                                         <td class="name"><?= $message->sender_fname ?> <?= $message->sender_lname  ?></td>
                                                         <td class="subject"><?= $message->message ?></td>
                                                         <td class="time"><?= $message->timestamp ?></td>
+                                                        <td></td>
+
                                                     </tr>
                                                 <?php } ?>
                                             </tbody>

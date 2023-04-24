@@ -7,13 +7,16 @@ class Message extends \app\core\Model{
 	public $receiver;
 	public $message;
 	public $timestamp;
+	public $full_name;
 
 	public function insert(){
-		$SQL = "INSERT INTO message (sender, receiver, message) value (:sender, :receiver, :message)";
+		$SQL = "INSERT INTO message (full_name, sender, receiver, message) value (:full_name, :sender, :receiver, :message)";
 		$STH = self::$connection->prepare($SQL);
 		$data = ['sender'=>$this->sender,
 					'receiver'=>$this->receiver,
-					'message'=>$this->message];
+					'message'=>$this->message,
+					'full_name'=>$this->full_name
+				];
 		$STH->execute($data);
 		$this->message_id = self::$connection->lastInsertId();
 	}
@@ -29,7 +32,7 @@ class Message extends \app\core\Model{
 	}
 
 	public function getInbox($user_id){
-		$SQL = "SELECT `message`.`message_id`, `message`.`message`, `message`.`timestamp`, sendertable.`email` AS `sender_email`, sendertable.`first_name` AS `sender_fname`, sendertable.`last_name` AS `sender_lname` FROM `message` JOIN `profile` AS `sendertable` ON `message`.`receiver` = sendertable.`user_id` WHERE receiver=:receiver;";
+		$SQL = "SELECT `message`.`message_id`, `message`.`full_name` ,`message`.`message`, `message`.`timestamp` FROM `message` WHERE receiver=:receiver;";
 		$STH = self::$connection->prepare($SQL);
 		$data = ['receiver'=>$user_id];
 		$STH->execute($data);
@@ -38,7 +41,7 @@ class Message extends \app\core\Model{
 	}
 
 	public function getSent($user_id){
-		$SQL = "SELECT `message`.`message_id`, `message`.`message`, `message`.`timestamp`, sendertable.`email` AS `sender_email`, sendertable.`first_name` AS `sender_fname`, sendertable.`last_name` AS `sender_lname` FROM `message` JOIN `profile` AS `sendertable` ON `message`.`sender` = sendertable.`user_id` WHERE sender=:sender;";
+		$SQL = "SELECT `message`.`message_id`, `message`.`full_name` ,`message`.`message`, `message`.`timestamp` FROM `message` WHERE sender=:sender;";
 		$STH = self::$connection->prepare($SQL);
 		$data = ['sender'=>$user_id];
 		$STH->execute($data);

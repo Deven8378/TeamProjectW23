@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 22, 2023 at 09:26 PM
--- Server version: 10.4.27-MariaDB
--- PHP Version: 8.2.0
+-- Generation Time: Apr 24, 2023 at 11:38 PM
+-- Server version: 10.4.22-MariaDB
+-- PHP Version: 8.1.2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -36,7 +36,7 @@ CREATE TABLE `ingredient` (
   `description` text NOT NULL,
   `price` float NOT NULL,
   `picture` int(128) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -51,7 +51,7 @@ CREATE TABLE `ingredient_quantity` (
   `arrival_date` date NOT NULL,
   `expired_date` date NOT NULL,
   `quantity` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -65,8 +65,18 @@ CREATE TABLE `message` (
   `receiver` int(11) NOT NULL,
   `sender` int(11) NOT NULL,
   `message` text NOT NULL,
-  `timestamp` timestamp NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `timestamp` timestamp NOT NULL DEFAULT current_timestamp(),
+  `full_name` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `message`
+--
+
+INSERT INTO `message` (`message_id`, `receiver`, `sender`, `message`, `timestamp`, `full_name`) VALUES
+(4, 5, 3, 'who tis', '2023-04-24 21:15:15', ''),
+(7, 3, 3, 'number2\r\n', '2023-04-24 21:35:11', 'NicoleC.Bautista'),
+(8, 3, 3, 'sdsdsd', '2023-04-24 21:35:47', 'Nicole C. Bautista');
 
 -- --------------------------------------------------------
 
@@ -80,7 +90,7 @@ CREATE TABLE `notification` (
   `notify_type` varchar(10) NOT NULL,
   `message` text NOT NULL,
   `timestamp` timestamp NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -95,7 +105,7 @@ CREATE TABLE `product` (
   `description` text NOT NULL,
   `price` float NOT NULL,
   `picture` varchar(72) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -110,7 +120,7 @@ CREATE TABLE `product_quantity` (
   `produced_date` date NOT NULL,
   `expired_date` date NOT NULL,
   `quantity` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -127,15 +137,14 @@ CREATE TABLE `profile` (
   `email` varchar(80) NOT NULL,
   `phone_number` varchar(10) NOT NULL,
   `status` varchar(8) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `profile`
 --
 
 INSERT INTO `profile` (`user_id`, `first_name`, `middle_name`, `last_name`, `email`, `phone_number`, `status`) VALUES
-(2, 'adminFirstName', 'adminMiddleName', 'adminLastName', 'mubeen.khan@gmail.com', '5141234567', 'active'),
-(3, 'employeeFirstName', 'employeeMiddleName', 'employeeLastName', 'employeeOne@gmail.com', '5141234567', 'active');
+(3, 'Nicole', 'C.', 'Bautista', 'nicole@email.com', '5141234567', 'active');
 
 -- --------------------------------------------------------
 
@@ -149,7 +158,7 @@ CREATE TABLE `recipe` (
   `title` varchar(50) NOT NULL,
   `description` text NOT NULL,
   `picture` varchar(128) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -163,7 +172,7 @@ CREATE TABLE `user` (
   `user_type` varchar(12) NOT NULL,
   `username` varchar(50) NOT NULL,
   `password_hash` varchar(72) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `user`
@@ -171,7 +180,6 @@ CREATE TABLE `user` (
 
 INSERT INTO `user` (`user_id`, `user_type`, `username`, `password_hash`) VALUES
 (1, 'itspecialist', 'itspecialist', '$2y$10$RUJd5d.C02znWlNyzZeGgOasNkkvXrwV.lr3p2V5BWAHQD4Px4GG2'),
-(2, 'admin', 'admin1', '$2y$10$gDf8JpyjeZAZpnTuaYahFOEkSpXiTAKatWIpI7/R3wjtK4vRv/Df.'),
 (3, 'employee', 'employee1', '$2y$10$fGEbvGHj40tQaAdu1bWkWendnnXrUVeeKEnTwKQIwnuUCFATtYN6u');
 
 --
@@ -195,9 +203,7 @@ ALTER TABLE `ingredient_quantity`
 -- Indexes for table `message`
 --
 ALTER TABLE `message`
-  ADD PRIMARY KEY (`message_id`),
-  ADD KEY `receiver_to_profile` (`receiver`),
-  ADD KEY `sender_to_profile` (`sender`);
+  ADD PRIMARY KEY (`message_id`);
 
 --
 -- Indexes for table `notification`
@@ -256,7 +262,7 @@ ALTER TABLE `ingredient_quantity`
 -- AUTO_INCREMENT for table `message`
 --
 ALTER TABLE `message`
-  MODIFY `message_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `message_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `notification`
@@ -286,7 +292,7 @@ ALTER TABLE `recipe`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- Constraints for dumped tables
@@ -297,13 +303,6 @@ ALTER TABLE `user`
 --
 ALTER TABLE `ingredient_quantity`
   ADD CONSTRAINT `inquantity_to_ingredient` FOREIGN KEY (`ingredient_id`) REFERENCES `ingredient` (`ingredient_id`);
-
---
--- Constraints for table `message`
---
-ALTER TABLE `message`
-  ADD CONSTRAINT `receiver_to_profile` FOREIGN KEY (`receiver`) REFERENCES `profile` (`user_id`),
-  ADD CONSTRAINT `sender_to_profile` FOREIGN KEY (`sender`) REFERENCES `profile` (`user_id`);
 
 --
 -- Constraints for table `product_quantity`
