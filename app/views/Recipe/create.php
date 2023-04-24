@@ -1,7 +1,7 @@
 <?php $this->view('shared/header', "Add Recipe"); ?>
 <?php $this->view('shared/navigation/nav'); ?>
 
-<div class='createRecipe' allign='center'>
+<div class="createProfile" align="center">
 	<p class="sign" align="center"><?=_('Add a New Recipe')?></p>
 	<form action='' method='post' enctype="multipart/form-data">
 
@@ -20,3 +20,4 @@
 
 </div>
 
+<?php $this->view('shared/footer'); ?>

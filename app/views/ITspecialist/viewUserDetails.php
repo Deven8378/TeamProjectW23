@@ -1,5 +1,5 @@
 <?php $this->view('shared/header','User Profile'); ?>
-<?php $this->view('shared/navigation/nav'); ?>
+<?php $this->view('shared/navigation/itnav'); ?>
 
 <div class="userDetails">
     

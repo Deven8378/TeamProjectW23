@@ -1,5 +1,5 @@
 <?php $this->view('shared/header','Create User'); ?>
-<?php $this->view('shared/navigation/nav'); ?>
+<?php $this->view('shared/navigation/itnav'); ?>
 
 <!-- <div class="container" style=""> -->
 	<div class="createUser" align="center">

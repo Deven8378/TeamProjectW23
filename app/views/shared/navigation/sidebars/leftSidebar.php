@@ -25,7 +25,7 @@
           Inventory
         </a>
         <ul class="dropdown-menu">
-          <li><a class="dropdown-item" href="#"><i class="bi bi-arrow-right"></i> Ingredients</a></li>
+          <li><a class="dropdown-item" href="/Inventory/index"><i class="bi bi-arrow-right"></i> Ingredients</a></li>
           <li><a class="dropdown-item" href="#"><i class="bi bi-arrow-right"></i> Products</a></li>
         </ul>
       </li>
