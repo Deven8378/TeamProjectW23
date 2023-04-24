@@ -4,7 +4,7 @@
 <div class="split-screen">
     <!-- Left content -->
     <div class="left_side">
-    	<img src="/resources/sweemory1.png" height="563px" width="100%">
+    	<img src="/resources/sweemory1.png" height="100%" width="100%">
     </div>
 
     <!-- Right content -->

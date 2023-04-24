@@ -1,22 +1,6 @@
 <?php $this->view('shared/header', "Read your Messages"); ?>
 <?php $this->view('shared/navigation/nav'); ?>
 
-
-
-<?php foreach ($data[0] as $message) {
-    echo "Message ID: ";
-    echo $message->message_id;
-    echo "<br>";
-    echo "Receiver ID: ";
-    echo $message->receiver;
-    echo "<br>";
-} ?>
-<?php
-echo "Session: ";
-echo $_SESSION['user_id'];
-?>
-
-
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
 <div class="container" style="padding-top: 50px;">
     <div class="row">

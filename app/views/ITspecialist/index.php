@@ -1,13 +1,8 @@
 <?php $this->view('shared/header','IT Home Page'); ?>
-<?php $this->view('shared/navigation/nav'); ?>
+<?php $this->view('shared/navigation/itnav'); ?>
 
 <div class="container" style="padding-top: 20px;">
 	<div class="p-4 mt-5 border d-flex">
-
-		<div class="border">
-			<a href="/ITspecialist/createUser"><?=_('Add User')?></a>
-			
-		</div>
 		<div class="spacer" style="width: 8px; flex-shrink: 0; margin: 0; padding: 0;"></div>
 
 		<div class="" style="">
