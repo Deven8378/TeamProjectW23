@@ -97,6 +97,22 @@ class ITspecialist extends \app\core\Controller
 
 	}
 
+    public function viewUserDetails($user_id)
+    {
+        $profile = new \app\models\Profile();
+        $userdetails = $profile->getProfile($user_id);
+
+        if($userdetails){
+            $user = new \app\models\User();
+            $users = $user->getUserInfo($user_id);
+            $this->view('ITspecialist/viewUserDetails', $users);
+        }else{
+            // $user = new \app\models\User();
+            // $user = $user->getByUserId($user_id);
+            header('location:/ITspecialist/createProfile/' . $user_id . '');
+        }
+    }
+
 	public function editUser($user_id)
 	{
 		//edit the users information (username or/and password)
@@ -110,23 +126,20 @@ class ITspecialist extends \app\core\Controller
 
 	public function deleteUser($user_id)
 	{
-		
-	}
+        
+		$profile = new \app\models\Profile();
+        // $profile->delete($user_id);
+        $success = $profile->delete($user_id);
 
-	public function viewUserDetails($user_id)
-	{
-        $profile = new \app\models\Profile();
-        $userdetails = $profile->getProfile($user_id);
-
-        if($userdetails){
+        if($success){
             $user = new \app\models\User();
-            $users = $user->getUserInfo($user_id);
-            $this->view('ITspecialist/viewUserDetails', $users);
-        }else{
-            // $user = new \app\models\User();
-            // $user = $user->getByUserId($user_id);
-            header('location:/ITspecialist/createProfile/' . $user_id . '');
+            $user->delete($user_id);
+            header('location:/ITspecialist/index?success=Profile for user ID ' . $user_id . ' has been deleted');
         }
+        
+        
 	}
+
+
 
 }

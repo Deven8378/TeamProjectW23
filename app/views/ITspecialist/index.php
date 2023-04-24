@@ -1,7 +1,7 @@
 <?php $this->view('shared/header','IT Home Page'); ?>
 <?php $this->view('shared/navigation/nav'); ?>
 
-<div class="container" style="padding-top: 50px;">
+<div class="container" style="padding-top: 20px;">
 	<div class="p-4 mt-5 border d-flex">
 
 		<div class="border">

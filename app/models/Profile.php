@@ -55,5 +55,16 @@ class Profile extends \app\core\Model
 		return $STH->fetch();
 	}
 
+	public function delete($user_id)
+	{
+		$SQL = "DELETE FROM profile WHERE user_id=:user_id";
+		$STH = $this->connection->prepare($SQL);
+		$data = [
+			'user_id'=>$user_id
+		];
+		$STH->execute($data);
+		return $STH->rowCount();
+	}
+
 
 }

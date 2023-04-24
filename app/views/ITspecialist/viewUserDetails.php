@@ -79,8 +79,8 @@
 			            	<dd  class="dd-right"><?= $data->password_hash?></dd>
 		          	<!-- </div> -->
 		          	<div class="col-4">
-		            	<button type="submit" class="">Edit</button>
-			            <button type="submit" class="">Delete</button>
+		            	<a href="" class="">Edit</a>
+			            <a href="#confirmation" class="">Delete</a>
 		          	</div>
 				</div>
 				
@@ -91,7 +91,21 @@
 	        </dl>
 
 
-	        
+	        <div class="overlay" id="confirmation">
+                <div class="wrapper">
+                    <h2>Send a new Message</h2><a class="close" href="">&times;</a>
+                    <div class="content">
+                        <div class="container">
+                            <form  method="post" action="">
+                          
+                                <label><?= _('Are you sure you want to delete this user?') ?></label> 
+                                
+                                <a href="/ITspecialist/deleteUser/<?= $data->user_id?>">delete</a>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
           	
 	       
