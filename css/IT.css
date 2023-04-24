@@ -1,7 +1,25 @@
 /*-----------------------------------------*/
+.viewUsers{
+  display: flex;
+}
+.input-radio {
 
+}
 
+table {
+    table-layout: fixed;
+    width: 100%;   
+}
 
+th,td {
+/*    border-style: solid;*/
+/*    border-width: 1px;*/
+/*    border-color: #BCBCBC;*/
+/*border-left: 1px;*/
+    word-wrap: break-word;
+    /*display: flex;
+    align-items: center;*/
+}
 /*-----------Create User Page-----------*/
 .createUser {
   background-color: #F3EBF6;
