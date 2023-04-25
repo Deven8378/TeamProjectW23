@@ -1,4 +1,4 @@
-<?php $this->view('shared/header', "Add Recipe"); ?>
+<?php $this->view('shared/header', _("Add Recipe")); ?>
 <?php $this->view('shared/navigation/nav'); ?>
 
 <div class="createProfile" align="center">
@@ -14,7 +14,7 @@
 
 		<input class="submitUser" type="submit" align="" placeholder="<?=_('Add Recipe')?>" name="action"> <br>
 
-		<a href='/Recipe/index'> Back </a>
+		<a href='/Recipe/index'> <?= _("Back") ?> </a>
 	 
 	</form>
 
