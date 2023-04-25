@@ -32,7 +32,7 @@
 	            	<dd  class="dd-left"><?= $data->status?></dd>
 
           	<div class="col-4">
-	        	<a href="/ITspecialist/index" type="submit" class=""><?=_('Back')?></a>
+	        	<a href="/ITspecialist/index" type="submit" class="btn-userDetails"><?=_('Back')?></a>
 		  	</div>
 
 		</div>
@@ -65,8 +65,8 @@
 	        </div>
 
           	<div class="col-4">
-            	<a href="" class=""><?=_('Edit')?></a>
-	            <a href="#confirmation" class=""><?=_('Delete')?></a>
+            	<a href="" class="btn-userDetails"><?=_('Edit')?></a>
+	            <a href="#confirmation" class="btn-userDetails"><?=_('Delete')?></a>
           	</div>
 
 		</div>

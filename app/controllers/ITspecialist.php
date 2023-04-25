@@ -32,9 +32,9 @@ class ITspecialist extends \app\core\Controller
                         && $_POST['user_type'] != ''
                         && $_POST['user_type'] != null) 
                     {
-                        $user->username = $_POST['username'];
+                        $user->username = htmlentities($_POST['username']);
                         $user->password_hash = password_hash($_POST['password'], PASSWORD_DEFAULT);
-                        $user->user_type = $_POST['user_type'];
+                        $user->user_type = htmlentities($_POST['user_type']);
                         $user->user_id = $user->insert();
 
                         header('location:/ITspecialist/createProfile/' . $user->user_id . '');
@@ -68,12 +68,12 @@ class ITspecialist extends \app\core\Controller
 
                     $profile = new \app\models\Profile();
                     $profile->user_id = $user_id;
-                    $profile->first_name = $_POST['first_name'];
-                    $profile->middle_name = $_POST['middle_name'];
-                    $profile->last_name = $_POST['last_name'];
-                    $profile->email = $_POST['email'];
-                    $profile->phone_number = $_POST['phone_number'];
-                    $profile->status = $_POST['status'];
+                    $profile->first_name = htmlentities($_POST['first_name']);
+                    $profile->middle_name = htmlentities($_POST['middle_name']);
+                    $profile->last_name = htmlentities($_POST['last_name']);
+                    $profile->email = htmlentities($_POST['email']);
+                    $profile->phone_number = htmlentities($_POST['phone_number']);
+                    $profile->status = htmlentities($_POST['status']);
 
                     $success = $profile->insert();
 
@@ -137,6 +137,8 @@ class ITspecialist extends \app\core\Controller
             $user = new \app\models\User();
             $user->delete($user_id);
             header('location:/ITspecialist/index?success=Profile for user ID ' . $user_id . ' has been deleted');
+        }else{
+            header('location:/ITspecialist/viewUserDetails/$user_id?error=Profile for user ID ' . $user_id . ' was not delete');
         }
         
         

@@ -22,7 +22,7 @@
 
 		<input type="submit" id="submitLink" name="action" class="submitUser" align="center" value="Create Profile">
 		<br>
-		<a href="/ITspecialist/index">Back</a>
+		<a class="btn" href="/ITspecialist/index">Back</a>
 	</form>
 </div>
 
