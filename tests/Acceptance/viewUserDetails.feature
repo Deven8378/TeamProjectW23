@@ -4,13 +4,19 @@ Feature: viewUserDetails
   I need to click a users username
 
   Scenario: try viewing admin information
-    Given I logged in as itspecialist
-    And I am on the users page
-    When I click on "admin1"
-    Then I see "admin1's Information"
+    Given I am on the "Welcome Sweemory Team!!" page
+    And I fill field "itspecialist" in "username"
+    And I fill field "1234" in "password"
+    And I click "Sign in"
+    And I see "List of Employee and Admin"
+    When I click "EM3"
+    Then I see "First Name"
 
   Scenario: try viewing employee information
-    Given I logged in as itspecialist
-    And I am on the users page
-    When I click on "employee1"
-    Then I see "employee1's Information"
+    Given I am on the "Welcome Sweemory Team!!" page
+    And I fill field "itspecialist" in "username"
+    And I fill field "1234" in "password"
+    And I click "Sign in"
+    And I see "List of Employee and Admin"
+    When I click "AD10"
+    Then I see "First Name"

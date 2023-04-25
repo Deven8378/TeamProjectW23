@@ -62,7 +62,7 @@
                                                         <td class="subject"><?= $message->message ?></td>
                                                         <td class="time"><?= $message->timestamp ?></td>
                                                         <td>
-                                                            <a href='/Message/delete/<?=$message->message_id?>'>
+                                                            <a id="deleteMessage" href='/Message/delete/<?=$message->message_id?>'>Delete<?=$message->message_id ?>
                                                                 <i class="bi bi-x"></i>
                                                             </a>
                                                         </td>
@@ -91,7 +91,7 @@
                                                         <td class="subject"><?= $message->message ?></td>
                                                         <td class="time"><?= $message->timestamp ?></td>
                                                         <td>
-                                                            <a href='/Message/delete/<?=$message->message_id?>'>
+                                                            <a name="<?=$message->message_id ?>" href='/Message/delete/<?=$message->message_id?>'>
                                                                 <i class="bi bi-x"></i>
                                                             </a>
                                                         </td>

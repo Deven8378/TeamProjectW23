@@ -70,5 +70,13 @@ class AcceptanceTester extends \Codeception\Actor
          $this->selectOption($arg2,$arg1);
      }
 
+     /**
+     * @Given I attach file :arg1 in :arg2
+     */
+     public function iAttachFileIn($arg1, $arg2)
+     {
+         $this->attachFile($arg2, $arg1); 
+     }
+
 
 }

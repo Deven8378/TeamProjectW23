@@ -4,10 +4,15 @@ Feature: addIngredient
   I need to press add ingredient
 
   Scenario: try adding ingredient as admin
-    Given I am on the "Add Ingredient" page
+    Given I am on the "Welcome Sweemory Team!" page
+    And I fill field "admin1" in "username"
+    And I fill field "1234" in "password"
+    And I click "Sign in"
+    And I click "Inventory"
+    And I click "Add Ingredient"
     And I fill field "Mango" in "name"
     And I fill field "This is a fruit." in "description"
     And I fill field "0.37" in "price"
-    And I fill field "banana.png" in "image"
-    When I click "Add Ingredient"
+    And I attach file "banana.jpg" in "ingredientPicture"
+    When I click "action"
     Then I see "Ingredient Added"
