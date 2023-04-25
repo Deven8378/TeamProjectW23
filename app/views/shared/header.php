@@ -11,6 +11,7 @@
 	<link rel="stylesheet" type="text/css" href="/css/main.css">
 	<link rel="stylesheet" type="text/css" href="/css/login.css">
 	<link rel="stylesheet" type="text/css" href="/css/IT.css">
+	<link rel="stylesheet" type="text/css" href="/css/recipe.css">
 
 	<title><?= $data ?></title>
 

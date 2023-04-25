@@ -28,7 +28,7 @@
         <a class="btn" id="home_links" href="/Inventory/index" role="button" style="background-color: #e8c8e7;"><?= _('Inventory') ?></a>
       </div>
       <div class="col">
-        <a class="btn" id="home_links" href="Recipes/index" role="button" style="background-color: #e8c8e7;"><?= _('Recipes') ?></a>
+        <a class="btn" id="home_links" href="/Recipe/index" role="button" style="background-color: #e8c8e7;"><?= _('Recipes') ?></a>
       </div>
     </div>
   </div>

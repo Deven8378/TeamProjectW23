@@ -5,8 +5,8 @@ class Recipe extends \app\core\Controller {
 
 	public function index() {
 
-		$recipes = new \app\models\Recipe();
-		$recipes->getAll();
+		$recipe = new \app\models\Recipe();
+		$recipes = $recipe->getAll();
 		$this->view('Recipe/index',$recipes);
 	}
 

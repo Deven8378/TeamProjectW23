@@ -9,7 +9,7 @@ class Recipe extends \app\core\Model {
 	public $picture;
 
 	public function getAll() {
-		$SQL = 'SELECT * FROM recipe';
+		$SQL = "SELECT title, description, picture, recipe_id FROM recipe";
 		$STH = self::$connection->prepare($SQL);
 		$STH->execute();
 		$STH->setFetchMode(\PDO::FETCH_CLASS, 'app\\models\\Recipe');
