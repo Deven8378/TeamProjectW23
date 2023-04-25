@@ -4,7 +4,10 @@ Feature: signout
   I need to press sign out
 
   Scenario: try sign out of webpage
-    Given I am signed in
-    And I am on the main page
+    Given I am on the "Welcome Sweemory Team!!" page
+    And I fill field "admin1" in "username"
+    And I fill field "1234" in "password"
+    And I click "Sign in"
+    And I see "Welcome Sweemory Team!"
     When I click "Log Out"
-    Then I see "Please sign in"
+    Then I see "Welcome Sweemory Team!"
