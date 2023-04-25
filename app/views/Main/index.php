@@ -1,4 +1,4 @@
-<?php $this->view('shared/header','Home Feed'); ?>
+<?php $this->view('shared/header','Home Page'); ?>
 <?php $this->view('shared/navigation/nav'); ?>
 
 <div class="split-screen">
