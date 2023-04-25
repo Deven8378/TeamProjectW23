@@ -3,6 +3,7 @@ namespace app\controllers;
 
 class Recipe extends \app\core\Controller {
 
+	#[\app\filters\EmployeeAndAdmin]
 	public function index() {
 
 		$recipe = new \app\models\Recipe();
@@ -10,6 +11,7 @@ class Recipe extends \app\core\Controller {
 		$this->view('Recipe/index',$recipes);
 	}
 
+	#[\app\filters\EmployeeAndAdmin]
 	public function create() {
 
 		if (isset($_POST['action'])) {
@@ -28,12 +30,14 @@ class Recipe extends \app\core\Controller {
 		$this->view('Recipe/create');
 	}
 
+	#[\app\filters\EmployeeAndAdmin]
 	public function details($recipe_id) {
 		$recipe = new \app\models\Recipe();
 		$recipe = $recipe->get($recipe_id);
 		$this->view('Recipe/details',$recipe);
 	}
 
+	#[\app\filters\EmployeeAndAdmin]
 	public function edit($recipe_id) {
 		$recipe = new \app\models\Recipe();
 		$recipe = $recipe->get($recipe_id);
@@ -53,6 +57,7 @@ class Recipe extends \app\core\Controller {
 		}
 	}
 
+	#[\app\filters\EmployeeAndAdmin]
 	public function delete($recipe_id) {
 		$recipe = new \app\models\Recipe();
 		$recipe = $recipe->get($recipe_id);
@@ -60,7 +65,4 @@ class Recipe extends \app\core\Controller {
 		unlink("productImages/$recipe->picture");
 		header('location:/Recipe/index');
 	}
-
-	 
-
 }

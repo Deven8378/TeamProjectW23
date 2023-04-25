@@ -7,7 +7,7 @@ class App
     {
         $request = $this->parseUrl($_GET['url'] ?? '');
 
-        $controller = 'User';
+        $controller = 'Main';
         $method = 'index';
         $params = [];
         

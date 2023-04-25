@@ -18,7 +18,7 @@ class Ingredient extends \app\core\Model {
 
 	}
 
-	public function insert() {
+	public function addIngredient() {
 		$SQL = "INSERT INTO `ingredient` (`ingredient_id`, `name`, `description`, `price`, `picture`) value (:ingredient_id, :name, :description, :price, :picture)";
 		$STH = self::$connection->prepare($SQL);
 		$data = ['ingredient_id'=>$this->ingredient_id,

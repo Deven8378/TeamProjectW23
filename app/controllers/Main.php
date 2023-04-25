@@ -4,6 +4,7 @@ namespace app\controllers;
 class Main extends \app\core\Controller
 {
     #[\app\filters\Login]
+    #[\app\filters\EmployeeAndAdmin]
     public function index()
     {
         $user = new \app\models\User();

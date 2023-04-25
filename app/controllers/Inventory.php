@@ -3,7 +3,8 @@ namespace app\controllers;
 
 class Inventory extends \app\core\Controller
 {
-    #[\app\filters\Login]
+
+    #[\app\filters\EmployeeAndAdmin]
     public function index()
     {
         $ingredient = new \app\models\Ingredient();
@@ -11,6 +12,7 @@ class Inventory extends \app\core\Controller
         $this->view('Inventory/index', $ingredients);
     }
 
+    #[\app\filters\Admin]
     public function createIngredient() 
     {
         if (isset($_POST['action'])) {
@@ -22,11 +24,13 @@ class Inventory extends \app\core\Controller
 
             if ($picture) {
                 $ingredient->picture = $picture;
-                $ingredient->insert();
-                header('location:/Ingredient/index?success=Ingredient Added');
+                $ingredient->addIngredient();
+                header('location:/Inventory/index?success=Ingredient Added');
             }
         } else {
-            $this->view('Inventory/createIngredient');
+            $ingredient = new \app\models\Ingredient();
+            $ingredients = $ingredient->getAll();
+            $this->view('Inventory/createIngredient', $ingredients);
         }
     }
 }

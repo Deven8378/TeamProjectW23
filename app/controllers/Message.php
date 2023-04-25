@@ -4,7 +4,7 @@ namespace app\controllers;
 
 class Message extends \app\core\Controller
 {
-
+	#[\app\filters\EmployeeAndAdmin]
 	public function index()
 	{
 		if(isset($_POST['action']))
@@ -33,6 +33,7 @@ class Message extends \app\core\Controller
 		}
 	}
 
+	#[\app\filters\EmployeeAndAdmin]
 	public function delete($message_id)
 	{
 		$message = new \app\models\Message();
