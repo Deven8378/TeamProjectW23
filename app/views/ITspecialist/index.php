@@ -7,17 +7,18 @@
 
 		<div class="vu-content-left">
 			<div class="spacer" style="height: 46px; flex-shrink: 0; margin: 0; padding: 0;"></div>
-			<div class="" style="height: 40px; border-radius: 8px; padding: 5px; background: #D9D9D9; display: flex; align-items: center; justify-content: center;">
+			<div class="btn-addUser" style="">
 				<a href="/ITspecialist/createUser" style="text-decoration: none; color: #757575; ">
 					<i class="bi bi-plus-square"><?=_(' Add User')?></i>
 				</a>
 			</div>
 			<div style="margin-top: 20px; display: grid; ">
-				<h5>Filters</h5>
+				<h5><b>Filters</b></h5>
 				
-				<label class="input-radio"><input class="input-radio" type="radio" name="">Admins</label>
+				<label class="label-radio"><input class="input-radio" type="radio" name="">Admins</label>
 
-				<label><input class="input-radio" type="radio" name="">Admins</label>
+				<label class="label-radio"><input class="input-radio" type="radio" name="">Employees</label>
+
 			</div>
 
 		</div>
@@ -26,17 +27,18 @@
 
 		<div class="vu-content-right" style="">
 
-			<div class="justify-content-between" style="display: flex; align-items: center;">
+			<div class="justify-content-between" style="display: flex; align-items: center; margin-bottom: 5px;">
 
 				<div class="">
 					<h2><?=_('List of Employee and Admin')?></h2>
 				</div>
 
-				<div class="" style="gap: 0px;">
-					<button>Search</button>
-					<input type="text">
+				<div style=" padding: 6px; border: 3px solid #ACABAB; background-color: #DFDFDF; border-radius: 5px;">
+					<form class="" style="border: none; border-radius: 7px; background-color: white; margin-left: 7px; margin-right: 7px;">
+						<button style="border: none; background-color: white; border-radius: 7px;"><i class="bi bi-search" style="color: #ACABAB;"></i></button>
+						<input type="search" style="border: none; border-radius: 7px;">
+					</form>
 				</div>
-
 			</div>
 
 			<!-- <div class="" style="border: 1px solid grey; border-radius: 10px;"> -->
@@ -45,18 +47,18 @@
 					<!-- table-striped table-bordered -->
 		            <thead class="table-secondary">
 		                <tr >
-		                    <th scope="col" >Status</th>
+		                    <th scope="col" style="border-top-left-radius: 10px;">Status</th>
 		                    <th scope="col" style="width:7%;">ID</th>
 		                    <th scope="col">Username</th>
 		                    <th scope="col">First Name</th>
 		                    <th scope="col">Middle Name</th>
 		                    <th scope="col">Last Name</th>
 		                    <th scope="col" style="width:20%;">email</th>
-		                    <th scope="col">Phone Number</th>
+		                    <th scope="col" style="border-top-right-radius: 10px;">Phone Number</th>
 
 		                </tr>
 		            </thead>
-		            <tbody class="">
+		            <tbody class="border">
 		            	<?php foreach ($data as $user) { ?>
 			                <tr>
 			                    <th scope="row" style="display: flex; align-items: center; justify-content: center;">
@@ -82,10 +84,7 @@
 				            		}
 
 				            	?>
-			                    	<!-- <a href="/ITspecialist/viewUserDetails/<?=$user->user_id?>">
-			                    		<?=$user->user_id?>
-			                    			
-		                    		</a> -->
+
 		                    	</td>
 			                    <td align="" style="
 /*			                    text-align: center;*/

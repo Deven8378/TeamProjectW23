@@ -1,6 +1,7 @@
-/*-----------------------------------------*/
+/*-----------------------------------------------*/
+/*-----------View User Page-----------*/
 .viewUsers{
-  border: 2px solid black;
+/*  border: 2px solid black;*/
   display: flex;
   margin-top: 20px;
   border-radius: 5px;
@@ -17,10 +18,47 @@
 /*  border: 2px solid black;*/
 }
 
+.btn-addUser {
+  height: 40px; 
+  border-radius: 8px; 
+  padding: 5px; 
+  background: #D9D9D9; 
+  display: flex; 
+  align-items: center; 
+  justify-content: center;
+}
 
-.input-radio {
+.label-radio {
+  border: 2px solid #B8B8B8;
+  border-radius: 6px;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
 
 }
+
+.input-radio {
+  margin-left: 10px;
+  border: 3px solid #B8B8B8;
+  border-radius: 3px;
+  padding: 0.5em;
+  -webkit-appearance: none;
+}
+
+
+.input-radio:checked {
+    background-color: #3F3F3F;
+    border-color: #B8B8B8;
+}
+.input-radio:focus  {
+    border: 2px solid #B8B8B8;
+}
+.label-radio:hover {
+  background-color: #CDCDCD;
+}
+
 
 
 table {
@@ -33,9 +71,14 @@ th,td {
 /*    border-width: 1px;*/
 /*    border-color: #BCBCBC;*/
 /*border-left: 1px;*/
+
     word-wrap: break-word;
     /*display: flex;
     align-items: center;*/
+}
+
+tbody tr > th,td {
+/*    border: 1px solid #000000;*/
 }
 
 .status-active {
@@ -203,4 +246,4 @@ th,td {
 }
 
 
-/*-----------------------------------------*/
+/*-----------------------------------------------*/
