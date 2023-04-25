@@ -5,9 +5,20 @@
 	padding: 5px;
 	margin-right:10px;
 	margin-bottom: 20px
-	border: 1px solid #eeeeee; 
+	border: 10px solid #eeeeee; 
 }
 
 .recipeTitle {
 	text-align: center;
 }
+
+.recipeDetailsImage {
+	float: center;
+	display: block;
+	width: 290px;
+	height:220px;
+	padding:5px;
+	margin:20px;
+	margin-left:auto;
+	margin-right: auto; 
+	border: 10px solid #eeeeee;

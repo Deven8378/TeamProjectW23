@@ -28,6 +28,39 @@ class Recipe extends \app\core\Controller {
 		$this->view('Recipe/create');
 	}
 
+	public function details($recipe_id) {
+		$recipe = new \app\models\Recipe();
+		$recipe = $recipe->get($recipe_id);
+		$this->view('Recipe/details',$recipe);
+	}
+
+	public function edit($recipe_id) {
+		$recipe = new \app\models\Recipe();
+		$recipe = $recipe->get($recipe_id);
+		if (isset($_POST['action'])) {
+			$recipe->title = $_POST['title'];
+			$recipe->description = $_POST['description'];
+			$picture = $this->saveProduct($_FILES['recipePicture']);
+
+			if ($picture) {
+				$recipe->picture = $picture;
+			}
+			$recipe->update();
+			header('location:/Recipe/details/' . $recipe_id);
+		}
+		else {
+			$this->view('Recipe/edit',$recipe);
+		}
+	}
+
+	public function delete($recipe_id) {
+		$recipe = new \app\models\Recipe();
+		$recipe = $recipe->get($recipe_id);
+		$recipe->delete();
+		unlink("productImages/$recipe->picture");
+		header('location:/Recipe/index');
+	}
+
 	 
 
 }
