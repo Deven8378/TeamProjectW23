@@ -35,7 +35,7 @@ CREATE TABLE `ingredient` (
   `name` varchar(50) NOT NULL,
   `description` text NOT NULL,
   `price` float NOT NULL,
-  `picture` int(128) NOT NULL
+  `picture` varchar(128) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -95,7 +95,7 @@ CREATE TABLE `product` (
   `name` varchar(50) NOT NULL,
   `description` text NOT NULL,
   `price` float NOT NULL,
-  `picture` varchar(72) NOT NULL
+  `picture` varchar(128) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
