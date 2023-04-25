@@ -3,7 +3,7 @@
 
 <div class="createProfile" align="center">
 
-	<p class="sign" align="center">Create a profile </p><p>for the <?=$data->username?></p>
+	<p class="sign" align="center">Create a profile for the <?=$data->username?></p>
 	<form method="post" action="" class="form1">
 		<input class="createInput" type="text" align="center" placeholder="first_name" name="first_name">
 		<input class="createInput" type="text" align="center" placeholder="middle_name" name="middle_name">

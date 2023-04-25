@@ -1,7 +1,23 @@
 /*-----------------------------------------*/
 .viewUsers{
+  border: 2px solid black;
   display: flex;
+  margin-top: 20px;
+  border-radius: 5px;
+  padding: 50px;
 }
+.vu-content-left {
+  flex: 10%;
+/*  border: 2px solid black;*/
+  display: block;
+}
+
+.vu-content-right {
+  flex: 90%;
+/*  border: 2px solid black;*/
+}
+
+
 .input-radio {
 
 }
