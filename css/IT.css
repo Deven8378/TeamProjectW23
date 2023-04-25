@@ -1,5 +1,6 @@
 /*-----------------------------------------------*/
 /*-----------View User Page-----------*/
+/*------------*/
 .viewUsers{
 /*  border: 2px solid black;*/
   display: flex;
@@ -17,7 +18,7 @@
   flex: 90%;
 /*  border: 2px solid black;*/
 }
-
+/*------------*/
 .btn-addUser {
   height: 40px; 
   border-radius: 8px; 
@@ -27,7 +28,6 @@
   align-items: center; 
   justify-content: center;
 }
-
 .label-radio {
   border: 2px solid #B8B8B8;
   border-radius: 6px;
@@ -36,9 +36,7 @@
   align-items: center;
   gap: 10px;
   margin-bottom: 10px;
-
 }
-
 .input-radio {
   margin-left: 10px;
   border: 3px solid #B8B8B8;
@@ -46,8 +44,6 @@
   padding: 0.5em;
   -webkit-appearance: none;
 }
-
-
 .input-radio:checked {
     background-color: #3F3F3F;
     border-color: #B8B8B8;
@@ -58,8 +54,51 @@
 .label-radio:hover {
   background-color: #CDCDCD;
 }
+/*------------*/
+.search-div {
+  border: 3px solid #ACABAB; 
+  border-radius: 5px;
+  background-color: #DFDFDF; 
+  padding: 6px; 
+}
+.search-form {
+  border: none; 
+  border-radius: 7px; 
+  /*border-bottom-right-radius: 7px;
+  border-top-right-radius: 7px;*/
 
+  background-color: white; 
+  margin-left: 7px; 
+  margin-right: 7px;
+}
+.search-btn {
+  border: none; 
+  border-radius: 7px;
+  background-color: white; 
+}
+.search-input {
+  border: none; 
+  border-bottom-right-radius: 7px;
+  border-top-right-radius: 7px;
+  
+}
+.search-input::placeholder {
+  color: #B8B8B8;
+}
+.search-input:focus {
+  outline: none;
+}
+.search-input::-webkit-search-cancel-button {
+  position:relative;
+  right:5px;  
+/*  -webkit-appearance: none;*/
 
+}
+/*------------*/
+
+/*------------*/
+
+/*------------*/
 
 table {
     table-layout: fixed;

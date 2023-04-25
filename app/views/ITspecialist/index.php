@@ -6,7 +6,7 @@
 	<div class="viewUsers">
 
 		<div class="vu-content-left">
-			<div class="spacer" style="height: 46px; flex-shrink: 0; margin: 0; padding: 0;"></div>
+			<div class="spacer" style="height: 58px; flex-shrink: 0; margin: 0; padding: 0;"></div>
 			<div class="btn-addUser" style="">
 				<a href="/ITspecialist/createUser" style="text-decoration: none; color: #757575; ">
 					<i class="bi bi-plus-square"><?=_(' Add User')?></i>
@@ -33,10 +33,10 @@
 					<h2><?=_('List of Employee and Admin')?></h2>
 				</div>
 
-				<div style=" padding: 6px; border: 3px solid #ACABAB; background-color: #DFDFDF; border-radius: 5px;">
-					<form class="" style="border: none; border-radius: 7px; background-color: white; margin-left: 7px; margin-right: 7px;">
-						<button style="border: none; background-color: white; border-radius: 7px;"><i class="bi bi-search" style="color: #ACABAB;"></i></button>
-						<input type="search" style="border: none; border-radius: 7px;">
+				<div class="search-div" style=" ">
+					<form class="search-form" style="">
+						<button class="search-btn" style=""><i class="bi bi-search" style="color: #ACABAB;"></i></button>
+						<input class="search-input" type="search" placeholder="Search" style="">
 					</form>
 				</div>
 			</div>
@@ -46,7 +46,7 @@
 				<table class="table " style="">
 					<!-- table-striped table-bordered -->
 		            <thead class="table-secondary">
-		                <tr >
+		                <tr style="height: 50px;">
 		                    <th scope="col" style="border-top-left-radius: 10px;">Status</th>
 		                    <th scope="col" style="width:7%;">ID</th>
 		                    <th scope="col">Username</th>
@@ -60,7 +60,7 @@
 		            </thead>
 		            <tbody class="border">
 		            	<?php foreach ($data as $user) { ?>
-			                <tr>
+			                <tr class="">
 			                    <th scope="row" style="display: flex; align-items: center; justify-content: center;">
 
 				            	<?php
