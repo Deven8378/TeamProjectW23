@@ -87,7 +87,7 @@
                                             <tbody>
                                                 <?php foreach ($data[0] as $message) { ?>
                                                     <tr>
-                                                        <td class="name"><?= $message->sender_fname ?> <?= $message->sender_lname  ?></td>
+                                                        <td class="name"><?= $message->full_name ?></td>
                                                         <td class="subject"><?= $message->message ?></td>
                                                         <td class="time"><?= $message->timestamp ?></td>
                                                         <td>
@@ -115,7 +115,7 @@
                                             <tbody>
                                                 <?php foreach ($data[1] as $message) { ?>
                                                     <tr>
-                                                        <td class="name"><?= $message->sender_fname ?> <?= $message->sender_lname  ?></td>
+                                                        <td class="name"><?= $message->full_name ?></td>
                                                         <td class="subject"><?= $message->message ?></td>
                                                         <td class="time"><?= $message->timestamp ?></td>
                                                         <td></td>

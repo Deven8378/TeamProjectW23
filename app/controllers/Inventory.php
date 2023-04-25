@@ -6,7 +6,9 @@ class Inventory extends \app\core\Controller
     #[\app\filters\Login]
     public function index()
     {
-        $this->view('Inventory/index');
+        $ingredient = new \app\models\Ingredient();
+        $ingredients = $ingredient->getAll();
+        $this->view('Inventory/index', $ingredients);
     }
 
     public function createIngredient() 
@@ -23,8 +25,8 @@ class Inventory extends \app\core\Controller
                 $ingredient->insert();
                 header('location:/Ingredient/index?success=Ingredient Added');
             }
-            
-        } else 
-        $this->view('Inventory/createIngredient');
+        } else {
+            $this->view('Inventory/createIngredient');
+        }
     }
 }
