@@ -33,4 +33,15 @@ class Inventory extends \app\core\Controller
             $this->view('Inventory/createIngredient', $ingredients);
         }
     }
+
+    public function ingredientDetails($ingredient_id){
+        $ingredient = new \app\models\Ingredient();
+        $success = $ingredient->getIngredientDetails($ingredient_id);
+
+        if($success){
+            $this->view('Inventory/ingredientDetails', $success);
+        } else {
+            header('location:/Inventory/index?error=Ingredient does not exists.');
+        }
+    }
 }

@@ -30,4 +30,13 @@ class Ingredient extends \app\core\Model {
 		return self::$connection->lastInsertId();		
 	}
 
+	public function getIngredientDetails($ingredient_id) 
+	{
+		$SQL = "SELECT * FROM `ingredient` WHERE `ingredient_id` = :ingredient_id;";
+		$STH = self::$connection->prepare($SQL);
+		$data = ['ingredient_id'=>$ingredient_id];
+		$STH->execute($data);
+		$STH->setFetchMode(\PDO::FETCH_CLASS, 'app\\models\\Ingredient');
+		return $STH->fetch();
+	}
 }
