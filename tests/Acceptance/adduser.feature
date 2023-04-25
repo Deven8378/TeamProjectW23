@@ -4,11 +4,14 @@ Feature: adduser
 	I need to press add user
 
 Scenario: try adding user as IT specialist
-	Given I am logged in as IT specialist
-	And I am on the users page
+	Given I am on the "Welcome Sweemory Team!!" page
+    And I fill field "itspecialist" in "username"
+    And I fill field "1234" in "password"
+    And I click "Sign in"
+    And I see "List of Employee and Admin"
 	And I click "Add User"
-	And I input "employee" in "username"
-	And I input "1234" in "password"
-	When I click "Add User"
-	And I click "Confirm"
-	Then I see "User has been added."
+	And I fill field "employee" in "username"
+	And I fill field "1234" in "password"
+	And I select "Admin" in "user_type"
+	When I click "Create User"
+	Then I am on the "Create Profile" page

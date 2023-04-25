@@ -28,19 +28,20 @@ class AcceptanceTester extends \Codeception\Actor
      */
 
     /**
-     * @Given I am on page :arg1
+     * @Given I am on the :arg1 page
      */
-     public function iAmOnPage($arg1)
+     public function iAmOnThePage($arg1)
      {
-        $this->amOnPage($arg1);
+         $this->amOnPage($arg1);
      }
 
     /**
-     * @Given I fill field :value :fieldName
+     * @Given I fill field :value in :fieldName
      */
-     public function iFillField($value, $fieldName)
+     public function iFillFieldIn($value, $fieldName)
      {
-        $this->fillField($fieldName, $value);
+         // throw new \PHPUnit\Framework\IncompleteTestError("Step `I fill field :arg1 in :arg2` is not defined");
+         $this->fillField($fieldName, $value);
      }
 
     /**
@@ -48,7 +49,8 @@ class AcceptanceTester extends \Codeception\Actor
      */
      public function iClick($text)
      {
-        $this->click($text);
+         // throw new \PHPUnit\Framework\IncompleteTestError("Step `I click :arg1` is not defined");
+         $this->click($text);
      }
 
     /**
@@ -56,7 +58,17 @@ class AcceptanceTester extends \Codeception\Actor
      */
      public function iSee($text)
      {
-        $this->see($text);
+         // throw new \PHPUnit\Framework\IncompleteTestError("Step `I see :arg1` is not defined");
+         $this->see($text);
      }
+
+     /**
+     * @Given I select :arg1 in :arg2
+     */
+     public function iSelectIn($arg1, $arg2)
+     {
+         $this->selectOption($arg2,$arg1);
+     }
+
 
 }
