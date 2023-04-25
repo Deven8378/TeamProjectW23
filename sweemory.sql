@@ -69,15 +69,6 @@ CREATE TABLE `message` (
   `full_name` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `message`
---
-
-INSERT INTO `message` (`message_id`, `receiver`, `sender`, `message`, `timestamp`, `full_name`) VALUES
-(4, 5, 3, 'who tis', '2023-04-24 21:15:15', ''),
-(7, 3, 3, 'number2\r\n', '2023-04-24 21:35:11', 'NicoleC.Bautista'),
-(8, 3, 3, 'sdsdsd', '2023-04-24 21:35:47', 'Nicole C. Bautista');
-
 -- --------------------------------------------------------
 
 --
@@ -139,13 +130,6 @@ CREATE TABLE `profile` (
   `status` varchar(8) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `profile`
---
-
-INSERT INTO `profile` (`user_id`, `first_name`, `middle_name`, `last_name`, `email`, `phone_number`, `status`) VALUES
-(3, 'Nicole', 'C.', 'Bautista', 'nicole@email.com', '5141234567', 'active');
-
 -- --------------------------------------------------------
 
 --
@@ -179,8 +163,7 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`user_id`, `user_type`, `username`, `password_hash`) VALUES
-(1, 'itspecialist', 'itspecialist', '$2y$10$RUJd5d.C02znWlNyzZeGgOasNkkvXrwV.lr3p2V5BWAHQD4Px4GG2'),
-(3, 'employee', 'employee1', '$2y$10$fGEbvGHj40tQaAdu1bWkWendnnXrUVeeKEnTwKQIwnuUCFATtYN6u');
+(1, 'itspecialist', 'itspecialist', '$2y$10$RUJd5d.C02znWlNyzZeGgOasNkkvXrwV.lr3p2V5BWAHQD4Px4GG2');
 
 --
 -- Indexes for dumped tables

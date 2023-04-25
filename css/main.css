@@ -216,3 +216,31 @@ form label {
   text-transform: uppercase;
   letter-spacing: 3px;
 }
+
+/*--------------Divider-------------*/
+.vertical {
+      border-left: 6px solid blue;
+      height: 200px;
+      position:absolute;
+      left: 50%;
+}
+/*----------------------------------*/
+
+/*--Create Ingredient Submit Button--*/
+.submitIngredient {
+  cursor: pointer;
+  border-radius: 5em;
+  color: #fff;
+  background: linear-gradient(to right, #9C27B0, #E040FB);
+  border: 0;
+  padding-left: 40px;
+  padding-right: 40px;
+  padding-bottom: 10px;
+  padding-top: 10px;
+  font-family: 'Ubuntu', sans-serif;
+  margin-left: 35%;
+  font-size: 13px;
+  box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.04);
+  width:300px;
+}
+/*-----------------------------------*/
