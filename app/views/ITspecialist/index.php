@@ -64,25 +64,30 @@
 			                    <th scope="row" style="display: flex; align-items: center; justify-content: center;">
 
 				            	<?php
-				            		if($user->status == "active") {
-				            			echo "<div class='status-active' style=''>$user->status</div>";
-				            		}else{
-				            			echo "<div class='status-inactive' style=''>$user->status</div>";
-				            		}
+				            		if($user->status == "active") { ?>
 
+				            			<div class='status-active' style=''>
+				            				<?= htmlentities($user->status) ?>
+				            			</div>
+
+				            		<?php } else { ?>
+
+				            			<div class='status-inactive' style=''>
+				            				<?= htmlentities($user->status) ?>
+				            			</div>
+				            		<?php } 
 				            	?>
 
 		                    	</th>
 			                    <td>
 		                    	<?php
-				            		if($user->user_type == "admin") {
-				            			echo "<a href='/ITspecialist/viewUserDetails/$user->user_id'>AD$user->user_id</a>";
-				            		}else if ($user->user_type == "employee"){
-				            			echo "<a href='/ITspecialist/viewUserDetails/$user->user_id'>EM$user->user_id</a>";
-				            		}else{
+				            		if($user->user_type == "admin") { ?>
+				            			<a href='/ITspecialist/viewUserDetails/$user->user_id'><?= _('AD') ?> <?= htmlentities($user->user_id) ?></a>
+				            		<?php }else if ($user->user_type == "employee"){ ?>
+				            			<a href='/ITspecialist/viewUserDetails/$user->user_id'><?= _('EM') ?> <?= htmlentities($user->user_id) ?></a>
+				            		<?php }else{ 
 				            			echo "ERROR";
-				            		}
-
+				            		} 
 				            	?>
 
 		                    	</td>
@@ -91,12 +96,12 @@
 /*			                    display: flex; */
 /*			                    align-items: center; */
 /*			                    justify-content: center;*/
-			                    "><?=$user->username?></td>
-			                    <td><?=$user->first_name?></td>
-			                    <td><?=$user->middle_name?></td>
-			                    <td><?=$user->last_name?></td>
-			                    <td><?=$user->email?></td>
-			                    <td><?=$user->phone_number?></td>
+			                    "><?= htmlentities($user->username) ?></td>
+			                    <td><?= htmlentities($user->first_name) ?></td>
+			                    <td><?= htmlentities($user->middle_name) ?></td>
+			                    <td><?=htmlentities($user->last_name) ?></td>
+			                    <td><?= htmlentities($user->email) ?></td>
+			                    <td><?= htmlentities($user->phone_number) ?></td>
 			                </tr>
 		                <?php
 							}

@@ -58,11 +58,11 @@
                                             <tbody>
                                                 <?php foreach ($data[0] as $message) { ?>
                                                     <tr>
-                                                        <td class="name"><?= $message->full_name?></td>
-                                                        <td class="subject"><?= $message->message ?></td>
-                                                        <td class="time"><?= $message->timestamp ?></td>
+                                                        <td class="name"><?= htmlentities($message->full_name) ?></td>
+                                                        <td class="subject"><?= htmlentities($message->message) ?></td>
+                                                        <td class="time"><?= htmlentities($message->timestamp) ?></td>
                                                         <td>
-                                                            <a id="deleteMessage" href='/Message/delete/<?=$message->message_id?>'>Delete<?=$message->message_id ?>
+                                                            <a id="deleteMessage" href='/Message/delete/<?= htmlentities($message->message_id) ?>'>
                                                                 <i class="bi bi-x"></i>
                                                             </a>
                                                         </td>
@@ -87,11 +87,11 @@
                                             <tbody>
                                                 <?php foreach ($data[0] as $message) { ?>
                                                     <tr>
-                                                        <td class="name"><?= $message->full_name ?></td>
-                                                        <td class="subject"><?= $message->message ?></td>
-                                                        <td class="time"><?= $message->timestamp ?></td>
+                                                        <td class="name"><?= htmlentities($message->full_name) ?></td>
+                                                        <td class="subject"><?= htmlentities($message->message) ?></td>
+                                                        <td class="time"><?= htmlentities($message->timestamp) ?></td>
                                                         <td>
-                                                            <a name="<?=$message->message_id ?>" href='/Message/delete/<?=$message->message_id?>'>
+                                                            <a name="<?= htmlentities($message->message_id) ?>" href='/Message/delete/<?= htmlentities($message->message_id) ?>'>
                                                                 <i class="bi bi-x"></i>
                                                             </a>
                                                         </td>
@@ -115,9 +115,9 @@
                                             <tbody>
                                                 <?php foreach ($data[1] as $message) { ?>
                                                     <tr>
-                                                        <td class="name"><?= $message->full_name ?></td>
-                                                        <td class="subject"><?= $message->message ?></td>
-                                                        <td class="time"><?= $message->timestamp ?></td>
+                                                        <td class="name"><?= htmlentities($message->full_name) ?></td>
+                                                        <td class="subject"><?= htmlentities($message->message) ?></td>
+                                                        <td class="time"><?= htmlentities($message->timestamp) ?></td>
                                                         <td></td>
 
                                                     </tr>
@@ -132,14 +132,14 @@
 
                         <div class="overlay" id="sendMessage">
                             <div class="wrapper">
-                                <h2>Send a new Message</h2><a class="close" href="/Message/index">&times;</a>
+                                <h2><?= _('Send a new message') ?></h2><a class="close" href="/Message/index">&times;</a>
                                 <div class="content">
                                     <div class="container">
                                         <form  method="post" action="">
                                             <label><?= _('To') ?></label>
-                                            <input placeholder="Recipient" type="text" name="receiver" id="messageInput">
+                                            <input placeholder="<?= _('Recipient') ?>" type="text" name="receiver" id="messageInput">
                                             <label><?= _('Message') ?></label> 
-                                            <textarea placeholder="Write something..." name="message" id="messageInput"></textarea>
+                                            <textarea placeholder="<?= _('Write something...') ?>" name="message" id="messageInput"></textarea>
                                             <input class="btn" type="submit" name="action" value='<?= _('Send') ?>' style="background-color: #e8c8e7;" id="messageSubmit">
                                         </form>
                                     </div>

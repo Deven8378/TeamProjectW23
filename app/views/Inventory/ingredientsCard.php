@@ -7,10 +7,10 @@ foreach ($data as $ingredient) { ?>
       <div class="card">
         <div id="ingredientIMG" ma>
           <div class="image">
-              <img style="width: 172px; height: 199.6px;" src="/ingredientImages/<?= $ingredient->picture ?>">
+              <img style="width: 172px; height: 199.6px;" src="/ingredientImages/<?= htmlentities($ingredient->picture) ?>">
           </div>
         </div>
-        <span class="title"><?= $ingredient->name ?></span>
+        <span class="title"><?= htmlentities($ingredient->name) ?></span>
       </div>
     </a>
     </div>
