@@ -5,7 +5,7 @@
 	<p class="sign" align="center"><?=_('Edit this Recipe')?></p>
 	<form action='' method='post' enctype="multipart/form-data">
 
-		<input class="createInput" name="title" type="text" align="" placeholder="<?=_('Title')?>" value= <?="$data->title"?> >
+		<input class="createInput" name="title" type="text" align="" placeholder="<?=_('Title')?>" value= <?="'$data->title'"?> >
 
 		<textarea class="createInput"name="description" placeholder="<?=_('Description')?>" rows="10" cols="50"> <?= "$data->description" ?> </textarea>
 
