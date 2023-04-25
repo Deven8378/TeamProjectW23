@@ -267,20 +267,20 @@ tbody tr > th,td {
 /*  transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out*/
 }
 .dd-right {
-  display: block;
-    width: 70%;
-    height: 36px;
-    padding: .375rem .75rem;
-    font-size: 1rem;
-    font-weight: 400;
-    line-height: 1.5;
+/*  display: block;*/
+/*  width: 70%;*/
+  height: 36px;
+  padding: .375rem .75rem;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
 
-    background-color: #ffff;
-    background-clip: padding-box;
+  background-color: #ffff;
+  background-clip: padding-box;
 
-    appearance: none;
-    border: 2px solid black;
-    border-radius: .375rem;
+  appearance: none;
+  border: 2px solid black;
+  border-radius: .375rem;
 /*    transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out*/
 }
 

@@ -24,7 +24,7 @@
 
 			<input type="submit" id="submitLink" name="action" class="submitUser" align="" value="<?= _('Create User')?>">
 			<br>
-			<a href="/ITspecialist/index">Back</a>
+			<a href="/ITspecialist/index"><?=_('Back')?></a>
 		</form>
 	</div>
 <!-- </div> -->
