@@ -12,6 +12,7 @@ class Recipe extends \app\core\Controller {
 	}
 
 	#[\app\filters\EmployeeAndAdmin]
+	#[\app\filters\Admin]
 	public function create() {
 
 		if (isset($_POST['action'])) {
@@ -44,6 +45,7 @@ class Recipe extends \app\core\Controller {
 	}
 
 	#[\app\filters\EmployeeAndAdmin]
+	#[\app\filters\Admin]
 	public function edit($recipe_id) {
 
 		$recipe = new \app\models\Recipe();
@@ -69,6 +71,7 @@ class Recipe extends \app\core\Controller {
 	}
 
 	#[\app\filters\EmployeeAndAdmin]
+	#[\app\filters\Admin]
 	public function delete($recipe_id) {
 		$recipe = new \app\models\Recipe();
 		$recipe = $recipe->get($recipe_id);
