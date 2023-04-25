@@ -18,7 +18,7 @@ class Ingredient extends \app\core\Model {
 
 	}
 
-	public function insert() {
+	public function addIngredient() {
 		$SQL = "INSERT INTO `ingredient` (`ingredient_id`, `name`, `description`, `price`, `picture`) value (:ingredient_id, :name, :description, :price, :picture)";
 		$STH = self::$connection->prepare($SQL);
 		$data = ['ingredient_id'=>$this->ingredient_id,
@@ -30,4 +30,13 @@ class Ingredient extends \app\core\Model {
 		return self::$connection->lastInsertId();		
 	}
 
+	public function getIngredientDetails($ingredient_id) 
+	{
+		$SQL = "SELECT * FROM `ingredient` WHERE `ingredient_id` = :ingredient_id;";
+		$STH = self::$connection->prepare($SQL);
+		$data = ['ingredient_id'=>$ingredient_id];
+		$STH->execute($data);
+		$STH->setFetchMode(\PDO::FETCH_CLASS, 'app\\models\\Ingredient');
+		return $STH->fetch();
+	}
 }

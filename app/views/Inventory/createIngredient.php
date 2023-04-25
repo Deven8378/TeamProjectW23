@@ -14,9 +14,9 @@
 		<br> <br>
 
 		<label>Picture</label><br>
-		<input class="createInput" type="file" align="" placeholder="<?=_('Picture')?>" name="ingredientPicture">
+		<input class="createInput" type="file" align="" placeholder="<?=_('Picture')?>" name="ingredientPicture"><br>
 
-		<input class="submitIngredient" type="submit" align="" placeholder="<?=_('Add Ingredient')?>" name="action"> <br>
+		<input class="submitIngredient" type="submit" align="" placeholder="<?=_('Add Ingredient')?>" name="action"> <br><br>
 
 		<a class="btn" href="/Inventory/index" role="button" style="background-color: #e8c8e7;">Back</a>
 	 
