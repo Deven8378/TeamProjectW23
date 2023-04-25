@@ -10,7 +10,7 @@ class EmployeeAndAdmin implements \app\core\AccessFilter
 		$user = $user->getByUserType($_SESSION['user_id']);
 		if($user->user_type == "itspecialist")
 		{
-			header('location:/Main/index?error=Do not have permissions.');
+			header('location:/ITspecialist/index?error=Do not have permissions.');
 			return true;
 		}
 		return false;
