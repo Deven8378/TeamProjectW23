@@ -39,4 +39,22 @@ class Product extends \app\core\Model {
 		return $STH->fetch();
 	}
 
+	public function delete() {
+		$SQL = "DELETE  from product WHERE product_id=:product_id";
+		$STH = self::$connection->prepare($SQL);
+		$STH->execute(['product_id'=>$this->product_id]);
+	}
+
+	public function edit() {
+		$SQL = "UPDATE `product` SET `name`=:name, `description`=:description, `price`=:price, `picture`=:picture WHERE product_id=:product_id";
+		$STH = self::$connection->prepare($SQL);
+		$data = ['product_id'=>$this->product_id,
+				'name'=>$this->name,
+				'description'=>$this->description,
+				'price'=>$this->price,
+				'picture'=>$this->picture];
+		$STH->execute($data);
+		return self::$connection->lastInsertId();
+	}
+
 }

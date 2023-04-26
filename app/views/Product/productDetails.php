@@ -7,24 +7,29 @@
 
   <div class="container text-center">
     <div class="row align-items-start">
-      <div class="col">
-        <div id="img">
+      <div class="col-5">
+        <div>
           <img id="foodIMG" src="/productImages/<?= htmlentities($data->picture) ?>">
+          <div class="spacer" style="height: 500px; flex-shrink: 0; margin: 0; padding: 0;"></div>
+          <a class="btn" href="/Product/edit/<?= htmlentities($data->product_id) ?>" role="button" style="background-color: #e8c8e7;">
+            <?= _('Edit') ?>
+          </a>
+          <a class="btn" href="/Product/delete/<?= htmlentities($data->product_id) ?>" role="button" style="background-color: #e8c8e7;">
+            <?= _('Delete') ?>
+          </a>
         </div>
       </div>
-      <div class="col">
+      <div class="col-7">
         <div id="foodDetails">
           <h1 id="foodName"><?= htmlentities($data->name) ?></h1>
 
-          <div class="container text-center">
+          <div class="container" id="ingredientContent">
             <div class="row align-items-start">
               <div class="col">
                 <?= _('Description') ?>: 
               </div>
               <div class="col">
-                <p>
-                  <?= htmlentities($data->description) ?>
-                </p>
+                <p><?= htmlentities($data->description) ?></p>
               </div>
             </div>
           </div>
