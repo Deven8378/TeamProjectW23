@@ -8,9 +8,9 @@
 		<?php foreach ($data as $recipe) { ?>
 
 			<div class="recipeBox"> 
-				<a href='/Recipe/details/<?= htmlentities($recipe->recipe_id) ?>'>
-					<img class='recipeImage' src='/productImages/<?= htmlentities($recipe->picture) ?>'>
-					<figcaption><?= htmlentities($recipe->title) ?></figcaption> 
+				<a href='/Recipe/details/<?= $recipe->recipe_id ?>'>
+					<img class='recipeImage' src='/productImages/<?= $recipe->picture ?>'>
+					<figcaption><?= $recipe->title ?></figcaption> 
 				</a>
 			</div>
 
