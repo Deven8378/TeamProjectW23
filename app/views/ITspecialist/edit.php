@@ -12,8 +12,8 @@
     </div>
 
     <div>
-      <button id="toggle-to-2">Toggle to div 2</button>
-      <button id="toggle-to-1">Toggle to div 1</button>
+      <button id="toggle-to-profile">View Account Information</button>
+      <button id="toggle-to-account">View Profile Information</button>
     </div>
 
     <dl class="dl-viewUserDetails" style="">
@@ -54,8 +54,8 @@
   //     buttonName.value = "Edit Profile";
   //   }
   // }
-  const toggleTo2 = document.getElementById("toggle-to-2");
-  const toggleTo1 = document.getElementById("toggle-to-1");
+  const toggleTo2 = document.getElementById("toggle-to-profile");
+  const toggleTo1 = document.getElementById("toggle-to-account");
 
   const div1 = document.getElementById("profile");
   const div2 = document.getElementById("user");

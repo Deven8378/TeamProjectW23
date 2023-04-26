@@ -140,7 +140,7 @@ class ITspecialist extends \app\core\Controller
     public function editProfile($user_id)
     {
         // edit the users profile information (first_name, middle_name, last_name, email,phone_number and status)
-        if()
+
         $user = new \app\models\User();
         $userdetails = $user->getProfile($user_id);
         $this->view('ITspecialist/editProfile', $userdetails);
@@ -151,8 +151,23 @@ class ITspecialist extends \app\core\Controller
     {
         //edit the users information (username or/and password)
         $user = new \app\models\User();
-        $userdetails = $user->getUserInfo($user_id);
-        $this->view('ITspecialist/editUser', $userdetails);
+        $user = $user->getUserInfo($user_id);
+
+        if(isset($_POST['action']))
+        {
+            $user->username = $_POST['username'];
+            $user->password_hash = $_POST['password_hash'];
+
+            $success = $ingredient->editUser($user_id);
+
+            if($success){
+                header('location:/ITspecialist/userDetails/' . $user_id. '?success=User Account Was Updated.');
+            } else {
+                header('location:/ITspecialist/edit/' . $user_id. '?error=Error when modifying User Account.');
+            }
+        } else {
+            $this->view('ITspecialist/editUser', $user);
+        }
     }
     
 }

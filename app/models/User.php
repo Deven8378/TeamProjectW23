@@ -100,5 +100,18 @@ class User extends \app\core\Model
 		$STH->execute($data);
 		return $STH->rowCount();
 	}
+	public function editUser($user_id)
+	{
+		$SQL = "UPDATE user SET username=:username, password_hash=:password_hash WHERE user_id=:user_id";
+		$STH = self::$connection->prepare($SQL);
+		$data = [
+			'user_id'=>$this->$user_id,
+			'name'=>$this->name,
+			'password_hash'=>$this->password_hash
+		];
+		$STH->execute($data);
+		return $STH->rowCount();
+
+	}
 
 }
