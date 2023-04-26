@@ -19,7 +19,6 @@ class Ingredient extends \app\core\Controller
             $ingredient = new \app\models\Ingredient();
             $ingredient->name = $_POST['name'];
             $ingredient->description = $_POST['description'];
-            $ingredient->price = $_POST['price'];
             $picture = $this->saveIngredient($_FILES['ingredientPicture']);
 
             if ($picture) {
@@ -56,7 +55,6 @@ class Ingredient extends \app\core\Controller
         {
             $ingredient->name = $_POST['name'];
             $ingredient->description = $_POST['description'];
-            $ingredient->price = $_POST['price'];
             $picture = $this->saveIngredient($_FILES['ingredientPicture']);
 
             if($picture){
@@ -67,7 +65,7 @@ class Ingredient extends \app\core\Controller
             if($success){
                 header('location:/Ingredient/ingredientDetails/' . $ingredient_id. '?success=Ingredient Updated.');
             } else {
-                header('location:/Ingredient/editingredient/' . $ingredient_id. '?error=Error.');
+                header('location:/Ingredient/editIngredient/' . $ingredient_id. '?error=Error.');
             }
         } else {
             $this->view('Ingredient/editIngredient', $ingredient);

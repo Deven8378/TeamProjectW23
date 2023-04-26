@@ -6,7 +6,6 @@ class Ingredient extends \app\core\Model {
 	public $ingredient_id;
 	public $name;
 	public $description;
-	public $price;
 	public $picture;
 
 	public function getAll() {
@@ -28,24 +27,22 @@ class Ingredient extends \app\core\Model {
 	}
 
 	public function addIngredient() {
-		$SQL = "INSERT INTO `ingredient` (`ingredient_id`, `name`, `description`, `price`, `picture`) value (:ingredient_id, :name, :description, :price, :picture)";
+		$SQL = "INSERT INTO `ingredient` (`ingredient_id`, `name`, `description`,`picture`) value (:ingredient_id, :name, :description,:picture)";
 		$STH = self::$connection->prepare($SQL);
 		$data = ['ingredient_id'=>$this->ingredient_id,
 				'name'=>$this->name,
 				'description'=>$this->description,
-				'price'=>$this->price,
 				'picture'=>$this->picture];
 		$STH->execute($data);
 		return self::$connection->lastInsertId();		
 	}
 
 	public function editIngredient($ingredient_id) {
-		$SQL = "UPDATE `ingredient` SET `name`=:name, `description`=:description, `price`=:price, `picture`=:picture WHERE ingredient_id=:ingredient_id";
+		$SQL = "UPDATE `ingredient` SET `name`=:name, `description`=:description, `picture`=:picture WHERE ingredient_id=:ingredient_id";
 		$STH = self::$connection->prepare($SQL);
 		$data = ['ingredient_id'=>$this->ingredient_id,
 				'name'=>$this->name,
 				'description'=>$this->description,
-				'price'=>$this->price,
 				'picture'=>$this->picture];
 		$STH->execute($data);
 		return $STH->rowCount();		

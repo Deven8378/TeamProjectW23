@@ -17,7 +17,6 @@ class Product extends \app\core\Controller
             $product = new \app\models\Product();
             $product->name = htmlentities($_POST['name']);
             $product->description = htmlentities($_POST['description']);
-            $product->price = htmlentities($_POST['price']);
             $picture = $this->saveProduct($_FILES['productPicture']);
 
             if ($picture) {
@@ -47,6 +46,7 @@ class Product extends \app\core\Controller
         header('location:/Product/index');
     }
 
+    #[\app\filters\Admin]
     public function edit($product_id) {
         $product = new \app\models\Product();
         $product = $product->getProductDetails($product_id);
@@ -55,16 +55,19 @@ class Product extends \app\core\Controller
         
             $product->name = $_POST['name'];
             $product->description = $_POST['description'];
-            $product->price = $_POST['price'];
             $picture = $this->saveProduct($_FILES['productPicture']);
 
         if($picture){
                 $product->picture = $picture;
             }
 
-        $picture = $product->edit($product_id);
+        $success = $product->edit($product_id);
+        if ($success) {
         header('location:/Product/productDetails/' .$product_id.'?success=Product Updated.');
-                    
+        } else {
+            header('location:/Product/productDetails/' .$product_id. '?error=Error');
+        }
+           
         }
         else
         $this->view('Product/edit', $product);
