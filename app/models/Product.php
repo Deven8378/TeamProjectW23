@@ -9,7 +9,7 @@ class Product extends \app\core\Model {
 	public $product_id;
 
 	public function addProduct() {
-		$SQL = "INSERT INTO product ( name, description,picture) value (:name, :description, :picture)";
+		$SQL = "INSERT INTO product ( name, description, picture) value (:name, :description, :picture)";
 		$STH = self::$connection->prepare($SQL);
 		$data = ['name'=>$this->name,
 				'description'=>$this->description,

@@ -27,14 +27,14 @@ class Ingredient extends \app\core\Model {
 	}
 
 	public function addIngredient() {
-		$SQL = "INSERT INTO `ingredient` (`ingredient_id`, `name`, `description`,`picture`) value (:ingredient_id, :name, :description,:picture)";
+		$SQL = "INSERT INTO `ingredient` (`ingredient_id`, `name`, `description`, `picture`) value (:ingredient_id, :name, :description, :picture)";
 		$STH = self::$connection->prepare($SQL);
 		$data = ['ingredient_id'=>$this->ingredient_id,
 				'name'=>$this->name,
 				'description'=>$this->description,
 				'picture'=>$this->picture];
 		$STH->execute($data);
-		return self::$connection->lastInsertId();		
+		return self::$connection->lastInsertId();
 	}
 
 	public function editIngredient($ingredient_id) {

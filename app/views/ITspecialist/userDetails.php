@@ -82,7 +82,7 @@
                   
                         <label><?= _('Are you sure you want to delete this user?') ?></label> 
                         
-                        <a href="/Profile/delete/<?= $data->user_id ?>" class="btn-userDetails"><?=_('delete')?></a>
+                        <a href="/ITspecialist/delete/<?= $data->user_id ?>" class="btn-userDetails"><?=_('delete')?></a>
                     </form>
                 </div>
             </div>
