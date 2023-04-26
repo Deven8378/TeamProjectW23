@@ -55,11 +55,7 @@ class ITspecialist extends \app\core\Controller
 
 	}
 
-    public function editUser($user_id)
-    {
-        //edit the users information (username or/and password)
 
-    }
 
     // ////////////////////////////////////
     public function createProfile($user_id)
@@ -134,10 +130,29 @@ class ITspecialist extends \app\core\Controller
         }
     }
 
+    public function edit($user_id)
+    {
+        $user = new \app\models\User();
+        $user = $user->getUserInfo($user_id);
+        $this->view('ITspecialist/edit', $user);
+    }
+
     public function editProfile($user_id)
     {
         // edit the users profile information (first_name, middle_name, last_name, email,phone_number and status)
-       
+        if()
+        $user = new \app\models\User();
+        $userdetails = $user->getProfile($user_id);
+        $this->view('ITspecialist/editProfile', $userdetails);
+
+    }
+
+    public function editUser($user_id)
+    {
+        //edit the users information (username or/and password)
+        $user = new \app\models\User();
+        $userdetails = $user->getUserInfo($user_id);
+        $this->view('ITspecialist/editUser', $userdetails);
     }
     
 }

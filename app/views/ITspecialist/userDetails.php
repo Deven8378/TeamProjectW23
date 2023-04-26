@@ -65,7 +65,7 @@
 
           	<div class="">
             	<!-- <a  onclick="openNav()" class="btn-userDetails"><?=_('Edit')?></a> -->
-            	<a  href="" class="btn-userDetails"><?=_('Edit')?></a>
+            	<a  href="/ITspecialist/edit/<?= $data->user_id ?>" class="btn-userDetails"><?=_('Edit')?></a>
 	            <!-- <a href="#confirmation" class="btn-userDetails" style="margin-left: 20px;"><?=_('Delete')?></a> -->
 	            <a style="" onclick="openNav()">delete</a>
           	</div>
