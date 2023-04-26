@@ -34,8 +34,7 @@ CREATE TABLE `ingredient` (
   `ingredient_id` int(11) NOT NULL,
   `name` varchar(50) NOT NULL,
   `description` text NOT NULL,
-  `picture` varchar(128) NOT NULL,
-  `total_quantity` int(11) NOT NULL
+  `picture` varchar(128) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -70,14 +69,6 @@ CREATE TABLE `message` (
   `full_name` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Dumping data for table `message`
---
-
-INSERT INTO `message` (`message_id`, `receiver`, `sender`, `message`, `timestamp`, `full_name`) VALUES
-(9, 7, 11, 'testing', '2023-04-26 03:16:39', 'Mubeen  Khan'),
-(11, 8, 7, 'dsada', '2023-04-26 03:18:58', 'Nicole  Bautista');
-
 -- --------------------------------------------------------
 
 --
@@ -103,8 +94,7 @@ CREATE TABLE `product` (
   `product_id` int(11) NOT NULL,
   `name` varchar(50) NOT NULL,
   `description` text NOT NULL,
-  `picture` varchar(128) NOT NULL,
-  `total_quantity` int(11) NOT NULL
+  `picture` varchar(128) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -145,10 +135,9 @@ CREATE TABLE `profile` (
 --
 
 INSERT INTO `profile` (`user_id`, `first_name`, `middle_name`, `last_name`, `email`, `phone_number`, `status`) VALUES
-(8, 'Nicole', '', 'Bautista', 'nicole@gmail.com', '5141234567', 'active'),
-(9, 'Deven', '', 'Patel', 'deven@gmail.com', '5141234567', 'active'),
-(11, 'Rachelle', 'Secret', 'Badua', 'rachelle@gmail.com', '5141234567', 'inactive'),
-(13, 'thg', 'gedf', 'bergreg', 'gereg', '5141234567', 'inactive');
+(2, 'Nicole', '', 'Bautista', 'nicole@gmail.com', '5141234567', 'active'),
+(3, 'Deven', '', 'Patel', 'deven@gmail.com', '5141234567', 'active'),
+(4, 'Rachelle', 'Secret', 'Badua', 'rachelle@gmail.com', '5141234567', 'inactive');
 
 -- --------------------------------------------------------
 
@@ -184,10 +173,9 @@ CREATE TABLE `user` (
 
 INSERT INTO `user` (`user_id`, `user_type`, `username`, `password_hash`) VALUES
 (1, 'itspecialist', 'itspecialist', '$2y$10$RUJd5d.C02znWlNyzZeGgOasNkkvXrwV.lr3p2V5BWAHQD4Px4GG2'),
-(8, 'admin', 'Nicole', '$2y$10$MM.fKeE0SWVsfdj1K8ZHru1/qkqX8u8EV1.xCqBragA/EkqGZSW8q'),
-(9, 'admin', 'Deven', '$2y$10$zaiI4rIJ3ZEMVkzGOtTLIuTuu3usc8/QLJq3.c.EbsTXo6KoLyPg.'),
-(11, 'employee', 'Rachelle', '$2y$10$dPLEgTN9QKC5E3Z6u/IYN./YsL07/aG/MSS1XAfEYNyH/lrLGcVf.'),
-(13, 'admin', 'employee', '$2y$10$L7KvsJYIWl33ceGE/JDEc.ULqv3cu.9cC3bNwtlPn4fHkLcoTDU96');
+(2, 'admin', 'Nicole', '$2y$10$MM.fKeE0SWVsfdj1K8ZHru1/qkqX8u8EV1.xCqBragA/EkqGZSW8q'),
+(3, 'admin', 'Deven', '$2y$10$zaiI4rIJ3ZEMVkzGOtTLIuTuu3usc8/QLJq3.c.EbsTXo6KoLyPg.'),
+(4, 'employee', 'Rachelle', '$2y$10$dPLEgTN9QKC5E3Z6u/IYN./YsL07/aG/MSS1XAfEYNyH/lrLGcVf.');
 
 --
 -- Indexes for dumped tables

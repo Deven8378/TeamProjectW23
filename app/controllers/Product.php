@@ -17,7 +17,6 @@ class Product extends \app\core\Controller
             $product = new \app\models\Product();
             $product->name = htmlentities($_POST['name']);
             $product->description = htmlentities($_POST['description']);
-            $product->price = htmlentities($_POST['price']);
             $picture = $this->saveProduct($_FILES['productPicture']);
 
             if ($picture) {
