@@ -44,4 +44,36 @@ class Inventory extends \app\core\Controller
             header('location:/Inventory/index?error=Ingredient does not exists.');
         }
     }
+
+    #[\app\filters\Admin]
+    public function createProduct() {
+        if (isset($_POST['action'])) {
+            $product = new \app\models\Product();
+            $product->name = htmlentities($_POST['name']);
+            $product->description = htmlentities($_POST['description']);
+            $product->price = htmlentities($_POST['price']);
+            $picture = $this->saveProduct($_FILES['productPicture']);
+
+            if ($picture) {
+                $product->picture = $picture;
+                $product->addProduct();
+                header('location:/Inventory/products?success=Product Added');
+
+            }
+        }
+       
+            $this->view('Inventory/createProduct');
+    }
+
+    public function products() {
+        $product = new \app\models\Product();
+        $products = $product->getAll();
+        $this->view('Inventory/products',$products);
+    }
+
+    public function productDetails($product_id) {
+        $product = new \app\models\Product();
+        $product = $product->getProductDetails($product_id);
+        $this->view('Inventory/productDetails',$product);
+    }
 }
