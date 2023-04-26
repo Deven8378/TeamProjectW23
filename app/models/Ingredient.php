@@ -15,7 +15,16 @@ class Ingredient extends \app\core\Model {
 		$STH->execute();
 		$STH->setFetchMode(\PDO::FETCH_CLASS, 'app\\models\\Ingredient');
 		return $STH->fetchAll();
+	}
 
+	public function getIngredientDetails($ingredient_id) 
+	{
+		$SQL = "SELECT * FROM `ingredient` WHERE `ingredient_id` = :ingredient_id;";
+		$STH = self::$connection->prepare($SQL);
+		$data = ['ingredient_id'=>$ingredient_id];
+		$STH->execute($data);
+		$STH->setFetchMode(\PDO::FETCH_CLASS, 'app\\models\\Ingredient');
+		return $STH->fetch();
 	}
 
 	public function addIngredient() {
@@ -30,13 +39,23 @@ class Ingredient extends \app\core\Model {
 		return self::$connection->lastInsertId();		
 	}
 
-	public function getIngredientDetails($ingredient_id) 
-	{
-		$SQL = "SELECT * FROM `ingredient` WHERE `ingredient_id` = :ingredient_id;";
+	public function editIngredient($ingredient_id) {
+		$SQL = "UPDATE `ingredient` SET `name`=:name, `description`=:description, `price`=:price, `picture`=:picture WHERE ingredient_id=:ingredient_id";
+		$STH = self::$connection->prepare($SQL);
+		$data = ['ingredient_id'=>$this->ingredient_id,
+				'name'=>$this->name,
+				'description'=>$this->description,
+				'price'=>$this->price,
+				'picture'=>$this->picture];
+		$STH->execute($data);
+		return self::$connection->lastInsertId();		
+	}
+
+	public function deleteIngredient($ingredient_id){
+		$SQL = "DELETE FROM `ingredient` WHERE ingredient_id=:ingredient_id;";
 		$STH = self::$connection->prepare($SQL);
 		$data = ['ingredient_id'=>$ingredient_id];
 		$STH->execute($data);
-		$STH->setFetchMode(\PDO::FETCH_CLASS, 'app\\models\\Ingredient');
-		return $STH->fetch();
+		return $STH->rowCount(); 
 	}
 }
