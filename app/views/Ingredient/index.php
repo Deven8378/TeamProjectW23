@@ -1,7 +1,6 @@
 <?php $this->view('shared/header', "Recipes"); ?>
 <?php $this->view('shared/navigation/nav'); ?>
-<?php $this->view('shared/navigation/switchToIngredients'); ?>
-
+<?php $this->view('shared/navigation/switchToProducts'); ?>
 <style type="text/css">
 .vl {
   border-left: 1px solid #d9d9d9;

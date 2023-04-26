@@ -67,13 +67,13 @@
 				            		if($user->status == "active") { ?>
 
 				            			<div class='status-active' style=''>
-				            				<?= htmlentities($user->status) ?>
+				            				<?= $user->status ?>
 				            			</div>
 
 				            		<?php } else { ?>
 
 				            			<div class='status-inactive' style=''>
-				            				<?= htmlentities($user->status) ?>
+				            				<?= $user->status ?>
 				            			</div>
 				            		<?php } 
 				            	?>
@@ -96,12 +96,12 @@
 /*			                    display: flex; */
 /*			                    align-items: center; */
 /*			                    justify-content: center;*/
-			                    "><?= htmlentities($user->username) ?></td>
-			                    <td><?= htmlentities($user->first_name) ?></td>
-			                    <td><?= htmlentities($user->middle_name) ?></td>
-			                    <td><?=htmlentities($user->last_name) ?></td>
-			                    <td><?= htmlentities($user->email) ?></td>
-			                    <td><?= htmlentities($user->phone_number) ?></td>
+			                    "><?= $user->username ?></td>
+			                    <td><?= $user->first_name ?></td>
+			                    <td><?= $user->middle_name ?></td>
+			                    <td><?=$user->last_name ?></td>
+			                    <td><?= $user->email ?></td>
+			                    <td><?= $user->phone_number ?></td>
 			                </tr>
 		                <?php
 							}

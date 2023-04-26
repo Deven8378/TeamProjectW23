@@ -5,6 +5,5 @@
     </li>
     <li class="nav-item">
       <a class="btn me-3" href="/Product/products" role="button" style="background-color: #B4A7B7; z-index: 1; width: 150px;"><?= _('Products') ?></a>
-    </li>
   </ul>
 </div>
