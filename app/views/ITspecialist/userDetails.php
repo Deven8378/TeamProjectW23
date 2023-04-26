@@ -11,7 +11,6 @@
 
 	          	<!-- Left side -->
       	<div class="" style="flex: 70%; " >
-      		<!-- col-sm-3 -->
 
 	            	<dt class="dt-label"> <?= _('First Name')?> </dt>
 	            	<dd class="dd-left"><?= $data->first_name ?></dd>
@@ -65,31 +64,48 @@
 	        </div>
 
           	<div class="">
-            	<a href="" class="btn-userDetails"><?=_('Edit')?></a>
-	            <a href="#confirmation" class="btn-userDetails" style="margin-left: 20px;"><?=_('Delete')?></a>
+            	<!-- <a  onclick="openNav()" class="btn-userDetails"><?=_('Edit')?></a> -->
+            	<a  href="" class="btn-userDetails"><?=_('Edit')?></a>
+	            <!-- <a href="#confirmation" class="btn-userDetails" style="margin-left: 20px;"><?=_('Delete')?></a> -->
+	            <a style="" onclick="openNav()">delete</a>
           	</div>
 
 		</div>
 		
     </dl>
 
-    <div class="overlay" id="confirmation">
-        <div class="wrapper">
-            <h2><?=_('Deleting User')?></h2><a class="close" href="">&times;</a>
-            <div class="content">
-                <div class="container">
+
+	<div id="myNav" class="overlay-userDetails">
+	  <a href="javascript:void(0)" class="closebtn" style="margin-top: 10px" onclick="closeNav()">&times;</a>
+
+	  <div class="wrapper-userDetails">
+            <h2><?=_('Deleting User')?></h2>
+            <div class="content-userDetails">
+                <div class="container-userDetails">
                     <form  method="post" action="">
                   
                         <label><?= _('Are you sure you want to delete this user?') ?></label> 
-                        
-                        <a href="/ITspecialist/delete/<?= $data->user_id ?>" class="btn-userDetails"><?=_('delete')?></a>
+                        <div class="btn-container">
+                        	<a href="javascript:void(0)" class="btn-container-option" onclick="closeNav()" ><?=_('cancel')?></a>
+                        	<a href="/ITspecialist/delete/<?= $data->user_id ?>" class="btn-container-option"><?=_('delete')?></a>
+                        </div>
                     </form>
                 </div>
             </div>
         </div>
-    </div>
+	</div>
 
 </div>
 
 
+<script>
+	function openNav() {
+	  document.getElementById("myNav").style.height = "100%";
+	}
+
+	function closeNav() {
+	  document.getElementById("myNav").style.height = "0%";
+	}
+</script>
+     
 <?php $this->view('shared/footer'); ?>

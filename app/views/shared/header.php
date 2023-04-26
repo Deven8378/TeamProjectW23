@@ -22,8 +22,15 @@
 		  document.getElementById("container").innerHTML = text;
 		}
 	</script>
+	<style>
+		/*body {
+		  font-family: 'Lato', sans-serif;
+		}*/
 
-	<title><?=htmlentities($data)?></title>
+		
+	</style>
+<!-- <title><?=htmlentities($data)?></title> -->
+	
 </head>
 
 <body>

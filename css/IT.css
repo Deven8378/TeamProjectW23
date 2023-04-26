@@ -283,9 +283,68 @@ tbody tr > th,td {
   border-radius: .375rem;
 /*    transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out*/
 }
+/*------------------*/
 
-.btn-userDetails {
-  
+.wrapper-userDetails {
+
+  margin: 7rem auto;
+  padding: 20px;
+  background: #fff;
+  border-radius: 20px;
+  width: 40%;
+  height: 20%;
+  position: relative;
+  transition: all 5s ease-in-out;
+}
+.wrapper-userDetails h2 {
+/*      margin-top: 0;*/
+  color: #333;
+  font-size: 50px;
+}
+
+.wrapper-userDetails .close {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  transition: all 200ms;
+  font-size: 36px;
+  font-weight: bold;
+  text-decoration: none;
+  color: #818181;
+}
+
+.wrapper-userDetails .close:hover {
+  color: black;
+}
+
+.wrapper-userDetails .content {
+  max-height: 30%;
+  overflow: auto;
+}
+.container-userDetails form{
+  display: flex;
+  gap: 50px;
+  justify-content: space-evenly;
+  flex-direction: column;
+}
+.container-userDetails form label{
+  font-size: 20px;
+}
+.btn-container {
+  display: flex;
+  gap: 20px;
+}
+
+.btn-container-option {
+  flex: 50%;
+  font-size:30px;
+  text-align: center;
+  cursor:pointer;
+  border-radius: 20px;
+  border: 8px solid #f1e1f5;
+  background-color: #fff;
 }
 
 /*-----------------------------------------------*/
+
+/*----------- Edit User -----------*/

@@ -1,9 +1,9 @@
 <?php
 namespace app\controllers;
 
+#[\app\filters\ITSpecialist]
 class ITspecialist extends \app\core\Controller 
 {
-    #[\app\filters\ITSpecialist]
 	public function index() //viewUsers
 	{
 		//see all the employees and admins from the User table
@@ -12,7 +12,6 @@ class ITspecialist extends \app\core\Controller
         $this->view('ITspecialist/index', $users);
 	}
 
-    #[\app\filters\ITSpecialist]
 	public function createUser()
 	{
 		//adding an admin or employee to the User Table
@@ -56,7 +55,6 @@ class ITspecialist extends \app\core\Controller
 
 	}
 
-    #[\app\filters\ITSpecialist]
     public function editUser($user_id)
     {
         //edit the users information (username or/and password)
@@ -64,7 +62,6 @@ class ITspecialist extends \app\core\Controller
     }
 
     // ////////////////////////////////////
-    #[\app\filters\ITSpecialist]
     public function createProfile($user_id)
     {
         //Once the User is created, You will create a profile for them
@@ -86,7 +83,6 @@ class ITspecialist extends \app\core\Controller
 
                     if($success)
                     {
-
                         header('location:/ITspecialist/index?success=New User Created');
                     }else{
 
@@ -106,7 +102,6 @@ class ITspecialist extends \app\core\Controller
 
     }
 
-    #[\app\filters\ITSpecialist]
     public function userDetails($user_id)
     {
         $profile = new \app\models\Profile();
@@ -123,7 +118,6 @@ class ITspecialist extends \app\core\Controller
         }
     }
 
-    #[\app\filters\ITSpecialist]
     public function delete($user_id)
     {
         
@@ -140,10 +134,10 @@ class ITspecialist extends \app\core\Controller
         }
     }
 
-    #[\app\filters\ITSpecialist]
     public function editProfile($user_id)
     {
         // edit the users profile information (first_name, middle_name, last_name, email,phone_number and status)
+       
     }
     
 }
