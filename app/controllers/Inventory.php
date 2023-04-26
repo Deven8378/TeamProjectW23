@@ -34,6 +34,7 @@ class Inventory extends \app\core\Controller
         }
     }
 
+    #[\app\filters\EmployeeAndAdmin]
     public function ingredientDetails($ingredient_id){
         $ingredient = new \app\models\Ingredient();
         $success = $ingredient->getIngredientDetails($ingredient_id);
@@ -58,19 +59,20 @@ class Inventory extends \app\core\Controller
                 $product->picture = $picture;
                 $product->addProduct();
                 header('location:/Inventory/products?success=Product Added');
-
             }
         }
        
             $this->view('Inventory/createProduct');
     }
 
+    #[\app\filters\EmployeeAndAdmin]
     public function products() {
         $product = new \app\models\Product();
         $products = $product->getAll();
         $this->view('Inventory/products',$products);
     }
 
+    #[\app\filters\EmployeeAndAdmin]
     public function productDetails($product_id) {
         $product = new \app\models\Product();
         $product = $product->getProductDetails($product_id);
