@@ -5,7 +5,7 @@ Feature: signout
 
   Scenario: try sign out of webpage
     Given I am on the "Welcome Sweemory Team!!" page
-    And I fill field "admin1" in "username"
+    And I fill field "Nicole" in "username"
     And I fill field "1234" in "password"
     And I click "Sign in"
     And I see "Welcome Sweemory Team!"

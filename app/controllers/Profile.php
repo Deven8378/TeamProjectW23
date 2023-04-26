@@ -81,4 +81,10 @@ class Profile extends \app\core\Controller
         }
 	}
 
+    #[\app\filters\ITSpecialist]
+    public function editProfile($user_id)
+    {
+        // edit the users profile information (first_name, middle_name, last_name, email,phone_number and status)
+    }
+
 }

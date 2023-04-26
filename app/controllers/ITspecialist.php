@@ -35,7 +35,7 @@ class ITspecialist extends \app\core\Controller
                         $user->user_type = htmlentities($_POST['user_type']);
                         $user->user_id = $user->insert();
 
-                        header('location:/Profile/createProfile/' . $user->user_id . '');
+                        header('location:/Profile/create/' . $user->user_id . '');
                     }
                     else
                     {
@@ -55,20 +55,12 @@ class ITspecialist extends \app\core\Controller
 
 
 	}
-
-
+    
     #[\app\filters\ITSpecialist]
-	public function editUser($user_id)
-	{
-		//edit the users information (username or/and password)
+    public function editUser($user_id)
+    {
+        //edit the users information (username or/and password)
 
-	}
-
-    #[\app\filters\ITSpecialist]
-	public function editProfile($user_id)
-	{
-		// edit the users profile information (first_name, middle_name, last_name, email,phone_number and status)
-	}
-
+    }
     
 }
