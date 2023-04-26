@@ -82,9 +82,9 @@
 			                    <td>
 		                    	<?php
 				            		if($user->user_type == "admin") { ?>
-				            			<a href='/Profile/userDetails/<?=$user->user_id?>'>AD <?= $user->user_id ?></a>
+				            			<a href='/ITspecialist/userDetails/<?=$user->user_id?>'>AD <?= $user->user_id ?></a>
 				            		<?php }else if ($user->user_type == "employee"){ ?>
-				            			<a href='/Profile/userDetails/<?=$user->user_id?>'>EM <?= $user->user_id ?></a>
+				            			<a href='/ITspecialist/userDetails/<?=$user->user_id?>'>EM <?= $user->user_id ?></a>
 				            		<?php }else{ 
 				            			echo "ERROR";
 				            		}
