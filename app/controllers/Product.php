@@ -43,7 +43,7 @@ class Product extends \app\core\Controller
         $product = new \app\models\Product();
         $product = $product->getProductDetails($product_id);
         $product->delete();
-       // unlink("productImages/$product->picture");
+        unlink("productImages/$product->picture");
         header('location:/Product/index');
     }
 
@@ -64,8 +64,6 @@ class Product extends \app\core\Controller
 
         $picture = $product->edit($product_id);
         header('location:/Product/productDetails/' .$product_id.'?success=Product Updated.');
-
-       
                     
         }
         else

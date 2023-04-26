@@ -18,7 +18,7 @@
 
 		<input class="submitIngredient" type="submit" align="" placeholder="<?=_('Add Product')?>" name="action"> <br><br>
 
-		<a class="btn" href="/Product/index" role="button" style="background-color: #e8c8e7;"><?= _('Back') ?></a>
+		<a class="btn" href="/Product/productDetails/<?=$data->product_id?>" role="button" style="background-color: #e8c8e7;"><?= _('Back') ?></a>
 		
 	 
 	</form>
