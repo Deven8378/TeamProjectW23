@@ -1,4 +1,4 @@
-<?php $this->view('shared/header', "Recipes"); ?>
+<?php $this->view('shared/header', "Ingredient"); ?>
 <?php $this->view('shared/navigation/nav'); ?>
 <link rel="stylesheet" type="text/css" href="/css/ingredientDetails.css">
 
