@@ -13,8 +13,8 @@
 <div class="container">
 	<div class="row">
 		<div class="col-sm-2">
-			<a class="btn" href="/Inventory/createIngredient" role="button" style="background-color: #e8c8e7;"><?= _('Add Ingredient') ?></a> <br> <br> <br>
-			<a class="btn" href="/Inventory/createProduct" role="button" style="background-color: #e8c8e7;"><?= _('Add Product') ?></a>
+			<a class="btn" href="/Ingredient/createIngredient" role="button" style="background-color: #e8c8e7;"><?= _('Add Ingredient') ?></a> <br> <br>
+			<a class="btn" href="/Ingredient/createProduct" role="button" style="background-color: #e8c8e7;"><?= _('Add Product') ?></a>
 			<hr style="height:1px; border-width:0 ;color: #d9d9d9; background-color:gray">
 			<div class="btn-group">
 			  <button type="button" class="btn dropdown-toggle" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
@@ -43,7 +43,7 @@
 		</div>
 		<div class="col offset-sm-1">
 			<div class="row">
-			  <?php $this->view('Inventory/productsCard', $data); ?>
+			  <?php $this->view('Ingredient/ingredientsCard', $data); ?>
 			</div>
 		</div>
 	</div>

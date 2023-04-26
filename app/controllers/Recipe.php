@@ -11,7 +11,6 @@ class Recipe extends \app\core\Controller {
 		$this->view('Recipe/index',$recipes);
 	}
 
-	#[\app\filters\EmployeeAndAdmin]
 	#[\app\filters\Admin]
 	public function create() {
 
@@ -44,7 +43,6 @@ class Recipe extends \app\core\Controller {
 		$this->view('Recipe/details',$recipe);
 	}
 
-	#[\app\filters\EmployeeAndAdmin]
 	#[\app\filters\Admin]
 	public function edit($recipe_id) {
 
@@ -70,7 +68,6 @@ class Recipe extends \app\core\Controller {
 		
 	}
 
-	#[\app\filters\EmployeeAndAdmin]
 	#[\app\filters\Admin]
 	public function delete($recipe_id) {
 		$recipe = new \app\models\Recipe();

@@ -1,5 +1,4 @@
-
-<?php $this->view('shared/header', "Add Ingredient"); ?>
+<?php $this->view('shared/header', "Add Product"); ?>
 <?php $this->view('shared/navigation/nav'); ?>
 
 <div class='createProfile' align='center'>
@@ -19,7 +18,7 @@
 
 		<input class="submitIngredient" type="submit" align="" placeholder="<?=_('Add Product')?>" name="action"> <br><br>
 
-		<a class="btn" href="/Inventory/products" role="button" style="background-color: #e8c8e7;"><?= _('Back') ?></a>
+		<a class="btn" href="/Product/index" role="button" style="background-color: #e8c8e7;"><?= _('Back') ?></a>
 	 
 	</form>
 
