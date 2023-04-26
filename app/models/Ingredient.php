@@ -48,7 +48,7 @@ class Ingredient extends \app\core\Model {
 				'price'=>$this->price,
 				'picture'=>$this->picture];
 		$STH->execute($data);
-		return self::$connection->lastInsertId();		
+		return $STH->rowCount();		
 	}
 
 	public function deleteIngredient($ingredient_id){

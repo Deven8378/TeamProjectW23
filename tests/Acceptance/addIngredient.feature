@@ -15,4 +15,4 @@ Feature: addIngredient
     And I fill field "0.37" in "price"
     And I attach file "banana.jpg" in "ingredientPicture"
     When I click "action"
-    Then I see "Ingredient Added"
+    Then I see "Mango"

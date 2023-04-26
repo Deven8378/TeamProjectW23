@@ -61,13 +61,13 @@ class Ingredient extends \app\core\Controller
 
             if($picture){
                 $ingredient->picture = $picture;
-                $success = $ingredient->editIngredient($ingredient_id);
+            }
+            $success = $ingredient->editIngredient($ingredient_id);
 
-                if($success){
-                    header('location:/Ingredient/index?success=Ingredient Updated.');
-                } else {
-                    header('location:/Ingredient/index?error=Error.');
-                }
+            if($success){
+                header('location:/Ingredient/index?success=Ingredient Updated.');
+            } else {
+                header('location:/Ingredient/index?error=Error.');
             }
         } else {
             $this->view('Ingredient/editIngredient', $ingredient);
