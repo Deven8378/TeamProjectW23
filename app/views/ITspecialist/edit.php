@@ -12,8 +12,8 @@
     </div>
 
     <div>
-      <button id="toggle-to-profile">View Account Information</button>
-      <button id="toggle-to-account">View Profile Information</button>
+      <button id="toggle-to-profile" class="btn-edit">View Account Information</button>
+      <button id="toggle-to-account" class="btn-edit">View Profile Information</button>
     </div>
 
     <dl class="dl-viewUserDetails" style="">

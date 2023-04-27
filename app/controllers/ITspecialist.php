@@ -132,42 +132,101 @@ class ITspecialist extends \app\core\Controller
 
     public function edit($user_id)
     {
-        $user = new \app\models\User();
-        $user = $user->getUserInfo($user_id);
-        $this->view('ITspecialist/edit', $user);
-    }
 
-    public function editProfile($user_id)
-    {
-        // edit the users profile information (first_name, middle_name, last_name, email,phone_number and status)
-
-        $user = new \app\models\User();
-        $userdetails = $user->getProfile($user_id);
-        $this->view('ITspecialist/editProfile', $userdetails);
-
-    }
-
-    public function editUser($user_id)
-    {
-        //edit the users information (username or/and password)
-        $user = new \app\models\User();
-        $user = $user->getUserInfo($user_id);
-
-        if(isset($_POST['action']))
+        if(isset($_POST['editUser']))
         {
+            // $user->user_id = $user_id; 
+            $user = new \app\models\User();
             $user->username = $_POST['username'];
-            $user->password_hash = $_POST['password_hash'];
+            $user->password_hash = password_hash($_POST['password'], PASSWORD_DEFAULT);
 
-            $success = $ingredient->editUser($user_id);
+            $success = $user->editUser($user_id);
 
             if($success){
+                // echo 'sdsds';
                 header('location:/ITspecialist/userDetails/' . $user_id. '?success=User Account Was Updated.');
             } else {
                 header('location:/ITspecialist/edit/' . $user_id. '?error=Error when modifying User Account.');
             }
-        } else {
-            $this->view('ITspecialist/editUser', $user);
+        } else if(isset($_POST['editProfile']))
+            {
+                if($_POST['first_name'] != '' 
+                    && $_POST['last_name'] != '' 
+                    && $_POST['email'] != '' 
+                    && $_POST['phone_number'] != '' 
+                    && $_POST['status'] != ''
+                    && $_POST['first_name'] != null 
+                    && $_POST['last_name'] != null 
+                    && $_POST['email'] != null 
+                    && $_POST['phone_number'] != null 
+                    && $_POST['status'] != null){
+
+                    $profile = new \app\models\Profile();
+                    $profile->user_id = $user_id;
+                    $profile->first_name = htmlentities($_POST['first_name']);
+                    $profile->middle_name = htmlentities($_POST['middle_name']);
+                    $profile->last_name = htmlentities($_POST['last_name']);
+                    $profile->email = htmlentities($_POST['email']);
+                    $profile->phone_number = htmlentities($_POST['phone_number']);
+                    $profile->status = htmlentities($_POST['status']);
+
+                    $success = $profile->editProfile($user_id);
+
+                    if($success)
+                    {
+                        header('location:/ITspecialist/userDetails/' . $user_id. '?success=User Profile Was Updated.');
+                    }else{
+
+                        header('location:/ITspecialist/edit/' . $user_id.'?error=Error when modifying Profile.');
+                    }
+                }else{
+                    header('location:/ITspecialist/edit/' . $user_id.'?error=Fill up the dam things, except for middle name');
+                }
+
+            }else{ 
+        
+            $user = new \app\models\User();
+            $user = $user->getUserInfo($user_id);
+            $this->view('ITspecialist/edit', $user);
         }
+
+        
     }
+
+    // public function editProfile($user_id)
+    // {
+    //     edit the users profile information (first_name, middle_name, last_name, email,phone_number and status)
+
+    //     $user = new \app\models\User();
+    //     $userdetails = $user->getProfile($user_id);
+    //     $this->view('ITspecialist/editProfile', $userdetails);
+
+    // }
+
+    // public function editUser($user_id)
+    // {
+    //     edit the users information (username or/and password)
+       
+    //     if(isset($_POST['action']))
+    //     {
+    //         // $user->user_id = $user_id; 
+    //         $user->username = $_POST['username'];
+    //         $user->password_hash = password_hash($_POST['password'], PASSWORD_DEFAULT);
+
+    //         $success = $user->editUser($user_id);
+
+    //         if($success){
+    //             echo 'sdsds';
+    //             // header('location:/ITspecialist/userDetails/' . $user_id. '?success=User Account Was Updated.');
+    //         } else {
+    //             // header('location:/ITspecialist/edit/' . $user_id. '?error=Error when modifying User Account.');
+    //         }
+    //     } else { 
+        
+    //         $user = new \app\models\User();
+    //         $user = $user->getUserInfo($user_id);
+    //         $this->view('ITspecialist/editUser');
+    //     }
+    // }
     
 }

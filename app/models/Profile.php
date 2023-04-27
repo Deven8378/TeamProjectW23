@@ -75,5 +75,23 @@ class Profile extends \app\core\Model
 		return $STH->rowCount();
 	}
 
+	public function editProfile($user_id)
+	{
+		$SQL = "UPDATE profile SET first_name=:first_name, middle_name=:middle_name, last_name=:last_name,email=:email,phone_number=:phone_number,status=:status WHERE user_id=:user_id";
+		$STH = self::$connection->prepare($SQL);
+		$data = [
+				'user_id'=>$user_id,
+				'first_name'=>$this->first_name,
+				'middle_name'=>$this->middle_name,
+				'last_name'=>$this->last_name,
+				'email'=>$this->email,
+				'phone_number'=>$this->phone_number,
+				'status'=>$this->status
+		];
+		$STH->execute($data);
+		return $STH->rowCount();
+
+	}
+
 
 }
