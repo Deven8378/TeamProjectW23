@@ -18,7 +18,16 @@ class Ingredient extends \app\core\Model {
 
 	public function getIngredientDetails($ingredient_id) 
 	{
-		$SQL = "SELECT * FROM `ingredient` WHERE `ingredient_id` = :ingredient_id;";
+		$SQL = "SELECT * FROM `ingredient` JOIN `ingredient_quantity` ON `ingredient`.`ingredient_id` = `ingredient_quantity`.`ingredient_id` WHERE `ingredient`.`ingredient_id` = :ingredient_id;";
+		$STH = self::$connection->prepare($SQL);
+		$data = ['ingredient_id'=>$ingredient_id];
+		$STH->execute($data);
+		$STH->setFetchMode(\PDO::FETCH_CLASS, 'app\\models\\Ingredient');
+		return $STH->fetch();
+	}
+
+	public function getAllQuantity($ingredient_id){
+		$SQL = "SELECT SUM(quantity) FROM `ingredient_quantity` WHERE ingredient_id` = :ingredient_id;";
 		$STH = self::$connection->prepare($SQL);
 		$data = ['ingredient_id'=>$ingredient_id];
 		$STH->execute($data);

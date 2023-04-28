@@ -3,6 +3,7 @@
 	max-height: 500px;
 	border-radius: 10px;
 	position: absolute;
+	padding-right: 20px;
   	top: 50%;
   	transform: translate(-50%,-50%);
 }

@@ -35,9 +35,11 @@ class Ingredient extends \app\core\Controller
     public function ingredientDetails($ingredient_id){
         $ingredient = new \app\models\Ingredient();
         $success = $ingredient->getIngredientDetails($ingredient_id);
+        $allQuantity = new \app\models\IngredientQuantity;
+        $allQuantity = $allQuantity->getAllQuantity($ingredient_id);
 
         if($success){
-            $this->view('Ingredient/ingredientDetails', $success);
+            $this->view('Ingredient/ingredientDetails', [$success, $allQuantity]);
         } else {
             header('location:/Ingredient/index?error=Ingredient does not exists.');
         }
@@ -83,14 +85,15 @@ class Ingredient extends \app\core\Controller
     }
 
     #[\app\filters\Admin]
-    public function addQuantity() 
+    public function addQuantity($ingredient_id) 
     {
         if (isset($_POST['action'])) {
             $ingredient_quantity = new \app\models\IngredientQuantity();
             $ingredient_quantity->arrival_date = $_POST['arrival_date'];
             $ingredient_quantity->expired_date = $_POST['expired_date'];
             $ingredient_quantity->quantity = $_POST['quantity'];
-            $success->price = $_POST['price'];
+            $ingredient_quantity->price = $_POST['price'];
+            $success = $ingredient_quantity->addIngredientQuantity($ingredient_id);
 
             if($success){
                 header('location:/Ingredient/ingredientDetails/' . $ingredient_id. '?success=Ingredient added quantity.');
