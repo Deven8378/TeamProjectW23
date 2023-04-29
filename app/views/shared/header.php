@@ -12,6 +12,7 @@
 	<link rel="stylesheet" type="text/css" href="/css/login.css">
 	<link rel="stylesheet" type="text/css" href="/css/IT.css">
 	<link rel="stylesheet" type="text/css" href="/css/recipe.css">
+	<link rel="stylesheet" type="text/css" href="/css/buttons.css">
 
 	<title><?= $data ?></title>
 
@@ -23,13 +24,11 @@
 		}
 	</script>
 	<style>
-		/*body {
-		  font-family: 'Lato', sans-serif;
-		}*/
 
 		
+		
 	</style>
-<!-- <title><?=htmlentities($data)?></title> -->
+<title><?=htmlentities($data)?></title>
 	
 </head>
 

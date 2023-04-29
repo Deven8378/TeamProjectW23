@@ -279,10 +279,10 @@ form label {
   color: #e166ff;
 }
 
-.btn-container a:hover, .btn-container a:focus {
+/*.btn-container a:hover, .btn-container a:focus {
   color: #fff;
   background-color: #e9baf5;
-}
+}*/
 
 .overlay-userDetails .closebtn {
   position: absolute;
@@ -300,3 +300,4 @@ form label {
   right: 35px;
   }
 }
+

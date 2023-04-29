@@ -12,13 +12,39 @@
     </div>
 
     <div>
-      <button id="toggle-to-profile" class="btn-edit">View Account Information</button>
-      <button id="toggle-to-account" class="btn-edit">View Profile Information</button>
+      <!-- 
+      background-color: #EA4C89;
+      border-radius: 8px;
+      border-style: none;
+      box-sizing: border-box;
+      color: #FFFFFF;
+      cursor: pointer;
+      display: inline-block;
+      
+      font-size: 14px;
+      font-weight: 500;
+      height: 40px;
+      line-height: 20px;
+      list-style: none;
+      margin: 0;
+      outline: none;
+      padding: 10px 16px;
+      position: relative;
+      text-align: center;
+      text-decoration: none;
+      transition: color 100ms;
+      vertical-align: baseline;
+      user-select: none;
+      -webkit-user-select: none;
+      touch-action: manipulation; 
+      -->
+      <button id="toggle-to-account" class="btn-edit" style="" >View Profile Information</button>
+      <button id="toggle-to-profile" class="btn-edit" style="">View Account Information</button>
     </div>
 
     <dl class="dl-viewUserDetails" style="">
 
-              <!-- Left side -->
+    <!-- Left side -->
     <div class="" style="flex: 70%; " >
 
       <div id="profile">

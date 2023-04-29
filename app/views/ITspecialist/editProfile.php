@@ -17,7 +17,13 @@
   <input class="dd-left" type="" name="phone_number" value="<?= $data->phone_number ?>">
 
   <dt class="dt-label"><?=_('Status')?></dt>
-  <input class="dd-left" type="" name="status" value="<?= $data->status ?>">
+  <!-- <input class="dd-left" type="" name="status" value="<?= $data->status ?>"> -->
+  <!-- <br> -->
+    <select name="status" id="status" class="dropdownUserType">
+      <!-- <option selected disabled><?= _('--Select a User Status--') ?></option> -->
+      <option selected value="active" name="active"><?= _('Active') ?></option>
+      <option value="inactive" name="inactive"><?= _('Inactive') ?></option>
+    </select>
   <br>
   <input class="" type="submit" name="editProfile" value="Upload Profile Change">
   
