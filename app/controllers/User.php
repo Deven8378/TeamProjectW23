@@ -3,6 +3,7 @@ namespace app\controllers;
 
 class User extends \app\core\Controller
 {
+   
     public function index()
     {
         if (!isset($_SESSION['user_id']))
