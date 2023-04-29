@@ -13,9 +13,12 @@ class Status implements \app\core\AccessFilter
 			$status = $profile->status; 
 			if($status == 'inactive')
 			{
-				session_destroy();
-				header('location:/User/index?error=Please contact your IT Specialist.');
-				return true;
+				// if($_SESSION['user_type'] != 'itspecialist'){
+
+					session_destroy();
+					header('location:/User/index?error=Please contact your IT Specialist.');
+					return true;
+				// }
 			}
 		}
 		return false;
