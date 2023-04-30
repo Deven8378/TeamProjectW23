@@ -108,6 +108,7 @@ class Ingredient extends \app\core\Controller
         }
     }
 
+    #[\app\filters\Admin]
     public function editQuantity($iq_id)
     {  
         $ingredientQuantity = new \app\models\IngredientQuantity();
