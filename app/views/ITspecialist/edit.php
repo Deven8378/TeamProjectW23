@@ -3,7 +3,7 @@
 
 <div class="userDetails">
     <div class="col-4">
-        <a href="/ITspecialist/userDetails/<?= $data->user_id ?>" type="submit" class="btn-userDetails"><?=_('Back')?></a>
+        <a onClick="history.go(-1)" id="backLink"><i class="bi bi-arrow-left"></i><?= _('Back') ?></a>
     </div>   
       <!-- <input type="submit" id="option" onclick="myFunction()" value="Edit Account"> -->
 

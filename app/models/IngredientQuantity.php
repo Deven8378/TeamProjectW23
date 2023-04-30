@@ -10,15 +10,16 @@ class IngredientQuantity extends \app\core\Model {
 	public $quantity;
 	public $price;
 
-	public function getAll() {
+	public function getAll($ingredient_id) {
 		$SQL = 'SELECT * FROM ingredient_quantity WHERE ingredient_id=:ingredient_id';
 		$STH = self::$connection->prepare($SQL);
-		$STH->execute();
+		$data = ['ingredient_id'=>$ingredient_id];
+		$STH->execute($data);
 		$STH->setFetchMode(\PDO::FETCH_CLASS, 'app\\models\\IngredientQuantity');
-		return $STH->fetch();
+		return $STH->fetchAll();
 	}
 
-	public function getAllQuantity($ingredient_id){
+	public function getTotalQuantity($ingredient_id){
 		$SQL = "SELECT SUM(quantity) AS `fullQuantity` FROM `ingredient_quantity` WHERE `ingredient_id` = :ingredient_id;";
 		$STH = self::$connection->prepare($SQL);
 		$data = ['ingredient_id'=>$ingredient_id];

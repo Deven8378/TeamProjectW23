@@ -35,11 +35,14 @@ class Ingredient extends \app\core\Controller
     public function ingredientDetails($ingredient_id){
         $ingredient = new \app\models\Ingredient();
         $success = $ingredient->getIngredientDetails($ingredient_id);
+        $totalQuantity = new \app\models\IngredientQuantity;
+        $totalQuantity = $totalQuantity->getTotalQuantity($ingredient_id);
         $allQuantity = new \app\models\IngredientQuantity;
-        $allQuantity = $allQuantity->getAllQuantity($ingredient_id);
+        $allQuantity = $allQuantity->getAll($ingredient_id);
+
 
         if($success){
-            $this->view('Ingredient/ingredientDetails', [$success, $allQuantity]);
+            $this->view('Ingredient/ingredientDetails', [$success, $totalQuantity, $allQuantity]);
         } else {
             header('location:/Ingredient/index?error=Ingredient does not exists.');
         }

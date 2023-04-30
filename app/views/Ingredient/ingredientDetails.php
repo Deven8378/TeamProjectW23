@@ -1,6 +1,17 @@
 <?php $this->view('shared/header', $data[0]->name . " Details"); ?>
 <?php $this->view('shared/navigation/nav'); ?>
 <link rel="stylesheet" type="text/css" href="/css/foodDetails.css">
+<script type="text/javascript">
+  function myFunction() {
+  var x = document.getElementById("myDIV");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  }
+}
+</script>
+
 
 <div id="foodDetailsDiv">
   <a href="/Ingredient/index" id="backLink"><i class="bi bi-arrow-left"></i><?= _('Back') ?></a>
@@ -16,39 +27,67 @@
       </div>
       <div class="col-7">
         <div id="foodDetails">
-          <h1 id="foodName"><?= htmlentities($data[0]->name) ?></h1>
+          <div class="row justify-content-between">
+            <div class="col-4">
+              <h1 id="foodName"><?= htmlentities($data[0]->name) ?></h1>
+            </div>
+            <div class="col-4">
+              <div class="btn-group dropend">
+                <button type="button" class="btn" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="bi bi-three-dots-vertical"></i>More</button>
+                <div class="dropdown-menu">
+                    <li>
+                      <a class="dropdown-item" href="/Ingredient/edit/<?= $data[0]->ingredient_id ?>">
+                        <?= _('Edit') ?>
+                      </a>
+                    </li>
+                    <li>
+                      <a class="dropdown-item" href="/Ingredient/delete/<?= $data[0]->ingredient_id ?>">
+                        <?= _('Delete') ?>
+                      </a>
+                    </li>
+                    <li>
+                      <a class="dropdown-item" href="/Ingredient/addQuantity/<?= $data[0]->ingredient_id ?>">
+                        <?= _('Add Quantity') ?>
+                      </a>
+                    </li>
+                </div>
+              </div>
+            </div>
+          </div>
           <div class="container" id="ingredientContent">
             <div class="row align-items-start">
               <div class="col">
                 <?= _('Description') ?>: 
                 <br>
-                <?= _('Quantity') ?>:
+                <button onclick="myFunction()"><?= _('Quantity') ?>:</button>
               </div>
               <div class="col">
                 <p><?= htmlentities($data[0]->description) ?></p>
                 <p><?= htmlentities($data[1]->fullQuantity) ?></p>
               </div>
-              <div class="spacer" style="height: 200px; flex-shrink: 0; margin: 0; padding: 0;"></div>
-              <div class="container">
-                <div class="row justify-content-start">
-                  <div class="col-2">
-                    <a class="btn" href="/Ingredient/edit/<?= $data[0]->ingredient_id ?>" role="button" style="background-color: #e8c8e7;">
-                      <?= _('Edit') ?>
-                    </a>
-                  </div>
-                  <div class="col-2">
-                    <a class="btn" href="/Ingredient/delete/<?= $data[0]->ingredient_id ?>" role="button" style="background-color: #e8c8e7;">
-                      <?= _('Delete') ?>
-                    </a>
-                  </div>
-                  <div class="col-3">
-                    <a class="btn" href="/Ingredient/addQuantity/<?= $data[0]->ingredient_id ?>" role="button" style="background-color: #e8c8e7;">
-                      <?= _('Add Quantity') ?>
-                    </a>
-                  </div>                  
-                </div>
-              </div>
             </div>
+          </div>
+          <div id="myDIV">
+            <table class="table table-hover">
+              <thead>
+                <tr>
+                  <th scope="col">Quantity</th>
+                  <th scope="col">Arrival Date</th>
+                  <th scope="col">Expired Date</th>
+                  <th scope="col">Price</th>
+                </tr>
+              </thead>
+              <tbody>
+                <?php foreach ($data[2] as $quantity) { ?>
+                <tr>
+                  <th scope="row"><?= $quantity->quantity ?></th>
+                  <td><?= $quantity->arrival_date ?></td>
+                  <td><?= $quantity->expired_date ?></td>
+                  <td><?= $quantity->price ?></td>
+                </tr>
+                <?php } ?>
+              </tbody>
+            </table>
           </div>
         </div>
       </div>
