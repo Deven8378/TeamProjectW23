@@ -107,4 +107,42 @@ class Ingredient extends \app\core\Controller
             $this->view('Ingredient/addQuantity');
         }
     }
+
+    public function editQuantity($iq_id)
+    {  
+        $ingredientQuantity = new \app\models\IngredientQuantity();
+        $ingredientQuantity = $ingredientQuantity->getOneQuantity($iq_id);
+
+        if(isset($_POST['action']))
+        {
+            $ingredientQuantity->quantity = $_POST['quantity'];
+            $ingredientQuantity->arrival_date = $_POST['arrival_date'];
+            $ingredientQuantity->expired_date = $_POST['expired_date'];
+            $ingredientQuantity->price = $_POST['price'];
+            $success = $ingredientQuantity->editQuantity($iq_id);
+
+            if($success){
+                header('location:/Ingredient/ingredientDetails/' . $ingredientQuantity->ingredient_id . '?success=Ingredient Quantity Updated.');
+            } else {
+                header('location:/Ingredient/ingredientDetails/' . $ingredientQuantity->ingredient_id . '?error=Error.');
+            }
+        } else {
+            echo $ingredientQuantity->iq_id;
+            $this->view('Ingredient/editQuantity', $ingredientQuantity);
+        }
+    }
+
+    #[\app\filters\Admin]
+    public function deleteQuantity($iq_id)
+    {
+        $ingredientQuantity = new \app\models\IngredientQuantity();
+        $ingredient = $ingredientQuantity->getOneQuantity($iq_id);
+        $ingredientNumber = $ingredient->ingredient_id;
+        $success = $ingredientQuantity->deleteQuantity($iq_id);
+        if($success){
+            header('location:/Ingredient/ingredientDetails/'. $ingredientNumber .'?success=Ingredient Quantity deleted.');
+        } else {
+            header('location:/Ingredient/ingredientDetails'. $ingredientNumber .'?error=Error occured.');
+        }
+    }
 }

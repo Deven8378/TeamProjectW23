@@ -38,7 +38,7 @@ class Ingredient extends \app\core\Model {
 	}
 
 	public function editIngredient($ingredient_id) {
-		$SQL = "UPDATE `ingredient` SET `name`=:name, `description`=:description, `picture`=:picture WHERE ingredient_id=:ingredient_id";
+		$SQL = "UPDATE `ingredient` SET `name`=:name, `description`=:description, `picture`=:picture WHERE ingredient_id=:ingredient_id;";
 		$STH = self::$connection->prepare($SQL);
 		$data = ['ingredient_id'=>$this->ingredient_id,
 				'name'=>$this->name,

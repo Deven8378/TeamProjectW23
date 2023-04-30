@@ -75,6 +75,7 @@
                   <th scope="col">Arrival Date</th>
                   <th scope="col">Expired Date</th>
                   <th scope="col">Price</th>
+                  <th scope="col"></th>
                 </tr>
               </thead>
               <tbody>
@@ -84,6 +85,23 @@
                   <td><?= $quantity->arrival_date ?></td>
                   <td><?= $quantity->expired_date ?></td>
                   <td><?= $quantity->price ?></td>
+                  <td>
+                    <div class="btn-group dropend">
+                      <button type="button" class="btn" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="bi bi-three-dots-vertical"></i>More</button>
+                      <div class="dropdown-menu">
+                          <li>
+                            <a class="dropdown-item" href="/Ingredient/editQuantity/<?= $quantity->iq_id ?>">
+                              <?= _('Edit') ?>
+                            </a>
+                          </li>
+                          <li>
+                            <a class="dropdown-item" href="/Ingredient/deleteQuantity/<?= $quantity->iq_id ?>">
+                              <?= _('Delete') ?>
+                            </a>
+                          </li>
+                      </div>
+                    </div>
+                  </td>
                 </tr>
                 <?php } ?>
               </tbody>
