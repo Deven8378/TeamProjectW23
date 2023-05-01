@@ -2,20 +2,20 @@
 namespace app\models;
 
 class Notification extends \app\core\Model{
-	public $message_id;
-	public $sender;
-	public $receiver;
+	public $notify_id;
+	public $notify_type;
 	public $message;
 	public $timestamp;
-	public $full_name;
+	public $treshold;
 
 	public function insert(){
-		$SQL = "INSERT INTO message (full_name, sender, receiver, message) value (:full_name, :sender, :receiver, :message)";
+		$SQL = "INSERT INTO notification (notify_id, notify_type, message, `timestamp`, treshold) value (:notify_id, :notify_type, :message, :timestamp, :treshold);";
 		$STH = self::$connection->prepare($SQL);
-		$data = ['sender'=>$this->sender,
-					'receiver'=>$this->receiver,
+		$data = ['notify_id'=>$this->notidy_id,
+					'notify_type'=>$this->notify_type,
 					'message'=>$this->message,
-					'full_name'=>$this->full_name
+					'timestamp'=>$this->timestamp,
+					'treshold'=>$this->treshold
 				];
 		$STH->execute($data);
 		$this->message_id = self::$connection->lastInsertId();
@@ -24,9 +24,9 @@ class Notification extends \app\core\Model{
 
 	public function delete($message_id, $user_id){
 		//only the owner of the message can delete it
-		$SQL = "DELETE FROM message WHERE message_id=:message_id AND receiver=:receiver";
+		$SQL = "DELETE FROM notification WHERE notify_id=:notify_id;";
 		$STH = self::$connection->prepare($SQL);
-		$data = ['message_id'=>$message_id, 'receiver'=>$user_id];
+		$data = ['notify_id'=>$notify_id];
 		$STH->execute($data);
 		return $STH->rowCount(); 
 	}
@@ -35,15 +35,6 @@ class Notification extends \app\core\Model{
 		$SQL = "SELECT `message`.`message_id`, `message`.`full_name` ,`message`.`message`, `message`.`timestamp` FROM `message` WHERE receiver=:receiver;";
 		$STH = self::$connection->prepare($SQL);
 		$data = ['receiver'=>$user_id];
-		$STH->execute($data);
-		$STH->setFetchMode(\PDO::FETCH_CLASS, 'app\\models\\Message');
-		return $STH->fetchAll();
-	}
-
-	public function getSent($user_id){
-		$SQL = "SELECT `message`.`message_id`, `message`.`full_name` ,`message`.`message`, `message`.`timestamp` FROM `message` WHERE sender=:sender;";
-		$STH = self::$connection->prepare($SQL);
-		$data = ['sender'=>$user_id];
 		$STH->execute($data);
 		$STH->setFetchMode(\PDO::FETCH_CLASS, 'app\\models\\Message');
 		return $STH->fetchAll();
