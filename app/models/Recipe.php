@@ -43,11 +43,12 @@ class Recipe extends \app\core\Model {
 	}
 
 	public function update() {
-		$SQL = "UPDATE recipe SET title=:title, picture=:picture, description=:description";
+		$SQL = "UPDATE recipe SET title=:title, picture=:picture, description=:description WHERE recipe_id =:recipe_id ";
 		$STH = self::$connection->prepare($SQL);
 		$STH->execute(['title'=>$this->title,
 						'description'=>$this->description,
-						'picture'=>$this->picture]);
+						'picture'=>$this->picture,
+						'recipe_id'=>$this->recipe_id]);
 	}
 
 }

@@ -73,7 +73,6 @@ class Recipe extends \app\core\Controller {
 		$recipe = new \app\models\Recipe();
 		$recipe = $recipe->get($recipe_id);
 		$recipe->delete();
-		unlink("productImages/$recipe->picture");
 		header('location:/Recipe/index');
 	}
 }

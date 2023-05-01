@@ -26,7 +26,7 @@
         </a>
         <ul class="dropdown-menu">
           <li><a class="dropdown-item" href="/Ingredient/index"><i class="bi bi-arrow-right"></i> Ingredients</a></li>
-          <li><a class="dropdown-item" href="#"><i class="bi bi-arrow-right"></i> Products</a></li>
+          <li><a class="dropdown-item" href="/Product/index"><i class="bi bi-arrow-right"></i> Products</a></li>
         </ul>
       </li>
       <li class="nav-item">

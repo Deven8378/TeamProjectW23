@@ -1,13 +1,40 @@
-<?php $this->view('shared/header', _("Recipes")); ?>
+<?php $this->view('shared/header', $data->name . " Details"); ?>
 <?php $this->view('shared/navigation/nav'); ?>
+<link rel="stylesheet" type="text/css" href="/css/foodDetails.css">
 
-<h2 class='recipeTitle'><?= $data->title ?></h2>
-<img class='recipeDetailsImage' src='/productImages/<?= $data->picture ?>'>
-<p class='recipeText'><?= $data->description ?></p>
+<div id="foodDetailsDiv">
+  <a href="/Recipe/index" id="backLink"><i class="bi bi-arrow-left"></i><?= _('Back') ?></a>
 
-<a href='/Recipe/delete/<?= $data->recipe_id ?>'><?= _('Delete Recipe') ?></a> <br>
+  <div class="container text-center">
+    <div class="row align-items-start">
+      <div class="col-5">
+        <div>
+          <img id="foodIMG" src="/productImages/<?= htmlentities($data->picture) ?>">
+          <div class="spacer" style="height: 500px; flex-shrink: 0; margin: 0; padding: 0;"></div>
+          <a class="btn" href="/Recipe/edit/<?= htmlentities($data->recipe_id) ?>" role="button" style="background-color: #e8c8e7;">
+            <?= _('Edit') ?>
+          </a>
+          <a class="btn" href="/Recipe/delete/<?= htmlentities($data->recipe_id) ?>" role="button" style="background-color: #e8c8e7;">
+            <?= _('Delete') ?>
+          </a>
+        </div>
+      </div>
+      <div class="col-7">
+        <div id="foodDetails">
+          <h1 id="foodName"><?= htmlentities($data->name) ?></h1>
 
-<a href='/Recipe/edit/<?= $data->recipe_id ?>'><?= _('Edit Recipe') ?></a> <br>
-
-
-<a href='/Recipe/index/'><?= _('Back') ?></a>
+          <div class="container" id="ingredientContent">
+            <div class="row align-items-start">
+              <div class="col">
+                <?= _('Description') ?>: 
+              </div>
+              <div class="col">
+                <p><?= htmlentities($data->description) ?></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
