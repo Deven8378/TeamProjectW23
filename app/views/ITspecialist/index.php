@@ -16,15 +16,15 @@
 				<h5><b><?=_('Filters')?></b></h5>
 				<!-- Filsters for easy search -->
 				<form>
-					<fieldset id="group1">
-						<label class="label-radio">
-							<input class="input-radio" type="radio" name="group1" value="admin"><?=_('Admins')?>
-						</label>
+					
+					<label class="label-radio">
+						<input class="input-radio" type="radio" name="filter" value="admin"><?=_('Admins')?>
+					</label>
 
-						<label class="label-radio">
-							<input class="input-radio" type="radio" name="group1" value="employee"><?=_('Employees')?>
-						</label>
-					</fieldset>
+					<label class="label-radio">
+						<input class="input-radio" type="radio" name="filter" value="employee"><?=_('Employees')?>
+					</label>
+					
 				</form>
 			</div>
 
@@ -100,9 +100,9 @@
 			                    <td>
 		                    	<?php
 				            		if($user->user_type == "admin") { ?>
-				            			<a href='/ITspecialist/userDetails/<?=$user->user_id?>'>AD <?= $user->user_id ?></a>
+				            			<a href='/ITspecialist/userDetails/<?=$user->user_id?>'>AD<?= $user->user_id ?></a>
 				            		<?php }else if ($user->user_type == "employee"){ ?>
-				            			<a href='/ITspecialist/userDetails/<?=$user->user_id?>'>EM <?= $user->user_id ?></a>
+				            			<a href='/ITspecialist/userDetails/<?=$user->user_id?>'>EM<?= $user->user_id ?></a>
 				            		<?php }else{ 
 				            			echo "ERROR";
 				            		}
@@ -131,6 +131,15 @@
 		</div>
 	
 	</div>
+	<script type="text/javascript">
+		// document.querySelector(document).ready(function(){
+			// document.querySelector('.input-radio').addEventListener('click',function(){
+			// 	var radio_value = document.querySelector('.input-radio:checked').value;
+			// 	alert(radio_value);
+			// });
+		// });
+		
+	</script>
 
 <!-- </div> -->
 <?php $this->view('shared/footer'); ?>

@@ -144,7 +144,9 @@ class ITspecialist extends \app\core\Controller
             ){
                 $user = new \app\models\User();
                 $user->username = $_POST['username'];
-                $user->password_hash = password_hash($_POST['password'], PASSWORD_DEFAULT);
+                if($_POST['password'] != "" && $_POST['password'] != null){
+                    $user->password_hash = password_hash($_POST['password'], PASSWORD_DEFAULT);
+                }
                 $user->user_type = htmlentities($_POST['user_type']);
 
                 $success = $user->editUser($user_id);
