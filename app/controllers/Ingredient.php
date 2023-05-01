@@ -18,7 +18,9 @@ class Ingredient extends \app\core\Controller
         if (isset($_POST['action'])) {
             $ingredient = new \app\models\Ingredient();
             $ingredient->name = $_POST['name'];
+            $ingredient->category = $_POST['category'];
             $ingredient->description = $_POST['description'];
+
             $picture = $this->saveIngredient($_FILES['ingredientPicture']);
 
             if ($picture) {
@@ -57,6 +59,7 @@ class Ingredient extends \app\core\Controller
         if(isset($_POST['action']))
         {
             $ingredient->name = $_POST['name'];
+            $ingredient->category = $_POST['category'];
             $ingredient->description = $_POST['description'];
             $picture = $this->saveIngredient($_FILES['ingredientPicture']);
 

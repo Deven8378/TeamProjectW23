@@ -5,6 +5,7 @@ class Ingredient extends \app\core\Model {
 
 	public $ingredient_id;
 	public $name;
+	public $category;
 	public $description;
 	public $picture;
 
@@ -27,10 +28,11 @@ class Ingredient extends \app\core\Model {
 	}
 
 	public function addIngredient() {
-		$SQL = "INSERT INTO `ingredient` (`ingredient_id`, `name`, `description`, `picture`) value (:ingredient_id, :name, :description, :picture)";
+		$SQL = "INSERT INTO `ingredient` (`ingredient_id`, `name`, `category`, `description`, `picture`) value (:ingredient_id, :name, :category, :description, :picture)";
 		$STH = self::$connection->prepare($SQL);
 		$data = ['ingredient_id'=>$this->ingredient_id,
 				'name'=>$this->name,
+				'category'=>$this->category,
 				'description'=>$this->description,
 				'picture'=>$this->picture];
 		$STH->execute($data);
@@ -38,10 +40,11 @@ class Ingredient extends \app\core\Model {
 	}
 
 	public function editIngredient($ingredient_id) {
-		$SQL = "UPDATE `ingredient` SET `name`=:name, `description`=:description, `picture`=:picture WHERE ingredient_id=:ingredient_id;";
+		$SQL = "UPDATE `ingredient` SET `name`=:name, `category`=:category `description`=:description, `picture`=:picture WHERE ingredient_id=:ingredient_id;";
 		$STH = self::$connection->prepare($SQL);
 		$data = ['ingredient_id'=>$this->ingredient_id,
 				'name'=>$this->name,
+				'category'=>$this->category,
 				'description'=>$this->description,
 				'picture'=>$this->picture];
 		$STH->execute($data);
