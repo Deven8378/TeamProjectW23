@@ -1,4 +1,12 @@
 <?php $this->view('shared/header', $data[0]->name . " Details"); ?>
+<?php 
+$user = new \app\models\User();
+$user = $user->getByUserId($_SESSION['user_id']);
+$type = $user->user_type;
+$isAdmin = False;
+if ($type == "admin")
+  $isAdmin = True;
+?>
 <?php $this->view('shared/navigation/nav'); ?>
 <link rel="stylesheet" type="text/css" href="/css/foodDetails.css">
 <script type="text/javascript">
@@ -32,6 +40,7 @@
               <h1 id="foodName"><?= htmlentities($data[0]->name) ?></h1>
             </div>
             <div class="col-4">
+              <?php if ($isAdmin) { ?>
               <div class="btn-group dropend">
                 <button type="button" class="btn" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="bi bi-three-dots-vertical"></i>More</button>
                 <div class="dropdown-menu">
@@ -52,6 +61,7 @@
                     </li>
                 </div>
               </div>
+            <?php  }?>
             </div>
           </div>
           <div class="container" id="ingredientContent">
@@ -89,6 +99,7 @@
                     <div class="btn-group dropend">
                       <button type="button" class="btn" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="bi bi-three-dots-vertical"></i>More</button>
                       <div class="dropdown-menu">
+                        <?php if ($isAdmin) { ?>
                           <li>
                             <a class="dropdown-item" href="/Product/editQuantity/<?= $quantity->pq_id ?>">
                               <?= _('Edit') ?>
@@ -98,6 +109,12 @@
                             <a class="dropdown-item" href="/Product/deleteQuantity/<?= $quantity->pq_id ?>">
                               <?= _('Delete') ?>
                             </a>
+                            <li>
+                            <?php } ?>
+                              <a class="dropdown-item" href="/Product/editQuantityOnly<?=$quantity->pq_id?>">
+                              <?= _('Edit Quantity') ?>
+                               </a>
+                            </li>
                           </li>
                       </div>
                     </div>
