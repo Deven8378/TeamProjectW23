@@ -67,7 +67,7 @@ if ($type == "admin")
           <div class="container" id="ingredientContent">
             <div class="row align-items-start">
               <div class="col">
-                <?= _('Description') ?>: 
+                <?= _('Description') ?>:
                 <br>
                 <button onclick="myFunction()"><?= _('Quantity') ?>:</button>
               </div>
@@ -84,7 +84,7 @@ if ($type == "admin")
                   <th scope="col">Quantity</th>
                   <th scope="col">Arrival Date</th>
                   <th scope="col">Expired Date</th>
-                  <th scope="col">Price</th>
+                  <th scope="col">Unit Price</th>
                   <th scope="col"></th>
                 </tr>
               </thead>

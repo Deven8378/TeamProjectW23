@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 26, 2023 at 04:26 PM
--- Server version: 10.4.27-MariaDB
--- PHP Version: 8.2.0
+-- Generation Time: May 01, 2023 at 05:35 PM
+-- Server version: 10.4.28-MariaDB
+-- PHP Version: 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -33,9 +33,17 @@ DROP TABLE IF EXISTS `ingredient`;
 CREATE TABLE `ingredient` (
   `ingredient_id` int(11) NOT NULL,
   `name` varchar(50) NOT NULL,
+  `category` varchar(25) NOT NULL,
   `description` text NOT NULL,
   `picture` varchar(128) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `ingredient`
+--
+
+INSERT INTO `ingredient` (`ingredient_id`, `name`, `category`, `description`, `picture`) VALUES
+(4, 'Banana', 'fruit', 'This is a yellow banana.', '644fdb1ea964d.jpg');
 
 -- --------------------------------------------------------
 
@@ -137,7 +145,8 @@ CREATE TABLE `profile` (
 INSERT INTO `profile` (`user_id`, `first_name`, `middle_name`, `last_name`, `email`, `phone_number`, `status`) VALUES
 (2, 'Nicole', '', 'Bautista', 'nicole@gmail.com', '5141234567', 'active'),
 (3, 'Deven', '', 'Patel', 'deven@gmail.com', '5141234567', 'active'),
-(4, 'Rachelle', 'Secret', 'Badua', 'rachelle@gmail.com', '5141234567', 'inactive');
+(4, 'Rachelle', 'Secret', 'Badua', 'rachelle@gmail.com', '5141234567', 'inactive'),
+(14, 'Mubeen', 'Academy', 'Khan', 'mubeen@email.com', '5141234567', 'active');
 
 -- --------------------------------------------------------
 
@@ -175,7 +184,8 @@ INSERT INTO `user` (`user_id`, `user_type`, `username`, `password_hash`) VALUES
 (1, 'itspecialist', 'itspecialist', '$2y$10$RUJd5d.C02znWlNyzZeGgOasNkkvXrwV.lr3p2V5BWAHQD4Px4GG2'),
 (2, 'admin', 'Nicole', '$2y$10$MM.fKeE0SWVsfdj1K8ZHru1/qkqX8u8EV1.xCqBragA/EkqGZSW8q'),
 (3, 'admin', 'Deven', '$2y$10$zaiI4rIJ3ZEMVkzGOtTLIuTuu3usc8/QLJq3.c.EbsTXo6KoLyPg.'),
-(4, 'employee', 'Rachelle', '$2y$10$dPLEgTN9QKC5E3Z6u/IYN./YsL07/aG/MSS1XAfEYNyH/lrLGcVf.');
+(4, 'employee', 'Rachelle', '$2y$10$dPLEgTN9QKC5E3Z6u/IYN./YsL07/aG/MSS1XAfEYNyH/lrLGcVf.'),
+(14, 'employee', 'employee', '$2y$10$Ll3.loOOb8rS9YkBPuvUrOH30lpPpgZTRZ.qpD6ixn4BhkjCEcH9.');
 
 --
 -- Indexes for dumped tables
@@ -245,13 +255,13 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `ingredient`
 --
 ALTER TABLE `ingredient`
-  MODIFY `ingredient_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `ingredient_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `ingredient_quantity`
 --
 ALTER TABLE `ingredient_quantity`
-  MODIFY `iq_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `iq_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `message`
@@ -287,7 +297,7 @@ ALTER TABLE `recipe`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- Constraints for dumped tables
@@ -297,7 +307,7 @@ ALTER TABLE `user`
 -- Constraints for table `ingredient_quantity`
 --
 ALTER TABLE `ingredient_quantity`
-  ADD CONSTRAINT `inquantity_to_ingredient` FOREIGN KEY (`ingredient_id`) REFERENCES `ingredient` (`ingredient_id`);
+  ADD CONSTRAINT `inquantity_to_ingredient` FOREIGN KEY (`ingredient_id`) REFERENCES `ingredient` (`ingredient_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `product_quantity`
