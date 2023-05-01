@@ -41,27 +41,27 @@ if ($type == "admin")
             </div>
             <div class="col-4">
               <?php if ($isAdmin) { ?>
-              <div class="btn-group dropend">
-                <button type="button" class="btn" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="bi bi-three-dots-vertical"></i>More</button>
-                <div class="dropdown-menu">
-                    <li>
-                      <a class="dropdown-item" href="/Ingredient/edit/<?= $data[0]->ingredient_id ?>">
-                        <?= _('Edit') ?>
-                      </a>
-                    </li>
-                    <li>
-                      <a class="dropdown-item" href="/Ingredient/delete/<?= $data[0]->ingredient_id ?>">
-                        <?= _('Delete') ?>
-                      </a>
-                    </li>
-                    <li>
-                      <a class="dropdown-item" href="/Ingredient/addQuantity/<?= $data[0]->ingredient_id ?>">
-                        <?= _('Add Quantity') ?>
-                      </a>
-                    </li>
+                <div class="btn-group dropend">
+                  <button type="button" class="btn" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="bi bi-three-dots-vertical"></i>More</button>
+                  <div class="dropdown-menu">
+                      <li>
+                        <a class="dropdown-item" href="/Ingredient/edit/<?= $data[0]->ingredient_id ?>">
+                          <?= _('Edit') ?>
+                        </a>
+                      </li>
+                      <li>
+                        <a class="dropdown-item" href="/Ingredient/delete/<?= $data[0]->ingredient_id ?>">
+                          <?= _('Delete') ?>
+                        </a>
+                      </li>
+                      <li>
+                        <a class="dropdown-item" href="/Ingredient/addQuantity/<?= $data[0]->ingredient_id ?>">
+                          <?= _('Add Quantity') ?>
+                        </a>
+                      </li>
+                  </div>
                 </div>
-              </div>
-            <?php } ?>
+              <?php } ?>
             </div>
           </div>
           <div class="container" id="ingredientContent">
@@ -111,11 +111,11 @@ if ($type == "admin")
                             </a>
                           </li>
                         <?php } ?>
-                        <li>
+                          <li>
                             <a class="dropdown-item" href="/Product/editQuantityOnly<?=$quantity->pq_id?>">
                               <?= _('Edit Quantity') ?>
-                               </a>
-                             </li>
+                            </a>
+                          </li>
                       </div>
                     </div>
                   </td>
