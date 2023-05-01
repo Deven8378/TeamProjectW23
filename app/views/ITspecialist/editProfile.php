@@ -21,10 +21,22 @@
   <!-- <br> -->
     <select name="status" id="status" class="dropdownUserType">
       <!-- <option selected disabled><?= _('--Select a User Status--') ?></option> -->
-      <option selected value="active" name="active"><?= _('Active') ?></option>
-      <option value="inactive" name="inactive"><?= _('Inactive') ?></option>
+      <?php
+        if($data->status == "active"){
+          echo "
+            <option selected value='active' name='active'>" . _('Active') . "</option>
+            <option value='inactive' name='inactive'>" . _('Inactive') .  "</option>
+          ";
+        }else{
+          echo "
+            <option  value='active' name='active'>" . _('Active') . "</option>
+            <option selected value='inactive' name='inactive'>" . _('Inactive') . "</option>
+          ";
+        }
+      ?>
+      
     </select>
-  <br>
+
   <input class="" type="submit" name="editProfile" value="Upload Profile Change">
   
 </form>

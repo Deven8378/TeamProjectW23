@@ -3,7 +3,8 @@
 
 <div class="userDetails">
     <div class="col-4">
-        <a onClick="history.go(-1)" id="backLink"><i class="bi bi-arrow-left"></i><?= _('Back') ?></a>
+        <!-- <a onClick="history.go(-1)" id="backLink"><i class="bi bi-arrow-left"></i><?= _('Back') ?></a> -->
+        <!-- ???????????????????????????????????????????????? -->
     </div>   
       <!-- <input type="submit" id="option" onclick="myFunction()" value="Edit Account"> -->
 
@@ -12,32 +13,6 @@
     </div>
 
     <div>
-      <!-- 
-      background-color: #EA4C89;
-      border-radius: 8px;
-      border-style: none;
-      box-sizing: border-box;
-      color: #FFFFFF;
-      cursor: pointer;
-      display: inline-block;
-      
-      font-size: 14px;
-      font-weight: 500;
-      height: 40px;
-      line-height: 20px;
-      list-style: none;
-      margin: 0;
-      outline: none;
-      padding: 10px 16px;
-      position: relative;
-      text-align: center;
-      text-decoration: none;
-      transition: color 100ms;
-      vertical-align: baseline;
-      user-select: none;
-      -webkit-user-select: none;
-      touch-action: manipulation; 
-      -->
       <button id="toggle-to-account" class="btn-edit" style="" >View Profile Information</button>
       <button id="toggle-to-profile" class="btn-edit" style="">View Account Information</button>
     </div>

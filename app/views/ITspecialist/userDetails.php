@@ -82,14 +82,14 @@
             <h2><?=_('Deleting User')?></h2>
             <div class="content-userDetails">
                 <div class="container-userDetails">
-                    <form  method="post" action="">
+                    <div class="">
                   
                         <label><?= _('Are you sure you want to delete this user?') ?></label> 
                         <div class="btn-container">
                         	<a href="javascript:void(0)" class="btn-container-option" onclick="closeNav()" ><?=_('cancel')?></a>
                         	<a href="/ITspecialist/delete/<?= $data->user_id ?>" class="btn-container-option"><?=_('delete')?></a>
                         </div>
-                    </form>
+                    </div>
                 </div>
             </div>
         </div>

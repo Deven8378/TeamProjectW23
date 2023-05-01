@@ -14,11 +14,18 @@
 			</div>
 			<div style="margin-top: 20px; display: grid; ">
 				<h5><b><?=_('Filters')?></b></h5>
-				
-				<label class="label-radio"><input class="input-radio" type="radio" name=""><?=_('Admins')?></label>
+				<!-- Filsters for easy search -->
+				<form>
+					<fieldset id="group1">
+						<label class="label-radio">
+							<input class="input-radio" type="radio" name="group1" value="admin"><?=_('Admins')?>
+						</label>
 
-				<label class="label-radio"><input class="input-radio" type="radio" name=""><?=_('Employees')?></label>
-
+						<label class="label-radio">
+							<input class="input-radio" type="radio" name="group1" value="employee"><?=_('Employees')?>
+						</label>
+					</fieldset>
+				</form>
 			</div>
 
 		</div>
@@ -33,11 +40,22 @@
 					<h2><?=_('List of Employee and Admin')?></h2>
 				</div>
 
+
+
 				<div class="search-div" style=" ">
-					<form class="search-form" style="">
+
+
+
+					<!-- Search button -->
+					<form action="/ITspecialist/search" class="search-form" style="">
+
 						<button class="search-btn" style=""><i class="bi bi-search" style="color: #ACABAB;"></i></button>
-						<input class="search-input" type="search" placeholder="<?=_('Search')?>" style="">
+
+						<input type="search" name="search" class="search-input" placeholder="<?=_('Search')?>" style="">
+
 					</form>
+
+
 				</div>
 			</div>
 

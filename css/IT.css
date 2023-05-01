@@ -232,8 +232,8 @@ tbody tr > th,td {
 /*  background-color: #fff;*/
   padding-left: 10rem;
   padding-right: 10rem;
-  padding-top: 4rem;
-  margin-top: 0.35rem;
+  padding-top: 2rem;
+/*  margin-top: 0.35rem;*/
   /*margin-left: 5rem;
   margin-right: 5rem;*/
 
@@ -321,13 +321,13 @@ tbody tr > th,td {
   max-height: 30%;
   overflow: auto;
 }
-.container-userDetails form{
+.container-userDetails > div{
   display: flex;
   gap: 50px;
   justify-content: space-evenly;
   flex-direction: column;
 }
-.container-userDetails form label{
+.container-userDetails > div label{
   font-size: 20px;
 }
 .btn-container {
@@ -343,6 +343,10 @@ tbody tr > th,td {
   border-radius: 20px;
   border: 8px solid #f1e1f5;
   background-color: #fff;
+}
+.btn-container-option:hover {
+  color: white;
+  background-color: grey;
 }
 
 /*-----------------------------------------------*/

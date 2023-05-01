@@ -135,18 +135,28 @@ class ITspecialist extends \app\core\Controller
 
         if(isset($_POST['editUser']))
         {
-            // $user->user_id = $user_id; 
-            $user = new \app\models\User();
-            $user->username = $_POST['username'];
-            $user->password_hash = password_hash($_POST['password'], PASSWORD_DEFAULT);
+            if($_POST['username'] !=""
+                && $_POST['username'] !=null
+                // && $_POST['password'] != ""
+                // && $_POST['password'] != null
+                && $_POST['user_type'] != ""
+                && $_POST['user_type'] != null
+            ){
+                $user = new \app\models\User();
+                $user->username = $_POST['username'];
+                $user->password_hash = password_hash($_POST['password'], PASSWORD_DEFAULT);
+                $user->user_type = htmlentities($_POST['user_type']);
 
-            $success = $user->editUser($user_id);
+                $success = $user->editUser($user_id);
 
-            if($success){
-                // echo 'sdsds';
-                header('location:/ITspecialist/userDetails/' . $user_id. '?success=User Account Was Updated.');
-            } else {
-                header('location:/ITspecialist/edit/' . $user_id. '?error=Error when modifying User Account.');
+                if($success){
+                    // echo 'sdsds';
+                    header('location:/ITspecialist/userDetails/' . $user_id. '?success=User Account Was Updated.');
+                } else {
+                    header('location:/ITspecialist/edit/' . $user_id. '?error=Error when modifying User Account.');
+                }
+            }else{
+                header('location:/ITspecialist/edit/' . $user_id.'?error=Fill up the dam things if you wanna modify');
             }
         } else if(isset($_POST['editProfile']))
             {
@@ -228,5 +238,11 @@ class ITspecialist extends \app\core\Controller
     //         $this->view('ITspecialist/editUser');
     //     }
     // }
+    public function search()
+    {
+        $user = new \app\models\User();
+        $users = $user->search($_GET['search']);
+        $this->view('ITspecialist/index', $users);
+    }
     
 }
