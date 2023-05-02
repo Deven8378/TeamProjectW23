@@ -20,7 +20,6 @@ if ($type == "admin")
 }
 </script>
 
-
 <div id="foodDetailsDiv">
   <a href="/Product/index" id="backLink"><i class="bi bi-arrow-left"></i><?= _('Back') ?></a>
 
@@ -89,40 +88,28 @@ if ($type == "admin")
                 </tr>
               </thead>
               <tbody>
+                <?php $counter = 1;?>
                 <?php foreach ($data[2] as $quantity) { ?>
                 <tr>
-                  <th scope="row"><?= $quantity->quantity ?></th>
+                  <th scope="row">
+                    <form action='/Product/quantityUpdate/<?=$data['0']->product_id?>' method="post">  
+                        <input type="text" value="<?= $quantity->quantity ?>" name='quantity<?=$counter?>' size="3">
+                        <?php ++$counter?>
+
+                </th>
                   <td><?= $quantity->produced_date ?></td>
                   <td><?= $quantity->expired_date ?></td>
                   <td><?= $quantity->price ?></td>
                   <td>
-                    <div class="btn-group dropend">
-                      <button type="button" class="btn" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="bi bi-three-dots-vertical"></i>More</button>
-                      <div class="dropdown-menu">
-                        <?php if ($isAdmin) { ?>
-                          <li>
-                            <a class="dropdown-item" href="/Product/editQuantity/<?= $quantity->pq_id ?>">
-                              <?= _('Edit') ?>
-                            </a>
-                          </li>
-                          <li>
-                            <a class="dropdown-item" href="/Product/deleteQuantity/<?= $quantity->pq_id ?>">
-                              <?= _('Delete') ?>
-                            </a>
-                            <li>
-                            <?php } ?>
-                              <a class="dropdown-item" href="/Product/editQuantityOnly/<?= $data['0']->product_id?>">
-                              <?= _('Edit Quantity') ?>
-                               </a>
-                            </li>
-                          </li>
-                      </div>
-                    </div>
+                 
                   </td>
                 </tr>
                 <?php } ?>
               </tbody>
             </table>
+                <a class="btn" href="/Product/ProductDetails/<?=$data['0']->product_id?>" role="button" style="background-color: #e8c8e7;"><?= _('Cancel') ?></a>
+                        <input class="submitIngredient" type="submit" align="" placeholder="<?=_('Save Changes')?>" name="action">
+                    </form>
           </div>
         </div>
       </div>

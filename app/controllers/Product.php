@@ -143,4 +143,45 @@ class Product extends \app\core\Controller
             header('location:/productDetails'. $productNumber .'?error=Error occured.');
         }
     }
+
+    public function editQuantityOnly($product_id) //view that shows form when clicking Edit Quantity
+    {
+        $product = new \app\models\Product();
+        $success = $product->getProductDetails($product_id);
+        $totalQuantity = new \app\models\ProductQuantity;
+        $totalQuantity = $totalQuantity->getTotalQuantity($product_id);
+        $allQuantity = new \app\models\ProductQuantity;
+        $allQuantity = $allQuantity->getAll($product_id);
+
+        if($success){
+            $this->view('Product/editQuantityOnly', [$success, $totalQuantity, $allQuantity]);
+        }
+
+     }
+
+    public function quantityUpdate($product_id) { //form action method
+        $allQuantity = new \app\models\ProductQuantity;
+        $allQuantity = $allQuantity->getAll($product_id);
+        $counter = 1; //each product quantity row's input name is quantity$counter
+
+        if (isset($_POST['action'])) {
+                foreach ($allQuantity as $oneQuantity) {
+                $oneQuantity = $oneQuantity->getOneQuantity($oneQuantity->pq_id);
+                $oneQuantity->quantity = $_POST['quantity' . $counter];
+                ++$counter;
+                $success = $oneQuantity->editQuantity($oneQuantity->pq_id);
+            }
+           
+            if ($success) {
+        
+                 header('location:/product/productDetails/'. $product_id .'?success=Quantities Saved.');
+             } else {
+            
+            header('location:/product/productDetails/'. $product_id .'?error=Error occured.');
+            }
+
+        }
+
+    }
+        
 }

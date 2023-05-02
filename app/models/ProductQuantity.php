@@ -69,4 +69,5 @@ class ProductQuantity extends \app\core\Model {
 		$STH->execute($data);
 		return $STH->rowCount(); 
 	}
+
 }
