@@ -12,10 +12,9 @@ Scenario: try editing employee
 	And I click "EM20"
 	And I see "Profile Page"
 	And I click "Edit"
-	And I see "View Account Information"
-	And I fill field "Mubeen" in "username"
-	When I click "Upload Account Change"
-	Then I see "User Account Was Updated"
+	And I fill field "Mubin" in "first_name"
+	When I click "Upload Profile Change"
+	Then I see "User Profile Was Updated"
 
 Scenario: try editing employee
 	Given I am on the "Welcome Sweemory Team!!" page
@@ -26,6 +25,6 @@ Scenario: try editing employee
 	And I click "EM20"
 	And I see "Profile Page"
 	And I click "Edit"
-	And I see "View Account Information"
-	When I click "Upload Account Change"
-	Then I see "Error when modifying User Account"
+	And I fill field "Mubin" in "first_name"
+	When I click "Upload Profile Change"
+	Then I see "Error when modifying Profile"
