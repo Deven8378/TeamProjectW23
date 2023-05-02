@@ -4,7 +4,7 @@
 <div class="userDetails">
     
     <div class="alert" style="background-color: rgb(216,212,212);">
-  		<h3><?= $data->username ?> <?= $data->user_id ?></h3>
+  		<h3>Profile Page: <?= $data->username ?> <?= $data->user_id ?></h3>
     </div>
 
     <dl class="dl-viewUserDetails" style="">
