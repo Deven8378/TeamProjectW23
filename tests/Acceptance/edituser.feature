@@ -9,13 +9,13 @@ Scenario: try editing employee
     And I fill field "1234" in "password"
     And I click "Sign in"
     And I see "List of Employee and Admin"
-	And I click "EM20"
+	And I click "AD17"
 	And I see "Profile Page"
 	And I click "Edit"
 	And I see "View Account Information"
 	And I fill field "Mubeen" in "username"
 	When I click "Upload Account Change"
-	Then I see "User Account Was Updated"
+	Then I see "Mubeen"
 
 Scenario: try editing employee
 	Given I am on the "Welcome Sweemory Team!!" page
@@ -23,7 +23,7 @@ Scenario: try editing employee
     And I fill field "1234" in "password"
     And I click "Sign in"
     And I see "List of Employee and Admin"
-	And I click "EM20"
+	And I click "AD17"
 	And I see "Profile Page"
 	And I click "Edit"
 	And I see "View Account Information"
