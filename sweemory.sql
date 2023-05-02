@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 02, 2023 at 04:18 PM
+-- Generation Time: May 02, 2023 at 04:27 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -165,7 +165,8 @@ CREATE TABLE `recipe` (
 DROP TABLE IF EXISTS `treshold`;
 CREATE TABLE `treshold` (
   `treshold_id` int(11) NOT NULL,
-  `treshold_category` varchar(25) NOT NULL
+  `treshold_category` varchar(25) NOT NULL,
+  `treshold` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
