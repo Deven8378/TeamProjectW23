@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 01, 2023 at 10:26 PM
+-- Generation Time: May 02, 2023 at 04:18 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -33,17 +33,10 @@ DROP TABLE IF EXISTS `ingredient`;
 CREATE TABLE `ingredient` (
   `ingredient_id` int(11) NOT NULL,
   `name` varchar(50) NOT NULL,
-  `category` varchar(25) NOT NULL,
+  `category` int(11) NOT NULL,
   `description` text NOT NULL,
   `picture` varchar(128) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `ingredient`
---
-
-INSERT INTO `ingredient` (`ingredient_id`, `name`, `category`, `description`, `picture`) VALUES
-(4, 'Banana', 'fruit', 'This is a yellow banana.', '644fdb1ea964d.jpg');
 
 -- --------------------------------------------------------
 
@@ -88,8 +81,7 @@ CREATE TABLE `notification` (
   `notify_id` int(11) NOT NULL,
   `notify_type` varchar(10) NOT NULL,
   `message` text NOT NULL,
-  `timestamp` timestamp NOT NULL DEFAULT current_timestamp(),
-  `treshold` int(100) NOT NULL
+  `timestamp` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -102,6 +94,7 @@ DROP TABLE IF EXISTS `product`;
 CREATE TABLE `product` (
   `product_id` int(11) NOT NULL,
   `name` varchar(50) NOT NULL,
+  `category` int(25) NOT NULL,
   `description` text NOT NULL,
   `picture` varchar(128) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -166,6 +159,18 @@ CREATE TABLE `recipe` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `treshold`
+--
+
+DROP TABLE IF EXISTS `treshold`;
+CREATE TABLE `treshold` (
+  `treshold_id` int(11) NOT NULL,
+  `treshold_category` varchar(25) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `user`
 --
 
@@ -196,7 +201,8 @@ INSERT INTO `user` (`user_id`, `user_type`, `username`, `password_hash`) VALUES
 -- Indexes for table `ingredient`
 --
 ALTER TABLE `ingredient`
-  ADD PRIMARY KEY (`ingredient_id`);
+  ADD PRIMARY KEY (`ingredient_id`),
+  ADD KEY `treshold_to_ingredient` (`category`);
 
 --
 -- Indexes for table `ingredient_quantity`
@@ -221,7 +227,8 @@ ALTER TABLE `notification`
 -- Indexes for table `product`
 --
 ALTER TABLE `product`
-  ADD PRIMARY KEY (`product_id`);
+  ADD PRIMARY KEY (`product_id`),
+  ADD KEY `treshold_to_product` (`category`);
 
 --
 -- Indexes for table `product_quantity`
@@ -243,6 +250,12 @@ ALTER TABLE `recipe`
   ADD PRIMARY KEY (`recipe_id`);
 
 --
+-- Indexes for table `treshold`
+--
+ALTER TABLE `treshold`
+  ADD PRIMARY KEY (`treshold_id`);
+
+--
 -- Indexes for table `user`
 --
 ALTER TABLE `user`
@@ -256,13 +269,13 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `ingredient`
 --
 ALTER TABLE `ingredient`
-  MODIFY `ingredient_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `ingredient_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `ingredient_quantity`
 --
 ALTER TABLE `ingredient_quantity`
-  MODIFY `iq_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `iq_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `message`
@@ -280,19 +293,25 @@ ALTER TABLE `notification`
 -- AUTO_INCREMENT for table `product`
 --
 ALTER TABLE `product`
-  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `product_quantity`
 --
 ALTER TABLE `product_quantity`
-  MODIFY `pq_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `pq_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `recipe`
 --
 ALTER TABLE `recipe`
   MODIFY `recipe_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `treshold`
+--
+ALTER TABLE `treshold`
+  MODIFY `treshold_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `user`
@@ -305,16 +324,28 @@ ALTER TABLE `user`
 --
 
 --
+-- Constraints for table `ingredient`
+--
+ALTER TABLE `ingredient`
+  ADD CONSTRAINT `treshold_to_ingredient` FOREIGN KEY (`category`) REFERENCES `treshold` (`treshold_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
 -- Constraints for table `ingredient_quantity`
 --
 ALTER TABLE `ingredient_quantity`
   ADD CONSTRAINT `inquantity_to_ingredient` FOREIGN KEY (`ingredient_id`) REFERENCES `ingredient` (`ingredient_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
+-- Constraints for table `product`
+--
+ALTER TABLE `product`
+  ADD CONSTRAINT `treshold_to_product` FOREIGN KEY (`category`) REFERENCES `treshold` (`treshold_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
 -- Constraints for table `product_quantity`
 --
 ALTER TABLE `product_quantity`
-  ADD CONSTRAINT `pro quantity_to_product` FOREIGN KEY (`product_id`) REFERENCES `product` (`product_id`);
+  ADD CONSTRAINT `pro quantity_to_product` FOREIGN KEY (`product_id`) REFERENCES `product` (`product_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `profile`
