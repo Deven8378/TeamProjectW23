@@ -18,6 +18,14 @@ class Product extends \app\core\Model {
 		return self::$connection->lastInsertId();		
 	}
 
+	public function getProductandQuantity(){
+		$SQL = 'SELECT *, DATEDIFF(expired_date, arrival_date) AS daysLeft FROM `product` JOIN `product_quantity` ON `product`.`product_id` = `product_quantity`.`product_id`;';
+		$STH = self::$connection->prepare($SQL);
+		$STH->execute();
+		$STH->setFetchMode(\PDO::FETCH_CLASS, 'app\\models\\Ingredient');
+		return $STH->fetchAll();
+	}
+
 	public function getAll() {
 		$SQL = 'SELECT * FROM product';
 		$STH = self::$connection->prepare($SQL);

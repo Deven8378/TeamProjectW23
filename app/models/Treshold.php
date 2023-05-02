@@ -13,6 +13,14 @@ class Treshold extends \app\core\Model{
 		return $STH->fetchAll();
 	}
 
+	public function getSpecificTreshold(){
+		$SQL = "SELECT `treshold`.`treshold_id`, `treshold`.`treshold_category` FROM `treshold` WHERE 'treshold_id'=:treshold_id;";
+		$STH = self::$connection->prepare($SQL);
+		$STH->execute(['treshold_id'=>$treshold_id]);
+		$STH->setFetchMode(\PDO::FETCH_CLASS, 'app\\models\\Treshold');
+		return $STH->fetch();
+	}
+
 	public function insert(){
 		$SQL = "INSERT INTO treshold (treshold_id, treshold_category) value (:treshold_id, :treshold_category)";
 		$STH = self::$connection->prepare($SQL);

@@ -17,8 +17,8 @@ class Ingredient extends \app\core\Model {
 		return $STH->fetchAll();
 	}
 
-	public function getIngredientandQuantity($ingredient_id){
-		$SQL = 'SELECT *, DATEDIFF(expiry_date, arrival_date) FROM `ingredient` JOIN `ingredient_quantity` ON `ingredient`.`ingredient_id` = `ingredient_quantity`.`ingredient_id`;';
+	public function getIngredientandQuantity(){
+		$SQL = 'SELECT *, DATEDIFF(expired_date, arrival_date) AS daysLeft FROM `ingredient` JOIN `ingredient_quantity` ON `ingredient`.`ingredient_id` = `ingredient_quantity`.`ingredient_id`;';
 		$STH = self::$connection->prepare($SQL);
 		$STH->execute();
 		$STH->setFetchMode(\PDO::FETCH_CLASS, 'app\\models\\Ingredient');

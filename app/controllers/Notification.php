@@ -4,23 +4,49 @@ namespace app\controllers;
 
 class Notification extends \app\core\Controller
 {
-	#[\app\filters\EmployeeAndAdmin]
-	public function index()
+	public function index(){
+		$notifications = new \app\models\Notification();
+		$notifications = $notifications->getNotifications();
+		$this->view('shared/rightSidebar', $notifications);
+
+	}
+
+	public function create()
 	{
-		$treshold_fruits = 3;
-		$treshold_dairy = 12;
-		$treshold_sweets = 50;
-		$treshold_fat = 30;
-		$treshold_baking = 30;
-		$treshold_others = 20;
+		if(isset($_POST['action'])){
+			$treshold = new \app\models\Treshold();
+			$ingredients = new \app\models\Ingredient();
+			$ingredients = $ingredients->getIngredientandQuantity();
+			$notification = new \app\models\Notification();
 
-		$ingredients = new \app\models\Ingredient();
-		$ingredients = $ingredients->getIngredientandQuantity();
+			foreach ($ingredients as $ingredient) {
+				$expiry_date = $ingredient->expiry_date;
+				$treshold = $treshold->getSpecificTreshold($ingredient->category);
+				if($ingredient->daysLeft <= $treshold 
+					&& $ingredient->daysLeft > 0){
+					$notification->notify_type = "expiring";
+					$notification->insert();
+				} else if($ingredient->quantity <= 10) {
+					$notification->notify_type = "lowStock";
+					$notification->insert();
+				}
+			}
 
-		foreach ($ingredients as $ingredient) {
-			$expiry_date = $ingredient->expiry_date;
+			$products = new \app\models\Product();
+			$products = $products->getProductandQuantity();
+			foreach ($products as $product) {
+				$expiry_date = $product->expiry_date;
+				$treshold = $treshold->getSpecificTreshold($product->category);
 
-
+				if($product->daysLeft <= $treshold 
+					&& $product->daysLeft > 0){
+					$notification->notify_type = "expiring";
+					$notification->insert();
+				} else if($product->quantity <= 10) {
+					$notification->notify_type = "lowStock";
+					$notification->insert();
+				}
+			}
 		}
 	}
 

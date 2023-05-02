@@ -9,12 +9,12 @@
 
 		<select name="category" id="status" class="dropdownUserType">
 			<option selected disabled><?= _('--Select a Category--') ?></option>
-			<option value="fruit" name="fruit"><?= _('Fruit') ?></option>
-			<option value="dairy" name="dairy"><?= _('Dairy') ?></option>
-			<option value="sweets" name="sweets"><?= _('Sweets') ?></option>
-			<option value="fat" name="fat"><?= _('Fat and Oils') ?></option>
-			<option value="baking" name="baking"><?= _('Baking Products') ?></option>
-			<option value="other" name="other"><?= _('Others') ?></option>
+			<?php
+			foreach ($data as $treshold) { ?>
+			 	<option value="<?=$treshold->treshold_id ?>">
+			 		<?= $treshold->treshold_category ?>
+			 	</option>
+			<?php  } ?>
 		</select>
 
 		<textarea placeholder="<?= _('Description...') ?>" name="description" class="createInput"></textarea><br>

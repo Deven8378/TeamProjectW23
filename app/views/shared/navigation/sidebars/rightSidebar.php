@@ -10,11 +10,28 @@
   
   <div class="offcanvas-body">
     <div class="d-flex flex-column align-items-stretch flex-shrink-0 bg-body-tertiary" style="width: 380px;">
-      <?php $this->view('shared/notification_partial') ?>
+
+      <?php foreach ($data as $notification) { ?>
+        <div class="list-group list-group-flush border-bottom scrollarea">
+          <a href="#" class="list-group-item list-group-item-action active py-3 lh-sm" aria-current="true">
+            <div class="d-flex w-100 align-items-center justify-content-between">
+              <strong class="mb-1">
+                
+              </strong>
+              <small>
+                
+              </small>
+            </div>
+            <div class="col-10 mb-1 small">
+              <?= $notification->notify_type ?>
+            </div>
+          </a>
+        </div>
+      <?php } ?>
     </div>
-    <form class="d-flex mt-3" role="search">
-      <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-success" type="submit">Search</button>
+
+    <form action='' method='post' enctype="multipart/form-data">
+      <input class="submitIngredient" type="submit" align="" value="<?=_('Refresh')?>" name="action"> <br><br>
     </form>
   </div>
 </div>
