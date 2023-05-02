@@ -10,7 +10,7 @@
 		<label>Expired Date</label><br><br>
 		<input type="date" required="" autocomplete="off" name="expired_date"><br>
 		<label>Quantity</label><br>
-		<input type="number" min="0" step="0.01" id="totalAmt" name="quantity">
+		<input type="number" min="0" id="totalAmt" name="quantity">
 		<br> <br>
 		<label>Price</label><br>
 		<input type="number" min="0" step="0.01" id="totalAmt" name="price">

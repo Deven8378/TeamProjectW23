@@ -13,7 +13,6 @@
 <div class="container">
 	<div class="row">
 		<div class="col-sm-2">
-			<a class="btn" href="/Ingredient/createIngredient" role="button" style="background-color: #e8c8e7;"><?= _('Add Ingredient') ?></a> <br> <br>
 			<a class="btn" href="/Product/createProduct" role="button" style="background-color: #e8c8e7;"><?= _('Add Product') ?></a>
 			<hr style="height:1px; border-width:0 ;color: #d9d9d9; background-color:gray">
 			<div class="btn-group">
@@ -31,10 +30,26 @@
 			    <?= _('Availabilities') ?>
 			  </button>
 			  <ul class="dropdown-menu dropdown-menu-end dropdown-menu-lg-start">
-			    <li><button class="dropdown-item" type="button"><?= _('Available') ?></button></li>
-			    <li><button class="dropdown-item" type="button"><?= _('Low on Stock') ?></button></li>
-			    <li><button class="dropdown-item" type="button"><?= _('About to Expire') ?></button></li>
-			    <li><button class="dropdown-item" type="button"><?= _('Expired') ?></button></li>
+			    <li>
+			    	<button class="dropdown-item" type="button">
+			    		<?= _('Available') ?>
+			    	</button>
+			    </li>
+			    <li>
+			    	<button class="dropdown-item" type="button">
+			    		<?= _('Low on Stock') ?>
+			    	</button>
+			    </li>
+			    <li>
+			    	<button class="dropdown-item" type="button">
+			    		<?= _('About to Expire') ?>
+			    	</button>
+			    </li>
+			    <li>
+			    	<button class="dropdown-item" type="button">
+			    		<?= _('Expired') ?>
+			    	</button>
+			    </li>
 			  </ul>
 			</div>
 		</div>

@@ -12,8 +12,7 @@
 <div class="container">
 	<div class="row">
 		<div class="col-sm-2">
-			<a class="btn" href="/Ingredient/createIngredient" role="button" style="background-color: #e8c8e7;"><?= _('Add Ingredient') ?></a> <br> <br>
-			<a class="btn" href="/Product/createProduct" role="button" style="background-color: #e8c8e7;"><?= _('Add Product') ?></a>
+			<a class="btn" href="/Ingredient/createIngredient" role="button" style="background-color: #e8c8e7;"><?= _('Add Ingredient') ?></a>
 			<hr style="height:1px; border-width:0 ;color: #d9d9d9; background-color:gray">
 			<div class="btn-group">
 			  <button type="button" class="btn dropdown-toggle" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
