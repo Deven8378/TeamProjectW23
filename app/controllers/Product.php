@@ -13,10 +13,13 @@ class Product extends \app\core\Controller
 
     #[\app\filters\Admin]
     public function createProduct() {
+        $tresholds = new \app\models\Treshold();
+        $tresholds = $tresholds->getTresholds();
         if (isset($_POST['action'])) {
             $product = new \app\models\Product();
             $product->name = htmlentities($_POST['name']);
             $product->description = htmlentities($_POST['description']);
+            $product->category = $_POST['category'];
             $picture = $this->saveProduct($_FILES['productPicture']);
 
             if ($picture) {
@@ -27,7 +30,7 @@ class Product extends \app\core\Controller
             }
         }
        
-            $this->view('Product/createProduct');
+            $this->view('Product/createProduct', $tresholds);
     }
 
     #[\app\filters\EmployeeAndAdmin]
@@ -59,6 +62,8 @@ class Product extends \app\core\Controller
 
     #[\app\filters\Admin]
     public function edit($product_id) {
+        $tresholds = new \app\models\Treshold();
+        $tresholds = $tresholds->getTresholds();
         $product = new \app\models\Product();
         $product = $product->getProductDetails($product_id);
 
@@ -66,6 +71,7 @@ class Product extends \app\core\Controller
         
             $product->name = $_POST['name'];
             $product->description = $_POST['description'];
+            $product->category = $_POST['category'];
             $picture = $this->saveProduct($_FILES['productPicture']);
 
         if($picture){
@@ -81,7 +87,7 @@ class Product extends \app\core\Controller
            
         }
         else
-        $this->view('Product/edit', $product);
+        $this->view('Product/edit', [$product,$tresholds]);
     }
 
      #[\app\filters\Admin]

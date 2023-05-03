@@ -55,6 +55,8 @@ class Ingredient extends \app\core\Controller
     #[\app\filters\Admin]
     public function edit($ingredient_id)
     {  
+        $tresholds = new \app\models\Treshold();
+        $tresholds = $tresholds->getTresholds();
         $ingredient = new \app\models\Ingredient();
         $ingredient = $ingredient->getIngredientDetails($ingredient_id);
 
@@ -76,7 +78,7 @@ class Ingredient extends \app\core\Controller
                 header('location:/Ingredient/editIngredient/' . $ingredient_id. '?error=Error.');
             }
         } else {
-            $this->view('Ingredient/editIngredient', $ingredient);
+            $this->view('Ingredient/editIngredient', [$ingredient,$tresholds]);
         }
     }
 

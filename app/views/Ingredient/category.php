@@ -8,6 +8,11 @@
 }
 </style>
 
+<script type="text/javascript">
+	function showFruit() {
+		window.location = "/Ingredient/category/fruit";
+	}
+</script>
 
 <div class="container">
 	<div class="row">
@@ -15,16 +20,16 @@
 			<a class="btn" href="/Ingredient/createIngredient" role="button" style="background-color: #e8c8e7;"><?= _('Add Ingredient') ?></a> <br> <br>
 
 			<!--  -->
-			<a href="/Treshold/index" class="btn" style="background-color:#e8c8e8;">view categories</a>
+			<a href="/Category/index" class="btn" style="background-color: #e8c8e7;" role="button">view categories</a>
 			<!--  -->
 
-			<hr style="height:1px; border-width:0 ;color: #d9d9d9; background-color:gray">
+			<hr style="height:1px; border-width:0 ;color: #d9d9d9; background-color:gray"> 
 			<div class="btn-group">
 			  <button type="button" class="btn dropdown-toggle" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
 			    <?= _('Categories') ?>
 			  </button>
 			  <ul class="dropdown-menu dropdown-menu-end dropdown-menu-lg-start">
-			    <li><button class="dropdown-item" type="button"><?= _('Fruits') ?></button></li>
+			    <li><button class="dropdown-item" id="fruitButton" onclick="showFruit()" type="button"><?= _('Fruits') ?></button></li>
 			    <li><button class="dropdown-item" type="button"><?= _('Sweets') ?></button></li>
 			    <li><button class="dropdown-item" type="button"><?= _('Dairy') ?></button></li>
 			  </ul>

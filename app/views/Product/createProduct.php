@@ -7,6 +7,16 @@
 
 		<input class="createInput" type="text" align="center" placeholder="<?= _('Name') ?>" name="name">
 
+		<select name="category" id="status" class="dropdownUserType">
+			<option selected disabled><?= _('--Select a Category--') ?></option>
+			<?php
+			foreach ($data as $treshold) { ?>
+			 	<option value="<?=$treshold->treshold_id ?>">
+			 		<?= $treshold->treshold_category ?>
+			 	</option>
+			<?php  } ?>
+		</select>
+		
 		<textarea placeholder="<?= _('Description...') ?>" name="description" class="createInput"></textarea><br>
 
 		<label>Picture</label><br>
