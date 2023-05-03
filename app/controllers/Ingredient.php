@@ -151,4 +151,29 @@ class Ingredient extends \app\core\Controller
             header('location:/Ingredient/ingredientDetails'. $ingredientNumber .'?error=Error occured.');
         }
     }
+
+    public function quantityUpdate($ingredient_id) { //form action method
+        $allQuantity = new \app\models\IngredientQuantity;
+        $allQuantity = $allQuantity->getAll($ingredient_id);
+        $counter = 1; //each product quantity row's input name is quantity$counter
+
+        if (isset($_POST['action'])) {
+                foreach ($allQuantity as $oneQuantity) {
+                $oneQuantity = $oneQuantity->getOneQuantity($oneQuantity->iq_id);
+                $oneQuantity->quantity = $_POST['quantity' . $counter];
+                ++$counter;
+                $success = $oneQuantity->editQuantity($oneQuantity->pq_id);
+            }
+           
+            if ($success) {
+        
+                 header('location:/Ingredient/ingredientDetails/'. $ingredient_id .'?success=Quantities Saved.');
+             } else {
+            
+            header('location:/Ingredient/ingredientDetails/'. $ingredient_id .'?error=Error occured.');
+            }
+
+        }
+
+    }
 }
