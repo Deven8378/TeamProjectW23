@@ -15,8 +15,8 @@ class Ingredient extends \app\core\Controller
     #[\app\filters\Admin]
     public function createIngredient() 
     {
-        $tresholds = new \app\models\Treshold();
-        $tresholds = $tresholds->getTresholds();
+        $categories = new \app\models\Category();
+        $categories = $categories->getCategories();
         if (isset($_POST['action'])) {
             $ingredient = new \app\models\Ingredient();
             $ingredient->name = $_POST['name'];
@@ -31,7 +31,7 @@ class Ingredient extends \app\core\Controller
                 header('location:/Ingredient/index?success=Ingredient Added');
             }
         } else {
-            $this->view('Ingredient/createIngredient', $tresholds);
+            $this->view('Ingredient/createIngredient', $categories);
         }
     }
 

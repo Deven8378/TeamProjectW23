@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 03, 2023 at 05:20 PM
--- Server version: 10.4.28-MariaDB
--- PHP Version: 8.2.4
+-- Generation Time: May 03, 2023 at 05:47 PM
+-- Server version: 10.4.27-MariaDB
+-- PHP Version: 8.2.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -26,6 +26,19 @@ USE `sweemory`;
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `category`
+--
+
+DROP TABLE IF EXISTS `category`;
+CREATE TABLE `category` (
+  `category_id` int(11) NOT NULL,
+  `category_name` varchar(25) NOT NULL,
+  `timestamp` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `ingredient`
 --
 
@@ -37,13 +50,6 @@ CREATE TABLE `ingredient` (
   `description` text NOT NULL,
   `picture` varchar(128) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `ingredient`
---
-
-INSERT INTO `ingredient` (`ingredient_id`, `name`, `category`, `description`, `picture`) VALUES
-(6, 'Grapes', 1, 'Grapes', '645124e081488.jpg');
 
 -- --------------------------------------------------------
 
@@ -60,14 +66,6 @@ CREATE TABLE `ingredient_quantity` (
   `quantity` int(11) NOT NULL,
   `price` float NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `ingredient_quantity`
---
-
-INSERT INTO `ingredient_quantity` (`iq_id`, `ingredient_id`, `arrival_date`, `expired_date`, `quantity`, `price`) VALUES
-(4, 6, '2023-05-02', '2023-05-09', 5, 5.99),
-(5, 6, '2023-05-02', '2023-05-09', 5, 5.99);
 
 -- --------------------------------------------------------
 
@@ -95,22 +93,9 @@ DROP TABLE IF EXISTS `notification`;
 CREATE TABLE `notification` (
   `notify_id` int(11) NOT NULL,
   `notify_type` varchar(10) NOT NULL,
+  `message` text NOT NULL,
   `timestamp` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `notification`
---
-
-INSERT INTO `notification` (`notify_id`, `notify_type`, `timestamp`) VALUES
-(7, 'lowStock', '2023-05-03 14:48:10'),
-(8, 'lowStock', '2023-05-03 14:48:10'),
-(9, 'lowStock', '2023-05-03 14:57:37'),
-(10, 'lowStock', '2023-05-03 14:57:37'),
-(11, 'lowStock', '2023-05-03 14:57:43'),
-(12, 'lowStock', '2023-05-03 14:57:43'),
-(13, 'lowStock', '2023-05-03 15:00:47'),
-(14, 'lowStock', '2023-05-03 15:00:47');
 
 -- --------------------------------------------------------
 
@@ -187,32 +172,6 @@ CREATE TABLE `recipe` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `treshold`
---
-
-DROP TABLE IF EXISTS `treshold`;
-CREATE TABLE `treshold` (
-  `treshold_id` int(11) NOT NULL,
-  `treshold_category` varchar(25) NOT NULL,
-  `treshold_days` int(11) NOT NULL,
-  `timestamp` timestamp NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `treshold`
---
-
-INSERT INTO `treshold` (`treshold_id`, `treshold_category`, `treshold_days`, `timestamp`) VALUES
-(1, 'Fruits', 3, '2023-05-03 14:38:16'),
-(2, 'Dairy', 12, '2023-05-03 14:38:16'),
-(3, 'Sweets', 50, '2023-05-03 14:38:16'),
-(4, 'Fat and Oils', 30, '2023-05-03 14:38:16'),
-(5, 'Baking Products', 30, '2023-05-03 14:38:16'),
-(6, 'Others', 20, '2023-05-03 14:38:16');
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `user`
 --
 
@@ -238,6 +197,12 @@ INSERT INTO `user` (`user_id`, `user_type`, `username`, `password_hash`) VALUES
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `category`
+--
+ALTER TABLE `category`
+  ADD PRIMARY KEY (`category_id`);
 
 --
 -- Indexes for table `ingredient`
@@ -292,12 +257,6 @@ ALTER TABLE `recipe`
   ADD PRIMARY KEY (`recipe_id`);
 
 --
--- Indexes for table `treshold`
---
-ALTER TABLE `treshold`
-  ADD PRIMARY KEY (`treshold_id`);
-
---
 -- Indexes for table `user`
 --
 ALTER TABLE `user`
@@ -308,16 +267,22 @@ ALTER TABLE `user`
 --
 
 --
+-- AUTO_INCREMENT for table `category`
+--
+ALTER TABLE `category`
+  MODIFY `category_id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `ingredient`
 --
 ALTER TABLE `ingredient`
-  MODIFY `ingredient_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `ingredient_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `ingredient_quantity`
 --
 ALTER TABLE `ingredient_quantity`
-  MODIFY `iq_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `iq_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `message`
@@ -329,7 +294,7 @@ ALTER TABLE `message`
 -- AUTO_INCREMENT for table `notification`
 --
 ALTER TABLE `notification`
-  MODIFY `notify_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `notify_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `product`
@@ -350,12 +315,6 @@ ALTER TABLE `recipe`
   MODIFY `recipe_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT for table `treshold`
---
-ALTER TABLE `treshold`
-  MODIFY `treshold_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
-
---
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
@@ -369,7 +328,7 @@ ALTER TABLE `user`
 -- Constraints for table `ingredient`
 --
 ALTER TABLE `ingredient`
-  ADD CONSTRAINT `treshold_to_ingredient` FOREIGN KEY (`category`) REFERENCES `treshold` (`treshold_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `category_to_ingredient` FOREIGN KEY (`category`) REFERENCES `category` (`category_id`);
 
 --
 -- Constraints for table `ingredient_quantity`
@@ -381,7 +340,7 @@ ALTER TABLE `ingredient_quantity`
 -- Constraints for table `product`
 --
 ALTER TABLE `product`
-  ADD CONSTRAINT `treshold_to_product` FOREIGN KEY (`category`) REFERENCES `treshold` (`treshold_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `category_to_product` FOREIGN KEY (`category`) REFERENCES `category` (`category_id`);
 
 --
 -- Constraints for table `product_quantity`
