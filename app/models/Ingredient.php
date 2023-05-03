@@ -17,7 +17,7 @@ class Ingredient extends \app\core\Model {
 		return $STH->fetchAll();
 	}
 
-	public function getIngredientandQuantity(){
+	public function getAllIngredientandQuantity(){
 		$SQL = 'SELECT *, DATEDIFF(expired_date, arrival_date) AS daysLeft FROM `ingredient` JOIN `ingredient_quantity` ON `ingredient`.`ingredient_id` = `ingredient_quantity`.`ingredient_id`;';
 		$STH = self::$connection->prepare($SQL);
 		$STH->execute();

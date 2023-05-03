@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 02, 2023 at 04:27 PM
+-- Generation Time: May 03, 2023 at 05:20 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -38,6 +38,13 @@ CREATE TABLE `ingredient` (
   `picture` varchar(128) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `ingredient`
+--
+
+INSERT INTO `ingredient` (`ingredient_id`, `name`, `category`, `description`, `picture`) VALUES
+(6, 'Grapes', 1, 'Grapes', '645124e081488.jpg');
+
 -- --------------------------------------------------------
 
 --
@@ -53,6 +60,14 @@ CREATE TABLE `ingredient_quantity` (
   `quantity` int(11) NOT NULL,
   `price` float NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `ingredient_quantity`
+--
+
+INSERT INTO `ingredient_quantity` (`iq_id`, `ingredient_id`, `arrival_date`, `expired_date`, `quantity`, `price`) VALUES
+(4, 6, '2023-05-02', '2023-05-09', 5, 5.99),
+(5, 6, '2023-05-02', '2023-05-09', 5, 5.99);
 
 -- --------------------------------------------------------
 
@@ -80,9 +95,22 @@ DROP TABLE IF EXISTS `notification`;
 CREATE TABLE `notification` (
   `notify_id` int(11) NOT NULL,
   `notify_type` varchar(10) NOT NULL,
-  `message` text NOT NULL,
   `timestamp` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `notification`
+--
+
+INSERT INTO `notification` (`notify_id`, `notify_type`, `timestamp`) VALUES
+(7, 'lowStock', '2023-05-03 14:48:10'),
+(8, 'lowStock', '2023-05-03 14:48:10'),
+(9, 'lowStock', '2023-05-03 14:57:37'),
+(10, 'lowStock', '2023-05-03 14:57:37'),
+(11, 'lowStock', '2023-05-03 14:57:43'),
+(12, 'lowStock', '2023-05-03 14:57:43'),
+(13, 'lowStock', '2023-05-03 15:00:47'),
+(14, 'lowStock', '2023-05-03 15:00:47');
 
 -- --------------------------------------------------------
 
@@ -166,8 +194,21 @@ DROP TABLE IF EXISTS `treshold`;
 CREATE TABLE `treshold` (
   `treshold_id` int(11) NOT NULL,
   `treshold_category` varchar(25) NOT NULL,
-  `treshold` int(11) NOT NULL
+  `treshold_days` int(11) NOT NULL,
+  `timestamp` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `treshold`
+--
+
+INSERT INTO `treshold` (`treshold_id`, `treshold_category`, `treshold_days`, `timestamp`) VALUES
+(1, 'Fruits', 3, '2023-05-03 14:38:16'),
+(2, 'Dairy', 12, '2023-05-03 14:38:16'),
+(3, 'Sweets', 50, '2023-05-03 14:38:16'),
+(4, 'Fat and Oils', 30, '2023-05-03 14:38:16'),
+(5, 'Baking Products', 30, '2023-05-03 14:38:16'),
+(6, 'Others', 20, '2023-05-03 14:38:16');
 
 -- --------------------------------------------------------
 
@@ -270,13 +311,13 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `ingredient`
 --
 ALTER TABLE `ingredient`
-  MODIFY `ingredient_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `ingredient_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `ingredient_quantity`
 --
 ALTER TABLE `ingredient_quantity`
-  MODIFY `iq_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `iq_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `message`
@@ -288,7 +329,7 @@ ALTER TABLE `message`
 -- AUTO_INCREMENT for table `notification`
 --
 ALTER TABLE `notification`
-  MODIFY `notify_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `notify_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `product`
@@ -312,7 +353,7 @@ ALTER TABLE `recipe`
 -- AUTO_INCREMENT for table `treshold`
 --
 ALTER TABLE `treshold`
-  MODIFY `treshold_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `treshold_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `user`

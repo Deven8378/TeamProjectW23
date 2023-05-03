@@ -15,8 +15,8 @@ class Treshold extends \app\core\Model{
 		return $STH->fetchAll();
 	}
 
-	public function getSpecificTreshold(){
-		$SQL = "SELECT `treshold`.`treshold_id`, `treshold`.`treshold_category` FROM `treshold` WHERE 'treshold_id'=:treshold_id;";
+	public function getSpecificTreshold($treshold_id){
+		$SQL = "SELECT * FROM `treshold` WHERE treshold_id=:treshold_id;";
 		$STH = self::$connection->prepare($SQL);
 		$STH->execute(['treshold_id'=>$treshold_id]);
 		$STH->setFetchMode(\PDO::FETCH_CLASS, 'app\\models\\Treshold');
