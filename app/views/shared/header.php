@@ -16,16 +16,15 @@
 
 	<title><?= $data ?></title>
 
-
 	<script type="text/javascript">
 		function fixScroll(id) {
 		  var text = document.getElementById(id).innerHTML;
 		  document.getElementById("container").innerHTML = text;
 		}
 	</script>
-	<style>
 
-		
+	<style>
+	
 		
 	</style>
 <title><?=htmlentities($data)?></title>

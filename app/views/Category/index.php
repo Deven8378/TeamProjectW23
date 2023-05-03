@@ -1,38 +1,70 @@
 <?php $this->view('shared/header', _("View Categories")); ?>
 <?php $this->view('shared/navigation/nav'); ?>
 
-<div class="" align="center" style="background-color: #F3EBF6;
-  width: 900px;
-  height: 610px;
+<div class="" align="center" style="
+	
+	border: solid;
+	background-color: #F3EBF6;
+  width: 70%;
+/*  height: 610px;*/
+  padding: 20px;
   margin: 3em auto;
   border-radius: 1.5em;
- /* box-shadow: 0px 11px 35px 2px rgba(0, 0, 0, 0.14);*/">
+  
+  ">
+
 	<p class="sign" align="center"><?=_('Categories')?></p>
-	<table>
-		<tr><th>Category</th><th>Actions</th></tr>
-		<form action='' method='post' enctype="multipart/form-data">
-			<tr>
-				<td><input type="text" placeholder="<?= _('Category Name')?>" name="category_name"></td> 
-				<td><input type="submit" name="create" placeholder="<?=_('Create')?>"></	td>
-			</tr>
-		</form>
-	<?php
-		foreach ($data as $category) { 
-			?>
-		<tr>
-			<td><?= $category->category_name ?></td>
-
-			<td>
-				<a href='/Category/edit/<?= $category->category_id ?>'>Edit</a>
-				<a href='/Category/delete/<?= $category->category_id ?>'>Delete</a></td>
-
-		</tr>
-			
-	<?php
-	}	
-	?>	
+	<div style=" " class="">
 		
-	</table>
+		<div style=" " class="row">
+			<div style="" class="col">
+				<?php $this->view('Category/create',$data);?>
+			</div>
+			<div style="" class="col">
+				<?php $this->view('Category/edit',$data) ?>
+			</div>
+		</div>
+
+		<div class="">
+			<table class="table" style="">
+			<tr style="; ">
+				<th style=";"><?=_('ID')?></th>
+				<th style=";"><?=_('Category')?></th>
+				<th style=";"><?=_('Actions')?></th>
+			</tr>
+
+		<?php foreach ($data as $category) { ?>
+			<tr>
+				<td><?= $category->category_id ?></td>
+				<td id="<?= $category->category_id ?>"><?= $category->category_name ?></td>
+				<td><a href='/Category/delete/<?= $category->category_id ?>'><?=_('Delete')?></a></td>
+
+			</tr>
+				
+		<?php }	?>	
+
+		</table>
+	</div>
+
+		
+
+	</div>
+	
+
 </div>
+<script type="text/javascript">
+
+   function getValueUsingID() {
+    var selectBox = document.getElementById("selectBox");
+    var selectedValue = selectBox.options[selectBox.selectedIndex].value;
+
+    var getID = document.getElementById(selectedValue).innerHTML;
+
+		document.getElementById("editing").setAttribute("value", getID);
+
+   }
+
+  </script>
+
 
 <?php $this->view('shared/footer'); ?>

@@ -66,4 +66,14 @@ class Ingredient extends \app\core\Model {
 		$STH->execute($data);
 		return $STH->rowCount(); 
 	}
+
+	public function getIngredientByCategory($category_id)
+	{
+		$SQL = "SELECT * FROM `ingredient` WHERE `category` = :category;";
+		$STH = self::$connection->prepare($SQL);
+		$data = ['category'=>$category_id];
+		$STH->execute($data);
+		$STH->setFetchMode(\PDO::FETCH_CLASS, 'app\\models\\Ingredient');
+		return $STH->fetchAll();
+	}
 }

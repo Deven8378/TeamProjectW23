@@ -34,9 +34,12 @@ class Category extends \app\core\Model{
 
 	public function update($category_id){
 		//only the owner of the message can delete it
-		$SQL = "UPDATE `category` SET category_name=:category_name, category=:category";
+		$SQL = "UPDATE `category` SET category_name=:category_name WHERE category_id=:category_id";
 		$STH = self::$connection->prepare($SQL);
-		$data = ['category_name'=>$category_name];
+		$data = [
+			'category_name'=>$this->category_name,
+			'category_id'=>$category_id,
+		];
 		$STH->execute($data);
 		return $STH->rowCount(); 
 	}

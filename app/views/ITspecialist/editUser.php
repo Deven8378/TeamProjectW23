@@ -1,5 +1,5 @@
 
-<form method="post" action="" class="form1" >
+<form action="/ITspecialist/editUser" method="post" action="" class="form1" >
         <h2>Modify User Account</h2>
 
         <dt class="dt-label " style="margin-top: 10px;"><?=_('ID')?></dt>
