@@ -1,20 +1,31 @@
-<?php $this->view('shared/header', "Edit " . $data->name); ?>
+<?php $this->view('shared/header', "Edit " . $data['0']->name); ?>
 <?php $this->view('shared/navigation/nav'); ?>
 
 <div class='createProfile' align='center'>
-	<p class="sign" align="center"><?=_('Edit')?> <?= $data->name ?></p>
+	<p class="sign" align="center"><?=_('Edit')?> <?= $data['0']->name ?></p>
 	<form action='' method='post' enctype="multipart/form-data">
 
-		<input class="createInput" type="text" align="center" placeholder="<?= _('Name') ?>" name="name" value="<?= $data->name ?>">
+		<input class="createInput" type="text" align="center" placeholder="<?= _('Name') ?>" name="name" value="<?= $data['0']->name ?>">
 
-		<textarea placeholder="<?= _('Description...') ?>" name="description" class="createInput"><?= $data->description ?></textarea><br>
+		<select name="category" id="status" class="dropdownUserType">
+			<option selected disabled><?= _('--Select a Category--') ?></option>
+			<?php
+			foreach ($data['1'] as $treshold) { ?>
+			 	<option value="<?=$treshold->treshold_id ?>">
+			 		<?= $treshold->treshold_category ?>
+			 	</option>
+			<?php  } ?>
+		</select>
+
+
+		<textarea placeholder="<?= _('Description...') ?>" name="description" class="createInput"><?= $data['0']->description ?></textarea><br>
 
 		<label><?= _('Description') ?></label><br>
-		<input class="createInput" type="file" align="" placeholder="<?=_('Picture')?>" name="ingredientPicture" value="<?= $data->picture ?>"><br>
+		<input class="createInput" type="file" align="" placeholder="<?=_('Picture')?>" name="ingredientPicture" value="<?= $data['0']->picture ?>"><br>
 
 		<input class="submitIngredient" type="submit" align="" placeholder="<?=_('Add Ingredient')?>" name="action"> <br><br>
 
-		<a class="btn" href="/Ingredient/ingredientDetails/<?=$data->ingredient_id?>" role="button" style="background-color: #e8c8e7;"><?= _('Back') ?></a>
+		<a class="btn" href="/Ingredient/ingredientDetails/<?=$data['0']->ingredient_id?>" role="button" style="background-color: #e8c8e7;"><?= _('Back') ?></a>
 		
 	 
 	</form>

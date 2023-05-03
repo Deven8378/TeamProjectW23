@@ -54,11 +54,6 @@ if ($type == "admin")
                         <?= _('Delete') ?>
                       </a>
                     </li>
-                    <li>
-                      <a class="dropdown-item" href="/Product/addQuantity/<?= $data[0]->product_id ?>">
-                        <?= _('Add Quantity') ?>
-                      </a>
-                    </li>
                 </div>
               </div>
             <?php  }?>
@@ -123,6 +118,10 @@ if ($type == "admin")
                 <?php } ?>
               </tbody>
             </table>
+            <a class="btn" style="background-color: #e8c8e7" href="/Product/addQuantity/<?= $data[0]->product_id ?>">
+              <?= _('Add Quantity') ?>
+            </a>
+
           </div>
         </div>
       </div>

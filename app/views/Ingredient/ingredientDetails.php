@@ -11,13 +11,20 @@ if ($type == "admin")
 <link rel="stylesheet" type="text/css" href="/css/foodDetails.css">
 <script type="text/javascript">
   function myFunction() {
-  var x = document.getElementById("myDIV");
-  if (x.style.display === "none") {
-    x.style.display = "block";
-  } else {
-    x.style.display = "none";
+    var x = document.getElementById("myDIV");
+    if (x.style.display === "none") {
+      x.style.display = "block";
+    } else {
+      x.style.display = "none";
+    }
   }
-}
+
+   function increment() {
+      document.getElementById('demoInput').stepUp();
+   }
+   function decrement() {
+      document.getElementById('demoInput').stepDown();
+   }
 </script>
 
 
@@ -30,7 +37,6 @@ if ($type == "admin")
         <div>
           <img id="foodIMG" src="/ingredientImages/<?= $data[0]->picture ?>">
           <div class="spacer" style="height: 500px; flex-shrink: 0; margin: 0; padding: 0;"></div>
-          </a>
         </div>
       </div>
       <div class="col-7">
@@ -107,7 +113,7 @@ if ($type == "admin")
                           </li>
                         <?php } ?>
                           <li>
-                            <a class="dropdown-item" href="/Product/editQuantityOnly<?=$quantity->pq_id?>">
+                            <a class="dropdown-item" href="#editQuantity">
                               <?= _('Edit Quantity') ?>
                             </a>
                           </li>
@@ -121,6 +127,20 @@ if ($type == "admin")
             <a class="btn" style="background-color: #e8c8e7" href="/Ingredient/addQuantity/<?= $data[0]->ingredient_id ?>">
               <?= _('Add Quantity') ?>
             </a>
+          </div>
+          <div class="overlay" id="editQuantity">
+            <div class="wrapper">
+                <h2><?= _('Edit Quantity') ?></h2><a class="close" href="/Ingredient/ingredientDetails/<?= $data[0]->ingredient_id ?>">&times;</a>
+                <div class="content">
+                    <div class="container">
+                        <form  method="post" action="">
+                            <label><?= _('Quantity') ?></label><br>
+                            <input id=demoInput type=number min="-10"><br><br>
+                            <input class="btn" type="submit" name="action" value='<?= _('Send') ?>' style="background-color: #e8c8e7;" id="messageSubmit">
+                        </form>
+                    </div>
+                </div>
+            </div>
           </div>
         </div>
       </div>

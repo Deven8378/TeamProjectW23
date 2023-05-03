@@ -7,13 +7,15 @@ class Product extends \app\core\Model {
 	public $description;
 	public $picture;
 	public $product_id;
+	public $category;
 
 	public function addProduct() {
-		$SQL = "INSERT INTO product ( name, description, picture) value (:name, :description, :picture)";
+		$SQL = "INSERT INTO product ( name, description, picture, category) value (:name, :description, :picture, :category)";
 		$STH = self::$connection->prepare($SQL);
 		$data = ['name'=>$this->name,
 				'description'=>$this->description,
-				'picture'=>$this->picture];
+				'picture'=>$this->picture,
+				'category'=>$this->category];
 		$STH->execute($data);
 		return self::$connection->lastInsertId();		
 	}
@@ -52,12 +54,13 @@ class Product extends \app\core\Model {
 	}
 
 	public function edit() {
-		$SQL = "UPDATE `product` SET `name`=:name, `description`=:description, `picture`=:picture WHERE product_id=:product_id";
+		$SQL = "UPDATE `product` SET `name`=:name, `description`=:description, `picture`=:picture, `category`=:category WHERE product_id=:product_id";
 		$STH = self::$connection->prepare($SQL);
 		$data = ['product_id'=>$this->product_id,
 				'name'=>$this->name,
 				'description'=>$this->description,
-				'picture'=>$this->picture];
+				'picture'=>$this->picture,
+				'category'=>$this->category];
 		$STH->execute($data);
 		return $STH->rowCount();
 	}
