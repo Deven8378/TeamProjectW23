@@ -15,7 +15,7 @@
 			<a class="btn" href="/Ingredient/createIngredient" role="button" style="background-color: #e8c8e7;"><?= _('Add Ingredient') ?></a>
 
 			<!--  -->
-			<a href="/Category/index">view categories</a>
+			<a href="/Treshold/index">view categories</a>
 			<!--  -->
 
 			<hr style="height:1px; border-width:0 ;color: #d9d9d9; background-color:gray">
