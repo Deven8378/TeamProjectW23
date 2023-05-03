@@ -31,5 +31,4 @@
 <title><?=htmlentities($data)?></title>
 	
 </head>
-
 <body>

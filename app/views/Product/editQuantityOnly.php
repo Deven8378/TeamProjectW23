@@ -11,13 +11,13 @@ if ($type == "admin")
 <link rel="stylesheet" type="text/css" href="/css/foodDetails.css">
 <script type="text/javascript">
   function myFunction() {
-  var x = document.getElementById("myDIV");
-  if (x.style.display === "none") {
-    x.style.display = "block";
-  } else {
-    x.style.display = "none";
+    var x = document.getElementById("myDIV");
+    if (x.style.display === "none") {
+      x.style.display = "block";
+    } else {
+      x.style.display = "none";
+    }
   }
-}
 </script>
 
 <div id="foodDetailsDiv">
@@ -28,7 +28,8 @@ if ($type == "admin")
       <div class="col-5">
         <div>
           <img id="foodIMG" src="/productImages/<?= $data[0]->picture ?>">
-          <div class="spacer" style="height: 500px; flex-shrink: 0; margin: 0; padding: 0;"></div>
+          <div class="spacer" style="height: 700px; flex-shrink: 0; margin: 0; padding: 0;"></div>
+          
           </a>
         </div>
       </div>
