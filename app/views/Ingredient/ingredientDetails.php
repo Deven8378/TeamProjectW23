@@ -86,6 +86,7 @@ if ($type == "admin")
                   <th scope="col">Arrival Date</th>
                   <th scope="col">Expired Date</th>
                   <th scope="col">Unit Price</th>
+                  <th scope="col">Days Left</th>
                   <th scope="col"></th>
                 </tr>
               </thead>
@@ -96,6 +97,7 @@ if ($type == "admin")
                   <td><?= $quantity->arrival_date ?></td>
                   <td><?= $quantity->expired_date ?></td>
                   <td><?= $quantity->price ?></td>
+                  <td><?= $quantity->daysLeft ?></td>
                   <td>
                     <div class="btn-group dropend">
                       <button type="button" class="btn" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="bi bi-three-dots-vertical"></i>More</button>

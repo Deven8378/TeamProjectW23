@@ -31,9 +31,9 @@ class Ingredient extends \app\core\Controller
 
             if ($picture) {
                 $ingredient->picture = $picture;
-                $ingredient->addIngredient();
-                header('location:/Ingredient/index?success=Ingredient Added');
             }
+            $ingredient->addIngredient();
+            header('location:/Ingredient/index?success=Ingredient Added');
         } else {
             $this->view('Ingredient/createIngredient', $categories);
         }
@@ -47,7 +47,6 @@ class Ingredient extends \app\core\Controller
         $totalQuantity = $totalQuantity->getTotalQuantity($ingredient_id);
         $allQuantity = new IngredientQuantity;
         $allQuantity = $allQuantity->getAll($ingredient_id);
-
 
         if($success){
             $this->view('Ingredient/ingredientDetails', [$success, $totalQuantity, $allQuantity]);

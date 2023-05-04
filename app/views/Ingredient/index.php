@@ -2,16 +2,16 @@
 <?php $this->view('shared/navigation/nav'); ?>
 <?php $this->view('shared/navigation/switchToIngredients'); ?>
 <style type="text/css">
-.vl {
-  border-left: 1px solid #d9d9d9;
-  height: 800px;
-}
+	.vl {
+	  border-left: 1px solid #d9d9d9;
+	  height: 800px;
+	}
 </style>
 
 
 <div class="container">
 	<div class="row">
-		<div class="col-sm-2">
+		<div class="col-sm-2" style="padding-right: 10px;">
 			<a class="btn" href="/Ingredient/createIngredient" role="button" style="background-color: #e8c8e7;"><?= _('Add Ingredient') ?></a> <br> <br>
 
 			<!--  -->
