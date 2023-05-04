@@ -1,7 +1,9 @@
 <form action='/Category/create' method='post' enctype="multipart/form-data">
 	<div
 	style="
-	border:1px solid black;
+/*	border:1px solid black;*/
+/*margin-right: 20px;*/
+
 /*	width:  70%;*/
 	height: 200px;
 	padding: 20px;

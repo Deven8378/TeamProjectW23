@@ -1,7 +1,7 @@
 <?php
 namespace app\controllers;
 
-use \app\models\Ingredient;
+// use \app\models\Ingredient;
 use \app\models\Category;
 use \app\models\IngredientQuantity;
 
@@ -11,7 +11,7 @@ class Ingredient extends \app\core\Controller
     #[\app\filters\EmployeeAndAdmin]
     public function index()
     {
-        $ingredient = new Ingredient();
+        $ingredient = new \app\models\Ingredient();
         $ingredients = $ingredient->getAll();
         $this->view('Ingredient/index', $ingredients);
     }
@@ -19,10 +19,10 @@ class Ingredient extends \app\core\Controller
     #[\app\filters\Admin]
     public function createIngredient() 
     {
-        $categories = new Category();
+        $categories = new \app\models\Category();
         $categories = $categories->getCategories();
         if (isset($_POST['action'])) {
-            $ingredient = new Ingredient();
+            $ingredient = new \app\models\Ingredient();
             $ingredient->name = $_POST['name'];
             $ingredient->category = $_POST['category'];
             $ingredient->description = $_POST['description'];
@@ -41,7 +41,7 @@ class Ingredient extends \app\core\Controller
 
     #[\app\filters\EmployeeAndAdmin]
     public function ingredientDetails($ingredient_id){
-        $ingredient = new Ingredient();
+        $ingredient = new \app\models\Ingredient();
         $success = $ingredient->getIngredientDetails($ingredient_id);
         $totalQuantity = new IngredientQuantity;
         $totalQuantity = $totalQuantity->getTotalQuantity($ingredient_id);
@@ -61,7 +61,7 @@ class Ingredient extends \app\core\Controller
     {  
         $categories = new Category();
         $categories = $categories->getCategories();
-        $ingredient = new Ingredient();
+        $ingredient = new \app\models\Ingredient();
         $ingredient = $ingredient->getIngredientDetails($ingredient_id);
 
         if(isset($_POST['action']))
@@ -89,7 +89,7 @@ class Ingredient extends \app\core\Controller
     #[\app\filters\Admin]
     public function delete($ingredient_id)
     {
-        $ingredient = new Ingredient();
+        $ingredient = new \app\models\Ingredient();
         $success = $ingredient->deleteIngredient($ingredient_id);
         if($success){
             header('location:/Ingredient/index?success=Ingredient deleted.');

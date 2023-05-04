@@ -1,36 +1,31 @@
 <?php $this->view('shared/header', _("View Categories")); ?>
 <?php $this->view('shared/navigation/nav'); ?>
 
-<div class="" align="center" style="
-	
-	border: solid;
-	background-color: #F3EBF6;
-  width: 70%;
-/*  height: 610px;*/
-  padding: 20px;
-  margin: 3em auto;
-  border-radius: 1.5em;
-  
-  ">
+<div align="center" style="border: solid; background-color: #F3EBF6; width: 70%; padding: 20px; margin: 3em auto; border-radius: 1.5em;">
 
 	<p class="sign" align="center"><?=_('Categories')?></p>
-	<div style=" " class="">
+	<div>
 		
-		<div style=" " class="row">
-			<div style="" class="col">
+		<div class="row">
+			<div class="col">
 				<?php $this->view('Category/create',$data);?>
 			</div>
-			<div style="" class="col">
+
+			<div class="col-1">
+				<hr class="divider" style="margin-left: 5px; margin-right: 5px; height: 90%; width: 1px; background-color: grey; ">
+			</div>
+			
+			<div class="col">
 				<?php $this->view('Category/edit',$data) ?>
 			</div>
 		</div>
 
-		<div class="">
-			<table class="table" style="">
-			<tr style="; ">
-				<th style=";"><?=_('ID')?></th>
-				<th style=";"><?=_('Category')?></th>
-				<th style=";"><?=_('Actions')?></th>
+		<div >
+			<table class="table">
+			<tr>
+				<th><?=_('ID')?></th>
+				<th><?=_('Category')?></th>
+				<th><?=_('Actions')?></th>
 			</tr>
 
 		<?php foreach ($data as $category) { ?>
@@ -43,14 +38,11 @@
 				
 		<?php }	?>	
 
-		</table>
-	</div>
-
-		
+			</table>
+		</div>
 
 	</div>
 	
-
 </div>
 <script type="text/javascript">
 

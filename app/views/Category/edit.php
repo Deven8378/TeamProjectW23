@@ -1,7 +1,7 @@
 <form action='/Category/edit' method='post' enctype="">
 	<div class="" style="
 
-	border: 1px solid black;
+/*	border: 1px solid black;*/
 /*	width:  70%;*/
 height: 200px;
 	padding: 20px;
