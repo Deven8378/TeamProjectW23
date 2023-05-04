@@ -10,9 +10,9 @@
 		<select name="category" id="status" class="dropdownUserType">
 			<option selected disabled><?= _('--Select a Category--') ?></option>
 			<?php
-			foreach ($data['1'] as $treshold) { ?>
-			 	<option value="<?=$treshold->treshold_id ?>">
-			 		<?= $treshold->treshold_category ?>
+			foreach ($data['1'] as $category) { ?>
+			 	<option value="<?=$category->category_id ?>">
+			 		<?= $category->category_name ?>
 			 	</option>
 			<?php  } ?>
 		</select>

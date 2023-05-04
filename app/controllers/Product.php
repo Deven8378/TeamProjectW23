@@ -1,11 +1,16 @@
 <?php
 namespace app\controllers;
 
+use \app\models\Product;
+use \app\models\Category;
+use \app\models\ProductQuantity;
+
+
 class Product extends \app\core\Controller
 {
     #[\app\filters\EmployeeAndAdmin]
     public function index() {
-        $product = new \app\models\Product();
+        $product = new Product();
         $products = $product->getAll();
         $this->view('Product/index', $products);
     }
@@ -13,10 +18,10 @@ class Product extends \app\core\Controller
 
     #[\app\filters\Admin]
     public function createProduct() {
-        $tresholds = new \app\models\Treshold();
-        $tresholds = $tresholds->getTresholds();
+        $categories = new Category();
+        $categories = $categories->getCategories();
         if (isset($_POST['action'])) {
-            $product = new \app\models\Product();
+            $product = new Product();
             $product->name = htmlentities($_POST['name']);
             $product->description = htmlentities($_POST['description']);
             $product->category = $_POST['category'];
@@ -30,16 +35,16 @@ class Product extends \app\core\Controller
             }
         }
        
-            $this->view('Product/createProduct', $tresholds);
+            $this->view('Product/createProduct', $categories);
     }
 
     #[\app\filters\EmployeeAndAdmin]
      public function productDetails($product_id){
-        $product = new \app\models\Product();
+        $product = new Product();
         $success = $product->getProductDetails($product_id);
-        $totalQuantity = new \app\models\ProductQuantity;
+        $totalQuantity = new ProductQuantity;
         $totalQuantity = $totalQuantity->getTotalQuantity($product_id);
-        $allQuantity = new \app\models\ProductQuantity;
+        $allQuantity = new ProductQuantity;
         $allQuantity = $allQuantity->getAll($product_id);
 
 
@@ -53,7 +58,7 @@ class Product extends \app\core\Controller
 
     #[\app\filters\Admin]
     public function delete($product_id) {
-        $product = new \app\models\Product();
+        $product = new Product();
         $product = $product->getProductDetails($product_id);
         $product->delete();
         unlink("productImages/$product->picture");
@@ -62,9 +67,9 @@ class Product extends \app\core\Controller
 
     #[\app\filters\Admin]
     public function edit($product_id) {
-        $tresholds = new \app\models\Treshold();
-        $tresholds = $tresholds->getTresholds();
-        $product = new \app\models\Product();
+        $categories = new Category();
+        $categories = $categories->getCategories();
+        $product = new Product();
         $product = $product->getProductDetails($product_id);
 
         if(isset($_POST['action'])) {
@@ -87,14 +92,14 @@ class Product extends \app\core\Controller
            
         }
         else
-        $this->view('Product/edit', [$product,$tresholds]);
+        $this->view('Product/edit', [$product,$categories]);
     }
 
      #[\app\filters\Admin]
     public function addQuantity($product_id) 
     {
         if (isset($_POST['action'])) {
-            $product_quantity = new \app\models\ProductQuantity();
+            $product_quantity = new ProductQuantity();
             $product_quantity->produced_date = $_POST['produced_date'];
             $product_quantity->expired_date = $_POST['expired_date'];
             $product_quantity->quantity = $_POST['quantity'];
@@ -114,7 +119,7 @@ class Product extends \app\core\Controller
     #[\app\filters\Admin]
     public function editQuantity($pq_id)
     {  
-        $productQuantity = new \app\models\ProductQuantity();
+        $productQuantity = new ProductQuantity();
         $productQuantity = $productQuantity->getOneQuantity($pq_id);
 
         if(isset($_POST['action']))
@@ -139,7 +144,7 @@ class Product extends \app\core\Controller
     #[\app\filters\Admin]
     public function deleteQuantity($pq_id)
     {
-        $productQuantity = new \app\models\ProductQuantity();
+        $productQuantity = new ProductQuantity();
         $product = $productQuantity->getOneQuantity($pq_id);
         $productNumber = $product->product_id;
         $success = $productQuantity->deleteQuantity($pq_id);
@@ -152,11 +157,11 @@ class Product extends \app\core\Controller
 
     public function editQuantityOnly($product_id) //view that shows form when clicking Edit Quantity
     {
-        $product = new \app\models\Product();
+        $product = new Product();
         $success = $product->getProductDetails($product_id);
-        $totalQuantity = new \app\models\ProductQuantity;
+        $totalQuantity = new ProductQuantity;
         $totalQuantity = $totalQuantity->getTotalQuantity($product_id);
-        $allQuantity = new \app\models\ProductQuantity;
+        $allQuantity = new ProductQuantity;
         $allQuantity = $allQuantity->getAll($product_id);
 
         if($success){
@@ -166,7 +171,7 @@ class Product extends \app\core\Controller
      }
 
     public function quantityUpdate($product_id) { //form action method
-        $allQuantity = new \app\models\ProductQuantity;
+        $allQuantity = new ProductQuantity;
         $allQuantity = $allQuantity->getAll($product_id);
         $counter = 1; //each product quantity row's input name is quantity$counter
 

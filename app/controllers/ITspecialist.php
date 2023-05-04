@@ -1,13 +1,16 @@
 <?php
 namespace app\controllers;
 
+use \app\models\User;
+use \app\models\Profile;
+
 #[\app\filters\ITSpecialist]
 class ITspecialist extends \app\core\Controller 
 {
 	public function index() //viewUsers
 	{
 		//see all the employees and admins from the User table
-        $user = new \app\models\User();
+        $user = new User();
         $users = $user->getAllUserInfo();
         $this->view('ITspecialist/index', $users);
 	}
@@ -18,7 +21,7 @@ class ITspecialist extends \app\core\Controller
 
             if(isset($_POST['action']))
             {
-                $user = new \app\models\User();
+                $user = new User();
                 $usercheck = $user->getByUsername($_POST['username']);
                 if(!$usercheck)
                 {
@@ -66,7 +69,7 @@ class ITspecialist extends \app\core\Controller
                 if($_POST['first_name'] != '' && $_POST['last_name'] != '' && $_POST['email'] != '' && $_POST['phone_number'] != '' && $_POST['status'] != ''
                     && $_POST['first_name'] != null && $_POST['last_name'] != null && $_POST['email'] != null && $_POST['phone_number'] != null && $_POST['status'] != null){
 
-                    $profile = new \app\models\Profile();
+                    $profile = new Profile();
                     $profile->user_id = $user_id;
                     $profile->first_name = htmlentities($_POST['first_name']);
                     $profile->middle_name = htmlentities($_POST['middle_name']);
@@ -91,7 +94,7 @@ class ITspecialist extends \app\core\Controller
             } 
             else 
             {
-                $user = new \app\models\User();
+                $user = new User();
                 $usercheck = $user->getByUserId($user_id);
                 $this->view('ITspecialist/createProfile', $usercheck);
             }
@@ -100,11 +103,11 @@ class ITspecialist extends \app\core\Controller
 
     public function userDetails($user_id)
     {
-        $profile = new \app\models\Profile();
+        $profile = new Profile();
         $userdetails = $profile->getProfile($user_id);
 
         if($userdetails){
-            $user = new \app\models\User();
+            $user = new User();
             $users = $user->getUserInfo($user_id);
             $this->view('ITspecialist/userDetails', $users);
         }else{
@@ -117,12 +120,12 @@ class ITspecialist extends \app\core\Controller
     public function delete($user_id)
     {
         
-        $profile = new \app\models\Profile();
+        $profile = new Profile();
         // $profile->delete($user_id);
         $success = $profile->delete($user_id);
 
         if($success){
-            $user = new \app\models\User();
+            $user = new User();
             $user->delete($user_id);
             header('location:/ITspecialist/index?success=Profile for user ID ' . $user_id . ' has been deleted');
         }else{
@@ -132,7 +135,7 @@ class ITspecialist extends \app\core\Controller
 
     public function edit($user_id)
     {
-        $user = new \app\models\User();
+        $user = new User();
         $user = $user->getUserInfo($user_id);
         $this->view('ITspecialist/edit', $user);
     }
@@ -152,7 +155,7 @@ class ITspecialist extends \app\core\Controller
                 && $_POST['phone_number'] != null 
                 && $_POST['status'] != null){
 
-                $profile = new \app\models\Profile();
+                $profile = new Profile();
                 $profile->user_id = $user_id;
                 $profile->first_name = htmlentities($_POST['first_name']);
                 $profile->middle_name = htmlentities($_POST['middle_name']);
@@ -176,7 +179,7 @@ class ITspecialist extends \app\core\Controller
 
         }else{ 
         
-            $user = new \app\models\User();
+            $user = new User();
             $user = $user->getUserInfo($user_id);
             $this->view('ITspecialist/edit', $user);
         }
@@ -193,7 +196,7 @@ class ITspecialist extends \app\core\Controller
                 && $_POST['user_type'] != ""
                 && $_POST['user_type'] != null
             ){
-                $user = new \app\models\User();
+                $user = new User();
                 $user->username = htmlentities($_POST['username']);
                 $user->user_type = htmlentities($_POST['user_type']);
                 $success;
@@ -218,7 +221,7 @@ class ITspecialist extends \app\core\Controller
                 header('location:/ITspecialist/edit/' . $user_id.'?error=Fill up the dam things if you wanna modify');
             }
         }else{
-            $user = new \app\models\User();
+            $user = new User();
             $user = $user->getUserInfo($user_id);
             $this->view('ITspecialist/edit', $user);
         }
@@ -227,19 +230,19 @@ class ITspecialist extends \app\core\Controller
     // Filters
     public function search()
     {
-        $user = new \app\models\User();
+        $user = new User();
         $users = $user->search($_GET['search']);
         $this->view('ITspecialist/index', $users);
     }
     public function allAdmins()
     {
-        $user = new \app\models\User();
+        $user = new User();
         $users = $user->getAdmins();
         $this->view('ITspecialist/index', $users);
     }
     public function allEmployees()
     {
-        $user = new \app\models\User();
+        $user = new User();
         $users = $user->getEmployees();
         $this->view('ITspecialist/index', $users);
     }

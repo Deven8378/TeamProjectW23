@@ -1,6 +1,9 @@
 <?php
 namespace app\controllers;
 
+use \app\models\Ingredient;
+use \app\models\Category;
+use \app\models\IngredientQuantity;
 
 class Ingredient extends \app\core\Controller
 {
@@ -8,7 +11,7 @@ class Ingredient extends \app\core\Controller
     #[\app\filters\EmployeeAndAdmin]
     public function index()
     {
-        $ingredient = new \app\models\Ingredient();
+        $ingredient = new Ingredient();
         $ingredients = $ingredient->getAll();
         $this->view('Ingredient/index', $ingredients);
     }
@@ -16,10 +19,10 @@ class Ingredient extends \app\core\Controller
     #[\app\filters\Admin]
     public function createIngredient() 
     {
-        $categories = new \app\models\Category();
+        $categories = new Category();
         $categories = $categories->getCategories();
         if (isset($_POST['action'])) {
-            $ingredient = new \app\models\Ingredient();
+            $ingredient = new Ingredient();
             $ingredient->name = $_POST['name'];
             $ingredient->category = $_POST['category'];
             $ingredient->description = $_POST['description'];
@@ -38,11 +41,11 @@ class Ingredient extends \app\core\Controller
 
     #[\app\filters\EmployeeAndAdmin]
     public function ingredientDetails($ingredient_id){
-        $ingredient = new \app\models\Ingredient();
+        $ingredient = new Ingredient();
         $success = $ingredient->getIngredientDetails($ingredient_id);
-        $totalQuantity = new \app\models\IngredientQuantity;
+        $totalQuantity = new IngredientQuantity;
         $totalQuantity = $totalQuantity->getTotalQuantity($ingredient_id);
-        $allQuantity = new \app\models\IngredientQuantity;
+        $allQuantity = new IngredientQuantity;
         $allQuantity = $allQuantity->getAll($ingredient_id);
 
 
@@ -56,9 +59,9 @@ class Ingredient extends \app\core\Controller
     #[\app\filters\Admin]
     public function edit($ingredient_id)
     {  
-        $tresholds = new \app\models\Treshold();
-        $tresholds = $tresholds->getTresholds();
-        $ingredient = new \app\models\Ingredient();
+        $categories = new Category();
+        $categories = $categories->getCategories();
+        $ingredient = new Ingredient();
         $ingredient = $ingredient->getIngredientDetails($ingredient_id);
 
         if(isset($_POST['action']))
@@ -79,14 +82,14 @@ class Ingredient extends \app\core\Controller
                 header('location:/Ingredient/editIngredient/' . $ingredient_id. '?error=Error.');
             }
         } else {
-            $this->view('Ingredient/editIngredient', [$ingredient,$tresholds]);
+            $this->view('Ingredient/editIngredient', [$ingredient,$categories]);
         }
     }
 
     #[\app\filters\Admin]
     public function delete($ingredient_id)
     {
-        $ingredient = new \app\models\Ingredient();
+        $ingredient = new Ingredient();
         $success = $ingredient->deleteIngredient($ingredient_id);
         if($success){
             header('location:/Ingredient/index?success=Ingredient deleted.');
@@ -99,7 +102,7 @@ class Ingredient extends \app\core\Controller
     public function addQuantity($ingredient_id) 
     {
         if (isset($_POST['action'])) {
-            $ingredient_quantity = new \app\models\IngredientQuantity();
+            $ingredient_quantity = new IngredientQuantity();
             $ingredient_quantity->arrival_date = $_POST['arrival_date'];
             $ingredient_quantity->expired_date = $_POST['expired_date'];
             $ingredient_quantity->quantity = $_POST['quantity'];
@@ -119,7 +122,7 @@ class Ingredient extends \app\core\Controller
     #[\app\filters\Admin]
     public function editQuantity($iq_id)
     {  
-        $ingredientQuantity = new \app\models\IngredientQuantity();
+        $ingredientQuantity = new IngredientQuantity();
         $ingredientQuantity = $ingredientQuantity->getOneQuantity($iq_id);
 
         if(isset($_POST['action']))
@@ -144,7 +147,7 @@ class Ingredient extends \app\core\Controller
     #[\app\filters\Admin]
     public function deleteQuantity($iq_id)
     {
-        $ingredientQuantity = new \app\models\IngredientQuantity();
+        $ingredientQuantity = new IngredientQuantity();
         $ingredient = $ingredientQuantity->getOneQuantity($iq_id);
         $ingredientNumber = $ingredient->ingredient_id;
         $success = $ingredientQuantity->deleteQuantity($iq_id);
@@ -156,7 +159,7 @@ class Ingredient extends \app\core\Controller
     }
 
     public function quantityUpdate($ingredient_id) { //form action method
-        $allQuantity = new \app\models\IngredientQuantity;
+        $allQuantity = new IngredientQuantity;
         $allQuantity = $allQuantity->getAll($ingredient_id);
         $counter = 1; //each product quantity row's input name is quantity$counter
 
