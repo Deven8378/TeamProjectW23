@@ -1,6 +1,7 @@
 <?php
 namespace app\controllers;
 
+
 class Ingredient extends \app\core\Controller
 {
 

@@ -132,24 +132,81 @@ class ITspecialist extends \app\core\Controller
 
     public function edit($user_id)
     {
+        $user = new \app\models\User();
+        $user = $user->getUserInfo($user_id);
+        $this->view('ITspecialist/edit', $user);
+    }
 
+    public function editProfile($user_id)
+    {
+        if(isset($_POST['editProfile']))
+        {
+            if($_POST['first_name'] != '' 
+                && $_POST['last_name'] != '' 
+                && $_POST['email'] != '' 
+                && $_POST['phone_number'] != '' 
+                && $_POST['status'] != ''
+                && $_POST['first_name'] != null 
+                && $_POST['last_name'] != null 
+                && $_POST['email'] != null 
+                && $_POST['phone_number'] != null 
+                && $_POST['status'] != null){
+
+                $profile = new \app\models\Profile();
+                $profile->user_id = $user_id;
+                $profile->first_name = htmlentities($_POST['first_name']);
+                $profile->middle_name = htmlentities($_POST['middle_name']);
+                $profile->last_name = htmlentities($_POST['last_name']);
+                $profile->email = htmlentities($_POST['email']);
+                $profile->phone_number = htmlentities($_POST['phone_number']);
+                $profile->status = htmlentities($_POST['status']);
+
+                $success = $profile->editProfile($user_id);
+
+                if($success)
+                {
+                    header('location:/ITspecialist/edit/' . $user_id. '?success=User Profile Was Updated.');
+                }else{
+
+                    header('location:/ITspecialist/edit/' . $user_id.'?error=Error when modifying Profile.');
+                }
+            }else{
+                header('location:/ITspecialist/edit/' . $user_id.'?error=Fill up the dam things, except for middle name');
+            }
+
+        }else{ 
+        
+            $user = new \app\models\User();
+            $user = $user->getUserInfo($user_id);
+            $this->view('ITspecialist/edit', $user);
+        }
+    }
+
+    public function editUser($user_id)
+    {
         if(isset($_POST['editUser']))
         {
-            // if($_POST['username'] !=""
-            //     && $_POST['username'] !=null
-            //     // && $_POST['password'] != ""
-            //     // && $_POST['password'] != null
-            //     && $_POST['user_type'] != ""
-            //     && $_POST['user_type'] != null
-            // ){
+            if($_POST['username'] !=""
+                && $_POST['username'] !=null
+                // && $_POST['password'] != ""
+                // && $_POST['password'] != null
+                && $_POST['user_type'] != ""
+                && $_POST['user_type'] != null
+            ){
                 $user = new \app\models\User();
-                $user->username = $_POST['username'];
-                if($_POST['password'] != "" && $_POST['password'] != null){
-                    $user->password_hash = password_hash($_POST['password'], PASSWORD_DEFAULT);
-                }
+                $user->username = htmlentities($_POST['username']);
                 $user->user_type = htmlentities($_POST['user_type']);
+                $success;
+                if($_POST['password'] != "" && $_POST['password'] != null){
 
-                $success = $user->editUser($user_id);
+                    $user->password_hash = password_hash($_POST['password'], PASSWORD_DEFAULT);
+                    $success = $user->editUserPassword($user_id);
+
+                }else{
+
+                    $success = $user->editUser($user_id);
+                }
+                
 
                 if($success){
                     // echo 'sdsds';
@@ -157,60 +214,33 @@ class ITspecialist extends \app\core\Controller
                 } else {
                     header('location:/ITspecialist/edit/' . $user_id. '?error=Error when modifying User Account.');
                 }
-            // }else{
-            //     header('location:/ITspecialist/edit/' . $user_id.'?error=Fill up the dam things if you wanna modify');
-            // }
-        } else if(isset($_POST['editProfile']))
-            {
-                // if($_POST['first_name'] != '' 
-                //     && $_POST['last_name'] != '' 
-                //     && $_POST['email'] != '' 
-                //     && $_POST['phone_number'] != '' 
-                //     && $_POST['status'] != ''
-                //     && $_POST['first_name'] != null 
-                //     && $_POST['last_name'] != null 
-                //     && $_POST['email'] != null 
-                //     && $_POST['phone_number'] != null 
-                //     && $_POST['status'] != null){
-
-                    $profile = new \app\models\Profile();
-                    $profile->user_id = $user_id;
-                    $profile->first_name = htmlentities($_POST['first_name']);
-                    $profile->middle_name = htmlentities($_POST['middle_name']);
-                    $profile->last_name = htmlentities($_POST['last_name']);
-                    $profile->email = htmlentities($_POST['email']);
-                    $profile->phone_number = htmlentities($_POST['phone_number']);
-                    $profile->status = htmlentities($_POST['status']);
-
-                    $success = $profile->editProfile($user_id);
-
-                    if($success)
-                    {
-                        header('location:/ITspecialist/edit/' . $user_id. '?success=User Profile Was Updated.');
-                    }else{
-
-                        header('location:/ITspecialist/edit/' . $user_id.'?error=Error when modifying Profile.');
-                    }
-                // }else{
-                //     header('location:/ITspecialist/edit/' . $user_id.'?error=Fill up the dam things, except for middle name');
-                // }
-
-            }else{ 
-        
+            }else{
+                header('location:/ITspecialist/edit/' . $user_id.'?error=Fill up the dam things if you wanna modify');
+            }
+        }else{
             $user = new \app\models\User();
             $user = $user->getUserInfo($user_id);
             $this->view('ITspecialist/edit', $user);
         }
-
-        
     }
 
-
+    // Filters
     public function search()
     {
         $user = new \app\models\User();
         $users = $user->search($_GET['search']);
         $this->view('ITspecialist/index', $users);
     }
-    
+    public function allAdmins()
+    {
+        $user = new \app\models\User();
+        $users = $user->getAdmins();
+        $this->view('ITspecialist/index', $users);
+    }
+    public function allEmployees()
+    {
+        $user = new \app\models\User();
+        $users = $user->getEmployees();
+        $this->view('ITspecialist/index', $users);
+    }
 }

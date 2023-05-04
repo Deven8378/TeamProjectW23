@@ -1,5 +1,5 @@
 
-<form action="/ITspecialist/editUser" method="post" action="" class="form1" >
+<form action="/ITspecialist/editUser/<?= $data->user_id?>" method="post" action="" class="form1" >
         <h2>Modify User Account</h2>
 
         <dt class="dt-label " style="margin-top: 10px;"><?=_('ID')?></dt>
@@ -9,7 +9,7 @@
         <input class="dd-left" type="text" name="username" value="<?= $data->username ?>">
 
         <dt class="dt-label" style="margin-top: 10px;"><?=_('Modify Password')?></dt>
-        <input class="dd-left" type="text" name="password" value="<?= $data->password_hash ?>">
+        <input class="dd-left" type="text" name="password">
 
         <dt class="dt-label" style="margin-top: 10px;"><?=_('Type of User:')?></dt>
         <select name="user_type" id="user_type"  class="dropdownUserType" style="">

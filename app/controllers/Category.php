@@ -1,11 +1,14 @@
 <?php
 namespace app\controllers;
 
+use \app\models\Category;
+use \app\models\Ingredient;
+
 class Category extends \app\core\Controller
 {
    public function index()
    {    
-        $category = new \app\models\Category();
+        $category = new Category();
         $category = $category->getCategories();
         $this->view('Category/index',$category);  
    }
@@ -18,7 +21,7 @@ class Category extends \app\core\Controller
                 $_POST['category_name'] != '' 
                 && $_POST['category_name'] != null
             ){
-                $category = new \app\models\Category();
+                $category = new Category();
                 $category->category_name = htmlentities($_POST['category_name']);
                 $success = $category->insert();
                 if($success){
@@ -32,7 +35,7 @@ class Category extends \app\core\Controller
             
 
         }else{
-            $category = new \app\models\Category();
+            $category = new Category();
             $category = $category->getCategories();
             $this->view('Category/index',$category);  
         }
@@ -48,7 +51,7 @@ class Category extends \app\core\Controller
                 && $_POST['editCategory_name'] != null
 
             ){
-                $category = new \app\models\Category();
+                $category = new Category();
                 $category->category_id = htmlentities($_POST['editCategory_id']);
                 $category->category_name = htmlentities($_POST['editCategory_name']);
                 $category->update($category->category_id);
@@ -64,11 +67,11 @@ class Category extends \app\core\Controller
    }
    public function delete($category_id)
    {
-        $ingredient = new \app\models\Ingredient();
+        $ingredient = new Ingredient();
         $ingredients = $ingredient->getIngredientByCategory($category_id);
 
         if(empty($ingredients)){
-             $category = new \app\models\Category();
+            $category = new Category();
             $success = $category->delete($category_id);
             if($success){
                 header('location:/Category/index?success=Item Deleted');

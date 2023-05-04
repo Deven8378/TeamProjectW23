@@ -1,5 +1,5 @@
 
-<form action="/ITspecialist/editProfile" method="post" action="" class="form1" style="" >
+<form action="/ITspecialist/editProfile/<?= $data->user_id?>" method="post" action="" class="form1" style="" >
   <h2>Modify Profile</h2>
   <dl class="dl-viewUserDetails" style="">
     <div class="" style="flex:  70%; " >

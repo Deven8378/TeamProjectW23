@@ -102,6 +102,20 @@ class User extends \app\core\Model
 	}
 	public function editUser($user_id)
 	{
+		$SQL = "UPDATE user SET username=:username, user_type=:user_type WHERE user_id=:user_id";
+		$STH = self::$connection->prepare($SQL);
+		$data = [
+			'user_id'=>$user_id,
+			'username'=>$this->username,
+			'user_type'=>$this->user_type
+		];
+		$STH->execute($data);
+		return $STH->rowCount();
+
+	}
+
+	public function editUserPassword($user_id)
+	{
 		$SQL = "UPDATE user SET username=:username, password_hash=:password_hash, user_type=:user_type WHERE user_id=:user_id";
 		$STH = self::$connection->prepare($SQL);
 		$data = [
@@ -112,7 +126,6 @@ class User extends \app\core\Model
 		];
 		$STH->execute($data);
 		return $STH->rowCount();
-
 	}
 
 	public function search($username)
@@ -128,6 +141,34 @@ class User extends \app\core\Model
 			'username' => "%$username%"
 		];
 		$STH->execute($data);
+		$STH->setFetchMode(\PDO::FETCH_CLASS, 'app\\models\\User');
+		
+		return $STH->fetchAll();
+	}
+
+	public function getAdmins()
+	{
+		$SQL = "SELECT p.status, u.user_id, u.user_type, u.username, p.first_name, p.middle_name, p.last_name, p.email, p.phone_number
+			FROM user u
+			LEFT JOIN profile p ON u.user_id = p.user_id
+			WHERE u.user_type = 'admin'";
+
+		$STH = self::$connection->prepare($SQL);
+		$STH->execute();
+		$STH->setFetchMode(\PDO::FETCH_CLASS, 'app\\models\\User');
+		
+		return $STH->fetchAll();		
+	}
+
+	public function getEmployees()
+	{
+		$SQL = "SELECT p.status, u.user_id, u.user_type, u.username, p.first_name, p.middle_name, p.last_name, p.email, p.phone_number
+			FROM user u
+			LEFT JOIN profile p ON u.user_id = p.user_id
+			WHERE u.user_type = 'employee'";
+
+		$STH = self::$connection->prepare($SQL);
+		$STH->execute();
 		$STH->setFetchMode(\PDO::FETCH_CLASS, 'app\\models\\User');
 		
 		return $STH->fetchAll();

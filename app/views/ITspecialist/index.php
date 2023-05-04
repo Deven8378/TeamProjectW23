@@ -15,16 +15,22 @@
 			<div style="margin-top: 20px; display: grid; ">
 				<h5><b><?=_('Filters')?></b></h5>
 				<!-- Filsters for easy search -->
-				<form>
-					
-					<label class="label-radio">
-						<input class="input-radio" type="radio" name="filter" value="admin"><?=_('Admins')?>
-					</label>
+				<a class="label-radio" href="/ITspecialist/index"><?=_('view all')?></a>
+				<form action="/ITspecialist/allAdmins" method="post">
+					<!-- <label class="label-radio"> -->
+						<!-- <a class="label-radio" href="/ITspecialist/index"><?=_('view all')?></a> -->
+					<!-- </label> -->
+					<!-- <label class="label-radio"> -->
+						<input class="label-radio" type="submit" name="" value="<?=_('Admin')?>">
+					<!-- </label> -->
 
-					<label class="label-radio">
-						<input class="input-radio" type="radio" name="filter" value="employee"><?=_('Employees')?>
-					</label>
+					<!-- <label class="label-radio"> -->
+						<!-- <input class="label-radio" type="submit" name="viewEmployees" value="<?=_('Employee')?>"> -->
+					<!-- </label> -->
 					
+				</form>
+				<form action="/ITspecialist/allEmployees" method="post">
+					<input class="label-radio" type="submit" name="" value="<?=_('Employee')?>">
 				</form>
 			</div>
 
