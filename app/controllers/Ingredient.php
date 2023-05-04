@@ -1,7 +1,6 @@
 <?php
 namespace app\controllers;
 
-// use \app\models\Ingredient;
 use \app\models\Category;
 use \app\models\IngredientQuantity;
 

@@ -1,7 +1,6 @@
 <?php
 namespace app\controllers;
 
-// use \app\models\Category;
 use \app\models\Ingredient;
 
 class Category extends \app\core\Controller

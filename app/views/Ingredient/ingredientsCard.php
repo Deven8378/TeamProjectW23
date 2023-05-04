@@ -7,13 +7,7 @@ foreach ($data as $ingredient) { ?>
         <div class="card">
           <div id="ingredientIMG" ma>
             <div class="image">
-                <img style="width: 172px; height: 199.6px;" src="/ingredientImages/
-              <?php 
-              if ($ingredient->picture != null)
-                echo htmlentities($ingredient->picture);
-              else
-                echo "default.jpg";
-              ?>">
+                <img style="width: 172px; height: 199.6px;" src="/ingredientImages/<?= $ingredient->picture ?>">
             </div>
           </div>
           <span class="title"><?= htmlentities($ingredient->name) ?></span>

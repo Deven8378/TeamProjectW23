@@ -1,7 +1,6 @@
 <?php
 namespace app\controllers;
 
-// use \app\models\Product;
 use \app\models\Category;
 use \app\models\ProductQuantity;
 
@@ -68,7 +67,7 @@ class Product extends \app\core\Controller
     public function edit($product_id) {
         $categories = new Category();
         $categories = $categories->getCategories();
-        $product = new Product();
+        $product = new \app\models\Product();
         $product = $product->getProductDetails($product_id);
 
         if(isset($_POST['action'])) {
@@ -156,7 +155,7 @@ class Product extends \app\core\Controller
 
     public function editQuantityOnly($product_id) //view that shows form when clicking Edit Quantity
     {
-        $product = new Product();
+        $product = new \app\models\Product();
         $success = $product->getProductDetails($product_id);
         $totalQuantity = new ProductQuantity;
         $totalQuantity = $totalQuantity->getTotalQuantity($product_id);
