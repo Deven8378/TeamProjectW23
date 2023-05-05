@@ -14,11 +14,19 @@ class Ingredient extends \app\core\Model {
 	public $picture;
 
 	public function getAll() {
-		$SQL = 'SELECT * FROM ingredient';
+		$SQL = 'SELECT *, COUNT(ingredient_id) AS num_results FROM ingredient';
 		$STH = self::$connection->prepare($SQL);
 		$STH->execute();
 		$STH->setFetchMode(\PDO::FETCH_CLASS, 'app\\models\\Ingredient');
 		return $STH->fetchAll();
+	}
+
+	public function getSum(){
+		$SQL = 'SELECT COUNT(ingredient_id) AS num_results FROM ingredient';
+		$STH = self::$connection->prepare($SQL);
+		$STH->execute();
+		$STH->setFetchMode(\PDO::FETCH_CLASS, 'app\\models\\Ingredient');
+		return $STH->fetch();
 	}
 
 	public function getDaysLeft($ingredient_id){
@@ -35,6 +43,22 @@ class Ingredient extends \app\core\Model {
 		$STH = self::$connection->prepare($SQL);
 		$data = ['ingredient_id'=>$ingredient_id];
 		$STH->execute($data);
+		$STH->setFetchMode(\PDO::FETCH_CLASS, 'app\\models\\Ingredient');
+		return $STH->fetch();
+	}
+
+	public function searchIngredientByName($string) {
+		$SQL = "SELECT * FROM ingredient WHERE name LIKE '%$string%';";
+		$STH = self::$connection->prepare($SQL);
+		$STH->execute();
+		$STH->setFetchMode(\PDO::FETCH_CLASS, 'app\\models\\Ingredient');
+		return $STH->fetchAll();
+	}
+
+	public function searchIngredientResults($string) {
+		$SQL = "SELECT COUNT(ingredient_id) AS num_results FROM ingredient WHERE name LIKE '%$string%';";
+		$STH = self::$connection->prepare($SQL);
+		$STH->execute();
 		$STH->setFetchMode(\PDO::FETCH_CLASS, 'app\\models\\Ingredient');
 		return $STH->fetch();
 	}

@@ -15,24 +15,25 @@
 <div class="container">
 	<div class="row">
 		<div class="col-sm-2" style="padding-right: 10px;">
-			<div class="rowing" style="width: 200px; display: flex;  width: 100%; justify-content: center;">
-				<div>
-					<a class="btn" href="/Ingredient/createIngredient" role="button" style="background-color: #e8c8e7; width: 150px;">
-						<?= _('Add Ingredient') ?>
-					</a>
-				</div>
-			</div>
-			<br>
-			<div class="rowing" style="width: 200px; display: flex;  width: 100%; justify-content: center;">
-				<div>
-					<a href="/Category/index"  class="btn" style="background-color:#e8c8e8; width: 150px;">
-						<?= _('View categories') ?>
-					</a>
-				</div>
-			</div>
+			<?php if($data[3] == true) { ?>
+					<div class="rowing" style="width: 200px; display: flex;  width: 100%; justify-content: center;">
+						<div>
+							<a class="btn" href="/Ingredient/createIngredient" role="button" style="background-color: #e8c8e7; width: 150px;">
+								<?= _('Add Ingredient') ?>
+							</a>
+						</div>
+					</div>
+					<br>
+					<div class="rowing" style="width: 200px; display: flex;  width: 100%; justify-content: center;">
+						<div>
+							<a href="/Category/index"  class="btn" style="background-color:#e8c8e8; width: 150px;">
+								<?= _('View categories') ?>
+							</a>
+						</div>
+					</div>
 
-			<hr style="height:1px; border-width:0 ;color: #d9d9d9; background-color:gray">
-
+					<hr style="height:1px; border-width:0 ;color: #d9d9d9; background-color:gray">
+			<?php } ?>
 
 			<div class="rowing" style="width: 200px; display: flex;  width: 100%; justify-content: center;">
 				<div>
@@ -76,8 +77,23 @@
 		</div>
 
 		<div class="col offset-sm-1">
-			<div class="rowing">
-				this is where it is
+			<div class="rowing" style="margin-bottom: 20px; margin-right: 10px">
+				<div style="display: flex; justify-content: space-between;">
+
+					<p style="font-weight: bold; font-size: 50"><?= $data[2]->num_results ?> <?= _('Results') ?></p>
+
+					<div style="border: 3px solid #ACABAB; border-radius: 5px; background-color: #DFDFDF; padding: 6px;">	
+						<form action="/Ingredient/search" class="search-form" style="">
+
+							<button class="search-btn" style="">
+								<i class="bi bi-search" style="color: #ACABAB;"></i>
+							</button>
+
+							<input type="search" name="ingredientString" class="search-input" placeholder="<?=_('Search')?>" style="">
+
+						</form>
+					</div>
+				</div>
 			</div>
 			<div class="rowing" style="width: 200px; display: flex;  width: 100%; justify-content: center;">
 				<div>

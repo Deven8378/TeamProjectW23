@@ -11,10 +11,29 @@ class Ingredient extends \app\core\Controller
     public function index()
     {
         $ingredient = new \app\models\Ingredient();
-        $ingredients = $ingredient->getAll();
         $categories = new \app\models\Category();
         $categories = $categories->getCategories();
-        $this->view('Ingredient/index', [$ingredients, $categories]);
+        $user = new \app\models\User();
+        $user = $user->getByUserId($_SESSION['user_id']);
+        $type = $user->user_type;
+        $isAdmin = false;
+        if ($type == "admin")
+            $isAdmin = true;
+
+        // if(isset($_POST['action'])) {
+        //     $stringSearch = $_POST['ingredientString'];
+        //     $ingredients = $ingredient->searchIngredientByName($stringSearch);
+        //     $numResults = $ingredient->getIngredientResults($stringSearch);
+
+        //     $this->view('Ingredient/index', [$ingredients, $categories, $numResults, $isAdmin]);
+
+
+        // } else {
+            $numResults = $ingredient->getSum();
+            $ingredients = $ingredient->getAll();
+
+            $this->view('Ingredient/index', [$ingredients, $categories, $numResults, $isAdmin]);
+        // }
     }
 
     #[\app\filters\Admin]
