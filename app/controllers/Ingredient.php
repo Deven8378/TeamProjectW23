@@ -28,8 +28,10 @@ class Ingredient extends \app\core\Controller
     public function search() 
     {
         $ingredients = new \app\models\Ingredient();
-        $string = $_GET['search'];
-        $searched = $ingredients->search($string);
+        // $string = $_GET['search'];
+        // $searched = $ingredients->search($string);
+
+        $searched = $ingredients->search($_GET['search']);
 
         $categories = new \app\models\Category();
         $categories = $categories->getCategories();

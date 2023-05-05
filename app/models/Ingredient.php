@@ -47,10 +47,13 @@ class Ingredient extends \app\core\Model {
 		return $STH->fetch();
 	}
 
-	public function search($string) {
-		$SQL = "SELECT * FROM ingredient WHERE name LIKE '%$string%';";
+	public function search($name) {
+		$SQL = "SELECT * FROM ingredient WHERE name LIKE :name;";
 		$STH = self::$connection->prepare($SQL);
-		$STH->execute();
+		$data = [
+			'name'=>"%$name%"
+		];
+		$STH->execute($data);
 		$STH->setFetchMode(\PDO::FETCH_CLASS, 'app\\models\\Ingredient');
 		return $STH->fetchAll();
 	}

@@ -84,7 +84,7 @@
 
 					<div style="border: 3px solid #ACABAB; border-radius: 5px; background-color: #DFDFDF; padding: 6px;">
 
-						<form action="" class="search-form" style="">
+						<form action="/Ingredient/search" class="search-form" style="">
 
 							<button class="search-btn" style=""><i class="bi bi-search" style="color: #ACABAB;"></i></button>
 
