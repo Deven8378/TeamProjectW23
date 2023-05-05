@@ -1,5 +1,5 @@
 <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
-  <span class="bi bi-bell"></span>
+  <i class="bi bi-bell text-white"></i>
 </button>
 
 <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">

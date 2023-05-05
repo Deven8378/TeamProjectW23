@@ -69,12 +69,16 @@
 					</div>
 				</div>
 			</div>
-			
 		</div>
+
 		<div class="col-sm-1"> 
 			<div class="vl"></div>
 		</div>
+
 		<div class="col offset-sm-1">
+			<div class="rowing">
+				this is where it is
+			</div>
 			<div class="rowing" style="width: 200px; display: flex;  width: 100%; justify-content: center;">
 				<div>
 					<div class="row">
@@ -82,10 +86,8 @@
 					</div>
 				</div>
 			</div>
-
-
-
 		</div>
+
 	</div>
 </div>
 

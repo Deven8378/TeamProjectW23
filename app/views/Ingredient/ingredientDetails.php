@@ -1,22 +1,13 @@
 <?php $this->view('shared/header', $data[0]->name . " Details"); ?>
 <?php $this->view('shared/navigation/nav'); ?>
-<?php 
-$user = new \app\models\User();
-$user = $user->getByUserId($_SESSION['user_id']);
-$type = $user->user_type;
-$isAdmin = False;
-if ($type == "admin")
-  $isAdmin = True;
-?>
+
 <style type="text/css">
-/*#foodIMG {
-  max-width: 500px;
-  max-height: 500px;
-  position: absolute;
-  padding-right: 20px;
-    top: 50%;
-    transform: translate(-50%,-50%);
-}*/
+#foodIMG {
+  width: 100%; 
+  max-width: 500px; 
+  height: auto;
+  margin-top: 50px;
+}
 
 #backLink {
   padding: 50px;
@@ -35,6 +26,7 @@ if ($type == "admin")
   padding: 20px;
   background-color: #f5f5f5;
   text-align: left;
+  border-radius: 5px;
 }
 
 #foodName {
@@ -54,7 +46,7 @@ if ($type == "admin")
     <div class="row align-items-start">
       <div class="col-5">
         <div>
-          <img id="foodIMG" style="  width: 100%; max-width: 500px; height: auto;" src="/ingredientImages/<?= $data[0]->picture ?>">
+          <img id="foodIMG" src="/ingredientImages/<?= $data[0]->picture ?>">
         </div>
       </div>
       <div class="col-7">
@@ -64,7 +56,7 @@ if ($type == "admin")
               <h1 id="foodName"><?= htmlentities($data[0]->name) ?></h1>
             </div>
             <div class="col-4">
-              <?php if ($isAdmin) { ?>
+              <?php if ($data[3] == true) { ?>
                 <div class="btn-group dropend">
                   <button type="button" class="btn" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="bi bi-three-dots-vertical"></i>More</button>
                   <div class="dropdown-menu">
@@ -120,7 +112,7 @@ if ($type == "admin")
                     <div class="btn-group dropend">
                       <button type="button" class="btn" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="bi bi-three-dots-vertical"></i>More</button>
                       <div class="dropdown-menu">
-                        <?php if ($isAdmin) { ?>
+                        <?php if ($data[3] == true) { ?>
                           <li>
                             <a class="dropdown-item" href="/Ingredient/editQuantity/<?= $quantity->iq_id ?>">
                               <?= _('Edit') ?>
@@ -160,9 +152,11 @@ if ($type == "admin")
             </div>
           </div>
         </div>
+        <?php if($data[3] == true) { ?>
         <a class="btn" style="background-color: #e8c8e7; float: right; bottom: 0;" href="/Ingredient/addQuantity/<?= $data[0]->ingredient_id ?>">
             <?= _('Add Quantity') ?>
           </a>
+        <?php } ?>  
       </div>
     </div>
   </div>

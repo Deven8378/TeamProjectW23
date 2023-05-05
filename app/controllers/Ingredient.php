@@ -48,9 +48,15 @@ class Ingredient extends \app\core\Controller
         $totalQuantity = $totalQuantity->getTotalQuantity($ingredient_id);
         $allQuantity = new IngredientQuantity;
         $allQuantity = $allQuantity->getAll($ingredient_id);
+        $user = new \app\models\User();
+        $user = $user->getByUserId($_SESSION['user_id']);
+        $type = $user->user_type;
+        $isAdmin = false;
+        if ($type == "admin")
+            $isAdmin = true;
 
         if($success){
-            $this->view('Ingredient/ingredientDetails', [$success, $totalQuantity, $allQuantity]);
+            $this->view('Ingredient/ingredientDetails', [$success, $totalQuantity, $allQuantity, $isAdmin]);
         } else {
             header('location:/Ingredient/index?error=Ingredient does not exists.');
         }
