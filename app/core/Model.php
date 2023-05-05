@@ -7,26 +7,6 @@ use RelfectionClass;
 
 class Model
 {
-	// public $connection;
-
-	// public function __construct()
-	// {
-	// 	$host = 'localhost';
-	// 	$dbname = 'sweemory';
-	// 	$user = 'root';
-	// 	$pass = '';
-	// 	try 
-	// 	{
-	// 		$this->connection = new \PDO("mysql:host=$host;dbname=$dbname", $user, $pass);
-	// 	}
-	// 	catch (PDOException $e)
-	// 	{
-	// 		echo $e->getMessage();
-	// 	}
-	// }
-
-
-	// New Model which does not work 
 
 	public static ?PDO $connection = null;
 

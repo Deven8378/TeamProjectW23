@@ -3,6 +3,8 @@ namespace app\models;
 
 class Category extends \app\core\Model{
 	public $category_id;
+	#[\app\validators\NonNull]
+	#[\app\validators\NonEmpty]
 	public $category_name;
 	public $timestamp;
 

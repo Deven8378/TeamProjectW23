@@ -4,7 +4,11 @@ namespace app\models;
 class Ingredient extends \app\core\Model {
 
 	public $ingredient_id;
+	#[\app\validators\NonNull]
+	#[\app\validators\NonEmpty]
 	public $name;
+	#[\app\validators\NonNull]
+	#[\app\validators\NonEmpty]
 	public $category;
 	public $description;
 	public $picture;
@@ -17,12 +21,12 @@ class Ingredient extends \app\core\Model {
 		return $STH->fetchAll();
 	}
 
-	public function getAllIngredientandQuantity(){
-		$SQL = 'SELECT *, DATEDIFF(expired_date, arrival_date) AS daysLeft FROM `ingredient` JOIN `ingredient_quantity` ON `ingredient`.`ingredient_id` = `ingredient_quantity`.`ingredient_id`;';
+	public function getDaysLeft($ingredient_id){
+		$SQL = 'SELECT DATEDIFF(expired_date, arrival_date) AS daysLeft FROM `ingredient` JOIN `ingredient_quantity` ON `ingredient`.`ingredient_id` = `ingredient_quantity`.`ingredient_id` WHERE `ingredient`.ingredient_id=:ingredient_id;';
 		$STH = self::$connection->prepare($SQL);
-		$STH->execute();
+		$STH->execute(['ingredient_id'=>$ingredient_id]);
 		$STH->setFetchMode(\PDO::FETCH_CLASS, 'app\\models\\Ingredient');
-		return $STH->fetchAll();
+		return $STH->fetch();
 	}
 
 	public function getIngredientDetails($ingredient_id) 

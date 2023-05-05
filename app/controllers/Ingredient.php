@@ -1,7 +1,6 @@
 <?php
 namespace app\controllers;
 
-// use \app\models\Ingredient;
 use \app\models\Category;
 use \app\models\IngredientQuantity;
 
@@ -13,7 +12,9 @@ class Ingredient extends \app\core\Controller
     {
         $ingredient = new \app\models\Ingredient();
         $ingredients = $ingredient->getAll();
-        $this->view('Ingredient/index', $ingredients);
+        $categories = new \app\models\Category();
+        $categories = $categories->getCategories();
+        $this->view('Ingredient/index', [$ingredients, $categories]);
     }
 
     #[\app\filters\Admin]
@@ -31,9 +32,9 @@ class Ingredient extends \app\core\Controller
 
             if ($picture) {
                 $ingredient->picture = $picture;
-                $ingredient->addIngredient();
-                header('location:/Ingredient/index?success=Ingredient Added');
             }
+            $ingredient->addIngredient();
+            header('location:/Ingredient/index?success=Ingredient Added');
         } else {
             $this->view('Ingredient/createIngredient', $categories);
         }
@@ -47,7 +48,6 @@ class Ingredient extends \app\core\Controller
         $totalQuantity = $totalQuantity->getTotalQuantity($ingredient_id);
         $allQuantity = new IngredientQuantity;
         $allQuantity = $allQuantity->getAll($ingredient_id);
-
 
         if($success){
             $this->view('Ingredient/ingredientDetails', [$success, $totalQuantity, $allQuantity]);

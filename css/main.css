@@ -5,26 +5,6 @@ body {
   top: 50px;
 }
 
-/*--------------------------------------*/
-/*.popup{
-  width: 400px;
-  background: #b6a5b8;
-  border-radius: 6px;
-  top: 50%;
-  left: 100%;
-  transform: translate(50%, 50%) scale(0.1);
-  text-align: center;
-  padding: 0 30px 30px;
-  color: #333;
-  visibility: hidden;
-  transition: transform 0.4s, top 0.4s;
-}
-.open-popup {
-    visibility: visible;
-    top: 50%;
-    transform: translate(50%, 50%) scale(1);
-}*/
-/*--------------------------------------*/
 
 /*-------Home Screen--------*/
 

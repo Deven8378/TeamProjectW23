@@ -5,13 +5,17 @@ class IngredientQuantity extends \app\core\Model {
 
 	public $iq_id;
 	public $ingredient_id;
+	#[\app\validators\NonNull]
+	#[\app\validators\NonEmpty]
 	public $arrival_date;
+	#[\app\validators\NonNull]
+	#[\app\validators\NonEmpty]
 	public $expired_date;
 	public $quantity;
 	public $price;
 
 	public function getAll($ingredient_id) {
-		$SQL = 'SELECT * FROM ingredient_quantity WHERE ingredient_id=:ingredient_id';
+		$SQL = 'SELECT *, DATEDIFF(expired_date, arrival_date) AS daysLeft FROM ingredient_quantity WHERE ingredient_id=:ingredient_id';
 		$STH = self::$connection->prepare($SQL);
 		$data = ['ingredient_id'=>$ingredient_id];
 		$STH->execute($data);

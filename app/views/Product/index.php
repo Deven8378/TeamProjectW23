@@ -21,9 +21,15 @@
 			    <?= _('Categories') ?>
 			  </button>
 			  <ul class="dropdown-menu dropdown-menu-end dropdown-menu-lg-start">
-			    <li><button class="dropdown-item" type="button"><?= _('Fruits') ?></button></li>
-			    <li><button class="dropdown-item" type="button"><?= _('Sweets') ?></button></li>
-			    <li><button class="dropdown-item" type="button"><?= _('Dairy') ?></button></li>
+			  	<?php 
+			  		foreach ($data[1] as $category) { ?>
+			  			<li>
+					    	<button class="dropdown-item" type="button">
+					    		<?= $category->category_name ?>
+					    	</button>
+					    </li>
+			  		<?php }
+			  	?>
 			  </ul>
 			</div>
 			<div class="btn-group">
@@ -59,7 +65,7 @@
 		</div>
 		<div class="col offset-sm-1">
 			<div class="row">
-			  <?php $this->view('Product/productsCard', $data); ?>
+			  <?php $this->view('Product/productsCard', $data[0]); ?>
 			</div>
 		</div>
 	</div>

@@ -1,7 +1,6 @@
 <?php
 namespace app\controllers;
 
-use \app\models\Product;
 use \app\models\Category;
 use \app\models\ProductQuantity;
 
@@ -10,9 +9,11 @@ class Product extends \app\core\Controller
 {
     #[\app\filters\EmployeeAndAdmin]
     public function index() {
-        $product = new Product();
+        $product = new \app\models\Product();
         $products = $product->getAll();
-        $this->view('Product/index', $products);
+        $categories = new \app\models\Category();
+        $categories = $categories->getCategories();
+        $this->view('Product/index', [$products, $categories]);
     }
     
 
@@ -21,7 +22,7 @@ class Product extends \app\core\Controller
         $categories = new Category();
         $categories = $categories->getCategories();
         if (isset($_POST['action'])) {
-            $product = new Product();
+            $product = new \app\models\Product();
             $product->name = htmlentities($_POST['name']);
             $product->description = htmlentities($_POST['description']);
             $product->category = $_POST['category'];
@@ -29,18 +30,17 @@ class Product extends \app\core\Controller
 
             if ($picture) {
                 $product->picture = $picture;
-                $product->addProduct();
-                header('location:/Product/index?success=Product Added');
-
             }
+            $product->addProduct();
+            header('location:/Product/index?success=Product Added');
         }
        
-            $this->view('Product/createProduct', $categories);
+        $this->view('Product/createProduct', $categories);
     }
 
     #[\app\filters\EmployeeAndAdmin]
      public function productDetails($product_id){
-        $product = new Product();
+        $product = new \app\models\Product();
         $success = $product->getProductDetails($product_id);
         $totalQuantity = new ProductQuantity;
         $totalQuantity = $totalQuantity->getTotalQuantity($product_id);
@@ -58,7 +58,7 @@ class Product extends \app\core\Controller
 
     #[\app\filters\Admin]
     public function delete($product_id) {
-        $product = new Product();
+        $product = new \app\models\Product();
         $product = $product->getProductDetails($product_id);
         $product->delete();
         unlink("productImages/$product->picture");
@@ -69,7 +69,7 @@ class Product extends \app\core\Controller
     public function edit($product_id) {
         $categories = new Category();
         $categories = $categories->getCategories();
-        $product = new Product();
+        $product = new \app\models\Product();
         $product = $product->getProductDetails($product_id);
 
         if(isset($_POST['action'])) {
@@ -157,7 +157,7 @@ class Product extends \app\core\Controller
 
     public function editQuantityOnly($product_id) //view that shows form when clicking Edit Quantity
     {
-        $product = new Product();
+        $product = new \app\models\Product();
         $success = $product->getProductDetails($product_id);
         $totalQuantity = new ProductQuantity;
         $totalQuantity = $totalQuantity->getTotalQuantity($product_id);
