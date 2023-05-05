@@ -3,8 +3,8 @@
 
 <div class="userDetails">
     <div class="col-4">
-        <!-- <a onClick="history.go(-1)" id="backLink"><i class="bi bi-arrow-left"></i><?= _('Back') ?></a> -->
-        <a href="/ITspecialist/userDetails/<?=$data->user_id?>" id="backLink"><i class="bi bi-arrow-left"></i><?= _('Back') ?></a>
+        <a href="/ITspecialist/userDetails/<?=$data->user_id?>" id="backLink" class="btn-it">
+          <i class="bi bi-arrow-left"></i><?= _('Back') ?></a>
     </div>   
       <!-- <input type="submit" id="option" onclick="myFunction()" value="Edit Account"> -->
 
@@ -39,22 +39,7 @@
 
 
 <script>
-  // function myFunction() {
-  //  var mainFrameOne = document.getElementById("profile"); 
-  //  var mainFrameTwo = document.getElementById("user");
-  //  var buttonName = document.getElementById("option");
 
-  //  mainFrameOne.style.display = (
-  //      mainFrameOne.style.display == "none" ? "block" : "none"); 
-  //  mainFrameTwo.style.display = (
-  //      mainFrameTwo.style.display == "none" ? "block" : "none"); 
-   
-  //  if (buttonName.value=="Edit Profile"){
-  //     buttonName.value = "Edit Account";
-  //   }else{ 
-  //     buttonName.value = "Edit Profile";
-  //   }
-  // }
   const toggleTo2 = document.getElementById("toggle-to-profile");
   const toggleTo1 = document.getElementById("toggle-to-account");
 
@@ -65,7 +50,6 @@
   const show = el => el.style.setProperty("display", "block");
 
   hide(div2);
-  // hide(toggleTo1);
 
   toggleTo2.addEventListener("click", () => {
     hide(div1);
@@ -75,8 +59,6 @@
 
   toggleTo1.addEventListener("click", () => {
     hide(div2);
-    // hide(toggleTo1);
-    // show(toggleTo2);
     show(div1);
   });
 </script>

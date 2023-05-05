@@ -29,6 +29,6 @@
 
         </select>
 
-        <input class="" type="submit" name="editUser" value="Upload Account Change">
+        <input class="btn-it" type="submit" name="editUser" value="Upload Account Change">
 
 </form>

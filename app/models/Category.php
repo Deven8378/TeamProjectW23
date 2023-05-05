@@ -15,6 +15,16 @@ class Category extends \app\core\Model{
 		$STH->setFetchMode(\PDO::FETCH_CLASS, 'app\\models\\Category');
 		return $STH->fetchAll();
 	}
+	public function getByCategoryName($category_name)
+	{
+		$SQL = 'SELECT * FROM category 
+				WHERE category_name = :category_name';
+		
+		$STH = self::$connection->prepare($SQL);
+		$STH->execute(['category_name'=>$category_name]);
+		$STH->setFetchMode(\PDO::FETCH_CLASS, 'app\\models\\Category');
+		return $STH->fetch();
+	}
 
 	public function getSpecificcategory($category_id){
 		$SQL = "SELECT * FROM `category` WHERE category_id=:category_id;";

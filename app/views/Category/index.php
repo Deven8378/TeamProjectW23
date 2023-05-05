@@ -2,8 +2,21 @@
 <?php $this->view('shared/navigation/nav'); ?>
 
 <div align="center" style="border: solid; background-color: #F3EBF6; width: 70%; padding: 20px; margin: 3em auto; border-radius: 1.5em;">
+	
+	<div style="display: grid; grid-template-columns: 100px auto auto; margin: 0px;">
+		<a 
+		class="btn-it" style="margin-bottom: 0px;" href="/Ingredient/index" id="backLink">
+			<i class="bi bi-arrow-left"></i><?= _('Back') ?>
+		</a>
+	</div>
 
-	<p class="sign" align="center"><?=_('Categories')?></p>
+	<div >
+		
+		<div class="" style="">
+	        
+	        <p class="sign" align="center"><?=_('Categories')?></p>
+	    </div>  
+	</div>
 	<div>
 		
 		<div class="row">
@@ -33,7 +46,7 @@
 				<td><?= $category->category_id ?></td>
 				<td id="<?= $category->category_id ?>"><?= $category->category_name ?></td>
 				<td>
-						<a href='/Category/delete/<?= $category->category_id ?>'><?=_('Delete')?></a>
+						<a class="btn-it" href='/Category/delete/<?= $category->category_id ?>'><?=_('Delete')?></a>
 					<!-- <button type="submit" class="btn" onclick="openPopup()">Delete</button> -->
 				</td>
 

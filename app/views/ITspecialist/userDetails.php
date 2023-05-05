@@ -38,7 +38,7 @@
 	        </div>
 			
 			<div class="col-4">
-	        	<a href="/ITspecialist/index" type="submit" class="btn" style="background-color: #e8c8e7;"><?=_('Back')?></a>
+	        	<a href="/ITspecialist/index" type="submit" class="btn-it" style=""><?=_('Back')?></a>
 		  	</div>
           	
 
@@ -65,8 +65,8 @@
 	            	<dd  class="dd-right"><?= $data->status ?></dd>
 
         	<div class="">
-            	<a class="btn" style="background-color: #e8c8e7;" href="/ITspecialist/edit/<?= $data->user_id ?>" ><?=_('Edit')?></a>
-	            <a class="btn" href="#popup" role="button" style="background-color: #e8c8e7;"><?= _('Delete') ?></a>
+            	<a class="btn-it" style="" href="/ITspecialist/edit/<?= $data->user_id ?>" ><?=_('Edit')?></a>
+	            <a class="btn-it" href="#popup" role="button" style=""><?= _('Delete') ?></a>
           	</div>
           	
 

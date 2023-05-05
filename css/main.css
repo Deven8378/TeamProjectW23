@@ -4,6 +4,9 @@ body {
   position: relative;
   top: 50px;
 }
+.btn-general {
+  background-color: #e8c8e7;
+}
 
 
 /*-------Home Screen--------*/

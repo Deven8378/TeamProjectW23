@@ -18,8 +18,8 @@ class User extends \app\core\Controller
                     if(password_verify($_POST['password'], $user->password_hash))
                     {
                         //the user is correct
-                        $_SESSION['user_id'] = $user->user_id;
-                        $_SESSION['user_type'] = $user->user_type;
+                        $_SESSION['user_id'] = htmlentities($user->user_id);
+                        $_SESSION['user_type'] = htmlentities($user->user_type);
 
 
                         //Redirect the User to the correct page depending on the user_type

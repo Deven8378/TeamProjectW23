@@ -1,14 +1,11 @@
 <form action='/Category/edit' method='post' enctype="">
 	<div class="" style="
-
-/*	border: 1px solid black;*/
-/*	width:  70%;*/
-height: 200px;
+	
+	height: 200px;
 	padding: 20px;
 	display: grid;
 	row-gap: 5px;
 
-/*	flex-wrap: wrap-reverse;*/
 
 	">
 		<h3>Edit a Category:</h3>
@@ -31,6 +28,6 @@ height: 200px;
 
 		<input 
 
-		class="btn" style="background-color: red;" type="submit" name="edit" value="<?=_('edit')?>">
+		class="btn-it" style="background-color: #c98bc8;" type="submit" name="edit" value="<?=_('Edit')?>">
 	</div>
 </form>
