@@ -14,7 +14,7 @@ class Ingredient extends \app\core\Model {
 	public $picture;
 
 	public function getAll() {
-		$SQL = 'SELECT *, COUNT(ingredient_id) AS num_results FROM ingredient';
+		$SQL = 'SELECT * FROM ingredient';
 		$STH = self::$connection->prepare($SQL);
 		$STH->execute();
 		$STH->setFetchMode(\PDO::FETCH_CLASS, 'app\\models\\Ingredient');
@@ -47,7 +47,7 @@ class Ingredient extends \app\core\Model {
 		return $STH->fetch();
 	}
 
-	public function searchIngredientByName($string) {
+	public function search($string) {
 		$SQL = "SELECT * FROM ingredient WHERE name LIKE '%$string%';";
 		$STH = self::$connection->prepare($SQL);
 		$STH->execute();

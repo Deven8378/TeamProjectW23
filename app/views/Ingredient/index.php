@@ -82,14 +82,13 @@
 
 					<p style="font-weight: bold; font-size: 50"><?= $data[2]->num_results ?> <?= _('Results') ?></p>
 
-					<div style="border: 3px solid #ACABAB; border-radius: 5px; background-color: #DFDFDF; padding: 6px;">	
-						<form action="/Ingredient/search" class="search-form" style="">
+					<div style="border: 3px solid #ACABAB; border-radius: 5px; background-color: #DFDFDF; padding: 6px;">
 
-							<button class="search-btn" style="">
-								<i class="bi bi-search" style="color: #ACABAB;"></i>
-							</button>
+						<form action="" class="search-form" style="">
 
-							<input type="search" name="ingredientString" class="search-input" placeholder="<?=_('Search')?>" style="">
+							<button class="search-btn" style=""><i class="bi bi-search" style="color: #ACABAB;"></i></button>
+
+							<input type="search" name="search" class="search-input" placeholder="<?=_('Search')?>" style="">
 
 						</form>
 					</div>
@@ -106,7 +105,6 @@
 
 	</div>
 </div>
-
 
 
 <?php $this->view('shared/footer'); ?>

@@ -11,29 +11,38 @@ class Ingredient extends \app\core\Controller
     public function index()
     {
         $ingredient = new \app\models\Ingredient();
+        $ingredients = $ingredient->getAll();
         $categories = new \app\models\Category();
         $categories = $categories->getCategories();
+        $numResults = $ingredient->getSum();
+
         $user = new \app\models\User();
-        $user = $user->getByUserId($_SESSION['user_id']);
-        $type = $user->user_type;
+        $user = $user->getByUserType($_SESSION['user_id']);
         $isAdmin = false;
-        if ($type == "admin")
+        if ($user->user_type == "admin")
             $isAdmin = true;
 
-        // if(isset($_POST['action'])) {
-        //     $stringSearch = $_POST['ingredientString'];
-        //     $ingredients = $ingredient->searchIngredientByName($stringSearch);
-        //     $numResults = $ingredient->getIngredientResults($stringSearch);
+        $this->view('Ingredient/index', [$ingredients, $categories, $numResults, $isAdmin]);
+    }
 
-        //     $this->view('Ingredient/index', [$ingredients, $categories, $numResults, $isAdmin]);
+    public function search() 
+    {
+        $ingredients = new \app\models\Ingredient();
+        $string = $_GET['search'];
+        $searched = $ingredients->search($string);
 
+        $categories = new \app\models\Category();
+        $categories = $categories->getCategories();
 
-        // } else {
-            $numResults = $ingredient->getSum();
-            $ingredients = $ingredient->getAll();
+        $numResults = $ingredients->getSum();
 
-            $this->view('Ingredient/index', [$ingredients, $categories, $numResults, $isAdmin]);
-        // }
+        $user = new \app\models\User();
+        $user = $user->getByUserType($_SESSION['user_id']);
+        $isAdmin = false;
+        if ($user->user_type == "admin")
+            $isAdmin = true;
+
+        $this->view('Ingredient/index', [$searched, $categories, $numResults, $isAdmin]);
     }
 
     #[\app\filters\Admin]
