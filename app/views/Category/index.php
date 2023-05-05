@@ -32,31 +32,41 @@
 			<tr>
 				<td><?= $category->category_id ?></td>
 				<td id="<?= $category->category_id ?>"><?= $category->category_name ?></td>
-				<td><a href='/Category/delete/<?= $category->category_id ?>'><?=_('Delete')?></a></td>
+				<td>
+						<a href='/Category/delete/<?= $category->category_id ?>'><?=_('Delete')?></a>
+					<!-- <button type="submit" class="btn" onclick="openPopup()">Delete</button> -->
+				</td>
 
 			</tr>
 				
 		<?php }	?>	
 
 			</table>
+
 		</div>
 
 	</div>
+	<!-- <div class="popup" id="popup"> -->
+			<!-- <button type="submit" class="btn" onclick="closePopup()">Cancel</button> -->
+
+	<!-- </div> -->
 	
 </div>
 <script type="text/javascript">
+	// POPPUP for delete
 
-   function getValueUsingID() {
-    var selectBox = document.getElementById("selectBox");
-    var selectedValue = selectBox.options[selectBox.selectedIndex].value;
 
-    var getID = document.getElementById(selectedValue).innerHTML;
+	function getValueUsingID() {
+		var selectBox = document.getElementById("selectBox");
+		var selectedValue = selectBox.options[selectBox.selectedIndex].value;
+
+		var getID = document.getElementById(selectedValue).innerHTML;
 
 		document.getElementById("editing").setAttribute("value", getID);
 
-   }
+	}
 
-  </script>
+</script>
 
 
 <?php $this->view('shared/footer'); ?>
