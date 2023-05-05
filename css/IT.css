@@ -1,286 +1,594 @@
+.btn-it {
+    --bs-btn-padding-x: 0.75rem;
+    --bs-btn-padding-y: 0.375rem;
+    --bs-btn-font-family: ;
+    --bs-btn-font-size: 1rem;
+    --bs-btn-font-weight: 400;
+    --bs-btn-line-height: 1.5;
+    --bs-btn-color: #212529;
+    --bs-btn-bg: transparent;
+    --bs-btn-border-width: var(--bs-border-width);
+    --bs-btn-border-color: transparent;
+    --bs-btn-border-radius: 0.375rem;
+    --bs-btn-hover-border-color: transparent;
+    --bs-btn-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15), 0 1px 1px rgba(0, 0, 0, 0.075);
+    --bs-btn-disabled-opacity: 0.65;
+    --bs-btn-focus-box-shadow: 0 0 0 0.25rem rgba(var(--bs-btn-focus-shadow-rgb), .5);
+    display: inline-block;
+    padding: var(--bs-btn-padding-y) var(--bs-btn-padding-x);
+    font-family: var(--bs-btn-font-family);
+    font-size: var(--bs-btn-font-size);
+    font-weight: var(--bs-btn-font-weight);
+    line-height: var(--bs-btn-line-height);
+    color: var(--bs-btn-color);
+    text-align: center;
+    text-decoration: none;
+    vertical-align: middle; 
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+    border: var(--bs-btn-border-width) solid var(--bs-btn-border-color);
+    border-radius: var(--bs-btn-border-radius);
+    background-color: var(--bs-btn-bg);
+    transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out
+}
+
+@media (prefers-reduced-motion:reduce) {
+    .btn-it {
+        transition: none
+    }
+}
+
+.btn-it:hover {
+    color: white;
+    background-color: var(--bs-btn-hover-bg);
+    border-color: var(--bs-btn-hover-border-color)
+}
+.btn-it:focus-visible {
+    color: var(--bs-btn-hover-color);
+    background-color: var(--bs-btn-hover-bg);
+    border-color: var(--bs-btn-hover-border-color);
+    outline: 0;
+    box-shadow: var(--bs-btn-focus-box-shadow)
+}
+
+
+
 /*-----------------------------------------------*/
 /*-----------View User Page-----------*/
 /*------------*/
-.viewUsers{
-/*  border: 2px solid black;*/
-  display: flex;
-  margin-top: 20px;
-  border-radius: 5px;
-  padding: 50px;
-}
-.vu-content-left {
-  flex: 10%;
-/*  border: 2px solid black;*/
-  display: block;
-}
 
-.vu-content-right {
-  flex: 90%;
-/*  border: 2px solid black;*/
-}
-/*------------*/
-.btn-addUser {
-  height: 40px; 
-  border-radius: 8px; 
-  padding: 5px; 
-  background: #D9D9D9; 
-  display: flex; 
-  align-items: center; 
-  justify-content: center;
-}
-.label-radio {
-  border: 2px solid #B8B8B8;
-  border-radius: 6px;
-  height: 45px;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-bottom: 10px;
-}
-.input-radio {
-  margin-left: 10px;
-  border: 3px solid #B8B8B8;
-  border-radius: 3px;
-  padding: 0.5em;
-  -webkit-appearance: none;
-}
-.input-radio:checked {
-    background-color: #3F3F3F;
-    border-color: #B8B8B8;
-}
-.input-radio:focus  {
-    border: 2px solid #B8B8B8;
-}
-.label-radio:hover {
-  background-color: #CDCDCD;
-}
-/*------------*/
-.search-div {
-  border: 3px solid #ACABAB; 
-  border-radius: 5px;
-  background-color: #DFDFDF; 
-  padding: 6px; 
-}
-.search-form {
-  border: none; 
-  border-radius: 7px; 
-  /*border-bottom-right-radius: 7px;
-  border-top-right-radius: 7px;*/
-
-  background-color: white; 
-  margin-left: 7px; 
-  margin-right: 7px;
-}
-.search-btn {
-  border: none; 
-  border-radius: 7px;
-  background-color: white; 
-}
-.search-input {
-  border: none; 
-  border-bottom-right-radius: 7px;
-  border-top-right-radius: 7px;
+@media only screen and (max-width: 951px) {
   
-}
-.search-input::placeholder {
-  color: #B8B8B8;
-}
-.search-input:focus {
-  outline: none;
-}
-.search-input::-webkit-search-cancel-button {
-  position:relative;
-  right:5px;  
-/*  -webkit-appearance: none;*/
+  .viewUsers{
+  /*  border: 2px solid black;*/
+    display: grid;
+    /*margin-top: 20px;
+    border-radius: 5px;*/
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+  .vu-content-left {
+/*    flex: 10%;*/
+  /*  border: 2px solid black;*/
+    display: block;
+  }
 
-}
-/*------------*/
+  .vu-content-right {
+    margin-top: 20px;
+  }
+  .btn-addUser {
+    height: 40px; 
+    border-radius: 8px; 
+    padding: 5px; 
+    background: #D9D9D9; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center;
+  }
+  .btn-addUser:hover{
 
-/*------------*/
+  }
+  .filter-container{
+    margin-top: 20px; display: grid; gap: 10px; 
+  }
+  /*------------*/
+  .search-div {
+    border: 3px solid #ACABAB; 
+    border-radius: 5px;
+    background-color: #DFDFDF; 
+    padding: 6px; 
+  }
+  .search-form {
+    border: none; 
+    border-radius: 7px; 
 
-/*------------*/
+    background-color: white; 
+    margin-left: 7px; 
+    margin-right: 7px;
+  }
+  .search-btn {
+    border: none; 
+    border-radius: 7px;
+    background-color: white; 
+  }
+  .search-input {
+    border: none; 
+    width: 150px;
+    border-bottom-right-radius: 7px;
+    border-top-right-radius: 7px;
+    
+  }
+  .search-input::placeholder {
+    color: #B8B8B8;
+  }
+  .search-input:focus {
+    outline: none;
+  }
+  .search-input::-webkit-search-cancel-button {
+    position:relative;
+    right:5px;  
 
-table {
-    table-layout: fixed;
-    width: 100%;   
-}
+  }
 
-th,td {
-/*    border-style: solid;*/
-/*    border-width: 1px;*/
-/*    border-color: #BCBCBC;*/
-/*border-left: 1px;*/
 
-    word-wrap: break-word;
-    /*display: flex;
-    align-items: center;*/
-}
+  /*------------*/
 
-tbody tr > th,td {
-/*    border: 1px solid #000000;*/
-}
+  table {
+      table-layout: fixed;
+      width: 100%;   
+  }
 
-.status-active {
-  border: 4px solid #8CC39E; 
-  border-radius: 20px;
-  background: #AFF4C6;
-  color: black;
+  th,td {
 
-  height: 50px;
-  width: 100px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
+      word-wrap: break-word;
+  
+  }
 
-.status-inactive {
-  border: 4px solid #C23A1B; 
-  border-radius: 20px;
-  background: #F24822;
-  color: white;
+  tbody tr > th,td {
+  /*    border: 1px solid #000000;*/
+  }
 
-  height: 50px;
-  width: 100px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
+  .status-active {
+    border: 4px solid #8CC39E; 
+    border-radius: 20px;
+    background: #AFF4C6;
+    color: black;
+
+    height: 50px;
+    width: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .status-inactive {
+    border: 4px solid #C23A1B; 
+    border-radius: 20px;
+    background: #F24822;
+    color: white;
+
+    height: 50px;
+    width: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 
 /*-----------Create User Page-----------*/
-.createUser {
-  background-color: #F3EBF6;
-  width: 650px;
-  height: 400px;
-  margin: 7em auto;
-  border-radius: 1.5em;
-  box-shadow: 0px 11px 35px 2px rgba(0, 0, 0, 0.14);
-}
-.createInput { 
-  width: 50%;
-  color: rgb(38, 50, 56);
-  font-weight: 700;
-  font-size: 14px;
-  letter-spacing: 1px;
-  background: rgba(255, 255, 255);
-  padding: 10px 20px;
-  border: none;
-  border-radius: 10px;
-  outline: none;
-  box-sizing: border-box;
-  border: 2px solid rgba(0, 0, 0, 0.02);
-  margin-bottom: 50px;
-/*  margin-left: 46px;*/
-  margin-bottom: 27px;
-  /*font-family: 'Ubuntu', sans-serif;*/
-}
-
-.dropdownUserType {
-
+  .createUser {
+    background-color: #F3EBF6;
+/*    width: 400px;*/
+    height: 100vh;
+    /*margin: 7em auto;
+    border-radius: 1.5em;
+    box-shadow: 0px 11px 35px 2px rgba(0, 0, 0, 0.14);*/
+  }
+  .createInput { 
     width: 50%;
-    padding: .375rem 2.25rem .375rem .75rem;
-    text-align: center;
+    color: rgb(38, 50, 56);
+    font-weight: 700;
+    font-size: 14px;
+    letter-spacing: 1px;
+    background: rgba(255, 255, 255);
+    padding: 10px 20px;
+    border: none;
+    border-radius: 10px;
+    outline: none;
+    box-sizing: border-box;
+    border: 2px solid rgba(0, 0, 0, 0.02);
+    margin-bottom: 50px;
+  /*  margin-left: 46px;*/
+    margin-bottom: 27px;
+    /*font-family: 'Ubuntu', sans-serif;*/
+  }
+
+  .dropdownUserType {
+
+      width: 50%;
+      padding: .375rem 2.25rem .375rem .75rem;
+      text-align: center;
+      font-size: 1rem;
+      font-weight: 400;
+      margin-bottom: 27px;
+      border-radius: .375rem;
+  }
+  .submitUser {
+    cursor: pointer;
+    border-radius: 10px;
+    color: #fff;
+    background: linear-gradient(to right, #9C27B0, #E040FB);
+    border: 0;
+    width: 50%;
+    padding-left: 40px;
+    padding-right: 40px;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    font-family: 'Ubuntu', sans-serif;
+  /*  margin-left: 35%;*/
+  /*  font-size: 13px;*/
+    box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.04);
+  }
+
+  /*-----------Create Profile Page-----------*/
+  .createProfile {
+    background-color: #F3EBF6;
+/*    width: 650px;*/
+    height: 95vh;
+    /*margin: 3em auto;
+    border-radius: 1.5em;
+    box-shadow: 0px 11px 35px 2px rgba(0, 0, 0, 0.14);*/
+  }
+  .submitUser {
+    cursor: pointer;
+    border-radius: 10px;
+    color: #fff;
+    background: linear-gradient(to right, #9C27B0, #E040FB);
+    border: 0;
+    width: 50%;
+    padding-left: 40px;
+    padding-right: 40px;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    font-family: 'Ubuntu', sans-serif;
+  /*  margin-bottom: 5%;*/
+    box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.04);
+  }
+
+  /*-----------View User details-----------*/
+  .userDetails {
+
+    padding-left: 10rem;
+    padding-right: 10rem;
+    padding-top: 2rem;
+
+  }
+
+  .dl-viewUserDetails {
+/*    display: flex; */
+    /*border-radius: 10px;
+    background-color: #F3EBF6;*/
+    padding: 10px;
+    gap: 200px;
+  }
+
+  .dt-label {
+    margin-bottom: .5rem;
+  }
+  .dd-left {
+    height: 36px;
+    padding: .375rem .75rem;
     font-size: 1rem;
     font-weight: 400;
-    margin-bottom: 27px;
+    line-height: 1.5;
+
+    background-color: #ffff;
+    background-clip: padding-box;
+
+
+    appearance: none;
+    border: 2px solid black;
     border-radius: .375rem;
-}
-.submitUser {
-  cursor: pointer;
-  border-radius: 10px;
-  color: #fff;
-  background: linear-gradient(to right, #9C27B0, #E040FB);
-  border: 0;
-  width: 50%;
-  padding-left: 40px;
-  padding-right: 40px;
-  padding-bottom: 10px;
-  padding-top: 10px;
-  font-family: 'Ubuntu', sans-serif;
-/*  margin-left: 35%;*/
-/*  font-size: 13px;*/
-  box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.04);
-}
+  }
 
-/*-----------Create Profile Page-----------*/
-.createProfile {
-  background-color: #F3EBF6;
-  width: 650px;
-  height: 610px;
-  margin: 3em auto;
-  border-radius: 1.5em;
-  box-shadow: 0px 11px 35px 2px rgba(0, 0, 0, 0.14);
-}
-.submitUser {
-  cursor: pointer;
-  border-radius: 10px;
-  color: #fff;
-  background: linear-gradient(to right, #9C27B0, #E040FB);
-  border: 0;
-  width: 50%;
-  padding-left: 40px;
-  padding-right: 40px;
-  padding-bottom: 10px;
-  padding-top: 10px;
-  font-family: 'Ubuntu', sans-serif;
-/*  margin-bottom: 5%;*/
-  box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.04);
-}
+  .dd-right {
+    display: block;
+/*    width: 80%;*/
+    height: 36px;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
 
-/*-----------View User details-----------*/
-.userDetails {
-  padding-left: 3rem;
-  padding-right: 3rem;
-  padding-top: 2rem;
+    background-color: #ffff;
+    background-clip: padding-box;
+
+    appearance: none;
+    border: 2px solid black;
+    border-radius: .375rem;
+  }
 
 }
 
-.dl-viewUserDetails {
-  display: flex; 
-  padding-top: 5px;
+@media only screen and (min-width: 951px) {
+
+  .viewUsers{
+  /*  border: 2px solid black;*/
+    display: flex;
+    margin-top: 20px;
+    border-radius: 5px;
+    padding: 50px;
+  }
+  .vu-content-left {
+    flex: 10%;
+  /*  border: 2px solid black;*/
+    display: block;
+  }
+
+  .vu-content-right {
+    flex: 90%;
+  /*  border: 2px solid black;*/
+  }
+  /*------------*/
+  .btn-addUser {
+    height: 40px; 
+    border-radius: 8px; 
+    padding: 5px; 
+    background: #D9D9D9; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center;
+  }
+  .btn-addUser:hover{
+
+  }
+  .filter-container{
+    margin-top: 20px; display: grid; gap: 10px; 
+  }
+  /*------------*/
+  .search-div {
+    border: 3px solid #ACABAB; 
+    border-radius: 5px;
+    background-color: #DFDFDF; 
+    padding: 6px; 
+  }
+  .search-form {
+    border: none; 
+    border-radius: 7px; 
+    /*border-bottom-right-radius: 7px;
+    border-top-right-radius: 7px;*/
+
+    background-color: white; 
+    margin-left: 7px; 
+    margin-right: 7px;
+  }
+  .search-btn {
+    border: none; 
+    border-radius: 7px;
+    background-color: white; 
+  }
+  .search-input {
+    border: none; 
+    border-bottom-right-radius: 7px;
+    border-top-right-radius: 7px;
+    
+  }
+  .search-input::placeholder {
+    color: #B8B8B8;
+  }
+  .search-input:focus {
+    outline: none;
+  }
+  .search-input::-webkit-search-cancel-button {
+    position:relative;
+    right:5px;  
+
+  }
+
+
+  /*------------*/
+
+  table {
+      table-layout: fixed;
+      width: 100%;   
+  }
+
+  th,td {
+  /*    border-style: solid;*/
+  /*    border-width: 1px;*/
+  /*    border-color: #BCBCBC;*/
+  /*border-left: 1px;*/
+
+      word-wrap: break-word;
+      /*display: flex;
+      align-items: center;*/
+  }
+
+  tbody tr > th,td {
+  /*    border: 1px solid #000000;*/
+  }
+
+  .status-active {
+    border: 4px solid #8CC39E; 
+    border-radius: 20px;
+    background: #AFF4C6;
+    color: black;
+
+    height: 50px;
+    width: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .status-inactive {
+    border: 4px solid #C23A1B; 
+    border-radius: 20px;
+    background: #F24822;
+    color: white;
+
+    height: 50px;
+    width: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /*-----------Create User Page-----------*/
+  .createUser {
+    background-color: #F3EBF6;
+    width: 650px;
+    height: 400px;
+    margin: 7em auto;
+    border-radius: 1.5em;
+    box-shadow: 0px 11px 35px 2px rgba(0, 0, 0, 0.14);
+  }
+  .createInput { 
+    width: 50%;
+    color: rgb(38, 50, 56);
+    font-weight: 700;
+    font-size: 14px;
+    letter-spacing: 1px;
+    background: rgba(255, 255, 255);
+    padding: 10px 20px;
+    border: none;
+    border-radius: 10px;
+    outline: none;
+    box-sizing: border-box;
+    border: 2px solid rgba(0, 0, 0, 0.02);
+    margin-bottom: 50px;
+  /*  margin-left: 46px;*/
+    margin-bottom: 27px;
+    /*font-family: 'Ubuntu', sans-serif;*/
+  }
+
+  .dropdownUserType {
+
+      width: 50%;
+      padding: .375rem 2.25rem .375rem .75rem;
+      text-align: center;
+      font-size: 1rem;
+      font-weight: 400;
+      margin-bottom: 27px;
+      border-radius: .375rem;
+  }
+  .submitUser {
+    cursor: pointer;
+    border-radius: 10px;
+    color: #fff;
+    background: linear-gradient(to right, #9C27B0, #E040FB);
+    border: 0;
+    width: 50%;
+    padding-left: 40px;
+    padding-right: 40px;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    font-family: 'Ubuntu', sans-serif;
+  /*  margin-left: 35%;*/
+  /*  font-size: 13px;*/
+    box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.04);
+  }
+
+  /*-----------Create Profile Page-----------*/
+  .createProfile {
+    background-color: #F3EBF6;
+    width: 650px;
+    height: 610px;
+    margin: 3em auto;
+    border-radius: 1.5em;
+    box-shadow: 0px 11px 35px 2px rgba(0, 0, 0, 0.14);
+  }
+  .submitUser {
+    cursor: pointer;
+    border-radius: 10px;
+    color: #fff;
+    background: linear-gradient(to right, #9C27B0, #E040FB);
+    border: 0;
+    width: 50%;
+    padding-left: 40px;
+    padding-right: 40px;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    font-family: 'Ubuntu', sans-serif;
+  /*  margin-bottom: 5%;*/
+    box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.04);
+  }
+  
+
+  /*-----------View User details-----------*/
+  .userDetails {
+
+    padding-left: 10rem;
+    padding-right: 10rem;
+    padding-top: 2rem;
+
+  }
+
+  .dl-viewUserDetails {
+    /*background-color: #F3EBF6;
+    border-radius: 5px;*/
+    display: flex; 
+    padding: 10px;
+    gap: 200px;
+  }
+
+  .dt-label {
+    margin-bottom: .5rem;
+  }
+  .dd-left {
+    height: 36px;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+
+    background-color: #ffff;
+    background-clip: padding-box;
+
+
+    appearance: none;
+    border: 2px solid black;
+    border-radius: .375rem;
+  }
+
+  .dd-right {
+    display: block;
+/*    width: 80%;*/
+    height: 36px;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+
+    background-color: #ffff;
+    background-clip: padding-box;
+
+    appearance: none;
+    border: 2px solid black;
+    border-radius: .375rem;
+  }
+
+
+
+
+/*-----------------------------------------------*/
+
+/*----------- Edit User -----------*/
+
+
 }
 
-.dt-label {
-  margin-bottom: .5rem;
-}
-.dd-left {
-  display: block;
-  width: 80%;
-  height: 36px;
-  padding: .375rem .75rem;
-  font-size: 1rem;
-  font-weight: 400;
-  line-height: 1.5;
 
-  background-color: #ffff;
-  background-clip: padding-box;
 
-  appearance: none;
-  border: 2px solid black;
-  border-radius: .375rem;
-}
-.dd-right {
-
-  height: 36px;
-  font-size: 1rem;
-  font-weight: 400;
-  line-height: 1.5;
-
-  background-color: #ffff;
-  background-clip: padding-box;
-
-  appearance: none;
-  border: 2px solid black;
-  border-radius: .375rem;
-}
-
-@media only screen and (max-width: 600px) {
+/*@media only screen and (max-width: 600px) {
 
   .userDetails {
 
-   /* padding-left: 3rem;
+    padding-left: 3rem;
     padding-right: 3rem;
     padding-top: 2rem;
-*/
+
 
   }
 
@@ -291,10 +599,10 @@ tbody tr > th,td {
   }
 
   .dt-label {
-/*    margin-bottom: .5rem;*/
+    margin-bottom: .5rem;
   }
   .dd-left {
-   /* display: block;
+    display: block;
     width: 80%;
     height: 36px;
     padding: .375rem .75rem;
@@ -307,7 +615,7 @@ tbody tr > th,td {
 
     appearance: none;
     border: 2px solid black;
-    border-radius: .375rem;*/
+    border-radius: .375rem;
   }
   .dd-right {
 
@@ -324,73 +632,5 @@ tbody tr > th,td {
     border: 2px solid black;
     border-radius: .375rem;
   }
-}
+}*/
 /*------------------*/
-
-.wrapper-userDetails {
-
-  margin: 7rem auto;
-  padding: 20px;
-  background: #fff;
-  border-radius: 20px;
-  width: 40%;
-  height: 20%;
-  position: relative;
-  transition: all 5s ease-in-out;
-}
-.wrapper-userDetails h2 {
-/*      margin-top: 0;*/
-  color: #333;
-  font-size: 50px;
-}
-
-.wrapper-userDetails .close {
-  position: absolute;
-  top: 20px;
-  right: 30px;
-  transition: all 200ms;
-  font-size: 36px;
-  font-weight: bold;
-  text-decoration: none;
-  color: #818181;
-}
-
-.wrapper-userDetails .close:hover {
-  color: black;
-}
-
-.wrapper-userDetails .content {
-  max-height: 30%;
-  overflow: auto;
-}
-.container-userDetails > div{
-  display: flex;
-  gap: 50px;
-  justify-content: space-evenly;
-  flex-direction: column;
-}
-.container-userDetails > div label{
-  font-size: 20px;
-}
-.btn-container {
-  display: flex;
-  gap: 20px;
-}
-
-.btn-container-option {
-  flex: 50%;
-  font-size:30px;
-  text-align: center;
-  cursor:pointer;
-  border-radius: 20px;
-  border: 8px solid #f1e1f5;
-  background-color: #fff;
-}
-.btn-container-option:hover {
-  color: white;
-  background-color: grey;
-}
-
-/*-----------------------------------------------*/
-
-/*----------- Edit User -----------*/

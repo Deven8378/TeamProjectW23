@@ -3,7 +3,6 @@
 namespace app\controllers;
 
 use \app\models\Profile;
-use \app\models\Message;
 
 class Message extends \app\core\Controller
 {
@@ -17,7 +16,7 @@ class Message extends \app\core\Controller
 			$profile = $profile->getByEmail($receiver);
 
 			if($profile){
-				$message = new Message();
+				$message = new \app\models\Message();
 				$message->receiver = $profile->user_id;
 				//setting the FK to a PK value
 				$message->sender = $_SESSION['user_id'];
@@ -29,7 +28,7 @@ class Message extends \app\core\Controller
 				header('location:/Message/index?error=' . "$receiver is not a valid user. No message sent.");
 			}
 		} else {
-			$message = new Message();
+			$message = new \app\models\Message();
 			$inbox = $message->getInbox($_SESSION['user_id']);
 			$sent = $message->getSent($_SESSION['user_id']);
 			$this->view('/Message/index', [$inbox, $sent]);
@@ -39,7 +38,7 @@ class Message extends \app\core\Controller
 	#[\app\filters\EmployeeAndAdmin]
 	public function delete($message_id)
 	{
-		$message = new Message();
+		$message = new \app\models\Message();
 
 		$success = $message->delete($message_id, $_SESSION['user_id']);
 		if($success){

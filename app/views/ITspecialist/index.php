@@ -7,31 +7,28 @@
 
 		<div class="vu-content-left">
 			<div class="spacer" style="height: 58px; flex-shrink: 0; margin: 0; padding: 0;"></div>
+
 			<div class="btn-addUser" style="">
 				<a href="/ITspecialist/createUser" style="text-decoration: none; color: #757575; ">
 					<i class="bi bi-plus-square"> <?=_('Add User')?></i>
 				</a>
 			</div>
-			<div style="margin-top: 20px; display: grid; ">
-				<h5><b><?=_('Filters')?></b></h5>
-				<!-- Filsters for easy search -->
-				<a class="label-radio" href="/ITspecialist/index"><?=_('view all')?></a>
-				<form action="/ITspecialist/allAdmins" method="post">
-					<!-- <label class="label-radio"> -->
-						<!-- <a class="label-radio" href="/ITspecialist/index"><?=_('view all')?></a> -->
-					<!-- </label> -->
-					<!-- <label class="label-radio"> -->
-						<input class="label-radio" type="submit" name="" value="<?=_('Admin')?>">
-					<!-- </label> -->
 
-					<!-- <label class="label-radio"> -->
-						<!-- <input class="label-radio" type="submit" name="viewEmployees" value="<?=_('Employee')?>"> -->
-					<!-- </label> -->
-					
+			<div class="filter-container" style="">
+				<h5><b><?=_('Filters')?></b></h5>
+
+
+				<!-- Filsters for easy search -->
+				<a class="btn-it" style="background-color: #e8c8e7; width: 100%;" href="/ITspecialist/index"><?=_('view all')?></a>
+
+				<form action="/ITspecialist/allAdmins" method="post">
+					<input class="btn-it" style="background-color: #e8c8e7; width: 100%;" type="submit" name="" value="<?=_('Admin')?>">
 				</form>
 				<form action="/ITspecialist/allEmployees" method="post">
-					<input class="label-radio" type="submit" name="" value="<?=_('Employee')?>">
+					<input class="btn-it" style="background-color: #e8c8e7; width: 100%;" type="submit" name="" value="<?=_('Employee')?>">
 				</form>
+
+
 			</div>
 
 		</div>
@@ -43,7 +40,7 @@
 			<div class="justify-content-between" style="display: flex; align-items: center; margin-bottom: 5px;">
 
 				<div class="">
-					<h2><?=_('List of Employee and Admin')?></h2>
+					<h3><?=_('List of Employee and Admin')?></h3>
 				</div>
 
 
