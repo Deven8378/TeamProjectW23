@@ -11,7 +11,9 @@ class Product extends \app\core\Controller
     public function index() {
         $product = new \app\models\Product();
         $products = $product->getAll();
-        $this->view('Product/index', $products);
+        $categories = new \app\models\Category();
+        $categories = $categories->getCategories();
+        $this->view('Product/index', [$products, $categories]);
     }
     
 

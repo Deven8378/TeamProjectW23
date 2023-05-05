@@ -12,7 +12,9 @@ class Ingredient extends \app\core\Controller
     {
         $ingredient = new \app\models\Ingredient();
         $ingredients = $ingredient->getAll();
-        $this->view('Ingredient/index', $ingredients);
+        $categories = new \app\models\Category();
+        $categories = $categories->getCategories();
+        $this->view('Ingredient/index', [$ingredients, $categories]);
     }
 
     #[\app\filters\Admin]

@@ -8,24 +8,43 @@ $isAdmin = False;
 if ($type == "admin")
   $isAdmin = True;
 ?>
-<link rel="stylesheet" type="text/css" href="/css/foodDetails.css">
-<script type="text/javascript">
-  function myFunction() {
-    var x = document.getElementById("myDIV");
-    if (x.style.display === "none") {
-      x.style.display = "block";
-    } else {
-      x.style.display = "none";
-    }
-  }
+<style type="text/css">
+/*#foodIMG {
+  max-width: 500px;
+  max-height: 500px;
+  position: absolute;
+  padding-right: 20px;
+    top: 50%;
+    transform: translate(-50%,-50%);
+}*/
 
-   function increment() {
-      document.getElementById('demoInput').stepUp();
-   }
-   function decrement() {
-      document.getElementById('demoInput').stepDown();
-   }
-</script>
+#backLink {
+  padding: 50px;
+  margin: ;
+  color: black;
+}
+
+#foodDetailsDiv {
+  margin: 50px;
+  height: 75%;
+}
+
+#foodDetails {
+  width: 100%;
+  height: 500px;
+  padding: 20px;
+  background-color: #f5f5f5;
+  text-align: left;
+}
+
+#foodName {
+  font-weight: bold;
+}
+
+#foodEverything {
+  padding-top: 20px;
+}
+</style>
 
 
 <div id="foodDetailsDiv">
@@ -35,8 +54,7 @@ if ($type == "admin")
     <div class="row align-items-start">
       <div class="col-5">
         <div>
-          <img id="foodIMG" src="/ingredientImages/<?= $data[0]->picture ?>">
-          <div class="spacer" style="height: 500px; flex-shrink: 0; margin: 0; padding: 0;"></div>
+          <img id="foodIMG" style="  width: 100%; max-width: 500px; height: auto;" src="/ingredientImages/<?= $data[0]->picture ?>">
         </div>
       </div>
       <div class="col-7">
@@ -70,7 +88,7 @@ if ($type == "admin")
               <div class="col">
                 <?= _('Description') ?>:
                 <br>
-                <button onclick="myFunction()"><?= _('Quantity') ?>:</button>
+                <?= _('Quantity') ?>:
               </div>
               <div class="col">
                 <p><?= htmlentities($data[0]->description) ?></p>
@@ -126,9 +144,6 @@ if ($type == "admin")
                 <?php } ?>
               </tbody>
             </table>
-            <a class="btn" style="background-color: #e8c8e7" href="/Ingredient/addQuantity/<?= $data[0]->ingredient_id ?>">
-              <?= _('Add Quantity') ?>
-            </a>
           </div>
           <div class="overlay" id="editQuantity">
             <div class="wrapper">
@@ -145,6 +160,9 @@ if ($type == "admin")
             </div>
           </div>
         </div>
+        <a class="btn" style="background-color: #e8c8e7; float: right; bottom: 0;" href="/Ingredient/addQuantity/<?= $data[0]->ingredient_id ?>">
+            <?= _('Add Quantity') ?>
+          </a>
       </div>
     </div>
   </div>
