@@ -1,6 +1,6 @@
 <form action='/Category/create' method='post' enctype="multipart/form-data">
 	<div class="col-category" style="">
-			<h3 ><?=_('Add a Category')?>:</h3> 
+			<h3 align="center"><?=_('Add a Category')?>:</h3> 
 			<div style="left: 0px;" ><?= _('Category Name')?>:</div>
 			
 			<input class="" type="text" placeholder="<?= _('Category Name')?>" name="category_name">

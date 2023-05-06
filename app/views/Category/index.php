@@ -1,7 +1,7 @@
 <?php $this->view('shared/header', _("View Categories")); ?>
 <?php $this->view('shared/navigation/nav'); ?>
 
-<div class="categoryContainer" align="center" style="">
+<div class="categoryContainer"  style="">
 	<div class="back-category" style="">
 		<a class="btn-general" style="margin-bottom: 0px;" id="backLink" href="/Ingredient/index" >
 			<i class="bi bi-arrow-left"></i><?= _('Back') ?>
@@ -11,12 +11,12 @@
 		<div class="" style="" ><p class="sign" align="center"><?=_('Categories')?></p></div>  
 	</div>
 	<div>
-		<div class="row">
-			<div class="col"><?php $this->view('Category/create',$data);?></div>
-			<div class="col-1"><hr class="divider" style=""></div>
-			<div class="col"><?php $this->view('Category/edit',$data) ?></div>
+		<div class="row-category">
+			<div class="col-inner-category"><?php $this->view('Category/create',$data);?></div>
+			<div class="col-divider" align="center"><hr class="divider" style=""></div>
+			<div class="col-inner-category"><?php $this->view('Category/edit',$data) ?></div>
 		</div>
-		<div >
+		<div>
 			<table class="table">
 			<tr>
 				<th><?=_('ID')?></th>
@@ -44,7 +44,6 @@
 		var getID = document.getElementById(selectedValue).innerHTML;
 
 		document.getElementById("editing").setAttribute("value", getID);
-
 	}
 
 </script>

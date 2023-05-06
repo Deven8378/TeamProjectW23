@@ -1,6 +1,6 @@
 <form action='/Category/edit' method='post' enctype="">
 	<div class="col-category" style="">
-		<h3 ><?=_('Edit a Category')?>:</h3>
+		<h3 align="center"><?=_('Edit a Category')?>:</h3>
 		<select class="" style="" name="editCategory_id" id="selectBox" onchange="getValueUsingID()">
 			<option selected disabled><?= _('-ID-') ?></option>
 			<?php
