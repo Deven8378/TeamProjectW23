@@ -1,24 +1,28 @@
 <?php $this->view('shared/header', "Add New Quantity to Ingredient"); ?>
 <?php $this->view('shared/navigation/nav'); ?>
-<link rel="stylesheet" type="text/css" href="/css/addQuantity.css">
 
-<div class='addQuantity' align='center'>
+<div class='common-container' align='center'>
 	<p class="sign" align="center"><?=_('Add a New Ingredient Quantity')?></p>
 	<form action='' method='post' enctype="multipart/form-data">
-		<label>Arrival Date</label><br><br>
-		<input type="date" required="" autocomplete="off" name="arrival_date"><br><br>
-		<label>Expired Date</label><br><br>
-		<input type="date" required="" autocomplete="off" name="expired_date"><br>
-		<label>Quantity</label><br>
-		<input type="number" min="0" id="totalAmt" name="quantity">
-		<br> <br>
-		<label>Price</label><br>
-		<input type="number" min="0" step="0.01" id="totalAmt" name="price">
-		<br> <br>
+		
+		<div class="grid-50">
+			<label>Arrival Date</label>
+			<input class="input-qty" type="date" required="" autocomplete="off" name="arrival_date">
+			
+			<label>Expired Date</label>
+			<input class="input-qty" type="date" required="" autocomplete="off" name="expired_date">
+			
+			<label>Quantity</label>
+			<input class="input-qty" type="number" min="0" step="1" id="totalAmt" name="quantity">
 
-		<input class="submitIngredient" type="submit" align="" placeholder="<?=_('Add Ingredient')?>" name="action"> <br><br>
+		
+			<label>Price</label>
+			<input class="input-qty" type="number" min="0" step="0.01" id="totalAmt" name="price">
 
-		<a class="btn" onClick="history.go(-1)" role="button" style="background-color: #e8c8e7;"><?= _('Back') ?></a>
+			<input class="submit-inv" type="submit" align="" value="<?=_('Add Quantity')?>" name="action">
+
+			<a class="btn-general" href="/Ingredient/ingredientDetails/<?=$data->ingredient_id?>" role="button" ><?= _('Back') ?></a>
+		</div>
 	</form>
 
 </div>

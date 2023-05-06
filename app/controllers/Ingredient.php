@@ -64,27 +64,22 @@ class Ingredient extends \app\core\Controller
 
                 $ingredient = new \app\models\Ingredient();
                 $ingredient->name = htmlentities($_POST['name']);
-                $checkIngredients = $ingredient->getIngredientByName($ingredient->name);
+                $ingredient->category = htmlentities($_POST['category']);
+                $ingredient->description = htmlentities($_POST['description']);
 
-                if(!$checkIngredients){
-                    $ingredient->category = htmlentities($_POST['category']);
-                    $ingredient->description = htmlentities($_POST['description']);
+                $picture = $this->saveIngredient($_FILES['ingredientPicture']);
 
-                    $picture = $this->saveIngredient($_FILES['ingredientPicture']);
-
-                    if ($picture) {
-                        $ingredient->picture = $picture;
-                    }
-
-                    $success = $ingredient->addIngredient();
-                    if($success){
-                        header('location:/Ingredient/index?success='. $ingredient->name .' has been added');
-                    }else{
-                         header('location:/Ingredient/index?error=Something went wrong when creating a new Ingredient. Please Try again.');
-                    }
-
+                if($picture) {
+                    $ingredient->picture = $picture;
                 }else{
-                    header('location:/Ingredient/createIngredient?error=' . htmlentities($_POST['name']) .' already exits');
+                    $ingredient->picture = 'default.jpg';
+                }
+
+                $success = $ingredient->addIngredient();
+                if($success){
+                    header('location:/Ingredient/index?success='. $ingredient->name .' has been added');
+                }else{
+                     header('location:/Ingredient/index?error=Something went wrong when creating a new Ingredient. Please Try again.');
                 }
 
             }else{
@@ -109,12 +104,12 @@ class Ingredient extends \app\core\Controller
 
         if(isset($_POST['action']))
         {
-            $ingredient->name = $_POST['name'];
-            $ingredient->category = $_POST['category'];
-            $ingredient->description = $_POST['description'];
+            $ingredient->name = htmlentities($_POST['name']);
+            $ingredient->category = htmlentities($_POST['category']);
+            $ingredient->description = htmlentities($_POST['description']);
             $picture = $this->saveIngredient($_FILES['ingredientPicture']);
 
-            if($picture){
+            if($picture){ 
                 $ingredient->picture = $picture;
             }
             $success = $ingredient->editIngredient($ingredient_id);
@@ -122,7 +117,7 @@ class Ingredient extends \app\core\Controller
             if($success){
                 header('location:/Ingredient/ingredientDetails/' . $ingredient_id. '?success=Ingredient Updated.');
             } else {
-                header('location:/Ingredient/edit/' . $ingredient_id. '?error=Error.');
+                header('location:/Ingredient/edit/' . $ingredient_id. '?error=Please modify in order to edit.');
             }
         } else {
             $this->view('Ingredient/editIngredient', [$ingredient,$categories]);
@@ -155,10 +150,12 @@ class Ingredient extends \app\core\Controller
             if($success){
                 header('location:/Ingredient/ingredientDetails/' . $ingredient_id. '?success=Ingredient added quantity.');
             } else {
-                header('location:/Ingredient/editingredient/' . $ingredient_id. '?error=Error.');
+                header('location:/Ingredient/editingredient/' . $ingredient_id. '?error=Something went wrong when adding quantity. Please Try again.');
             }
         } else {
-            $this->view('Ingredient/addQuantity');
+            $ingredient = new \app\models\Ingredient();
+            $ingredient = $ingredient->getIngredientDetails($ingredient_id);
+            $this->view('Ingredient/addQuantity', $ingredient);
         }
     }
 
@@ -179,10 +176,12 @@ class Ingredient extends \app\core\Controller
             if($success){
                 header('location:/Ingredient/ingredientDetails/' . $ingredientQuantity->ingredient_id . '?success=Ingredient Quantity Updated.');
             } else {
-                header('location:/Ingredient/ingredientDetails/' . $ingredientQuantity->ingredient_id . '?error=Error.');
+                header('location:/Ingredient/editQuantity/' . $iq_id . '?error=Please modify in order to edit.');
             }
         } else {
-            echo $ingredientQuantity->iq_id;
+            // echo $ingredientQuantity->iq_id;
+            $ingredientQuantity = new IngredientQuantity();
+            $ingredientQuantity = $ingredientQuantity->getOneQuantity($iq_id);
             $this->view('Ingredient/editQuantity', $ingredientQuantity);
         }
     }

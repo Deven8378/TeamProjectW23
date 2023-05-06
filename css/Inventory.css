@@ -1,5 +1,5 @@
 
- .input-inv { 
+.input-inv { 
 	width: 50%;
     color: rgb(38, 50, 56);
     font-weight: 700;
@@ -12,7 +12,7 @@
     outline: none;
     box-sizing: border-box;
     border: 2px solid rgba(0, 0, 0, 0.02);
-    margin-bottom: 50px;
+/*    margin-bottom: 50px;*/
     margin-bottom: 27px;
 }
 .dropdown-inv {
@@ -114,7 +114,19 @@
 	box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.04);
 }
 
- @media only screen and (max-width: 951px) {
+.input-qty {
+    color: rgb(38, 50, 56);
+    font-weight: 700;
+    letter-spacing: 1px;
+    background: rgba(255, 255, 255);
+    padding: 10px 20px;
+    border: none;
+    border-radius: 10px;
+    margin-bottom: 27px;
+}
+
+
+@media only screen and (max-width: 951px) {
 	.common-container {
 	    background-color: #F3EBF6;
 	    height: 95vh;

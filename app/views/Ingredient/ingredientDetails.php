@@ -65,7 +65,8 @@
                         </a>
                       </li>
                       <li>
-                        <a class="dropdown-item" href="/Ingredient/delete/<?= $data[0]->ingredient_id ?>">
+                        <a class="dropdown-item" 
+                        href="#popupIngredient">
                           <?= _('Delete') ?>
                         </a>
                       </li>
@@ -118,7 +119,7 @@
                             </a>
                           </li>
                           <li>
-                            <a class="dropdown-item" href="/Ingredient/deleteQuantity/<?= $quantity->iq_id ?>">
+                            <a class="dropdown-item" href="#popupQuantity" id="<?= $quantity->iq_id ?>" onclick="deleteLinkID(this.id)">
                               <?= _('Delete') ?>
                             </a>
                           </li>
@@ -160,5 +161,50 @@
     </div>
   </div>
 </div>
+<!-- CONFIMATION MESSAGE BELLOW -->
+<div class="overlay" id="popupIngredient">
+  <div class="wrapper">
+      <h2><?= _('Confirmation') ?></h2><a class="close" href="/Ingredient/ingredientDetails/<?= $data[0]->ingredient_id ?>">&times;</a>
+      <div class="content">
+          <div class="container">
+              <form  method="post" action="">
+                    <label>Are you certain you want to delete the following Ingredient?</label>
+                    <div align="center">
+                      <a href="/Ingredient/ingredientDetails/<?= $data[0]->ingredient_id ?>" class="btn-general"><?=_('cancel')?></a>
+                      
+                      <a href="/Ingredient/delete/<?= $data[0]->ingredient_id ?>" class="btn-general"><?=_('delete')?></a>
+                </div>
+              </form>
+          </div>
+      </div>
+  </div>
+</div>
 
+<div class="overlay" id="popupQuantity">
+  <div class="wrapper">
+      <h2><?= _('Confirmation') ?></h2><a class="close" href="/Ingredient/ingredientDetails/<?= $data[0]->ingredient_id ?>">&times;</a>
+      <div class="content">
+          <div class="container">
+              <form  method="post" action="">
+                    <label>Do you want to delete the entire Quantity row</label>
+                    <div align="center">
+                      <a href="/Ingredient/ingredientDetails/<?= $data[0]->ingredient_id ?>" class="btn-general"><?=_('Cancel')?></a>
+                      <!-- getting href from deleteLinkID javascript function -->
+                      <a id="deleteQuantity" href="" class="btn-general"><?=_('Confirm')?></a>
+                </div>
+              </form>
+          </div>
+      </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+  
+  function deleteLinkID(linkID){
+    // var selectLink = document.getElementById(linkID);
+    var setLinkInDelete = document.getElementById('deleteQuantity');
+    setLinkInDelete.href = "/Ingredient/deleteQuantity/" + linkID;
+  }
+  
+</script>
 
