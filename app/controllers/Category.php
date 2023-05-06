@@ -18,7 +18,6 @@ class Category extends \app\core\Controller
             
             if($_POST['category_name'] != '' && $_POST['category_name'] != null){
 
-                // Check if Category already exist or not
                 $category = new \app\models\Category();
                 $checkCategory = $category->getByCategoryName($_POST['category_name']);
                 if(!$checkCategory){
@@ -57,11 +56,9 @@ class Category extends \app\core\Controller
                     $category->category_id = htmlentities($_POST['editCategory_id']);
                     $category->category_name = htmlentities($_POST['editCategory_name']);
                     $success = $category->update($category->category_id);
-                    // if($success){
-                        header('location:/Category/index?success=' . $category->category_name .' has been update.');
-                    // }else{
-                    //     header('location:/Category/index?error=Please change name to edit');
-                    // }
+
+                    header('location:/Category/index?success=' . $category->category_name .' has been update.');
+
                 }else{
                     header('location:/Category/index?error=' . htmlentities($_POST['editCategory_name']) .' already exits.');
                 }
@@ -81,12 +78,9 @@ class Category extends \app\core\Controller
 
         if(empty($ingredient)){
             $category = new \app\models\Category();
-            // get category name and place it in message when deleted
             $category = $category->getSpecificcategory($category_id);
             $success = $category->delete($category_id);
             if($success){
-
-                // will not work rn
                 header('location:/Category/index?success=Item Deleted: '. $category->category_name );
             }else{
                 header('location:/Category/index?error=idk');

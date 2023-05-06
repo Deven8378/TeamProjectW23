@@ -4,12 +4,15 @@ namespace app\models;
 class Ingredient extends \app\core\Model {
 
 	public $ingredient_id;
+
 	#[\app\validators\NonNull]
 	#[\app\validators\NonEmpty]
 	public $name;
+
 	#[\app\validators\NonNull]
 	#[\app\validators\NonEmpty]
 	public $category;
+	
 	public $description;
 	public $picture;
 
@@ -103,6 +106,16 @@ class Ingredient extends \app\core\Model {
 		$SQL = "SELECT * FROM `ingredient` WHERE `category` = :category;";
 		$STH = self::$connection->prepare($SQL);
 		$data = ['category'=>$category_id];
+		$STH->execute($data);
+		$STH->setFetchMode(\PDO::FETCH_CLASS, 'app\\models\\Ingredient');
+		return $STH->fetchAll();
+	}
+
+	public function getIngredientByName($name)
+	{
+		$SQL = "SELECT * FROM `ingredient` WHERE `name` = :name;";
+		$STH = self::$connection->prepare($SQL);
+		$data = ['name'=>$name];
 		$STH->execute($data);
 		$STH->setFetchMode(\PDO::FETCH_CLASS, 'app\\models\\Ingredient');
 		return $STH->fetchAll();

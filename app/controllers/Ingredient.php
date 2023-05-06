@@ -3,6 +3,7 @@ namespace app\controllers;
 
 use \app\models\Category;
 use \app\models\IngredientQuantity;
+use \app\models\User;
 
 class Ingredient extends \app\core\Controller
 {
@@ -12,15 +13,17 @@ class Ingredient extends \app\core\Controller
     {
         $ingredient = new \app\models\Ingredient();
         $ingredients = $ingredient->getAll();
-        $categories = new \app\models\Category();
-        $categories = $categories->getCategories();
         $numResults = $ingredient->getSum();
 
-        $user = new \app\models\User();
-        $user = $user->getByUserType($_SESSION['user_id']);
+        $category = new Category();
+        $categories = $category->getCategories();
+
+        $user = new User();
+        $user = $user->getByUserType(htmlentities($_SESSION['user_id']));
         $isAdmin = false;
-        if ($user->user_type == "admin")
+        if ($user->user_type == "admin"){
             $isAdmin = true;
+        }
 
         $this->view('Ingredient/index', [$ingredients, $categories, $numResults, $isAdmin]);
     }
@@ -28,24 +31,47 @@ class Ingredient extends \app\core\Controller
     #[\app\filters\Admin]
     public function createIngredient() 
     {
-        $categories = new \app\models\Category();
-        $categories = $categories->getCategories();
+        
         if (isset($_POST['action'])) {
-            $ingredient = new \app\models\Ingredient();
-            $ingredient->name = $_POST['name'];
-            $ingredient->category = $_POST['category'];
-            $ingredient->description = $_POST['description'];
+            if(
+                $_POST['name']!='' 
+                && $_POST['name']!=null
+                && $_POST['category']!=''
+                && $_POST['category']!=null
 
-            $picture = $this->saveIngredient($_FILES['ingredientPicture']);
+            ){
 
-            if ($picture) {
-                $ingredient->picture = $picture;
+                $ingredient = new \app\models\Ingredient();
+                $ingredient->name = htmlentities($_POST['name']);
+
+                $checkIngredienst = $ingredient->getIngredientByName($ingredient->name);
+                if(!$checkIngredienst ){
+                    $ingredient->category = htmlentities($_POST['category']);
+                    $ingredient->description = htmlentities($_POST['description']);
+
+                    $picture = $this->saveIngredient($_FILES['ingredientPicture']);
+
+                    if ($picture) {
+                        $ingredient->picture = $picture;
+                    }
+                    $success = $ingredient->addIngredient();
+                    if($success){
+                        header('location:/Ingredient/index?success='. $ingredient->name .'has been added');
+                    }else{
+                         header('location:/Ingredient/index?error=Something went wrong when creating a new Ingredient. Please Try again.');
+                    }
+                }else{
+                    header('location:/Ingredient/createIngredient?error=' . htmlentities($_POST['name']) .' alredy exits');
+                }
+            }else{
+                header('location:/Ingredient/createIngredient?error=Please fill up Name and Category.');
             }
-            $ingredient->addIngredient();
-            header('location:/Ingredient/index?success=Ingredient Added');
         } else {
+            $categories = new Category();
+            $categories = $categories->getCategories();
             $this->view('Ingredient/createIngredient', $categories);
         }
+
     }
 
     #[\app\filters\EmployeeAndAdmin]
@@ -56,7 +82,7 @@ class Ingredient extends \app\core\Controller
         $totalQuantity = $totalQuantity->getTotalQuantity($ingredient_id);
         $allQuantity = new IngredientQuantity;
         $allQuantity = $allQuantity->getAll($ingredient_id);
-        $user = new \app\models\User();
+        $user = new User();
         $user = $user->getByUserId($_SESSION['user_id']);
         $type = $user->user_type;
         $isAdmin = false;
