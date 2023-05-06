@@ -30,7 +30,7 @@ class Category extends \app\core\Controller
                         header('location:/Category/index?error=Something went wrong when creating a new Category. Please Try again.');
                     } 
                 }else{
-                    header('location:/Category/index?error=Category already exits.');
+                    header('location:/Category/index?error=' . htmlentities($_POST['category_name']) .' already exits.');
                 }
             }else{
                 header('location:/Category/index?error=Please fill up all criteria.');
@@ -56,13 +56,17 @@ class Category extends \app\core\Controller
                 if(!$checkCategory){
                     $category->category_id = htmlentities($_POST['editCategory_id']);
                     $category->category_name = htmlentities($_POST['editCategory_name']);
-                    $category->update($category->category_id);
-                    header('location:/Category/index?success=' . $category->category_name .' has been update.');
+                    $success = $category->update($category->category_id);
+                    // if($success){
+                        header('location:/Category/index?success=' . $category->category_name .' has been update.');
+                    // }else{
+                    //     header('location:/Category/index?error=Please change name to edit');
+                    // }
                 }else{
-                    header('location:/Category/index?error=Category already exits.');
+                    header('location:/Category/index?error=' . htmlentities($_POST['editCategory_name']) .' already exits.');
                 }
             }else{
-                header('location:/Category/index?error=Please select a Criteria to edit.');
+                header('location:/Category/index?error=Please select an ID and modify Category name to edit.');
             }
             
         }else{
@@ -73,16 +77,17 @@ class Category extends \app\core\Controller
    public function delete($category_id)
    {
         $ingredient = new Ingredient();
-        $ingredients = $ingredient->getIngredientByCategory($category_id);
+        $ingredient = $ingredient->getIngredientByCategory($category_id);
 
-        if(empty($ingredients)){
+        if(empty($ingredient)){
             $category = new \app\models\Category();
             // get category name and place it in message when deleted
+            $category = $category->getSpecificcategory($category_id);
             $success = $category->delete($category_id);
             if($success){
 
                 // will not work rn
-                header('location:/Category/index?success=' . $category->category_name . 'Item Deleted');
+                header('location:/Category/index?success=Item Deleted: '. $category->category_name );
             }else{
                 header('location:/Category/index?error=idk');
             }

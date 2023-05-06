@@ -3,7 +3,7 @@
 
 <div class="userDetails">
     <div class="col-4">
-        <a href="/ITspecialist/userDetails/<?=$data->user_id?>" id="backLink" class="btn-it">
+        <a href="/ITspecialist/userDetails/<?=$data->user_id?>" id="backLink" class="btn-general">
           <i class="bi bi-arrow-left"></i><?= _('Back') ?></a>
     </div>   
       <!-- <input type="submit" id="option" onclick="myFunction()" value="Edit Account"> -->

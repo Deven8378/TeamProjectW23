@@ -1,0 +1,9 @@
+
+.categoryContainer{
+	border: solid; 
+	background-color: #F3EBF6; 
+	width: 70%; 
+	padding: 20px; 
+	margin: 3em auto; 
+	border-radius: 1.5em;
+}

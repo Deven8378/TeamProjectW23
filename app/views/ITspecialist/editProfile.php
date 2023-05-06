@@ -40,5 +40,5 @@
     </div>
    
   </dl> 
-  <input class="btn-it" type="submit" name="editProfile" value="Upload Profile Change">
+  <input class="btn-general" type="submit" name="editProfile" value="Upload Profile Change">
 </form>

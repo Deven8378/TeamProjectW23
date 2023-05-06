@@ -28,6 +28,6 @@
 
 		<input 
 
-		class="btn-it" style="background-color: #c98bc8;" type="submit" name="edit" value="<?=_('Edit')?>">
+		class="btn-general" style="background-color: #c98bc8;" type="submit" name="edit" value="<?=_('Edit')?>">
 	</div>
 </form>

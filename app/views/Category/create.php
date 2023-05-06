@@ -12,7 +12,7 @@
 			<!-- <div style="height: 10px;"></div> -->
 			<input type="text" placeholder="<?= _('Category Name')?>" name="category_name">
 			
-			<input class="btn-it"  style="background-color: #c98bc8;" type="submit" name="create" value="<?=_('Add')?>">
+			<input class="btn-general"  style="background-color: #c98bc8;" type="submit" name="create" value="<?=_('Add')?>">
 		</tr>
 	</div>
 </form>

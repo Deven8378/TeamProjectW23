@@ -19,13 +19,13 @@
 
 
 				<!-- Filters for easy search -->
-				<a class="btn-it" style=" width: 100%;" href="/ITspecialist/index"><?=_('view all')?></a>
+				<a class="btn-general" style=" width: 100%;" href="/ITspecialist/index"><?=_('view all')?></a>
 
 				<form action="/ITspecialist/allAdmins" method="post">
-					<input class="btn-it" style=" width: 100%;" type="submit" name="" value="<?=_('Admin')?>">
+					<input class="btn-general" style=" width: 100%;" type="submit" name="" value="<?=_('Admin')?>">
 				</form>
 				<form action="/ITspecialist/allEmployees" method="post">
-					<input class="btn-it" style=" width: 100%;" type="submit" name="" value="<?=_('Employee')?>">
+					<input class="btn-general" style=" width: 100%;" type="submit" name="" value="<?=_('Employee')?>">
 				</form>
 
 
