@@ -25,6 +25,8 @@
 }
 
 @media only screen and (max-width: 951px) {
+
+	/* WILL HAVE TO BE MOVED TO A CSS FILE USED BY ALL	*/
 	body{
 		background-color: #F3EBF6;
 	}

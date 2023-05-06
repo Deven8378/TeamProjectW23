@@ -231,7 +231,8 @@ form label {
 /*----------------------------------*/
 
 /*--Create Ingredient Submit Button--*/
-.submitIngredient {
+/*Moved to inventory css*/
+/*.submitIngredient {
   cursor: pointer;
   border-radius: 10px;
   color: #fff;
@@ -242,10 +243,10 @@ form label {
   padding-right: 40px;
   padding-bottom: 10px;
   padding-top: 10px;
-  font-family: 'Ubuntu', sans-serif;
+  font-family: 'Ubuntu', sans-serif;*/
 /*  margin-bottom: 5%;*/
-  box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.04);
-}
+  /*box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.04);
+}*/
 /*-----------------------------------*/
 
 /*-----------------IT Confirmation message------------------*/

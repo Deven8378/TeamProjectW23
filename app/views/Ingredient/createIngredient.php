@@ -1,13 +1,16 @@
 <?php $this->view('shared/header', "Add Ingredient"); ?>
 <?php $this->view('shared/navigation/nav'); ?>
 
-<div class='createProfile' align='center'>
+<div class='common-container' 
+align='center'>
 	<p class="sign" align="center"><?=_('Add a New Ingredient')?></p>
 	<form action='' method='post' enctype="multipart/form-data">
 
-		<input class="createInput" type="text" align="center" placeholder="<?= _('Name') ?>" name="name">
+		<input class="input-inv" 
+		type="text" align="center" placeholder="<?= _('Name') ?>" name="name" required>
 
-		<select name="category" id="status" class="dropdownUserType">
+		<select class="dropdown-inv" 
+		name="category" id="status" >
 			<option selected disabled><?= _('--Select a Category--') ?></option>
 			<?php
 			foreach ($data as $category) { ?>
@@ -17,14 +20,18 @@
 			<?php  } ?>
 		</select>
 
-		<textarea placeholder="<?= _('Description...') ?>" name="description" class="createInput"></textarea><br>
+		<textarea class="input-inv" 
+		placeholder="<?= _('Description...') ?>" name="description" ></textarea><br>
 
 		<label>Picture</label><br>
-		<input class="createInput" type="file" align="" placeholder="<?=_('Picture')?>" name="ingredientPicture"><br>
+		<input class="file-input" 
+		type="file" align="" placeholder="<?=_('Picture')?>" name="ingredientPicture"><br>
 
-		<input class="submitIngredient" type="submit" align="" placeholder="<?=_('Add Ingredient')?>" name="action"> <br><br>
+		<input class="submit-inv" 
+		type="submit" align="" placeholder="<?=_('Add Ingredient')?>" name="action"> <br><br>
 
-		<a class="btn" href="/Ingredient/index" role="button" style="background-color: #e8c8e7;"><?= _('Back') ?></a>
+		<a class="btn"
+		 style="background-color: #e8c8e7;" href="/Ingredient/index" role="button" ><?= _('Back') ?></a>
 		
 	 
 	</form>

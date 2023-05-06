@@ -25,7 +25,7 @@ class Ingredient extends \app\core\Controller
             $isAdmin = true;
         }
 
-        $this->view('Ingredient/index', [$ingredients, $categories, $numResults, $isAdmin]);
+        $this->view('Ingredient/index', ['ingredients'=>$ingredients, 'categories'=>$categories, 'numResults'=>$numResults, 'isAdmin'=>$isAdmin]);
     }
 
     #[\app\filters\Admin]
@@ -33,19 +33,14 @@ class Ingredient extends \app\core\Controller
     {
         
         if (isset($_POST['action'])) {
-            if(
-                $_POST['name']!='' 
-                && $_POST['name']!=null
-                && $_POST['category']!=''
-                && $_POST['category']!=null
 
-            ){
+            if($_POST['name']!='' && $_POST['name']!=null && $_POST['category']!='' && $_POST['category']!=null){
 
                 $ingredient = new \app\models\Ingredient();
                 $ingredient->name = htmlentities($_POST['name']);
+                $checkIngredients = $ingredient->getIngredientByName($ingredient->name);
 
-                $checkIngredienst = $ingredient->getIngredientByName($ingredient->name);
-                if(!$checkIngredienst ){
+                if(!$checkIngredients){
                     $ingredient->category = htmlentities($_POST['category']);
                     $ingredient->description = htmlentities($_POST['description']);
 
@@ -54,18 +49,22 @@ class Ingredient extends \app\core\Controller
                     if ($picture) {
                         $ingredient->picture = $picture;
                     }
+
                     $success = $ingredient->addIngredient();
                     if($success){
                         header('location:/Ingredient/index?success='. $ingredient->name .'has been added');
                     }else{
                          header('location:/Ingredient/index?error=Something went wrong when creating a new Ingredient. Please Try again.');
                     }
+
                 }else{
-                    header('location:/Ingredient/createIngredient?error=' . htmlentities($_POST['name']) .' alredy exits');
+                    header('location:/Ingredient/createIngredient?error=' . htmlentities($_POST['name']) .' already exits');
                 }
+
             }else{
-                header('location:/Ingredient/createIngredient?error=Please fill up Name and Category.');
+                header('location:/Ingredient/createIngredient?error=Please enter a Name and select a Category.');
             }
+
         } else {
             $categories = new Category();
             $categories = $categories->getCategories();

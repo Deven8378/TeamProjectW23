@@ -50,12 +50,21 @@ class Ingredient extends \app\core\Model {
 		return $STH->fetch();
 	}
 
-	public function search($name) {
-		$SQL = "SELECT * FROM ingredient WHERE name LIKE :name;";
+	public function getIngredientByCategory($category_id)
+	{
+		$SQL = "SELECT * FROM `ingredient` WHERE `category` = :category;";
 		$STH = self::$connection->prepare($SQL);
-		$data = [
-			'name'=>"%$name%"
-		];
+		$data = ['category'=>$category_id];
+		$STH->execute($data);
+		$STH->setFetchMode(\PDO::FETCH_CLASS, 'app\\models\\Ingredient');
+		return $STH->fetchAll();
+	}
+
+	public function getIngredientByName($name)
+	{
+		$SQL = "SELECT * FROM `ingredient` WHERE `name` = :name;";
+		$STH = self::$connection->prepare($SQL);
+		$data = ['name'=>$name];
 		$STH->execute($data);
 		$STH->setFetchMode(\PDO::FETCH_CLASS, 'app\\models\\Ingredient');
 		return $STH->fetchAll();
@@ -70,6 +79,17 @@ class Ingredient extends \app\core\Model {
 		$STH->execute($data);
 		$STH->setFetchMode(\PDO::FETCH_CLASS, 'app\\models\\Ingredient');
 		return $STH->fetch();
+	}
+
+	public function search($name) {
+		$SQL = "SELECT * FROM ingredient WHERE name LIKE :name;";
+		$STH = self::$connection->prepare($SQL);
+		$data = [
+			'name'=>"%$name%"
+		];
+		$STH->execute($data);
+		$STH->setFetchMode(\PDO::FETCH_CLASS, 'app\\models\\Ingredient');
+		return $STH->fetchAll();
 	}
 
 	public function addIngredient() {
@@ -104,23 +124,5 @@ class Ingredient extends \app\core\Model {
 		return $STH->rowCount(); 
 	}
 
-	public function getIngredientByCategory($category_id)
-	{
-		$SQL = "SELECT * FROM `ingredient` WHERE `category` = :category;";
-		$STH = self::$connection->prepare($SQL);
-		$data = ['category'=>$category_id];
-		$STH->execute($data);
-		$STH->setFetchMode(\PDO::FETCH_CLASS, 'app\\models\\Ingredient');
-		return $STH->fetchAll();
-	}
-
-	public function getIngredientByName($name)
-	{
-		$SQL = "SELECT * FROM `ingredient` WHERE `name` = :name;";
-		$STH = self::$connection->prepare($SQL);
-		$data = ['name'=>$name];
-		$STH->execute($data);
-		$STH->setFetchMode(\PDO::FETCH_CLASS, 'app\\models\\Ingredient');
-		return $STH->fetchAll();
-	}
+	
 }
