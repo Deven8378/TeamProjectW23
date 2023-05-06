@@ -9,44 +9,60 @@
 	.rowing{
 		display: grid;
 	}
+
+	.centering {
+		display: flex;  
+		width: 100%; 
+		justify-content: center;
+	}
 </style>
 
 
 <div class="container">
 	<div class="row">
 		<div class="col-sm-2" style="padding-right: 10px;">
-			<div class="rowing" style="width: 200px; display: flex;  width: 100%; justify-content: center;">
-				<div>
-					<a class="btn" href="/Product/createProduct" role="button" style="background-color: #e8c8e7; width: 150px;">
-						<?= _('Add Product') ?>
-					</a>
-				</div>
+			<?php if($data[3] == true) { ?>
+					<div class="centering">
+						<div>
+							<a class="btn" href="/Product/createProduct" role="button" style="background-color: #e8c8e7; width: 150px;">
+								<?= _('Add Product') ?>
+							</a>
+						</div>
+					</div>
+					<br>
+					<div class="centering">
+						<div>
+							<a href="/Category/index"  class="btn" style="background-color:#e8c8e8; width: 150px;">
+								<?= _('View categories') ?>
+							</a>
+						</div>
+					</div>
+
+					<hr style="height:1px; border-width:0 ;color: #d9d9d9; background-color:gray">
+			<?php } ?>
+
+			<div class="centering">
+				<a style=" " href="/Product/index">
+					<button style="width: 150px;" class="btn-general" type="button">
+		  				<?= _('Reset') ?>
+		  			</button>
+		  		</a>
 			</div>
-			<br>
-			<div class="rowing" style="width: 200px; display: flex;  width: 100%; justify-content: center;">
-				<div>
-					<a href="/Category/index"  class="btn" style="background-color:#e8c8e8; width: 150px;">
-						<?= _('View categories') ?>
-					</a>
-				</div>
-			</div>
-
-			<hr style="height:1px; border-width:0 ;color: #d9d9d9; background-color:gray">
-
-
-			<div class="rowing" style="width: 200px; display: flex;  width: 100%; justify-content: center;">
+			<div class="centering">
 				<div>
 					<div class="btn-group">
-					  <button type="button" class="btn dropdown-toggle" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
+					  <button style="width: 150px;" type="button" class="btn dropdown-toggle" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
 					    <?= _('Categories') ?>
 					  </button>
+
 					  <ul class="dropdown-menu dropdown-menu-end dropdown-menu-lg-start">
+
 					  	<?php 
 					  		foreach ($data[1] as $category) { ?>
 					  			<li>
-							    	<button class="dropdown-item" type="button">
-							    		<?= $category->category_name ?>
-							    	</button>
+					  				<form action="/Product/filterByCategory/<?= $category->category_id ?>" method="post">
+										<input class="dropdown-item" style=" width: 100%;" type="submit" name="" value="<?= $category->category_name ?>">
+									</form>
 							    </li>
 					  		<?php }
 					  	?>
@@ -54,10 +70,10 @@
 					</div>
 				</div>
 			</div>
-			<div class="rowing" style="width: 200px; display: flex;  width: 100%; justify-content: center;">
+			<div class="centering">
 				<div>
 					<div class="btn-group">
-					  <button type="button" class="btn dropdown-toggle" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
+					  <button style="width: 150px;" type="button" class="btn dropdown-toggle" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
 					    <?= _('Availabilities') ?>
 					  </button>
 					  <ul class="dropdown-menu dropdown-menu-end dropdown-menu-lg-start">
@@ -69,26 +85,42 @@
 					</div>
 				</div>
 			</div>
-			
 		</div>
+
 		<div class="col-sm-1"> 
 			<div class="vl"></div>
 		</div>
+
 		<div class="col offset-sm-1">
-			<div class="rowing" style="width: 200px; display: flex;  width: 100%; justify-content: center;">
-				<div>
-					<div class="row">
-					  <?php $this->view('Product/productsCard', $data[0]); ?>
+			<div class="rowing" style="margin-bottom: 20px; margin-right: 10px">
+				<div style="display: flex; justify-content: space-between;">
+
+					<p style="font-weight: bold; font-size: 50"><?= $data[2]->num_results ?> <?= _('Results') ?></p>
+
+					<div style="border: 3px solid #ACABAB; border-radius: 5px; background-color: #DFDFDF; padding: 6px;">
+
+						<form action="/Product/search" class="search-form" style="">
+
+							<button class="search-btn" style=""><i class="bi bi-search" style="color: #ACABAB;"></i></button>
+
+							<input type="search" name="search" class="search-input" placeholder="<?=_('Search')?>" style="">
+
+						</form>
 					</div>
 				</div>
 			</div>
 
-
-
+			<div class="centering">
+				<div>
+					<div class="row">
+					  <?php $this->view('Product/ProductsCard', $data[0]); ?>
+					</div>
+				</div>
+			</div>
 		</div>
+
 	</div>
 </div>
-
 
 
 <?php $this->view('shared/footer'); ?>

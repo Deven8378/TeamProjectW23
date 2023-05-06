@@ -9,6 +9,12 @@
 	.rowing{
 		display: grid;
 	}
+
+	.centering {
+		display: flex;  
+		width: 100%; 
+		justify-content: center;
+	}
 </style>
 
 
@@ -16,7 +22,7 @@
 	<div class="row">
 		<div class="col-sm-2" style="padding-right: 10px;">
 			<?php if($data[3] == true) { ?>
-					<div class="rowing" style="width: 200px; display: flex;  width: 100%; justify-content: center;">
+					<div class="centering">
 						<div>
 							<a class="btn" href="/Ingredient/createIngredient" role="button" style="background-color: #e8c8e7; width: 150px;">
 								<?= _('Add Ingredient') ?>
@@ -24,7 +30,7 @@
 						</div>
 					</div>
 					<br>
-					<div class="rowing" style="width: 200px; display: flex;  width: 100%; justify-content: center;">
+					<div class="centering">
 						<div>
 							<a href="/Category/index"  class="btn" style="background-color:#e8c8e8; width: 150px;">
 								<?= _('View categories') ?>
@@ -35,13 +41,22 @@
 					<hr style="height:1px; border-width:0 ;color: #d9d9d9; background-color:gray">
 			<?php } ?>
 
-			<div class="rowing" style="width: 200px; display: flex;  width: 100%; justify-content: center;">
+			<div class="centering">
+				<a style=" " href="/Ingredient/index">
+					<button style="width: 150px;" class="btn-general" type="button">
+		  				<?= _('Reset') ?>
+		  			</button>
+		  		</a>
+			</div>
+			<div class="centering">
 				<div>
 					<div class="btn-group">
-					  <button type="button" class="btn dropdown-toggle" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
+					  <button style="width: 150px;" type="button" class="btn dropdown-toggle" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
 					    <?= _('Categories') ?>
 					  </button>
+
 					  <ul class="dropdown-menu dropdown-menu-end dropdown-menu-lg-start">
+
 					  	<?php 
 					  		foreach ($data[1] as $category) { ?>
 					  			<li>
@@ -55,10 +70,10 @@
 					</div>
 				</div>
 			</div>
-			<div class="rowing" style="width: 200px; display: flex;  width: 100%; justify-content: center;">
+			<div class="centering">
 				<div>
 					<div class="btn-group">
-					  <button type="button" class="btn dropdown-toggle" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
+					  <button style="width: 150px;" type="button" class="btn dropdown-toggle" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
 					    <?= _('Availabilities') ?>
 					  </button>
 					  <ul class="dropdown-menu dropdown-menu-end dropdown-menu-lg-start">
@@ -95,7 +110,7 @@
 				</div>
 			</div>
 
-			<div class="rowing" style="width: 200px; display: flex;  width: 100%; justify-content: center;">
+			<div class="centering">
 				<div>
 					<div class="row">
 					  <?php $this->view('Ingredient/ingredientsCard', $data[0]); ?>

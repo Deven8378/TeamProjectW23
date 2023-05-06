@@ -207,7 +207,8 @@ class Ingredient extends \app\core\Controller
         $categories = new \app\models\Category();
         $categories = $categories->getCategories();
 
-        $numResults = $ingredients->getSum();
+        $numResults = new \app\models\Ingredient();
+        $numResults = $numResults->getSearchedSum($_GET['search']);
 
         $user = new \app\models\User();
         $user = $user->getByUserType($_SESSION['user_id']);
@@ -221,6 +222,28 @@ class Ingredient extends \app\core\Controller
     public function filterByCategory($category_id) {
         $ingredients = new \app\models\Ingredient();
         $searched = $ingredients->getIngredientByCategory($category_id);
+
+        $categories = new \app\models\Category();
+        $categories = $categories->getCategories();
+
+        $numResults = $ingredients->getSum();
+
+        $user = new \app\models\User();
+        $user = $user->getByUserType($_SESSION['user_id']);
+        $isAdmin = false;
+        if ($user->user_type == "admin")
+            $isAdmin = true;
+
+        $this->view('Ingredient/index', [$searched, $categories, $numResults, $isAdmin]);
+    }
+
+    public function filterByAvailable() {
+        $ingredients = new \app\models\IngredientQuantity();
+        $filtered = $ingredients->getIngredientByCategory($category_id);
+
+        
+
+
 
         $categories = new \app\models\Category();
         $categories = $categories->getCategories();
