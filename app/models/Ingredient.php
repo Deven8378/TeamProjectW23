@@ -67,7 +67,7 @@ class Ingredient extends \app\core\Model {
 		$data = ['name'=>$name];
 		$STH->execute($data);
 		$STH->setFetchMode(\PDO::FETCH_CLASS, 'app\\models\\Ingredient');
-		return $STH->fetchAll();
+		return $STH->fetch();
 	}
 
 	public function getSearchedSum($name) {
