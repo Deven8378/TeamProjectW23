@@ -45,9 +45,9 @@
 					  	<?php 
 					  		foreach ($data[1] as $category) { ?>
 					  			<li>
-							    	<button class="dropdown-item" type="button">
-							    		<?= $category->category_name ?>
-							    	</button>
+					  				<form action="/Ingredient/filterByCategory/<?= $category->category_id ?>" method="post">
+										<input class="dropdown-item" style=" width: 100%;" type="submit" name="" value="<?= $category->category_name ?>">
+									</form>
 							    </li>
 					  		<?php }
 					  	?>
@@ -94,6 +94,7 @@
 					</div>
 				</div>
 			</div>
+
 			<div class="rowing" style="width: 200px; display: flex;  width: 100%; justify-content: center;">
 				<div>
 					<div class="row">

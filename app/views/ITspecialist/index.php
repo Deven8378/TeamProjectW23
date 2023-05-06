@@ -18,7 +18,7 @@
 				<h5><b><?=_('Filters')?></b></h5>
 
 
-				<!-- Filsters for easy search -->
+				<!-- Filters for easy search -->
 				<a class="btn-it" style=" width: 100%;" href="/ITspecialist/index"><?=_('view all')?></a>
 
 				<form action="/ITspecialist/allAdmins" method="post">

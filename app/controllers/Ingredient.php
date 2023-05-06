@@ -25,28 +25,6 @@ class Ingredient extends \app\core\Controller
         $this->view('Ingredient/index', [$ingredients, $categories, $numResults, $isAdmin]);
     }
 
-    public function search() 
-    {
-        $ingredients = new \app\models\Ingredient();
-        // $string = $_GET['search'];
-        // $searched = $ingredients->search($string);
-
-        $searched = $ingredients->search($_GET['search']);
-
-        $categories = new \app\models\Category();
-        $categories = $categories->getCategories();
-
-        $numResults = $ingredients->getSum();
-
-        $user = new \app\models\User();
-        $user = $user->getByUserType($_SESSION['user_id']);
-        $isAdmin = false;
-        if ($user->user_type == "admin")
-            $isAdmin = true;
-
-        $this->view('Ingredient/index', [$searched, $categories, $numResults, $isAdmin]);
-    }
-
     #[\app\filters\Admin]
     public function createIngredient() 
     {
@@ -217,5 +195,44 @@ class Ingredient extends \app\core\Controller
 
         }
 
+    }
+
+    // Filters
+
+    public function search() 
+    {
+        $ingredients = new \app\models\Ingredient();
+        $searched = $ingredients->search($_GET['search']);
+
+        $categories = new \app\models\Category();
+        $categories = $categories->getCategories();
+
+        $numResults = $ingredients->getSum();
+
+        $user = new \app\models\User();
+        $user = $user->getByUserType($_SESSION['user_id']);
+        $isAdmin = false;
+        if ($user->user_type == "admin")
+            $isAdmin = true;
+
+        $this->view('Ingredient/index', [$searched, $categories, $numResults, $isAdmin]);
+    }
+
+    public function filterByCategory($category_id) {
+        $ingredients = new \app\models\Ingredient();
+        $searched = $ingredients->getIngredientByCategory($category_id);
+
+        $categories = new \app\models\Category();
+        $categories = $categories->getCategories();
+
+        $numResults = $ingredients->getSum();
+
+        $user = new \app\models\User();
+        $user = $user->getByUserType($_SESSION['user_id']);
+        $isAdmin = false;
+        if ($user->user_type == "admin")
+            $isAdmin = true;
+
+        $this->view('Ingredient/index', [$searched, $categories, $numResults, $isAdmin]);
     }
 }
