@@ -40,7 +40,16 @@ class IngredientQuantity extends \app\core\Model {
 		$STH->execute($data);
 		$STH->setFetchMode(\PDO::FETCH_CLASS, 'app\\models\\IngredientQuantity');
 		return $STH->fetch();
-	}	
+	}
+
+	public function getAvailibility() {
+		$SQL = 'SELECT iq_id, quantity, DATEDIFF(expired_date, arrival_date) AS daysLeft FROM ingredient_quantity;';
+		$STH = self::$connection->prepare($SQL);
+		$data = ['ingredient_id'=>$ingredient_id];
+		$STH->execute($data);
+		$STH->setFetchMode(\PDO::FETCH_CLASS, 'app\\models\\IngredientQuantity');
+		return $STH->fetchAll();
+	}
 
 	public function addIngredientQuantity($ingredient_id) {
 		$SQL = "INSERT INTO `ingredient_quantity` (`iq_id`, `ingredient_id`, `arrival_date`, `expired_date`, `quantity`, `price`) value (:iq_id, :ingredient_id, :arrival_date, :expired_date, :quantity, :price)";

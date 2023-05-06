@@ -6,7 +6,6 @@
   width: 100%; 
   max-width: 500px; 
   height: auto;
-  margin-top: 50px;
 }
 
 #backLink {

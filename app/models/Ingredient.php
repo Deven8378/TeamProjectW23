@@ -61,10 +61,13 @@ class Ingredient extends \app\core\Model {
 		return $STH->fetchAll();
 	}
 
-	public function searchIngredientResults($string) {
-		$SQL = "SELECT COUNT(ingredient_id) AS num_results FROM ingredient WHERE name LIKE '%$string%';";
+	public function getSearchedSum($name) {
+		$SQL = "SELECT COUNT(ingredient_id) FROM ingredient WHERE name LIKE :name;";
 		$STH = self::$connection->prepare($SQL);
-		$STH->execute();
+		$data = [
+			'name'=>"%$name%"
+		];
+		$STH->execute($data);
 		$STH->setFetchMode(\PDO::FETCH_CLASS, 'app\\models\\Ingredient');
 		return $STH->fetch();
 	}

@@ -13,7 +13,15 @@ class Product extends \app\core\Controller
         $products = $product->getAll();
         $categories = new \app\models\Category();
         $categories = $categories->getCategories();
-        $this->view('Product/index', [$products, $categories]);
+        $numResults = $product->getSum();
+
+        $user = new \app\models\User();
+        $user = $user->getByUserType($_SESSION['user_id']);
+        $isAdmin = false;
+        if ($user->user_type == "admin")
+            $isAdmin = true;
+
+        $this->view('Product/index', [$products, $categories, $numResults, $isAdmin]);
     }
     
 
@@ -193,6 +201,44 @@ class Product extends \app\core\Controller
 
         }
 
+    }
+
+    public function search() 
+    {
+        $products = new \app\models\Product();
+        $searched = $products->search($_GET['search']);
+
+        $categories = new \app\models\Category();
+        $categories = $categories->getCategories();
+
+        $numResults = new \app\models\Product();
+        $numResults = $numResults->getSearchedSum($_GET['search']);
+
+        $user = new \app\models\User();
+        $user = $user->getByUserType($_SESSION['user_id']);
+        $isAdmin = false;
+        if ($user->user_type == "admin")
+            $isAdmin = true;
+
+        $this->view('Product/index', [$searched, $categories, $numResults, $isAdmin]);
+    }
+
+    public function filterByCategory($category_id) {
+        $products = new \app\models\Product();
+        $searched = $products->getProductByCategory($category_id);
+
+        $categories = new \app\models\Category();
+        $categories = $categories->getCategories();
+
+        $numResults = $products->getSum();
+
+        $user = new \app\models\User();
+        $user = $user->getByUserType($_SESSION['user_id']);
+        $isAdmin = false;
+        if ($user->user_type == "admin")
+            $isAdmin = true;
+
+        $this->view('Product/index', [$searched, $categories, $numResults, $isAdmin]);
     }
         
 }
