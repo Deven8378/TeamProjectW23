@@ -10,7 +10,7 @@ class Controller
 
      public function saveProduct($file){
         if(empty($file['tmp_name']))
-            return 'default.jpg';
+            return false;
 
         $check = getimagesize($file['tmp_name']);
         $allowed_types = ['image/jpeg'=>'jpg', 'image/png'=>'png'];
@@ -25,7 +25,7 @@ class Controller
 
     public function saveIngredient($file){
         if(empty($file['tmp_name']))
-            return 'default.jpg';
+            return false;
 
         $check = getimagesize($file['tmp_name']);
         $allowed_types = ['image/jpeg'=>'jpg', 'image/png'=>'png'];

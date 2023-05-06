@@ -39,108 +39,6 @@ body {
 
 /*-------Messages Screen--------*/
 
-#inbox_side {
-  margin-left: 20px;
-    background-color: #e6e3e3;
-    text-align: center;
-    border-radius: 25px;
-    padding: 20px;
-    width: 100%;
-    height: 825%;
-}
-
-#messages_side {
-  margin-left: 20px;
-  margin-right: 10px;
-    background-color: #e6e3e3;
-    text-align: center;
-    border-radius: 25px;
-    width: 100%;
-    height: 825%;
-}
-
-#messagesDiv {
-  width: 1000%;
-}
-
-
-.email {
-    padding: 20px 10px 15px 10px;
-  font-size: 1em;
-}
-
-.email h2 {
-  margin-top: 0;
-  padding-bottom: 8px;
-}
-
-.email .nav.nav-pills > li > a > .fa {
-  margin-right: 5px;
-}
-
-.email .nav.nav-pills > li.active > a {
-  font-weight: 600;
-}
-
-.email .nav.nav-pills.nav-stacked > li > a {
-  color: #666;
-  border-top: 0;
-  border-left: 3px solid transparent;
-  border-radius: 0px;
-}
-
-.email .nav.nav-pills.nav-stacked > li.active > a,
-.email .nav.nav-pills.nav-stacked > li.active > a:hover {
-  background-color: #f6f6f6;
-  border-left-color: #3c8dbc;
-  color: #444;
-}
-
-.email .nav.nav-pills.nav-stacked > li.header {
-  color: #777;
-  text-transform: uppercase;
-  position: relative;
-  padding: 0px 0 10px 0;
-}
-
-
-.email table {
-  font-weight: 600;
-}
-
-.email table a {
-  color: #666;
-}
-
-.grid {
-    position: relative;
-    width: 100%;
-    background: #fff;
-    color: #666666;
-    border-radius: 25px;
-    margin-bottom: 25px;
-    box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.1);
-}
-
-.grid .grid-body {
-    padding: 15px 20px 15px 20px;
-    font-size: 0.9em;
-    line-height: 1.9em;
-}
-
-.box {
-  text-align: center;
-}
-.button {
-  font-size: 1em;
-  padding: 15px 35px;
-  color: #fff;
-  text-decoration: none;
-  cursor: pointer;
-  transition: all 0.3s ease-out;
-  background: #403e3d;
-  border-radius: 50px;
-}
 .overlay {
   position: fixed;
   top: 0;
@@ -156,6 +54,7 @@ body {
   visibility: visible;
   opacity: 1;
 }
+
 .wrapper {
   margin: 70px auto;
   padding: 20px;
@@ -165,10 +64,12 @@ body {
   position: relative;
   transition: all 5s ease-in-out;
 }
+
 .wrapper h2 {
   margin-top: 0;
   color: #333;
 }
+
 .wrapper .close {
   position: absolute;
   top: 20px;
@@ -179,7 +80,6 @@ body {
   text-decoration: none;
   color: #333;
 }
-
 .wrapper .close:hover {
   color: #06D85F;
 }
@@ -188,17 +88,18 @@ body {
   max-height: 30%;
   overflow: auto;
 }
-/*form*/
 
 .container {
   border-radius: 5px;
   padding: 20px 0;
 }
+
 form label {
   text-transform: uppercase;
   font-weight: 500;
   letter-spacing: 3px;
 }
+
 #messageInput {
   width: 100%;
   padding: 12px;
@@ -209,6 +110,7 @@ form label {
   margin-bottom: 16px;
   resize: vertical;
 }
+
 #messageSubmit {
   background-color: #413b3b;
   color: #fff;

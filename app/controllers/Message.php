@@ -14,6 +14,7 @@ class Message extends \app\core\Controller
 			$receiver = $_POST['receiver'] ?? '';
 			$profile = new Profile();
 			$profile = $profile->getByEmail($receiver);
+			$currentProfile = $profile->getByUserId($_SESSION['user_id']);
 
 			if($profile){
 				$message = new \app\models\Message();
@@ -21,7 +22,8 @@ class Message extends \app\core\Controller
 				//setting the FK to a PK value
 				$message->sender = $_SESSION['user_id'];
 				$message->message = $_POST['message'];
-				$message->full_name = $profile->first_name . ' ' . $profile->middle_name . ' ' . $profile->last_name;
+				$message->receiver_full_name = $profile->first_name . ' ' . $profile->middle_name . ' ' . $profile->last_name;
+				$message->sender_full_name = $currentProfile->first_name . ' ' . $currentProfile->middle_name . ' ' . $currentProfile->last_name;
 				$message->insert();
 				header('location:/Message/index?success=Message Sent.');
 			} else {
@@ -46,5 +48,18 @@ class Message extends \app\core\Controller
 		} else {
 			header('location:/Message/index?error=Could not delete message.');
 		}
+	}
+
+	#[\app\filters\EmployeeAndAdmin]
+	public function messageDetails($message_id){
+		$messages = new \app\models\Message();
+		$message = $messages->getSpecificMessage($message_id);
+
+		if($message){
+			$this->view('/Message/messageDetails', $message);
+		} else {
+			header('location:/Message/index?error=' . "There is no such message.");
+		}
+
 	}
 }

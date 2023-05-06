@@ -8,6 +8,8 @@ use \app\models\User;
 class Ingredient extends \app\core\Controller
 {
 
+    //Viewing
+
     #[\app\filters\EmployeeAndAdmin]
     public function index()
     {
@@ -27,6 +29,30 @@ class Ingredient extends \app\core\Controller
 
         $this->view('Ingredient/index', ['ingredients'=>$ingredients, 'categories'=>$categories, 'numResults'=>$numResults, 'isAdmin'=>$isAdmin]);
     }
+
+    #[\app\filters\EmployeeAndAdmin]
+    public function ingredientDetails($ingredient_id){
+        $ingredient = new \app\models\Ingredient();
+        $success = $ingredient->getIngredientDetails($ingredient_id);
+        $totalQuantity = new IngredientQuantity;
+        $totalQuantity = $totalQuantity->getTotalQuantity($ingredient_id);
+        $allQuantity = new IngredientQuantity;
+        $allQuantity = $allQuantity->getAll($ingredient_id);
+        $user = new User();
+        $user = $user->getByUserId($_SESSION['user_id']);
+        $type = $user->user_type;
+        $isAdmin = false;
+        if ($type == "admin")
+            $isAdmin = true;
+
+        if($success){
+            $this->view('Ingredient/ingredientDetails', [$success, $totalQuantity, $allQuantity, $isAdmin]);
+        } else {
+            header('location:/Ingredient/index?error=Ingredient does not exists.');
+        }
+    }
+
+    // Inserting, Editing, Deleting
 
     #[\app\filters\Admin]
     public function createIngredient() 
@@ -71,28 +97,6 @@ class Ingredient extends \app\core\Controller
             $this->view('Ingredient/createIngredient', $categories);
         }
 
-    }
-
-    #[\app\filters\EmployeeAndAdmin]
-    public function ingredientDetails($ingredient_id){
-        $ingredient = new \app\models\Ingredient();
-        $success = $ingredient->getIngredientDetails($ingredient_id);
-        $totalQuantity = new IngredientQuantity;
-        $totalQuantity = $totalQuantity->getTotalQuantity($ingredient_id);
-        $allQuantity = new IngredientQuantity;
-        $allQuantity = $allQuantity->getAll($ingredient_id);
-        $user = new User();
-        $user = $user->getByUserId($_SESSION['user_id']);
-        $type = $user->user_type;
-        $isAdmin = false;
-        if ($type == "admin")
-            $isAdmin = true;
-
-        if($success){
-            $this->view('Ingredient/ingredientDetails', [$success, $totalQuantity, $allQuantity, $isAdmin]);
-        } else {
-            header('location:/Ingredient/index?error=Ingredient does not exists.');
-        }
     }
 
     #[\app\filters\Admin]
@@ -197,6 +201,7 @@ class Ingredient extends \app\core\Controller
         }
     }
 
+    #[\app\filters\EmployeeAndAdmin]
     public function quantityUpdate($ingredient_id) { //form action method
         $allQuantity = new IngredientQuantity;
         $allQuantity = $allQuantity->getAll($ingredient_id);
@@ -217,13 +222,12 @@ class Ingredient extends \app\core\Controller
             
             header('location:/Ingredient/ingredientDetails/'. $ingredient_id .'?error=Error occured.');
             }
-
         }
-
     }
 
     // Filters
 
+    #[\app\filters\EmployeeAndAdmin]
     public function search() 
     {
         $ingredients = new \app\models\Ingredient();
@@ -244,31 +248,10 @@ class Ingredient extends \app\core\Controller
         $this->view('Ingredient/index', [$searched, $categories, $numResults, $isAdmin]);
     }
 
+    #[\app\filters\EmployeeAndAdmin]
     public function filterByCategory($category_id) {
         $ingredients = new \app\models\Ingredient();
         $searched = $ingredients->getIngredientByCategory($category_id);
-
-        $categories = new \app\models\Category();
-        $categories = $categories->getCategories();
-
-        $numResults = $ingredients->getSum();
-
-        $user = new \app\models\User();
-        $user = $user->getByUserType($_SESSION['user_id']);
-        $isAdmin = false;
-        if ($user->user_type == "admin")
-            $isAdmin = true;
-
-        $this->view('Ingredient/index', [$searched, $categories, $numResults, $isAdmin]);
-    }
-
-    public function filterByAvailable() {
-        $ingredients = new \app\models\IngredientQuantity();
-        $filtered = $ingredients->getIngredientByCategory($category_id);
-
-        
-
-
 
         $categories = new \app\models\Category();
         $categories = $categories->getCategories();

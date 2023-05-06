@@ -7,11 +7,14 @@
 
 		<input class="createInput" type="text" align="center" placeholder="<?= _('Name') ?>" name="name" value="<?= $data['0']->name ?>">
 
-		<select name="category" id="status" class="dropdownUserType">
+		<select name="category" id="status" class="dropdownUserType" selected="<?=$data['0']->category_id ?>">
 			<option selected disabled><?= _('--Select a Category--') ?></option>
 			<?php
 			foreach ($data['1'] as $category) { ?>
-			 	<option value="<?=$category->category_id ?>">
+			 	<option value="<?=$category->category_id ?>"
+			 		<?php if($category->category_id == $data[0]->category){ ?>
+			 			selected="<?= $data[0]->category ?>"
+			 		<?php } ?>>
 			 		<?= $category->category_name ?>
 			 	</option>
 			<?php  } ?>

@@ -11,7 +11,10 @@
 			<option selected disabled><?= _('--Select a Category--') ?></option>
 			<?php
 			foreach ($data['1'] as $category) { ?>
-			 	<option value="<?=$category->category_id ?>">
+			 	<option value="<?=$category->category_id ?>"
+			 		<?php if($category->category_id == $data[0]->category){ ?>
+			 			selected="<?= $data[0]->category ?>"
+			 		<?php } ?>>
 			 		<?= $category->category_name ?>
 			 	</option>
 			<?php  } ?>
