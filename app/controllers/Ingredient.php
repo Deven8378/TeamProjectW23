@@ -27,7 +27,7 @@ class Ingredient extends \app\core\Controller
             $isAdmin = true;
         }
 
-        $this->view('Ingredient/index', ['ingredients'=>$ingredients, 'categories'=>$categories, 'numResults'=>$numResults, 'isAdmin'=>$isAdmin]);
+        $this->view('Ingredient/index', [$ingredients, $categories, $numResults, $isAdmin]);
     }
 
     #[\app\filters\EmployeeAndAdmin]
@@ -122,7 +122,7 @@ class Ingredient extends \app\core\Controller
             if($success){
                 header('location:/Ingredient/ingredientDetails/' . $ingredient_id. '?success=Ingredient Updated.');
             } else {
-                header('location:/Ingredient/editIngredient/' . $ingredient_id. '?error=Error.');
+                header('location:/Ingredient/edit/' . $ingredient_id. '?error=Error.');
             }
         } else {
             $this->view('Ingredient/editIngredient', [$ingredient,$categories]);
@@ -247,7 +247,7 @@ class Ingredient extends \app\core\Controller
 
         $this->view('Ingredient/index', [$searched, $categories, $numResults, $isAdmin]);
     }
-
+    
     #[\app\filters\EmployeeAndAdmin]
     public function filterByCategory($category_id) {
         $ingredients = new \app\models\Ingredient();

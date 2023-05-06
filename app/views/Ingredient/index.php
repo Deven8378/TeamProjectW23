@@ -21,7 +21,7 @@
 <div class="container">
 	<div class="row">
 		<div class="col-sm-2" style="padding-right: 10px;">
-			<?php if($data['isAdmin'] == true) { ?>
+			<?php if($data[3] == true) { ?>
 					<div class="centering">
 						<div>
 							<a class="btn" href="/Ingredient/createIngredient" role="button" style="background-color: #e8c8e7; width: 150px;">
@@ -58,7 +58,7 @@
 					  <ul class="dropdown-menu dropdown-menu-end dropdown-menu-lg-start">
 
 					  	<?php 
-					  		foreach ($data['categories'] as $category) { ?>
+					  		foreach ($data[1] as $category) { ?>
 					  			<li>
 					  				<form action="/Ingredient/filterByCategory/<?= $category->category_id ?>" method="post">
 										<input class="dropdown-item" style=" width: 100%;" type="submit" name="" value="<?= $category->category_name ?>">
@@ -95,7 +95,7 @@
 			<div class="rowing" style="margin-bottom: 20px; margin-right: 10px">
 				<div style="display: flex; justify-content: space-between;">
 
-					<p style="font-weight: bold; font-size: 50"><?= $data['numResults']->num_results ?> <?= _('Results') ?></p>
+					<p style="font-weight: bold; font-size: 50"><?= $data[2]->num_results ?> <?= _('Results') ?></p>
 
 					<div style="border: 3px solid #ACABAB; border-radius: 5px; background-color: #DFDFDF; padding: 6px;">
 
@@ -113,7 +113,7 @@
 			<div class="centering">
 				<div>
 					<div class="row">
-					  <?php $this->view('Ingredient/ingredientsCard', $data['ingredients']); ?>
+					  <?php $this->view('Ingredient/ingredientsCard', $data[0]); ?>
 					</div>
 				</div>
 			</div>

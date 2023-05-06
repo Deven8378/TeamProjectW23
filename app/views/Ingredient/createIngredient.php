@@ -20,18 +20,19 @@ align='center'>
 				<?php  } ?>
 			</select>
 		</div>
-		<textarea class="input-inv" 
-		placeholder="<?= _('Description...') ?>" name="description" ></textarea><br>
+		<textarea class="input-inv" name="description" placeholder="<?= _('Description...') ?>" ></textarea>
 
-		<label>Picture</label><br>
-		<input class="file-input" 
-		type="file" align="" placeholder="<?=_('Picture')?>" name="ingredientPicture"><br>
+		<div class="grid-50" align="center">
 
-		<input class="submit-inv" 
-		type="submit" align="" placeholder="<?=_('Add Ingredient')?>" name="action"> <br><br>
+			<label>Picture</label>
+			<!-- Place holder for input type file might be useless -->
+			<label class="file-label" >
+				<input class="file-input" type="file" placeholder="<?=_('Picture')?>" name="ingredientPicture">
+			</label>
+			<input class="submit-inv" type="submit" value="<?=_('Add Ingredient')?>" name="action"> 
 
-		<a class="btn-general" href="/Ingredient/index" role="button" ><?= _('Back') ?></a>
-		
+			<a class="btn-general" href="/Ingredient/index" role="button" ><?= _('Back') ?></a>
+		</div>
 	 
 	</form>
 
