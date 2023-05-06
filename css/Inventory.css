@@ -1,26 +1,5 @@
 
- @media only screen and (max-width: 951px) {
-	.common-container {
-	    background-color: #F3EBF6;
-	/*    border-radius: 1.5em;*/
-	    height: 95vh;
-
-	}
-
- }
-
-
-@media only screen and (min-width: 951px) {
-	.common-container {
-		background-color: #F3EBF6;
-	    width: 650px;
-	    height: 610px;
-	    margin: 3em auto;
-	    border-radius: 1.5em;
-	    box-shadow: 0px 11px 35px 2px rgba(0, 0, 0, 0.14);
-	}
-
-	.input-inv { 
+ .input-inv { 
     	width: 50%;
 	    color: rgb(38, 50, 56);
 	    font-weight: 700;
@@ -37,15 +16,15 @@
 	    margin-bottom: 27px;
 	}
 	.dropdown-inv {
-
       width: 50%;
-      padding: .375rem 2.25rem .375rem .75rem;
+      padding: .375rem ;
       text-align: center;
       font-size: 1rem;
       font-weight: 400;
       margin-bottom: 27px;
       border-radius: .375rem;
-  }
+      border: none;
+  	}
 
 	.file-input { 
 	    width: 50%;
@@ -64,7 +43,7 @@
 	    margin-bottom: 27px;
   	}
   	.file-input::file-selector-button {
-		border: 1px solid grey;
+		border: 1px solid #d4cfd4;
 	  	padding: 0.2em 0.4em;
 	  	margin-right: 20px;
 	  	border-radius: 5px;
@@ -74,11 +53,10 @@
   	.file-input::file-selector-button:hover{
   		color: white;
     	background-color: #e8c8e7;
-/*    background-color: var(--bs-btn-hover-bg);*/
     	border: 1px solid grey;
   	}
 
-  	/*--Create Ingredient Submit Button--*/
+  	/*--Use to be .submitIngredient--*/
 	.submit-inv {
 	  cursor: pointer;
 	  border-radius: 10px;
@@ -93,6 +71,30 @@
 	  font-family: 'Ubuntu', sans-serif;
 	  box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.04);
 	}
+
+ @media only screen and (max-width: 951px) {
+	.common-container {
+	    background-color: #F3EBF6;
+	    height: 95vh;
+
+	}
+
+	
+
+ }
+
+
+@media only screen and (min-width: 951px) {
+	.common-container {
+		background-color: #F3EBF6;
+	    width: 650px;
+	    height: 610px;
+	    margin: 3em auto;
+	    border-radius: 1.5em;
+	    box-shadow: 0px 11px 35px 2px rgba(0, 0, 0, 0.14);
+	}
+
+	
 
 
 

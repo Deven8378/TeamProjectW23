@@ -52,7 +52,7 @@ class Ingredient extends \app\core\Controller
 
                     $success = $ingredient->addIngredient();
                     if($success){
-                        header('location:/Ingredient/index?success='. $ingredient->name .'has been added');
+                        header('location:/Ingredient/index?success='. $ingredient->name .' has been added');
                     }else{
                          header('location:/Ingredient/index?error=Something went wrong when creating a new Ingredient. Please Try again.');
                     }
