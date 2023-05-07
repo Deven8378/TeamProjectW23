@@ -76,7 +76,6 @@ class Model
 		}
 
 		return true;
-
 	}
 
 	public function __call($method, $arguments)
