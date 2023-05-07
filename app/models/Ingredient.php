@@ -55,6 +55,17 @@ class Ingredient extends \app\core\Model {
 		return $STH->fetchAll();
 	}
 
+	public function getFilteredSum($category_id) {
+		$SQL = "SELECT COUNT(ingredient_id) AS num_results FROM ingredient WHERE `category` = :category;";
+		$STH = self::$connection->prepare($SQL);
+		$data = [
+			'category'=>$category_id
+		];
+		$STH->execute($data);
+		$STH->setFetchMode(\PDO::FETCH_CLASS, 'app\\models\\Ingredient');
+		return $STH->fetch();
+	}
+
 	public function getIngredientByName($name)
 	{
 		$SQL = "SELECT `ingredient_id`, `name`, `category`, `description`, `picture` FROM `ingredient` FROM `ingredient` WHERE `name` = :name;";
@@ -66,7 +77,7 @@ class Ingredient extends \app\core\Model {
 	}
 
 	public function getSearchedSum($name) {
-		$SQL = "SELECT COUNT(ingredient_id) FROM ingredient WHERE name LIKE :name;";
+		$SQL = "SELECT COUNT(ingredient_id) AS num_results FROM ingredient WHERE name LIKE :name;";
 		$STH = self::$connection->prepare($SQL);
 		$data = [
 			'name'=>"%$name%"

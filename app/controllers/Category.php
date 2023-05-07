@@ -3,6 +3,10 @@ namespace app\controllers;
 
 use \app\models\Ingredient;
 
+#[\app\filters\ProfileCreated]
+#[\app\filters\Status]
+#[\app\filters\Login]
+#[\app\filters\Admin]
 class Category extends \app\core\Controller
 {
    public function index()

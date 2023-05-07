@@ -4,9 +4,12 @@ namespace app\controllers;
 
 use \app\models\Profile;
 
+#[\app\filters\ProfileCreated]
+#[\app\filters\Status]
+#[\app\filters\Login]
+#[\app\filters\EmployeeAndAdmin]
 class Message extends \app\core\Controller
 {
-	#[\app\filters\EmployeeAndAdmin]
 	public function index()
 	{
 		if(isset($_POST['action']))
@@ -43,7 +46,6 @@ class Message extends \app\core\Controller
 		}
 	}
 
-	#[\app\filters\EmployeeAndAdmin]
 	public function delete($message_id)
 	{
 		$message = new \app\models\Message();
@@ -56,7 +58,6 @@ class Message extends \app\core\Controller
 		}
 	}
 
-	#[\app\filters\EmployeeAndAdmin]
 	public function messageDetails($message_id){
 		$messages = new \app\models\Message();
 		$message = $messages->getSpecificMessage($message_id);

@@ -5,6 +5,9 @@ use \app\models\Category;
 use \app\models\IngredientQuantity;
 use \app\models\User;
 
+#[\app\filters\ProfileCreated]
+#[\app\filters\Status]
+#[\app\filters\Login]
 class Ingredient extends \app\core\Controller
 {
 
@@ -176,25 +179,35 @@ class Ingredient extends \app\core\Controller
         $ingredientQuantity = new IngredientQuantity();
         $ingredientQuantity = $ingredientQuantity->getOneQuantity($iq_id);
 
-        if(isset($_POST['action']))
-        {
-            $ingredientQuantity->quantity = $_POST['quantity'];
-            $ingredientQuantity->arrival_date = $_POST['arrival_date'];
-            $ingredientQuantity->expired_date = $_POST['expired_date'];
-            $ingredientQuantity->price = $_POST['price'];
-            $success = $ingredientQuantity->editQuantity($iq_id);
+        if (isset($_POST['action'])) {
+            if(!empty($_POST['arrival_date']) && !empty($_POST['expired_date']) &&
+                !empty($_POST['quantity']) && !empty($_POST['price']))
+            {
+                if(strtotime($_POST['expired_date']) > strtotime($_POST['arrival_date']))
+                {
+                    $ingredientQuantity->quantity = $_POST['quantity'];
+                    $ingredientQuantity->arrival_date = $_POST['arrival_date'];
+                    $ingredientQuantity->expired_date = $_POST['expired_date'];
+                    $ingredientQuantity->price = $_POST['price'];
+                    $success = $ingredientQuantity->editQuantity($iq_id);
 
-            if($success){
-                header('location:/Ingredient/ingredientDetails/' . $ingredientQuantity->ingredient_id . '?success=Ingredient Quantity Updated.');
+                    if($success){
+                        header('location:/Ingredient/ingredientDetails/' . $ingredientQuantity->ingredient_id . '?success=Ingredient Quantity Updated.');
+                    } else {
+                        header('location:/Ingredient/editQuantity/' . $iq_id . '?error=Please modify in order to edit.');
+                    }
+                } else {
+                    header('location:/Ingredient/editQuantity/' . $iq_id. '?error=Please recheck dates.');
+                }
             } else {
-                header('location:/Ingredient/editQuantity/' . $iq_id . '?error=Please modify in order to edit.');
+                header('location:/Ingredient/editQuantity/' . $iq_id. '?error=Please fill the required fields.');
             }
         } else {
             $ingredientQuantity = new IngredientQuantity();
             $ingredientQuantity = $ingredientQuantity->getOneQuantity($iq_id);
             $this->view('Ingredient/editQuantity', $ingredientQuantity);
         }
-    }
+}
 
     // 
     #[\app\filters\EmployeeAndAdmin]
@@ -253,7 +266,11 @@ class Ingredient extends \app\core\Controller
         if ($user->user_type == "admin")
             $isAdmin = true;
 
-        $this->view('Ingredient/index', [$searched, $categories, $numResults, $isAdmin]);
+        if($numResults->num_results != 0){
+            $this->view('Ingredient/index', [$searched, $categories, $numResults, $isAdmin]);
+        } else {
+            header('location:/Ingredient/index?error=No matches found.');
+        }
     }
     
     #[\app\filters\EmployeeAndAdmin]
@@ -264,7 +281,7 @@ class Ingredient extends \app\core\Controller
         $categories = new \app\models\Category();
         $categories = $categories->getCategories();
 
-        $numResults = $ingredients->getSum();
+        $numResults = $ingredients->getFilteredSum($category_id);
 
         $user = new \app\models\User();
         $user = $user->getByUserType($_SESSION['user_id']);
@@ -272,6 +289,10 @@ class Ingredient extends \app\core\Controller
         if ($user->user_type == "admin")
             $isAdmin = true;
 
-        $this->view('Ingredient/index', [$searched, $categories, $numResults, $isAdmin]);
+        if($numResults->num_results != 0){
+            $this->view('Ingredient/index', [$searched, $categories, $numResults, $isAdmin]);
+        } else {
+            header('location:/Ingredient/index?error=No matches found.');
+        }
     }
 }

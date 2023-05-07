@@ -1,6 +1,10 @@
 <?php
 namespace app\controllers;
 
+
+#[\app\filters\ProfileCreated]
+#[\app\filters\Status]
+#[\app\filters\Login]
 class Recipe extends \app\core\Controller {
 
 	#[\app\filters\EmployeeAndAdmin]

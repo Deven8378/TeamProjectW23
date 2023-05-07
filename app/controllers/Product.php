@@ -4,7 +4,9 @@ namespace app\controllers;
 use \app\models\Category;
 use \app\models\ProductQuantity;
 
-
+#[\app\filters\ProfileCreated]
+#[\app\filters\Status]
+#[\app\filters\Login]
 class Product extends \app\core\Controller
 {
     #[\app\filters\EmployeeAndAdmin]
