@@ -2,20 +2,9 @@
 <?php $this->view('shared/navigation/nav'); ?>
 
 <style type="text/css">
-	.griding {
-	  display: inline-grid;
-	  grid-template-columns: auto auto;
-	  padding: 50px;
-	  column-gap: 50px;
-	  row-gap: 50px;
-	}
-
-	.griding-item {
-	  font-size: 30px;
-	  text-align: center;
-	}
-
 	.centeringPage {
+		flex-wrap: wrap;
+		height: auto;
 		border: 2px solid gainsboro;
 		background-color: ghostwhite;
 		border-radius: 10px;
@@ -28,11 +17,11 @@
 
 
 <div class="centeringPage">
-	<div style="margin: 25px;">
+	<div class="wrapping" style="margin: 25px;">
 		<p style="font-weight: bold;">From: <?= $data->sender_full_name ?></p>	
 		<p style="font-weight: bold;">To: <?= $data->receiver_full_name ?></p>
 		<p style="font-size: 12px;"><?= $data->timestamp ?></p>
-		<p><?= $data->message ?></p>
+		<p style="word-wrap: break-word;"><?= $data->message ?></p>
 	</div>
 </div>
 

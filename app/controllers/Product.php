@@ -1,6 +1,7 @@
 <?php
 namespace app\controllers;
 
+use \app\models\User;
 use \app\models\Category;
 use \app\models\ProductQuantity;
 use \app\models\User;
@@ -10,8 +11,12 @@ use \app\models\User;
 #[\app\filters\Login]
 class Product extends \app\core\Controller
 {
+
+    //Viewing
+
     #[\app\filters\EmployeeAndAdmin]
-    public function index() {
+    public function index() 
+    {
         $product = new \app\models\Product();
         $products = $product->getAll();
         $categories = new \app\models\Category();
@@ -27,28 +32,6 @@ class Product extends \app\core\Controller
         $this->view('Product/index', [$products, $categories, $numResults, $isAdmin]);
     }
     
-
-    #[\app\filters\Admin]
-    public function createProduct() {
-        $categories = new Category();
-        $categories = $categories->getCategories();
-        if (isset($_POST['action'])) {
-            $product = new \app\models\Product();
-            $product->name = htmlentities($_POST['name']);
-            $product->description = htmlentities($_POST['description']);
-            $product->category = $_POST['category'];
-            $picture = $this->saveProduct($_FILES['productPicture']);
-
-            if ($picture) {
-                $product->picture = $picture;
-            }
-            $product->addProduct();
-            header('location:/Product/index?success=Product Added');
-        }
-       
-        $this->view('Product/createProduct', $categories);
-    }
-
     #[\app\filters\EmployeeAndAdmin]
      public function productDetails($product_id){
         $product = new \app\models\Product();
@@ -63,24 +46,59 @@ class Product extends \app\core\Controller
         $isAdmin = false;
         if ($type == "admin")
             $isAdmin = true;
+<<<<<<< HEAD
 
 
 
         if($success){
             $this->view('Product/productDetails', [$success, $totalQuantity, $allQuantity,$isAdmin]);
+=======
+
+        if($success){
+            $this->view('Product/productDetails', [$success, $totalQuantity, $allQuantity, $isAdmin]);
+>>>>>>> 7cc8cc612ec81f01dd007b95789a979db2387925
         } else {
             header('location:/Product/index?error=Product does not exists.');
         }
     }
 
+    // Creating, Editing, Deleting
 
     #[\app\filters\Admin]
-    public function delete($product_id) {
-        $product = new \app\models\Product();
-        $product = $product->getProductDetails($product_id);
-        $product->delete();
-        unlink("productImages/$product->picture");
-        header('location:/Product/index');
+    public function createProduct() {
+        if (isset($_POST['action'])) 
+        {
+            if($_POST['name']!='' && $_POST['name']!=null && $_POST['category']!='' && $_POST['category']!=null)
+            {
+                $product = new \app\models\Product();
+                $product->name = htmlentities($_POST['name']);
+                $product->category = htmlentities($_POST['category']);
+                $product->description = htmlentities($_POST['description']);
+
+                $picture = $this->saveProduct($_FILES['productPicture']);
+
+                if($picture) {
+                    $product->picture = $picture;
+                }else{
+                    $product->picture = 'default.jpg';
+                }
+
+                $success = $product->addProduct();
+                if($success){
+                    header('location:/Product/index?success='. $product->name .' has been added');
+                }else{
+                     header('location:/Product/index?error=Something went wrong when creating a new Product. Please Try again.');
+                }
+
+            }else{
+                header('location:/Product/createProduct?error=Please enter a Name and select a Category.');
+            }
+
+        } else {
+            $categories = new Category();
+            $categories = $categories->getCategories();
+            $this->view('Product/createProduct', $categories);
+        }
     }
 
     #[\app\filters\Admin]
@@ -90,49 +108,82 @@ class Product extends \app\core\Controller
         $product = new \app\models\Product();
         $product = $product->getProductDetails($product_id);
 
-        if(isset($_POST['action'])) {
-        
-            $product->name = $_POST['name'];
-            $product->description = $_POST['description'];
-            $product->category = $_POST['category'];
-            $picture = $this->saveProduct($_FILES['productPicture']);
+        if(isset($_POST['action']))
+        {
+            if($_POST['name']!='' && $_POST['name']!=null && $_POST['category']!='' && $_POST['category']!=null){
+                $product->name = htmlentities($_POST['name']);
+                $product->category = htmlentities($_POST['category']);
+                $product->description = htmlentities($_POST['description']);
+                $picture = $this->saveProduct($_FILES['productPicture']);
 
-        if($picture){
-                $product->picture = $picture;
+                if($picture){ 
+                    $product->picture = $picture;
+                }
+                $success = $product->editProduct($product_id);
+
+                if($success){
+                    header('location:/Product/productDetails/' . $product_id. '?success=Product Updated.');
+                } else {
+                    header('location:/Product/edit/' . $product_id. '?error=Please modify in order to edit.');
+                }
+            } else {
+                header('location:/Product/edit/' . $product_id. '?error=Please fill the required fields.');
             }
-
-        $success = $product->edit($product_id);
-        if ($success) {
-        header('location:/Product/productDetails/' .$product_id.'?success=Product Updated.');
         } else {
-            header('location:/Product/productDetails/' .$product_id. '?error=Error');
+            $this->view('Product/editProduct', [$product,$categories]);
         }
-           
-        }
-        else
-        $this->view('Product/edit', [$product,$categories]);
     }
+
+    #[\app\filters\Admin]
+    public function delete($product_id) {
+        $product = new \app\models\Product();
+        $success = $product->deleteProduct($product_id);
+        if($success){
+            unlink("productImages/$success->picture");
+            header('location:/Product/index?success=Product deleted.');
+        } else {
+            header('location:/Product/index?error=Error occured.');
+        }
+    }
+
 
      #[\app\filters\Admin]
     public function addQuantity($product_id) 
     {
         if (isset($_POST['action'])) {
-            $product_quantity = new ProductQuantity();
-            $product_quantity->produced_date = $_POST['produced_date'];
-            $product_quantity->expired_date = $_POST['expired_date'];
-            $product_quantity->quantity = $_POST['quantity'];
-            $product_quantity->price = $_POST['price'];
-            $success = $product_quantity->addProductQuantity($product_id);
+            if(!empty($_POST['arrival_date']) && !empty($_POST['expired_date']) &&
+                !empty($_POST['quantity']) && !empty($_POST['price']))
+            {
+                if(strtotime($_POST['expired_date']) > strtotime($_POST['arrival_date']))
+                {
+                    $product_quantity = new ProductQuantity();
+                    $product_quantity->arrival_date = $_POST['arrival_date'];
+                    $product_quantity->expired_date = $_POST['expired_date'];
+                    $product_quantity->quantity = $_POST['quantity'];
+                    $product_quantity->price = $_POST['price'];
+                    $success = $product_quantity->addProductQuantity($product_id);
 
-            if($success){
-                header('location:/Product/productDetails/' . $product_id. '?success=Product added quantity.');
+                    if($success){
+                        header('location:/Product/productDetails/' . $product_id. '?success=Product added quantity.');
+                    } else {
+                        header('location:/Product/productDetails/' . $product_id. '?error=Something went wrong when adding quantity. Please Try again.');
+                    } 
+                } else {
+                    header('location:/Product/addQuantity/' . $product_id. '?error=Please recheck dates.');
+                }
             } else {
-                header('location:/Product/edit/' . $product_id. '?error=Error.');
+                header('location:/Product/addQuantity/' . $product_id. '?error=Please fill the required fields.');
             }
         } else {
+<<<<<<< HEAD
             $products = new \app\models\Product();
             $products = $products->getProductDetails($product_id);
             $this->view('Product/addQuantity',$products);
+=======
+            $product = new \app\models\Product();
+            $product = $product->getProductDetails($product_id);
+            $this->view('Product/addQuantity', $product);
+>>>>>>> 7cc8cc612ec81f01dd007b95789a979db2387925
         }
     }
 
@@ -140,8 +191,44 @@ class Product extends \app\core\Controller
     public function editQuantity($pq_id)
     {  
         $productQuantity = new ProductQuantity();
-        $productQuantity = $productQuantity->getOneQuantity($pq_id);
+        $productQuantity = $productQuantity->getOneQuantity($iq_id);
 
+        if (isset($_POST['action'])) {
+            if(!empty($_POST['arrival_date']) && !empty($_POST['expired_date']) &&
+                !empty($_POST['quantity']) && !empty($_POST['price']))
+            {
+                if(strtotime($_POST['expired_date']) > strtotime($_POST['arrival_date']))
+                {
+                    $productQuantity->quantity = $_POST['quantity'];
+                    $productQuantity->arrival_date = $_POST['arrival_date'];
+                    $productQuantity->expired_date = $_POST['expired_date'];
+                    $productQuantity->price = $_POST['price'];
+                    $success = $productQuantity->editQuantity($iq_id);
+
+                    if($success){
+                        header('location:/Product/productDetails/' . $productQuantity->product_id . '?success=Product Quantity Updated.');
+                    } else {
+                        header('location:/Product/editQuantity/' . $iq_id . '?error=Please modify in order to edit.');
+                    }
+                } else {
+                    header('location:/Product/editQuantity/' . $iq_id. '?error=Please recheck dates.');
+                }
+            } else {
+                header('location:/Product/editQuantity/' . $iq_id. '?error=Please fill the required fields.');
+            }
+        } else {
+            $productQuantity = new ProductQuantity();
+            $productQuantity = $productQuantity->getOneQuantity($iq_id);
+            $this->view('Product/editQuantity', $productQuantity);
+        }
+    }
+
+    #[\app\filters\EmployeeAndAdmin]
+    public function quantityUpdate($product_id) { //form action method
+        $productQuantity = new ProductQuantity();
+        $productQuantity = $productQuantity->getOneQuantity($iq_id);
+
+<<<<<<< HEAD
         if (isset($_POST['action'])) {
             if(!empty($_POST['produced_date']) && !empty($_POST['expired_date']) &&
                 !empty($_POST['quantity']) && !empty($_POST['price']))
@@ -168,6 +255,21 @@ class Product extends \app\core\Controller
         } else {
             $productQuantity = new ProductQuantity();
             $productQuantity = $productQuantity->getOneQuantity($pq_id);
+=======
+        if(isset($_POST['action']))
+        {
+            $productQuantity->quantity = $_POST['quantity'];
+            $success = $productQuantity->quantityUpdate($iq_id);
+
+            if($success){
+                header('location:/Product/productDetails/' . $productQuantity->product_id . '?success=Product Quantity Updated.');
+            } else {
+                header('location:/Product/editQuantity/' . $iq_id . '?error=Please modify in order to edit.');
+            }
+        } else {
+            $productQuantity = new ProductQuantity();
+            $productQuantity = $productQuantity->getOneQuantity($iq_id);
+>>>>>>> 7cc8cc612ec81f01dd007b95789a979db2387925
             $this->view('Product/editQuantity', $productQuantity);
         }
     }
@@ -176,16 +278,17 @@ class Product extends \app\core\Controller
     public function deleteQuantity($pq_id)
     {
         $productQuantity = new ProductQuantity();
-        $product = $productQuantity->getOneQuantity($pq_id);
+        $product = $productQuantity->getOneQuantity($iq_id);
         $productNumber = $product->product_id;
-        $success = $productQuantity->deleteQuantity($pq_id);
+        $success = $productQuantity->deleteQuantity($iq_id);
         if($success){
-            header('location:/product/productDetails/'. $productNumber .'?success=Product Quantity deleted.');
+            header('location:/Product/productDetails/'. $productNumber .'?success=Product Quantity deleted.');
         } else {
-            header('location:/productDetails'. $productNumber .'?error=Error occured.');
+            header('location:/Product/productDetails'. $productNumber .'?error=Error occured.');
         }
     }
 
+<<<<<<< HEAD
     #[\app\filters\EmployeeAndAdmin]
     public function quantityUpdate($pq_id) { 
         $productQuantity = new ProductQuantity();
@@ -207,6 +310,10 @@ class Product extends \app\core\Controller
             $this->view('Product/editQuantity', $productQuantity);
         }
     }
+=======
+
+    // Filters
+>>>>>>> 7cc8cc612ec81f01dd007b95789a979db2387925
 
     public function search() 
     {
@@ -225,7 +332,11 @@ class Product extends \app\core\Controller
         if ($user->user_type == "admin")
             $isAdmin = true;
 
-        $this->view('Product/index', [$searched, $categories, $numResults, $isAdmin]);
+        if($numResults->num_results != 0){
+            $this->view('Product/index', [$searched, $categories, $numResults, $isAdmin]);
+        } else {
+            header('location:/Product/index?error=No matches found.');
+        }
     }
 
     public function filterByCategory($category_id) {
@@ -235,7 +346,7 @@ class Product extends \app\core\Controller
         $categories = new \app\models\Category();
         $categories = $categories->getCategories();
 
-        $numResults = $products->getSum();
+        $numResults = $products->getFilteredSum($category_id);
 
         $user = new \app\models\User();
         $user = $user->getByUserType($_SESSION['user_id']);
@@ -243,7 +354,11 @@ class Product extends \app\core\Controller
         if ($user->user_type == "admin")
             $isAdmin = true;
 
-        $this->view('Product/index', [$searched, $categories, $numResults, $isAdmin]);
+        if($numResults->num_results != 0){
+            $this->view('Product/index', [$searched, $categories, $numResults, $isAdmin]);
+        } else {
+            header('location:/Product/index?error=No matches found.');
+        }
     }
         
 }

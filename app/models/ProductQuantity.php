@@ -10,6 +10,8 @@ class ProductQuantity extends \app\core\Model {
 	public $quantity;
 	public $price;
 
+	//Select Statements
+
 	public function getAll($product_id) {
 		$SQL = 'SELECT `pq_id`, `product_id`, `produced_date`, `expired_date`, `quantity`, `price`, DATEDIFF(expired_date, produced_date) AS daysLeft FROM product_quantity WHERE product_id=:product_id';
 		$STH = self::$connection->prepare($SQL);
@@ -35,7 +37,9 @@ class ProductQuantity extends \app\core\Model {
 		$STH->execute($data);
 		$STH->setFetchMode(\PDO::FETCH_CLASS, 'app\\models\\ProductQuantity');
 		return $STH->fetch();
-	}	
+	}
+
+	// Create, Edit, Delete
 
 	public function addProductQuantity($product_id) {
 		$SQL = "INSERT INTO `product_quantity` (`pq_id`, `product_id`, `produced_date`, `expired_date`, `quantity`, `price`) value (:pq_id, :product_id, :produced_date, :expired_date, :quantity, :price)";
@@ -58,6 +62,17 @@ class ProductQuantity extends \app\core\Model {
 				'expired_date'=>$this->expired_date,
 				'quantity'=>$this->quantity,
 				'price'=>$this->price];
+		$STH->execute($data);
+		return $STH->rowCount();		
+	}
+
+	public function quantityUpdate($pq_id) {
+		$SQL = "UPDATE `product_quantity` SET `quantity`=:quantity WHERE pq_id=:pq_id;";
+		$STH = self::$connection->prepare($SQL);
+		$data = [
+			'pq_id'=>$pq_id,
+			'quantity'=>$this->quantity
+		];
 		$STH->execute($data);
 		return $STH->rowCount();		
 	}

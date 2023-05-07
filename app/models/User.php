@@ -7,7 +7,9 @@ class User extends \app\core\Model
 	public $username;
 	public $password_hash;
 	public $user_type;
-	public $secret_key;	
+	public $secret_key;
+
+	//Select Statements	
 
 	public function getByUsername($username)
 	{
@@ -40,18 +42,6 @@ class User extends \app\core\Model
 		$STH->execute(['user_id'=>$user_id]);
 		$STH->setFetchMode(\PDO::FETCH_CLASS, 'app\\models\\User');
 		return $STH->fetch();
-	}
-	
-	public function insert()
-	{
-		$SQL = 'INSERT INTO user(user_type, username, password_hash) 
-				VALUES (:user_type, :username, :password_hash)';
-		
-		$STH = self::$connection->prepare($SQL);
-		$STH->execute(['username'=>$this->username,
-						'password_hash'=>$this->password_hash,
-						'user_type'=>$this->user_type]);
-		return self::$connection->lastInsertId();
 	}
 
 	public function getAllUserInfo()
@@ -91,16 +81,20 @@ class User extends \app\core\Model
 		return $STH->fetch();
 	}
 
-	public function delete($user_id)
+	// Create, Edit, Delete
+	
+	public function insert()
 	{
-		$SQL = "DELETE FROM user WHERE user_id=:user_id";
+		$SQL = 'INSERT INTO user(user_type, username, password_hash) 
+				VALUES (:user_type, :username, :password_hash)';
+		
 		$STH = self::$connection->prepare($SQL);
-		$data = [
-			'user_id'=>$user_id
-		];
-		$STH->execute($data);
-		return $STH->rowCount();
+		$STH->execute(['username'=>$this->username,
+						'password_hash'=>$this->password_hash,
+						'user_type'=>$this->user_type]);
+		return self::$connection->lastInsertId();
 	}
+
 	public function editUser($user_id)
 	{
 		$SQL = "UPDATE user SET username=:username, user_type=:user_type WHERE user_id=:user_id";
@@ -128,6 +122,19 @@ class User extends \app\core\Model
 		$STH->execute($data);
 		return $STH->rowCount();
 	}
+
+	public function delete($user_id)
+	{
+		$SQL = "DELETE FROM user WHERE user_id=:user_id";
+		$STH = self::$connection->prepare($SQL);
+		$data = [
+			'user_id'=>$user_id
+		];
+		$STH->execute($data);
+		return $STH->rowCount();
+	}
+
+	// Filters
 
 	public function search($username)
 	{
@@ -174,6 +181,8 @@ class User extends \app\core\Model
 		
 		return $STH->fetchAll();
 	}
+
+	// 2-Factor Authentication
 
 	public function update2fa() {
 		$SQL = "UPDATE user SET secret_key=:secret_key WHERE user_id=:user_id";

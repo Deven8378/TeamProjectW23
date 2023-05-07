@@ -8,6 +8,8 @@ class Category extends \app\core\Model{
 	public $category_name;
 	public $timestamp;
 
+	// Select Statements
+
 	public function getCategories(){
 		$SQL = "SELECT `category`.`category_id`, `category`.`category_name` FROM `category` ORDER BY timestamp DESC;";
 		$STH = self::$connection->prepare($SQL);
@@ -34,6 +36,8 @@ class Category extends \app\core\Model{
 		$STH->setFetchMode(\PDO::FETCH_CLASS, 'app\\models\\Category');
 		return $STH->fetch();
 	}
+
+	// Create, Edit, Delete
 
 	public function insert()
 	{

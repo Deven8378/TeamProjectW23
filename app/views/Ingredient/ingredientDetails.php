@@ -2,62 +2,39 @@
 <?php $this->view('shared/navigation/nav'); ?>
 
 <style type="text/css">
-#foodIMG {
-  width: 100%; 
-  max-width: 500px; 
-  height: auto;
-}
-
-#backLink {
-  padding: 50px;
-  margin: ;
-  color: black;
-}
-
-#foodDetailsDiv {
-  margin: 50px;
-  height: 75%;
-}
-
-#foodDetails {
-  width: 100%;
-  height: 500px;
-  padding: 20px;
-  background-color: #f5f5f5;
-  text-align: left;
-  border-radius: 5px;
-}
-
-#foodName {
-  font-weight: bold;
-}
-
-#foodEverything {
-  padding-top: 20px;
-}
+  
 </style>
 
 
 <div id="foodDetailsDiv">
-  <a href="/Ingredient/index" class="btn-general" id="backLink"><i class="bi bi-arrow-left"></i><?= _('Back') ?></a>
+  <div class="btn-marginleft">
+    <a href="/Ingredient/index" class="btn-general" id="backLink"><i class="bi bi-arrow-left"></i><?= _('Back') ?></a>
+  </div>
+  <!-- <div class="details-inv"> -->
+    <div class="row-details" align="center">
 
-  <div class="container text-center">
-    <div class="row align-items-start">
-      <div class="col-5">
-        <div>
+      <!-- col-5 -->
+      <div class="foodIMG-box">
+        <!-- <div> -->
           <img id="foodIMG" src="/ingredientImages/<?= $data[0]->picture ?>">
-        </div>
+        <!-- </div> -->
       </div>
-      <div class="col-7">
+      <!-- col-7 -->
+      <div class="foodDetails-box">
         <div id="foodDetails">
-          <div class="row justify-content-between">
-            <div class="col-4">
+          <!-- <div class="row justify-content-between"> -->
+            <!--  -->
+<!-- ----------------------------------------------------------------- -->
+          <div style="display: grid;  grid-template-columns: auto auto auto; grid-template-rows: auto auto auto;">
+
+            <div class="" style="grid-column-start: 1; grid-row-start: 1;">
               <h1 id="foodName"><?= htmlentities($data[0]->name) ?></h1>
             </div>
-            <div class="col-4">
+
+            <div class="" style="grid-column-start: 2; grid-column-start: 3; margin-left: auto;">
               <?php if ($data[3] == true) { ?>
                 <div class="btn-group dropend">
-                  <button type="button" class="btn" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="bi bi-three-dots-vertical"></i>More</button>
+                  <button type="button" class="btn-more" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="bi bi-three-dots-vertical"></i>More</button>
                   <div class="dropdown-menu">
                       <li>
                         <a class="dropdown-item" href="/Ingredient/edit/<?= $data[0]->ingredient_id ?>">
@@ -73,21 +50,31 @@
                   </div>
                 </div>
               <?php } ?>
-            </div>
+            <!-- </div> -->
+            <!--  -->
           </div>
-          <div class="container" id="ingredientContent">
-            <div class="row align-items-start">
-              <div class="col">
-                <?= _('Description') ?>:
-                <br>
-                <?= _('Quantity') ?>:
-              </div>
-              <div class="col">
-                <p><?= htmlentities($data[0]->description) ?></p>
-                <p><?= htmlentities($data[1]->fullQuantity) ?></p>
-              </div>
-            </div>
-          </div>
+
+          <!-- <div class="container" id="ingredientContent"> -->
+            <!-- <div class="row align-items-start"> -->
+              <!-- <div class="col"> -->
+                <label style="grid-column-start: 1; grid-row-start: 2;"><?= _('Description') ?>:</label>
+                <p style="grid-column-start: 2; grid-row-start: 2;"><?= htmlentities($data[0]->description) ?></p>
+                <p style="grid-column-start: 1; grid-row-start: 3;"><?= _('Quantity') ?>:</p>
+              <!-- </div> -->
+              <!-- <div class="col"> -->
+                
+                <p style="grid-column-start: 2; grid-row-start: 3;"><?= htmlentities($data[1]->fullQuantity) ?></p>
+              <!-- </div> -->
+            <!-- </div> -->
+          <!-- </div> -->
+          <?php if($data[3] == true) { ?>
+        <a class="btn-general" style="grid-column-start: 3; grid-row-start: 3; width: 50%; margin-left: auto;" href="/Ingredient/addQuantity/<?= $data[0]->ingredient_id ?>">
+            <?= _('Add Quantity') ?>
+          </a>
+        <?php } ?>  
+
+        </div>
+<!-- ----------------------------------------------------------------- -->
           <div id="myDIV">
             <table class="table table-hover">
               <thead>
@@ -110,7 +97,7 @@
                   <td><?= $quantity->daysLeft ?></td>
                   <td>
                     <div class="btn-group dropend">
-                      <button type="button" class="btn" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="bi bi-three-dots-vertical"></i>More</button>
+                      <button type="button" class="btn-more" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="bi bi-three-dots-vertical"></i>More</button>
                       <div class="dropdown-menu">
                           <li>
                             <a class="dropdown-item" href="/Ingredient/editQuantity/<?= $quantity->iq_id ?>">
@@ -139,30 +126,18 @@
             </table>
           </div>
 
-          <!-- <div class="overlay" id="editQuantity">
-            <div class="wrapper">
-                <h2><?= _('Edit Quantity') ?></h2><a class="close" href="/Ingredient/ingredientDetails/<?= $data[0]->ingredient_id ?>">&times;</a>
-                <div class="content">
-                    <div class="container">
-                        <form  method="post" action="/Ingredient/quantityUpdate/<?= $data[0]->ingredient_id ?>">
-                            <label><?= _('Quantity') ?></label><br>
-                            <input id=demoInput type=number min="-10"><br><br>
-                            <input class="btn" type="submit" name="action" value='<?= _('Send') ?>' style="background-color: #e8c8e7;" id="messageSubmit">
-                        </form>
-                    </div>
-                </div>
-            </div>
-          </div> -->
-
         </div>
-        <?php if($data[3] == true) { ?>
+
+
+        <!-- <?php if($data[3] == true) { ?>
         <a class="btn-general" style="background-color: #e8c8e7; float: right; bottom: 0;" href="/Ingredient/addQuantity/<?= $data[0]->ingredient_id ?>">
             <?= _('Add Quantity') ?>
           </a>
-        <?php } ?>  
+        <?php } ?>   -->
       </div>
+
     </div>
-  </div>
+  <!-- </div> -->
 </div>
 <!-- CONFIMATION MESSAGE TO DELETE INGREDIENT -->
 <div class="overlay" id="popupIngredient">
