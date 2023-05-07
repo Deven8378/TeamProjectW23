@@ -112,23 +112,24 @@
                     <div class="btn-group dropend">
                       <button type="button" class="btn" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="bi bi-three-dots-vertical"></i>More</button>
                       <div class="dropdown-menu">
-                        <?php if ($data[3] == true) { ?>
                           <li>
                             <a class="dropdown-item" href="/Ingredient/editQuantity/<?= $quantity->iq_id ?>">
                               <?= _('Edit') ?>
                             </a>
                           </li>
+                        <?php if ($data[3] == true) { ?>
+                          
                           <li>
                             <a class="dropdown-item" href="#popupQuantity" id="<?= $quantity->iq_id ?>" onclick="deleteLinkID(this.id)">
                               <?= _('Delete') ?>
                             </a>
                           </li>
                         <?php } ?>
-                          <li>
+                          <!-- <li>
                             <a class="dropdown-item" href="#editQuantity">
                               <?= _('Edit Quantity') ?>
                             </a>
-                          </li>
+                          </li> -->
                       </div>
                     </div>
                   </td>
@@ -137,12 +138,13 @@
               </tbody>
             </table>
           </div>
-          <div class="overlay" id="editQuantity">
+
+          <!-- <div class="overlay" id="editQuantity">
             <div class="wrapper">
                 <h2><?= _('Edit Quantity') ?></h2><a class="close" href="/Ingredient/ingredientDetails/<?= $data[0]->ingredient_id ?>">&times;</a>
                 <div class="content">
                     <div class="container">
-                        <form  method="post" action="">
+                        <form  method="post" action="/Ingredient/quantityUpdate/<?= $data[0]->ingredient_id ?>">
                             <label><?= _('Quantity') ?></label><br>
                             <input id=demoInput type=number min="-10"><br><br>
                             <input class="btn" type="submit" name="action" value='<?= _('Send') ?>' style="background-color: #e8c8e7;" id="messageSubmit">
@@ -150,7 +152,8 @@
                     </div>
                 </div>
             </div>
-          </div>
+          </div> -->
+
         </div>
         <?php if($data[3] == true) { ?>
         <a class="btn" style="background-color: #e8c8e7; float: right; bottom: 0;" href="/Ingredient/addQuantity/<?= $data[0]->ingredient_id ?>">
@@ -161,7 +164,7 @@
     </div>
   </div>
 </div>
-<!-- CONFIMATION MESSAGE BELLOW -->
+<!-- CONFIMATION MESSAGE TO DELETE INGREDIENT -->
 <div class="overlay" id="popupIngredient">
   <div class="wrapper">
       <h2><?= _('Confirmation') ?></h2><a class="close" href="/Ingredient/ingredientDetails/<?= $data[0]->ingredient_id ?>">&times;</a>
@@ -179,7 +182,7 @@
       </div>
   </div>
 </div>
-
+<!-- CONFIMATION MESSAGE TO DELETE INGREDIENT QUANTITY ROW -->
 <div class="overlay" id="popupQuantity">
   <div class="wrapper">
       <h2><?= _('Confirmation') ?></h2><a class="close" href="/Ingredient/ingredientDetails/<?= $data[0]->ingredient_id ?>">&times;</a>
@@ -205,6 +208,6 @@
     var setLinkInDelete = document.getElementById('deleteQuantity');
     setLinkInDelete.href = "/Ingredient/deleteQuantity/" + linkID;
   }
-  
+
 </script>
 

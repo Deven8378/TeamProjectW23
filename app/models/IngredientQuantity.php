@@ -72,6 +72,17 @@ class IngredientQuantity extends \app\core\Model {
 		return $STH->rowCount();		
 	}
 
+	public function quantityUpdate($iq_id) {
+		$SQL = "UPDATE `ingredient_quantity` SET `quantity`=:quantity WHERE iq_id=:iq_id;";
+		$STH = self::$connection->prepare($SQL);
+		$data = [
+			'iq_id'=>$iq_id,
+			'quantity'=>$this->quantity
+		];
+		$STH->execute($data);
+		return $STH->rowCount();		
+	}
+
 	public function deleteQuantity($iq_id){
 		$SQL = "DELETE FROM `ingredient_quantity` WHERE iq_id=:iq_id;";
 		$STH = self::$connection->prepare($SQL);

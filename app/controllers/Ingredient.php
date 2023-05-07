@@ -159,7 +159,7 @@ class Ingredient extends \app\core\Controller
         }
     }
 
-    #[\app\filters\Admin]
+    #[\app\filters\EmployeeAndAdmin]
     public function editQuantity($iq_id)
     {  
         $ingredientQuantity = new IngredientQuantity();
@@ -179,7 +179,6 @@ class Ingredient extends \app\core\Controller
                 header('location:/Ingredient/editQuantity/' . $iq_id . '?error=Please modify in order to edit.');
             }
         } else {
-            // echo $ingredientQuantity->iq_id;
             $ingredientQuantity = new IngredientQuantity();
             $ingredientQuantity = $ingredientQuantity->getOneQuantity($iq_id);
             $this->view('Ingredient/editQuantity', $ingredientQuantity);
@@ -201,28 +200,49 @@ class Ingredient extends \app\core\Controller
     }
 
     #[\app\filters\EmployeeAndAdmin]
-    public function quantityUpdate($ingredient_id) { //form action method
-        $allQuantity = new IngredientQuantity;
-        $allQuantity = $allQuantity->getAll($ingredient_id);
-        $counter = 1; //each product quantity row's input name is quantity$counter
+    public function quantityUpdate($iq_id) { 
+        $ingredientQuantity = new IngredientQuantity();
+        $ingredientQuantity = $ingredientQuantity->getOneQuantity($iq_id);
 
-        if (isset($_POST['action'])) {
-                foreach ($allQuantity as $oneQuantity) {
-                $oneQuantity = $oneQuantity->getOneQuantity($oneQuantity->iq_id);
-                $oneQuantity->quantity = $_POST['quantity' . $counter];
-                ++$counter;
-                $success = $oneQuantity->editQuantity($oneQuantity->pq_id);
+        if(isset($_POST['action']))
+        {
+            $ingredientQuantity->quantity = $_POST['quantity'];
+            $success = $ingredientQuantity->editQuantity($iq_id);
+
+            if($success){
+                header('location:/Ingredient/ingredientDetails/' . $ingredientQuantity->ingredient_id . '?success=Ingredient Quantity Updated.');
+            } else {
+                header('location:/Ingredient/editQuantity/' . $iq_id . '?error=Please modify in order to edit.');
             }
-           
-            if ($success) {
-        
-                 header('location:/Ingredient/ingredientDetails/'. $ingredient_id .'?success=Quantities Saved.');
-             } else {
-            
-            header('location:/Ingredient/ingredientDetails/'. $ingredient_id .'?error=Error occured.');
-            }
+        } else {
+            $ingredientQuantity = new IngredientQuantity();
+            $ingredientQuantity = $ingredientQuantity->getOneQuantity($iq_id);
+            $this->view('Ingredient/editQuantity', $ingredientQuantity);
         }
     }
+
+    // public function quantityUpdate($ingredient_id) { //form action method
+    //     $allQuantity = new IngredientQuantity;
+    //     $allQuantity = $allQuantity->getAll($ingredient_id);
+    //     $counter = 1; //each product quantity row's input name is quantity$counter
+
+    //     if (isset($_POST['action'])) {
+    //         foreach ($allQuantity as $oneQuantity) {
+    //             $oneQuantity = $oneQuantity->getOneQuantity($oneQuantity->iq_id);
+    //             $oneQuantity->quantity = $_POST['quantity' . $counter];
+    //             ++$counter;
+    //             $success = $oneQuantity->editQuantity($oneQuantity->pq_id);
+    //         }
+           
+    //         if ($success) {
+        
+    //              header('location:/Ingredient/ingredientDetails/'. $ingredient_id .'?success=Quantities Saved.');
+    //          } else {
+            
+    //         header('location:/Ingredient/editQuantity/'. $ingredient_id .'?error=Error occured.');
+    //         }
+    //     }
+    // }
 
     // Filters
 

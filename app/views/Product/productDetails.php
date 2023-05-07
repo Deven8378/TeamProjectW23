@@ -1,23 +1,26 @@
 <?php $this->view('shared/header', $data[0]->name . " Details"); ?>
 <?php 
-$user = new \app\models\User();
-$user = $user->getByUserId($_SESSION['user_id']);
-$type = $user->user_type;
-$isAdmin = False;
-if ($type == "admin")
-  $isAdmin = True;
+  $user = new \app\models\User();
+  $user = $user->getByUserId($_SESSION['user_id']);
+  $type = $user->user_type;
+  $isAdmin = False;
+  if ($type == "admin")
+    $isAdmin = True;
 ?>
+
 <?php $this->view('shared/navigation/nav'); ?>
+
 <link rel="stylesheet" type="text/css" href="/css/foodDetails.css">
+
 <script type="text/javascript">
   function myFunction() {
-  var x = document.getElementById("myDIV");
-  if (x.style.display === "none") {
-    x.style.display = "block";
-  } else {
-    x.style.display = "none";
+    var x = document.getElementById("myDIV");
+    if (x.style.display === "none") {
+      x.style.display = "block";
+    } else {
+      x.style.display = "none";
+    }
   }
-}
 </script>
 
 
