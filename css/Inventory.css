@@ -1,6 +1,155 @@
 
+.details-inv {
+    border-radius: 5px;
+    padding: 20px 0;
+    text-align: center !important
+}
+
+
+@media only screen and (max-width: 951px) {
+	.common-container {
+	    background-color: #F3EBF6;
+	    height: 95vh;
+
+	}
+
+ }
+
+
+@media only screen and (min-width: 951px) {
+	.common-container {
+		background-color: #F3EBF6;
+	    width: 650px;
+/*	    height: 610px;*/
+		height: auto;
+	    margin: 3em auto;
+	    padding-bottom: 50px;
+	    border-radius: 1.5em;
+	    box-shadow: 0px 11px 35px 2px rgba(0, 0, 0, 0.14);
+	}
+
+}
+
+@media only screen and (max-width: 1350px) {
+    .row-details {
+/*        --bs-gutter-x: 1.5rem;*/
+        --bs-gutter-y: 0;
+        display: block;
+/*        flex-wrap: wrap;*/
+        justify-content: center;
+        margin-top: calc(-1 * var(--bs-gutter-y));
+        margin-right: calc(-.5 * var(--bs-gutter-x));
+        margin-left: calc(-.5 * var(--bs-gutter-x));
+        gap: 10px;
+        align-items: flex-start !important;
+        
+    }
+    .foodIMG-box{
+/*        flex: 0 0 auto; width: 41.66666667%;*/
+    }
+    .foodDetails-box {
+/*        font-size: 10px;*/
+        font-size: clamp(0.625rem, 0.4808rem + 0.6154vw, 1rem);
+/*        flex: 0 0 auto; width: 58.33333333%*/
+    }
+    #foodIMG {
+        width: 100%; 
+        max-width: 500px; 
+        height: auto;
+    }
+
+    #backLink {
+        /*padding: 50px;
+        margin: ;
+        color: black;*/
+    }
+
+    #foodDetailsDiv {
+        margin-top: 20px;
+        height: 75%;
+    }
+
+    #foodDetails {
+        width: 100%;
+        height: 100%;
+        padding: 20px;
+        background-color: #f5f5f5;
+        text-align: left;
+        border-radius: 5px;
+    }
+    .btn-marginleft{
+        margin-left: 20px;
+    }
+
+    #foodName {
+        font-weight: bold;
+    }
+
+    #foodEverything {
+        padding-top: 20px;
+    }
+    
+
+ }
+
+
+@media only screen and (min-width: 1350px) {
+
+    .row-details {
+        --bs-gutter-x: 1.5rem;
+        --bs-gutter-y: 0;
+        display: flex;
+        flex-wrap: wrap;
+        margin-top: calc(-1 * var(--bs-gutter-y));
+        margin-right: calc(-.5 * var(--bs-gutter-x));
+        margin-left: calc(-.5 * var(--bs-gutter-x))
+        align-items: flex-start !important;
+    }
+    .foodIMG-box{
+        flex: 0 0 auto; width: 41.66666667%;
+    }
+    .foodDetails-box {
+        flex: 0 0 auto; width: 58.33333333%
+    }
+
+    #foodIMG {
+        width: 100%; 
+        max-width: 500px; 
+        height: auto;
+    }
+
+    #backLink {
+        /*padding: 50px;
+        margin: ;
+        color: black;*/
+    }
+
+    #foodDetailsDiv {
+        margin: 50px;
+        height: 75%;
+    }
+
+    #foodDetails {
+        width: 100%;
+        height: 100%;
+        padding: 20px;
+        background-color: #f5f5f5;
+        text-align: left;
+        border-radius: 5px;
+    }
+
+    #foodName {
+        font-weight: bold;
+    }
+
+    #foodEverything {
+        padding-top: 20px;
+    }
+}
+
+/*----------*/
 .input-inv { 
-	width: 50%;
+    width: 50%;
     color: rgb(38, 50, 56);
     font-weight: 700;
     font-size: 14px;
@@ -16,21 +165,21 @@
     margin-bottom: 27px;
 }
 .dropdown-inv {
-	width: 50%;
-	padding: .375rem ;
-	text-align: center;
-	font-size: 1rem;
-	font-weight: 400;
-	margin-bottom: 27px;
-	border-radius: .375rem;
-	border: none;
+    width: 50%;
+    padding: .375rem ;
+    text-align: center;
+    font-size: 1rem;
+    font-weight: 400;
+    margin-bottom: 27px;
+    border-radius: .375rem;
+    border: none;
 }
 
 .grid-50 {
-	display: grid; width: 50%;
+    display: grid; width: 50%;
 }
 .file-label {
-	display: block;
+    display: block;
     width: 100%;
     margin-bottom: 10px;
     background-color: var(--bs-form-control-bg);
@@ -97,21 +246,21 @@
 
 /*-----------*/
 
-	/*--Use to be .submitIngredient--*/
+    /*--Use to be .submitIngredient--*/
 .submit-inv {
-	cursor: pointer;
-	border-radius: 10px;
-	color: #fff;
-	background: linear-gradient(to right, #9C27B0, #E040FB);
-	border: 0;
-	width: 100%;
-	padding-left: 40px;
-	padding-right: 40px;
-	padding-bottom: 10px;
-	margin-bottom: 10px;
-	padding-top: 10px;
-	font-family: 'Ubuntu', sans-serif;
-	box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.04);
+    cursor: pointer;
+    border-radius: 10px;
+    color: #fff;
+    background: linear-gradient(to right, #9C27B0, #E040FB);
+    border: 0;
+    width: 100%;
+    padding-left: 40px;
+    padding-right: 40px;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+    padding-top: 10px;
+    font-family: 'Ubuntu', sans-serif;
+    box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.04);
 }
 
 .input-qty {
@@ -124,35 +273,3 @@
     border-radius: 10px;
     margin-bottom: 27px;
 }
-
-
-@media only screen and (max-width: 951px) {
-	.common-container {
-	    background-color: #F3EBF6;
-	    height: 95vh;
-
-	}
-
-	
-
- }
-
-
-@media only screen and (min-width: 951px) {
-	.common-container {
-		background-color: #F3EBF6;
-	    width: 650px;
-/*	    height: 610px;*/
-		height: auto;
-	    margin: 3em auto;
-	    padding-bottom: 50px;
-	    border-radius: 1.5em;
-	    box-shadow: 0px 11px 35px 2px rgba(0, 0, 0, 0.14);
-	}
-
-	
-
-
-
-}
-
