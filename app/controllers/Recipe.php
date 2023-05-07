@@ -23,7 +23,7 @@ class Recipe extends \app\core\Controller {
 		if($recipe){
 			$this->view('Recipe/details',$recipe);
 		} else {
-			header('location:/Recipe/index?error=This recipe does not exists.')
+			header('location:/Recipe/index?error=This recipe does not exists.');
 		}
 	}
 
