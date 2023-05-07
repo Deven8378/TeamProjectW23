@@ -50,9 +50,7 @@
 
           <label class="grid-box-4" style=""><?= _('Description') ?>:</label>
           <p class="grid-box-5" style=""><?= htmlentities($data[0]->description) ?></p>
-          <p class="grid-box-7" style=""><?= _('Quantity') ?>:</p>
-
-          
+          <label class="grid-box-7" style=""><?= _('Quantity') ?>:</label>
           <p class="grid-box-8" style=""><?= htmlentities($data[1]->fullQuantity) ?></p>
 
           <?php if($data[3] == true) { ?>
@@ -95,7 +93,7 @@
                         <?php if ($data[3] == true) { ?>
                           
                           <li>
-                            <a class="dropdown-item" href="#popupQuantity" id="<?= $quantity->iq_id ?>" onclick="deleteLinkID(this.id)">
+                            <a class="dropdown-item" href="#popupQuantity" id="<?= $quantity->iq_id ?>" onclick="deleteProductLinkID(this.id)">
                               <?= _('Delete') ?>
                             </a>
                           </li>
@@ -154,7 +152,7 @@
 
 <script type="text/javascript">
   
-  function deleteLinkID(linkID){
+  function deleteProductLinkID(linkID){
     // var selectLink = document.getElementById(linkID);
     var setLinkInDelete = document.getElementById('deleteQuantity');
     setLinkInDelete.href = "/Ingredient/deleteQuantity/" + linkID;

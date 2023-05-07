@@ -18,10 +18,11 @@ class Ingredient extends \app\core\Controller
     {
         $ingredient = new \app\models\Ingredient();
         $ingredients = $ingredient->getAll();
-        $numResults = $ingredient->getSum();
 
         $category = new Category();
         $categories = $category->getCategories();
+
+        $numResults = $ingredient->getSum();
 
         $user = new User();
         $user = $user->getByUserType(htmlentities($_SESSION['user_id']));
@@ -37,12 +38,16 @@ class Ingredient extends \app\core\Controller
     public function ingredientDetails($ingredient_id){
         $ingredient = new \app\models\Ingredient();
         $success = $ingredient->getIngredientDetails($ingredient_id);
+
         $totalQuantity = new IngredientQuantity;
         $totalQuantity = $totalQuantity->getTotalQuantity($ingredient_id);
+
         $allQuantity = new IngredientQuantity;
         $allQuantity = $allQuantity->getAll($ingredient_id);
+
         $user = new User();
         $user = $user->getByUserId($_SESSION['user_id']);
+
         $type = $user->user_type;
         $isAdmin = false;
         if ($type == "admin")

@@ -18,8 +18,10 @@ class Product extends \app\core\Controller
     {
         $product = new \app\models\Product();
         $products = $product->getAll();
+
         $categories = new \app\models\Category();
         $categories = $categories->getCategories();
+        
         $numResults = $product->getSum();
 
         $user = new User();
@@ -32,15 +34,19 @@ class Product extends \app\core\Controller
     }
     
     #[\app\filters\EmployeeAndAdmin]
-     public function productDetails($product_id){
+    public function productDetails($product_id){
         $product = new \app\models\Product();
         $success = $product->getProductDetails($product_id);
+
         $totalQuantity = new ProductQuantity;
         $totalQuantity = $totalQuantity->getTotalQuantity($product_id);
+
         $allQuantity = new ProductQuantity;
         $allQuantity = $allQuantity->getAll($product_id);
+
         $user = new User();
         $user = $user->getByUserId($_SESSION['user_id']);
+
         $type = $user->user_type;
         $isAdmin = false;
         if ($type == "admin")
@@ -178,42 +184,7 @@ class Product extends \app\core\Controller
     public function editQuantity($pq_id)
     {  
         $productQuantity = new ProductQuantity();
-        $productQuantity = $productQuantity->getOneQuantity($iq_id);
-
-        if (isset($_POST['action'])) {
-            if(!empty($_POST['arrival_date']) && !empty($_POST['expired_date']) &&
-                !empty($_POST['quantity']) && !empty($_POST['price']))
-            {
-                if(strtotime($_POST['expired_date']) > strtotime($_POST['arrival_date']))
-                {
-                    $productQuantity->quantity = $_POST['quantity'];
-                    $productQuantity->arrival_date = $_POST['arrival_date'];
-                    $productQuantity->expired_date = $_POST['expired_date'];
-                    $productQuantity->price = $_POST['price'];
-                    $success = $productQuantity->editQuantity($iq_id);
-
-                    if($success){
-                        header('location:/Product/productDetails/' . $productQuantity->product_id . '?success=Product Quantity Updated.');
-                    } else {
-                        header('location:/Product/editQuantity/' . $iq_id . '?error=Please modify in order to edit.');
-                    }
-                } else {
-                    header('location:/Product/editQuantity/' . $iq_id. '?error=Please recheck dates.');
-                }
-            } else {
-                header('location:/Product/editQuantity/' . $iq_id. '?error=Please fill the required fields.');
-            }
-        } else {
-            $productQuantity = new ProductQuantity();
-            $productQuantity = $productQuantity->getOneQuantity($iq_id);
-            $this->view('Product/editQuantity', $productQuantity);
-        }
-    }
-
-    #[\app\filters\EmployeeAndAdmin]
-    public function quantityUpdate($product_id) { //form action method
-        $productQuantity = new ProductQuantity();
-        $productQuantity = $productQuantity->getOneQuantity($iq_id);
+        $productQuantity = $productQuantity->getOneQuantity($pq_id);
 
         if (isset($_POST['action'])) {
             if(!empty($_POST['produced_date']) && !empty($_POST['expired_date']) &&
@@ -222,7 +193,42 @@ class Product extends \app\core\Controller
                 if(strtotime($_POST['expired_date']) > strtotime($_POST['produced_date']))
                 {
                     $productQuantity->quantity = $_POST['quantity'];
-                    $productQuantity->arrival_date = $_POST['produced_date'];
+                    $productQuantity->produced_date = $_POST['produced_date'];
+                    $productQuantity->expired_date = $_POST['expired_date'];
+                    $productQuantity->price = $_POST['price'];
+                    $success = $productQuantity->editQuantity($pq_id);
+
+                    if($success){
+                        header('location:/Product/productDetails/' . $productQuantity->product_id . '?success=Product Quantity Updated.');
+                    } else {
+                        header('location:/Product/editQuantity/' . $pq_id . '?error=Please modify in order to edit.');
+                    }
+                } else {
+                    header('location:/Product/editQuantity/' . $pq_id. '?error=Please recheck dates.');
+                }
+            } else {
+                header('location:/Product/editQuantity/' . $pq_id. '?error=Please fill the required fields.');
+            }
+        } else {
+            $productQuantity = new ProductQuantity();
+            $productQuantity = $productQuantity->getOneQuantity($pq_id);
+            $this->view('Product/editQuantity', $productQuantity);
+        }
+    }
+
+    #[\app\filters\EmployeeAndAdmin]
+    public function quantityUpdate($product_id) { //form action method
+        $productQuantity = new ProductQuantity();
+        $productQuantity = $productQuantity->getOneQuantity($pq_id);
+
+        if (isset($_POST['action'])) {
+            if(!empty($_POST['produced_date']) && !empty($_POST['expired_date']) &&
+                !empty($_POST['quantity']) && !empty($_POST['price']))
+            {
+                if(strtotime($_POST['expired_date']) > strtotime($_POST['produced_date']))
+                {
+                    $productQuantity->quantity = $_POST['quantity'];
+                    $productQuantity->produced_date = $_POST['produced_date'];
                     $productQuantity->expired_date = $_POST['expired_date'];
                     $productQuantity->price = $_POST['price'];
                     $success = $productQuantity->editQuantity($pq_id);
@@ -250,9 +256,9 @@ class Product extends \app\core\Controller
     public function deleteQuantity($pq_id)
     {
         $productQuantity = new ProductQuantity();
-        $product = $productQuantity->getOneQuantity($iq_id);
+        $product = $productQuantity->getOneQuantity($pq_id);
         $productNumber = $product->product_id;
-        $success = $productQuantity->deleteQuantity($iq_id);
+        $success = $productQuantity->deleteQuantity($pq_id);
         if($success){
             header('location:/Product/productDetails/'. $productNumber .'?success=Product Quantity deleted.');
         } else {
