@@ -39,7 +39,7 @@
 
 
 <div id="foodDetailsDiv">
-  <a href="/Ingredient/index" id="backLink"><i class="bi bi-arrow-left"></i><?= _('Back') ?></a>
+  <a href="/Ingredient/index" class="btn-general" id="backLink"><i class="bi bi-arrow-left"></i><?= _('Back') ?></a>
 
   <div class="container text-center">
     <div class="row align-items-start">
@@ -156,7 +156,7 @@
 
         </div>
         <?php if($data[3] == true) { ?>
-        <a class="btn" style="background-color: #e8c8e7; float: right; bottom: 0;" href="/Ingredient/addQuantity/<?= $data[0]->ingredient_id ?>">
+        <a class="btn-general" style="background-color: #e8c8e7; float: right; bottom: 0;" href="/Ingredient/addQuantity/<?= $data[0]->ingredient_id ?>">
             <?= _('Add Quantity') ?>
           </a>
         <?php } ?>  
