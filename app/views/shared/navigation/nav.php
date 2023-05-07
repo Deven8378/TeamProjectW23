@@ -49,7 +49,7 @@
         </ul>
 
         <div>
-          <a style="margin-top:600px; display:inline-block;" class="btn-general" href="/User/logout"><?= _('Log Out') ?></a>
+          <a class="btn-general" href="/User/logout"><?= _('Log Out') ?></a>
         </div>
       </div>
     </div>
