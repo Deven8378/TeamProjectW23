@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 08, 2023 at 01:32 AM
+-- Generation Time: May 08, 2023 at 01:47 AM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -20,6 +20,8 @@ SET time_zone = "+00:00";
 --
 -- Database: `sweemory`
 --
+CREATE DATABASE IF NOT EXISTS `sweemory` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+USE `sweemory`;
 
 -- --------------------------------------------------------
 
@@ -27,6 +29,7 @@ SET time_zone = "+00:00";
 -- Table structure for table `category`
 --
 
+DROP TABLE IF EXISTS `category`;
 CREATE TABLE `category` (
   `category_id` int(11) NOT NULL,
   `category_name` varchar(25) NOT NULL,
@@ -55,6 +58,7 @@ INSERT INTO `category` (`category_id`, `category_name`, `timestamp`) VALUES
 -- Table structure for table `ingredient`
 --
 
+DROP TABLE IF EXISTS `ingredient`;
 CREATE TABLE `ingredient` (
   `ingredient_id` int(11) NOT NULL,
   `name` varchar(50) NOT NULL,
@@ -75,8 +79,7 @@ INSERT INTO `ingredient` (`ingredient_id`, `name`, `category`, `description`, `p
 (5, 'Pistachio', 2, 'The pistachio a member of the cashew family.', '6455b34777a11.jpg'),
 (6, 'Almonds', 2, 'The almond is a tree nut native to the Mediterranean region.', '6455b3b428375.png'),
 (7, 'Milk', 4, 'Milk is an emulsion or colloid of butterfat globules within a water-based fluid that contains dissolved carbohydrates and protein aggregates with minerals.', '6455b3eabd191.jpg'),
-(8, 'Sugar', 1, 'Sugar is the generic name for sweet-tasting, soluble carbohydrates, many of which are used in food.', '6455b4305f11f.jpg'),
-(17, 'w', 9, 'w', '64575213d56a6.jpg');
+(8, 'Sugar', 1, 'Sugar is the generic name for sweet-tasting, soluble carbohydrates, many of which are used in food.', '6455b4305f11f.jpg');
 
 -- --------------------------------------------------------
 
@@ -84,6 +87,7 @@ INSERT INTO `ingredient` (`ingredient_id`, `name`, `category`, `description`, `p
 -- Table structure for table `ingredient_quantity`
 --
 
+DROP TABLE IF EXISTS `ingredient_quantity`;
 CREATE TABLE `ingredient_quantity` (
   `iq_id` int(11) NOT NULL,
   `ingredient_id` int(11) NOT NULL,
@@ -93,19 +97,13 @@ CREATE TABLE `ingredient_quantity` (
   `price` float NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Dumping data for table `ingredient_quantity`
---
-
-INSERT INTO `ingredient_quantity` (`iq_id`, `ingredient_id`, `arrival_date`, `expired_date`, `quantity`, `price`) VALUES
-(10, 1, '2023-05-13', '2023-05-18', 6, 2.55);
-
 -- --------------------------------------------------------
 
 --
 -- Table structure for table `message`
 --
 
+DROP TABLE IF EXISTS `message`;
 CREATE TABLE `message` (
   `message_id` int(11) NOT NULL,
   `receiver` int(11) NOT NULL,
@@ -122,6 +120,7 @@ CREATE TABLE `message` (
 -- Table structure for table `notification`
 --
 
+DROP TABLE IF EXISTS `notification`;
 CREATE TABLE `notification` (
   `notify_id` int(11) NOT NULL,
   `notify_type` varchar(10) NOT NULL,
@@ -135,6 +134,7 @@ CREATE TABLE `notification` (
 -- Table structure for table `product`
 --
 
+DROP TABLE IF EXISTS `product`;
 CREATE TABLE `product` (
   `product_id` int(11) NOT NULL,
   `name` varchar(50) NOT NULL,
@@ -148,7 +148,7 @@ CREATE TABLE `product` (
 --
 
 INSERT INTO `product` (`product_id`, `name`, `category`, `description`, `picture`) VALUES
-(7, 'choco ice cream', 10, 'daaaaa', '64575273eb09f.jpg');
+(5, 'Chocolate Ice Cream', 10, 'Ice Cream made with chocolate.', '6458380b77a44.jpg');
 
 -- --------------------------------------------------------
 
@@ -156,6 +156,7 @@ INSERT INTO `product` (`product_id`, `name`, `category`, `description`, `picture
 -- Table structure for table `product_quantity`
 --
 
+DROP TABLE IF EXISTS `product_quantity`;
 CREATE TABLE `product_quantity` (
   `pq_id` int(11) NOT NULL,
   `product_id` int(11) NOT NULL,
@@ -165,19 +166,13 @@ CREATE TABLE `product_quantity` (
   `price` float NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Dumping data for table `product_quantity`
---
-
-INSERT INTO `product_quantity` (`pq_id`, `product_id`, `produced_date`, `expired_date`, `quantity`, `price`) VALUES
-(6, 7, '2023-05-01', '2023-05-31', 4, 4);
-
 -- --------------------------------------------------------
 
 --
 -- Table structure for table `profile`
 --
 
+DROP TABLE IF EXISTS `profile`;
 CREATE TABLE `profile` (
   `user_id` int(11) NOT NULL,
   `first_name` varchar(50) NOT NULL,
@@ -204,6 +199,7 @@ INSERT INTO `profile` (`user_id`, `first_name`, `middle_name`, `last_name`, `ema
 -- Table structure for table `recipe`
 --
 
+DROP TABLE IF EXISTS `recipe`;
 CREATE TABLE `recipe` (
   `recipe_id` int(11) NOT NULL,
   `title` varchar(50) NOT NULL,
@@ -217,6 +213,7 @@ CREATE TABLE `recipe` (
 -- Table structure for table `user`
 --
 
+DROP TABLE IF EXISTS `user`;
 CREATE TABLE `user` (
   `user_id` int(11) NOT NULL,
   `user_type` varchar(12) NOT NULL,
@@ -230,7 +227,7 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`user_id`, `user_type`, `username`, `password_hash`, `secret_key`) VALUES
-(1, 'itspecialist', 'itspecialist', '$2y$10$RUJd5d.C02znWlNyzZeGgOasNkkvXrwV.lr3p2V5BWAHQD4Px4GG2', '3U34JQI5J7RMWYTH'),
+(1, 'itspecialist', 'itspecialist', '$2y$10$RUJd5d.C02znWlNyzZeGgOasNkkvXrwV.lr3p2V5BWAHQD4Px4GG2', NULL),
 (2, 'admin', 'Nicole', '$2y$10$MM.fKeE0SWVsfdj1K8ZHru1/qkqX8u8EV1.xCqBragA/EkqGZSW8q', NULL),
 (3, 'admin', 'Deven', '$2y$10$zaiI4rIJ3ZEMVkzGOtTLIuTuu3usc8/QLJq3.c.EbsTXo6KoLyPg.', NULL),
 (4, 'employee', 'Rachelle', '$2y$10$dPLEgTN9QKC5E3Z6u/IYN./YsL07/aG/MSS1XAfEYNyH/lrLGcVf.', NULL),
@@ -318,13 +315,13 @@ ALTER TABLE `category`
 -- AUTO_INCREMENT for table `ingredient`
 --
 ALTER TABLE `ingredient`
-  MODIFY `ingredient_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `ingredient_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `ingredient_quantity`
 --
 ALTER TABLE `ingredient_quantity`
-  MODIFY `iq_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `iq_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `message`
@@ -342,13 +339,13 @@ ALTER TABLE `notification`
 -- AUTO_INCREMENT for table `product`
 --
 ALTER TABLE `product`
-  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `product_quantity`
 --
 ALTER TABLE `product_quantity`
-  MODIFY `pq_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `pq_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `recipe`
@@ -360,7 +357,7 @@ ALTER TABLE `recipe`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- Constraints for dumped tables
