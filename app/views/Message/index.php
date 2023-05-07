@@ -98,6 +98,32 @@ white-space: nowrap;
 }
 </style>
 
+<script>
+    function toggleDiv(){
+        const toggleTo2 = document.getElementById("toggle-to-sent");
+        const toggleTo1 = document.getElementById("toggle-to-inbox");
+
+        const div1 = document.getElementById("inbox");
+        const div2 = document.getElementById("sent");
+
+        const hide = el => el.style.setProperty("display", "none");
+        const show = el => el.style.setProperty("display", "block");
+
+        hide(div2);
+
+        toggleTo2.addEventListener("click", () => {
+        hide(div1);
+
+        show(div2);
+        });
+
+        toggleTo1.addEventListener("click", () => {
+        hide(div2);
+        show(div1);
+        });
+    }
+</script>
+
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
 <div class="container" style="padding-top: 50px;">
     <div class="row">
@@ -113,17 +139,18 @@ white-space: nowrap;
                     <div class="container">
                       <div class="row">
                         <div class="col">
-                          <h5>Folders</h5>
+                          <h5><?= _('Folders') ?></h5>
                         </div>
                       </div>
                       <div class="row">
                         <div class="col">
-                            <a class="glyphicon glyphicon-cutlery" onclick="fixScroll('inboxHTML');"><i class="fa fa-inbox"> <?= _('Inbox') ?></i></a>
+                            <button id="toggle-to-inbox" class="btn-general" onclick="toggleDiv()"><i class="fa fa-inbox"> 
+                                <?= _('Inbox') ?></i></button>
                         </div>
                       </div>
                       <div class="row">
                         <div class="col">
-                            <a class="glyphicon glyphicon-cutlery" onclick="fixScroll('sentMessagesHTML');"><i class="fa fa-mail-forward"> <?= _('Sent') ?></i></a>
+                            <button id="toggle-to-sent" class="btn-general" onclick="toggleDiv()"><i class="fa fa-mail-forward"> <?= _('Sent') ?></i></button>
                         </div>
                       </div>
                     </div>
@@ -131,11 +158,9 @@ white-space: nowrap;
 
                 <div class="col-md-9">
                     <div class="row">
-                        <div style="padding-top: 50px;"></div>
+                        <div style="padding-top: 50px;"></div> 
 
-                        <div id="inboxOrSentMessages"></div> 
-
-                        <div id="container" style="width:100%; height:150px;">
+                        <div id="inbox">
                             <div class="table-responsive">
                                 <table class="table table-hover">
                                     <thead>
@@ -149,7 +174,6 @@ white-space: nowrap;
 
                                     <tbody>
                                         <?php foreach ($data[0] as $message) { ?>
-                                            
                                                 <tr>
                                                     <td class="name">
                                                         <a class="detailsLink" href="/Message/messageDetails/<?= $message->message_id ?>">
@@ -162,11 +186,6 @@ white-space: nowrap;
                                                         </div>
                                                     </td>
                                                     <td class="time"><?= htmlentities($message->timestamp) ?></td>
-    <!--                                                 <td>
-                                                        <a id="deleteMessage" href='/Message/delete/<?= htmlentities($message->message_id) ?>'>
-                                                            <i class="bi bi-x"></i>
-                                                        </a>
-                                                    </td> -->
                                                 </tr>
                                             
                                         <?php } ?>
@@ -174,46 +193,8 @@ white-space: nowrap;
                                 </table>
                             </div>
                         </div>
-                        <div id="inboxHTML"  style="display: none; height:20px;">
+                        <div id="sent" style="display: none;">
                             <div class="table-responsive">
-                                <table class="table table-hover">
-                                    <thead>
-                                        <tr>
-                                        <th scope="col"><?= _('FROM') ?></th>
-                                        <th scope="col"><?= _('MESSAGE') ?></th>
-                                        <th scope="col"><?= _('TIME') ?></th>
-                                        <!-- <th scope="col"></th> -->
-                                        </tr>
-                                    </thead>
-
-                                    <tbody>
-                                        <?php foreach ($data[0] as $message) { ?>
-                                            <a href="/Message/messageDetails/<?= $message->message_id ?>">
-                                                <tr>
-                                                    <td class="name">
-                                                        <a class="detailsLink" href="/Message/messageDetails/<?= $message->message_id ?>">
-                                                            <?= htmlentities($message->sender_full_name) ?>
-                                                        </a>
-                                                    </td>
-                                                    <td class="subject">
-                                                        <div class="overflowing">
-                                                            <?= htmlentities($message->message) ?>
-                                                        </div>
-                                                    </td>
-                                                    <td class="time"><?= htmlentities($message->timestamp) ?></td>
-    <!--                                                 <td>
-                                                        <a name="<?= htmlentities($message->message_id) ?>" href='/Message/delete/<?= htmlentities($message->message_id) ?>'>
-                                                            <i class="bi bi-x"></i>
-                                                        </a>
-                                                    </td> -->
-                                                </tr>
-                                            </a>
-                                        <?php } ?>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                        <div id="sentMessagesHTML"  style="display: none; height:20px;"><div class="table-responsive">
                                 <table class="table table-hover">
                                     <thead>
                                         <tr>
@@ -245,8 +226,8 @@ white-space: nowrap;
                                         <?php } ?>
                                     </tbody>
                                 </table>
-                            </div>
-                        </div>                 
+                            </div>              
+                        </div>
                     </div>
                 </div>
 

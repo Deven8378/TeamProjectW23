@@ -55,7 +55,7 @@ class Message extends \app\core\Model{
 	}
 
 	public function getSpecificMessage($message_id){
-		$SQL = "SELECT `message`.`message_id`, `message`.`receiver_full_name` , `message`.`sender_full_name`, `message`.`message`, `message`.`timestamp` FROM `message` WHERE message_id=:message_id";
+		$SQL = "SELECT `message`.`message_id`, `message`.`receiver`, `message`.`receiver_full_name` , `message`.`sender_full_name`, `message`.`message`, `message`.`timestamp` FROM `message` WHERE message_id=:message_id";
 		$STH = self::$connection->prepare($SQL);
 		$data = ['message_id'=>$message_id];
 		$STH->execute($data);

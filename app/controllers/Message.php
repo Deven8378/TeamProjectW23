@@ -31,9 +31,9 @@ class Message extends \app\core\Controller
 					$message->receiver_full_name = $profile->first_name . ' ' . $profile->middle_name . ' ' . $profile->last_name;
 					$message->sender_full_name = $currentProfile->first_name . ' ' . $currentProfile->middle_name . ' ' . $currentProfile->last_name;
 					$message->insert();
-					header('location:/Message/index#sendMessage?success=Message Sent.');
+					header('location:/Message/index?success=Message Sent.');
 				} else {
-					header('location:/Message/index#sendMessage?error=' . "$receiver is not a valid user. No message sent.");
+					header('location:/Message/index?error=' . "$receiver is not a valid user. No message sent.");
 				}
 			} else {
 				header('location:/Message/index?error=Please fill the required fields.');
