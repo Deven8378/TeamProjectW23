@@ -30,12 +30,12 @@ class Ingredient extends \app\core\Controller
         if ($user->user_type == "admin"){
             $isAdmin = true;
         }
-
         $this->view('Ingredient/index', [$ingredients, $categories, $numResults, $isAdmin]);
     }
 
     #[\app\filters\EmployeeAndAdmin]
-    public function ingredientDetails($ingredient_id){
+    public function ingredientDetails($ingredient_id)
+    {
         $ingredient = new \app\models\Ingredient();
         $success = $ingredient->getIngredientDetails($ingredient_id);
 
@@ -50,8 +50,9 @@ class Ingredient extends \app\core\Controller
 
         $type = $user->user_type;
         $isAdmin = false;
-        if ($type == "admin")
+        if ($type == "admin"){
             $isAdmin = true;
+        }
 
         if($success){
             $this->view('Ingredient/ingredientDetails', [$success, $totalQuantity, $allQuantity, $isAdmin]);
@@ -65,9 +66,8 @@ class Ingredient extends \app\core\Controller
     #[\app\filters\Admin]
     public function createIngredient() 
     {
-        
-        if (isset($_POST['action'])) {
-
+        if (isset($_POST['action'])) 
+        {
             if($_POST['name']!='' && $_POST['name']!=null && $_POST['category']!='' && $_POST['category']!=null)
             {
                 $ingredient = new \app\models\Ingredient();
@@ -99,7 +99,6 @@ class Ingredient extends \app\core\Controller
             $categories = $categories->getCategories();
             $this->view('Ingredient/createIngredient', $categories);
         }
-
     }
 
     #[\app\filters\Admin]
@@ -220,7 +219,8 @@ class Ingredient extends \app\core\Controller
     }
 
     #[\app\filters\EmployeeAndAdmin]
-    public function quantityUpdate($iq_id) { 
+    public function quantityUpdate($iq_id) 
+    { 
         $ingredientQuantity = new IngredientQuantity();
         $ingredientQuantity = $ingredientQuantity->getOneQuantity($iq_id);
 

@@ -27,14 +27,15 @@ class Product extends \app\core\Controller
         $user = new User();
         $user = $user->getByUserType($_SESSION['user_id']);
         $isAdmin = false;
-        if ($user->user_type == "admin")
+        if ($user->user_type == "admin"){
             $isAdmin = true;
-
+        }
         $this->view('Product/index', [$products, $categories, $numResults, $isAdmin]);
     }
     
     #[\app\filters\EmployeeAndAdmin]
-    public function productDetails($product_id){
+    public function productDetails($product_id)
+    {
         $product = new \app\models\Product();
         $success = $product->getProductDetails($product_id);
 
@@ -49,12 +50,12 @@ class Product extends \app\core\Controller
 
         $type = $user->user_type;
         $isAdmin = false;
-        if ($type == "admin")
+        if ($type == "admin"){
             $isAdmin = true;
+        }
 
         if($success){
             $this->view('Product/productDetails', [$success, $totalQuantity, $allQuantity,$isAdmin]);
-
         } else {
             header('location:/Product/index?error=Product does not exists.');
         }
@@ -63,7 +64,8 @@ class Product extends \app\core\Controller
     // Creating, Editing, Deleting
 
     #[\app\filters\Admin]
-    public function createProduct() {
+    public function createProduct() 
+    {
         if (isset($_POST['action'])) 
         {
             if($_POST['name']!='' && $_POST['name']!=null && $_POST['category']!='' && $_POST['category']!=null)
@@ -100,7 +102,8 @@ class Product extends \app\core\Controller
     }
 
     #[\app\filters\Admin]
-    public function edit($product_id) {
+    public function edit($product_id) 
+    {
         $categories = new Category();
         $categories = $categories->getCategories();
         $product = new \app\models\Product();
@@ -133,7 +136,8 @@ class Product extends \app\core\Controller
     }
 
     #[\app\filters\Admin]
-    public function delete($product_id) {
+    public function delete($product_id) 
+    {
         $product = new \app\models\Product();
         $success = $product->deleteProduct($product_id);
         if($success){
@@ -144,8 +148,7 @@ class Product extends \app\core\Controller
         }
     }
 
-
-     #[\app\filters\Admin]
+    #[\app\filters\Admin]
     public function addQuantity($product_id) 
     {
         if (isset($_POST['action'])) {
@@ -176,7 +179,6 @@ class Product extends \app\core\Controller
             $products = new \app\models\Product();
             $products = $products->getProductDetails($product_id);
             $this->view('Product/addQuantity',$products);
-
         }
     }
 
@@ -217,7 +219,8 @@ class Product extends \app\core\Controller
     }
 
     #[\app\filters\EmployeeAndAdmin]
-    public function quantityUpdate($product_id) { //form action method
+    public function quantityUpdate($pq_id) 
+    { 
         $productQuantity = new ProductQuantity();
         $productQuantity = $productQuantity->getOneQuantity($pq_id);
 

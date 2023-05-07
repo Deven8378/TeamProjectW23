@@ -81,6 +81,8 @@
                   <td><?= $quantity->expired_date ?></td>
                   <td><?= $quantity->price ?></td>
                   <td><?= $quantity->daysLeft ?></td>
+                  <?php var_dump($quantity);
+                  ?>
                   <td>
                     <div class="btn-group dropend">
                       <button type="button" class="btn-more" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="bi bi-three-dots-vertical"></i>More</button>
