@@ -11,26 +11,7 @@ class Profile extends \app\core\Model
 	public $phone_number;
 	public $status;	
 
-	
-	public function insert()
-	{
-		$SQL = 'INSERT INTO profile(user_id, first_name, middle_name, last_name, email, phone_number, status) 
-				VALUES (:user_id, :first_name, :middle_name, :last_name, :email, :phone_number, :status)';
-		$STH = self::$connection->prepare($SQL);
-		$data = [
-				'user_id'=>$this->user_id,
-				'first_name'=>$this->first_name,
-				'middle_name'=>$this->middle_name,
-				'last_name'=>$this->last_name,
-				'email'=>$this->email,
-				'phone_number'=>$this->phone_number,
-				'status'=>$this->status
-		];
-
-		$STH->execute($data);
-
-		return self::$connection->lastInsertId();
-	}
+	// Select Statements
 
 	public function getByEmail($email)
 	{
@@ -64,15 +45,26 @@ class Profile extends \app\core\Model
 		return $STH->fetch();
 	}
 
-	public function delete($user_id)
+	// Create, Edit, Delete
+	
+	public function insert()
 	{
-		$SQL = "DELETE FROM profile WHERE user_id=:user_id";
+		$SQL = 'INSERT INTO profile(user_id, first_name, middle_name, last_name, email, phone_number, status) 
+				VALUES (:user_id, :first_name, :middle_name, :last_name, :email, :phone_number, :status)';
 		$STH = self::$connection->prepare($SQL);
 		$data = [
-			'user_id'=>$user_id
+				'user_id'=>$this->user_id,
+				'first_name'=>$this->first_name,
+				'middle_name'=>$this->middle_name,
+				'last_name'=>$this->last_name,
+				'email'=>$this->email,
+				'phone_number'=>$this->phone_number,
+				'status'=>$this->status
 		];
+
 		$STH->execute($data);
-		return $STH->rowCount();
+
+		return self::$connection->lastInsertId();
 	}
 
 	public function editProfile($user_id)
@@ -92,5 +84,17 @@ class Profile extends \app\core\Model
 		return $STH->rowCount();
 
 	}
+
+	public function delete($user_id)
+	{
+		$SQL = "DELETE FROM profile WHERE user_id=:user_id";
+		$STH = self::$connection->prepare($SQL);
+		$data = [
+			'user_id'=>$user_id
+		];
+		$STH->execute($data);
+		return $STH->rowCount();
+	}
+
 
 }

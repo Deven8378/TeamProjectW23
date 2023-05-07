@@ -102,7 +102,5 @@ class User extends \app\core\Controller
             var_dump($token);
             var_dump($secretkey);
         }
-        
     }
-
 }
