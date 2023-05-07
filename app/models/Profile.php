@@ -29,7 +29,7 @@ class Profile extends \app\core\Model
 
 		$STH->execute($data);
 
-		return $STH->lastInsertId();
+		return self::$connection->lastInsertId();
 	}
 
 	public function getByEmail($email)

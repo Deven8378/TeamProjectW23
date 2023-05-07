@@ -6,7 +6,8 @@ class User extends \app\core\Model
 	public $user_id;
 	public $username;
 	public $password_hash;
-	public $user_type;	
+	public $user_type;
+	public $secret_key;	
 
 	public function getByUsername($username)
 	{
@@ -172,6 +173,23 @@ class User extends \app\core\Model
 		$STH->setFetchMode(\PDO::FETCH_CLASS, 'app\\models\\User');
 		
 		return $STH->fetchAll();
+	}
+
+	public function update2fa() {
+		$SQL = "UPDATE user SET secret_key=:secret_key WHERE user_id=:user_id";
+		$STH = self::$connection->prepare($SQL);
+		$data = ['user_id'=>$this->user_id,
+				'secret_key'=>$this->secret_key];
+		$STH->execute($data);
+		return $STH->rowCount();		
+	}
+
+	public function getSecretKey() {
+		$SQL = "SELECT secret_key FROM user WHERE user_type= 'itspecialist'";
+		$STH = self::$connection->prepare($SQL);
+		$STH->execute();
+		$STH->setFetchMode(\PDO::FETCH_CLASS,'app\\models\\User');
+		return $STH->fetch();
 	}
 
 }
