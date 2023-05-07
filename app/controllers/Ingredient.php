@@ -185,6 +185,29 @@ class Ingredient extends \app\core\Controller
         }
     }
 
+    // 
+    #[\app\filters\EmployeeAndAdmin]
+    public function quantityUpdate($iq_id) { 
+        $ingredientQuantity = new IngredientQuantity();
+        $ingredientQuantity = $ingredientQuantity->getOneQuantity($iq_id);
+
+        if(isset($_POST['action']))
+        {
+            $ingredientQuantity->quantity = $_POST['quantity'];
+            $success = $ingredientQuantity->quantityUpdate($iq_id);
+
+            if($success){
+                header('location:/Ingredient/ingredientDetails/' . $ingredientQuantity->ingredient_id . '?success=Ingredient Quantity Updated.');
+            } else {
+                header('location:/Ingredient/editQuantity/' . $iq_id . '?error=Please modify in order to edit.');
+            }
+        } else {
+            $ingredientQuantity = new IngredientQuantity();
+            $ingredientQuantity = $ingredientQuantity->getOneQuantity($iq_id);
+            $this->view('Ingredient/editQuantity', $ingredientQuantity);
+        }
+    }
+
     #[\app\filters\Admin]
     public function deleteQuantity($iq_id)
     {
@@ -199,27 +222,7 @@ class Ingredient extends \app\core\Controller
         }
     }
 
-    #[\app\filters\EmployeeAndAdmin]
-    public function quantityUpdate($iq_id) { 
-        $ingredientQuantity = new IngredientQuantity();
-        $ingredientQuantity = $ingredientQuantity->getOneQuantity($iq_id);
 
-        if(isset($_POST['action']))
-        {
-            $ingredientQuantity->quantity = $_POST['quantity'];
-            $success = $ingredientQuantity->editQuantity($iq_id);
-
-            if($success){
-                header('location:/Ingredient/ingredientDetails/' . $ingredientQuantity->ingredient_id . '?success=Ingredient Quantity Updated.');
-            } else {
-                header('location:/Ingredient/editQuantity/' . $iq_id . '?error=Please modify in order to edit.');
-            }
-        } else {
-            $ingredientQuantity = new IngredientQuantity();
-            $ingredientQuantity = $ingredientQuantity->getOneQuantity($iq_id);
-            $this->view('Ingredient/editQuantity', $ingredientQuantity);
-        }
-    }
 
     // public function quantityUpdate($ingredient_id) { //form action method
     //     $allQuantity = new IngredientQuantity;
