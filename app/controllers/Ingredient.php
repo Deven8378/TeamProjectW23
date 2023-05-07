@@ -132,7 +132,7 @@ class Ingredient extends \app\core\Controller
                 header('location:/Ingredient/edit/' . $ingredient_id. '?error=Please fill the required fields.');
             }
         } else {
-            $this->view('Ingredient/editIngredient', [$ingredient,$categories]);
+            $this->view('Ingredient/edit', [$ingredient,$categories]);
         }
     }
 
