@@ -140,17 +140,28 @@ class Ingredient extends \app\core\Controller
     public function addQuantity($ingredient_id) 
     {
         if (isset($_POST['action'])) {
-            $ingredient_quantity = new IngredientQuantity();
-            $ingredient_quantity->arrival_date = $_POST['arrival_date'];
-            $ingredient_quantity->expired_date = $_POST['expired_date'];
-            $ingredient_quantity->quantity = $_POST['quantity'];
-            $ingredient_quantity->price = $_POST['price'];
-            $success = $ingredient_quantity->addIngredientQuantity($ingredient_id);
+            if(!empty($_POST['arrival_date']) && !empty($_POST['expired_date']) &&
+                !empty($_POST['quantity']) && !empty($_POST['price']))
+            {
+                if(strtotime($_POST['expired_date']) > strtotime($_POST['arrival_date']))
+                {
+                    $ingredient_quantity = new IngredientQuantity();
+                    $ingredient_quantity->arrival_date = $_POST['arrival_date'];
+                    $ingredient_quantity->expired_date = $_POST['expired_date'];
+                    $ingredient_quantity->quantity = $_POST['quantity'];
+                    $ingredient_quantity->price = $_POST['price'];
+                    $success = $ingredient_quantity->addIngredientQuantity($ingredient_id);
 
-            if($success){
-                header('location:/Ingredient/ingredientDetails/' . $ingredient_id. '?success=Ingredient added quantity.');
+                    if($success){
+                        header('location:/Ingredient/ingredientDetails/' . $ingredient_id. '?success=Ingredient added quantity.');
+                    } else {
+                        header('location:/Ingredient/ingredientDetails/' . $ingredient_id. '?error=Something went wrong when adding quantity. Please Try again.');
+                    } 
+                } else {
+                    header('location:/Ingredient/addQuantity/' . $ingredient_id. '?error=Please recheck dates.');
+                }
             } else {
-                header('location:/Ingredient/editingredient/' . $ingredient_id. '?error=Something went wrong when adding quantity. Please Try again.');
+                header('location:/Ingredient/addQuantity/' . $ingredient_id. '?error=Please fill the required fields.');
             }
         } else {
             $ingredient = new \app\models\Ingredient();
