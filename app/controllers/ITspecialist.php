@@ -3,7 +3,6 @@ namespace app\controllers;
 
 use \app\models\User;
 use \app\models\Profile;
-
 #[\app\filters\ITSpecialist]
 class ITspecialist extends \app\core\Controller 
 {

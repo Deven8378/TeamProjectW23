@@ -63,8 +63,8 @@ class Ingredient extends \app\core\Controller
         
         if (isset($_POST['action'])) {
 
-            if($_POST['name']!='' && $_POST['name']!=null && $_POST['category']!='' && $_POST['category']!=null){
-
+            if($_POST['name']!='' && $_POST['name']!=null && $_POST['category']!='' && $_POST['category']!=null)
+            {
                 $ingredient = new \app\models\Ingredient();
                 $ingredient->name = htmlentities($_POST['name']);
                 $ingredient->category = htmlentities($_POST['category']);
@@ -107,20 +107,24 @@ class Ingredient extends \app\core\Controller
 
         if(isset($_POST['action']))
         {
-            $ingredient->name = htmlentities($_POST['name']);
-            $ingredient->category = htmlentities($_POST['category']);
-            $ingredient->description = htmlentities($_POST['description']);
-            $picture = $this->saveIngredient($_FILES['ingredientPicture']);
+            if($_POST['name']!='' && $_POST['name']!=null && $_POST['category']!='' && $_POST['category']!=null){
+                $ingredient->name = htmlentities($_POST['name']);
+                $ingredient->category = htmlentities($_POST['category']);
+                $ingredient->description = htmlentities($_POST['description']);
+                $picture = $this->saveIngredient($_FILES['ingredientPicture']);
 
-            if($picture){ 
-                $ingredient->picture = $picture;
-            }
-            $success = $ingredient->editIngredient($ingredient_id);
+                if($picture){ 
+                    $ingredient->picture = $picture;
+                }
+                $success = $ingredient->editIngredient($ingredient_id);
 
-            if($success){
-                header('location:/Ingredient/ingredientDetails/' . $ingredient_id. '?success=Ingredient Updated.');
+                if($success){
+                    header('location:/Ingredient/ingredientDetails/' . $ingredient_id. '?success=Ingredient Updated.');
+                } else {
+                    header('location:/Ingredient/edit/' . $ingredient_id. '?error=Please modify in order to edit.');
+                }
             } else {
-                header('location:/Ingredient/edit/' . $ingredient_id. '?error=Please modify in order to edit.');
+                header('location:/Ingredient/edit/' . $ingredient_id. '?error=Please fill the required fields.');
             }
         } else {
             $this->view('Ingredient/editIngredient', [$ingredient,$categories]);
@@ -133,6 +137,7 @@ class Ingredient extends \app\core\Controller
         $ingredient = new \app\models\Ingredient();
         $success = $ingredient->deleteIngredient($ingredient_id);
         if($success){
+            unlink("ingredientImages/$success->picture");
             header('location:/Ingredient/index?success=Ingredient deleted.');
         } else {
             header('location:/Ingredient/index?error=Error occured.');
@@ -207,9 +212,8 @@ class Ingredient extends \app\core\Controller
             $ingredientQuantity = $ingredientQuantity->getOneQuantity($iq_id);
             $this->view('Ingredient/editQuantity', $ingredientQuantity);
         }
-}
+    }
 
-    // 
     #[\app\filters\EmployeeAndAdmin]
     public function quantityUpdate($iq_id) { 
         $ingredientQuantity = new IngredientQuantity();
