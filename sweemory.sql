@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 03, 2023 at 05:47 PM
+-- Generation Time: May 07, 2023 at 04:07 AM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -36,6 +36,22 @@ CREATE TABLE `category` (
   `timestamp` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `category`
+--
+
+INSERT INTO `category` (`category_id`, `category_name`, `timestamp`) VALUES
+(1, 'Powders', '2023-05-06 01:44:14'),
+(2, 'Nuts and Seeds', '2023-05-06 01:44:31'),
+(3, 'Fruits', '2023-05-06 01:44:54'),
+(4, 'Dairy', '2023-05-06 01:45:13'),
+(5, 'Vegetables', '2023-05-06 01:45:23'),
+(6, 'Sweets', '2023-05-06 01:45:43'),
+(7, 'Cereals', '2023-05-06 01:45:49'),
+(8, 'Syrups', '2023-05-06 01:45:56'),
+(9, 'Others', '2023-05-06 01:46:01'),
+(10, 'Ice Cream', '2023-05-06 02:58:00');
+
 -- --------------------------------------------------------
 
 --
@@ -50,6 +66,20 @@ CREATE TABLE `ingredient` (
   `description` text NOT NULL,
   `picture` varchar(128) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `ingredient`
+--
+
+INSERT INTO `ingredient` (`ingredient_id`, `name`, `category`, `description`, `picture`) VALUES
+(1, 'Vanilla Powder', 1, 'Made from ground vanilla beans.', '6456c49a3df27.png'),
+(2, 'Cacao Powder', 1, 'Extracted from cacao beans.', '6455b25479b36.jpg'),
+(3, 'Salep Powder', 1, 'Orchid root powder.', '6455b2a6bb154.jpg'),
+(4, 'Nescafe Instant Coffee', 1, 'Instant coffee.', '6455b2f14de09.jpg'),
+(5, 'Pistachio', 2, 'The pistachio a member of the cashew family.', '6455b34777a11.jpg'),
+(6, 'Almonds', 2, 'The almond is a tree nut native to the Mediterranean region.', '6455b3b428375.png'),
+(7, 'Milk', 4, 'Milk is an emulsion or colloid of butterfat globules within a water-based fluid that contains dissolved carbohydrates and protein aggregates with minerals.', '6455b3eabd191.jpg'),
+(8, 'Sugar', 1, 'Sugar is the generic name for sweet-tasting, soluble carbohydrates, many of which are used in food.', '6455b4305f11f.jpg');
 
 -- --------------------------------------------------------
 
@@ -80,7 +110,8 @@ CREATE TABLE `message` (
   `sender` int(11) NOT NULL,
   `message` text NOT NULL,
   `timestamp` timestamp NOT NULL DEFAULT current_timestamp(),
-  `full_name` varchar(50) NOT NULL
+  `receiver_full_name` varchar(50) NOT NULL,
+  `sender_full_name` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -152,9 +183,8 @@ CREATE TABLE `profile` (
 INSERT INTO `profile` (`user_id`, `first_name`, `middle_name`, `last_name`, `email`, `phone_number`, `status`) VALUES
 (2, 'Nicole', '', 'Bautista', 'nicole@gmail.com', '5141234567', 'active'),
 (3, 'Deven', '', 'Patel', 'deven@gmail.com', '5141234567', 'active'),
-(4, 'Rachelle', 'Secret', 'Badua', 'rachelle@gmail.com', '5141234567', 'inactive'),
-(14, 'Mubeen', 'Academy', 'Khan', 'mubeen@email.com', '5141234567', 'active');
-
+(4, 'Rachelle', 'Secret', 'Badua', 'rachelle@gmail.com', '5141234567', 'active'),
+(5, 'Mubeen', 'Academy', 'Khan', 'mubeen@email.com', '5141234567', 'active');
 -- --------------------------------------------------------
 
 --
@@ -192,8 +222,7 @@ INSERT INTO `user` (`user_id`, `user_type`, `username`, `password_hash`) VALUES
 (2, 'admin', 'Nicole', '$2y$10$MM.fKeE0SWVsfdj1K8ZHru1/qkqX8u8EV1.xCqBragA/EkqGZSW8q'),
 (3, 'admin', 'Deven', '$2y$10$zaiI4rIJ3ZEMVkzGOtTLIuTuu3usc8/QLJq3.c.EbsTXo6KoLyPg.'),
 (4, 'employee', 'Rachelle', '$2y$10$dPLEgTN9QKC5E3Z6u/IYN./YsL07/aG/MSS1XAfEYNyH/lrLGcVf.'),
-(14, 'employee', 'employee', '$2y$10$Ll3.loOOb8rS9YkBPuvUrOH30lpPpgZTRZ.qpD6ixn4BhkjCEcH9.');
-
+(5, 'employee', 'employee', '$2y$10$Ll3.loOOb8rS9YkBPuvUrOH30lpPpgZTRZ.qpD6ixn4BhkjCEcH9.');
 --
 -- Indexes for dumped tables
 --
@@ -270,25 +299,25 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `category`
 --
 ALTER TABLE `category`
-  MODIFY `category_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `category_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `ingredient`
 --
 ALTER TABLE `ingredient`
-  MODIFY `ingredient_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `ingredient_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `ingredient_quantity`
 --
 ALTER TABLE `ingredient_quantity`
-  MODIFY `iq_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `iq_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `message`
 --
 ALTER TABLE `message`
-  MODIFY `message_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `message_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT for table `notification`
@@ -300,7 +329,7 @@ ALTER TABLE `notification`
 -- AUTO_INCREMENT for table `product`
 --
 ALTER TABLE `product`
-  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `product_quantity`
@@ -318,7 +347,7 @@ ALTER TABLE `recipe`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- Constraints for dumped tables
