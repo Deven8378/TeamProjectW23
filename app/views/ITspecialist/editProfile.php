@@ -14,7 +14,7 @@
     </div>
     <div class="" style="flex: 50%;" >
       <dt class="dt-label"><?=_('Email')?></dt>
-      <input class="dd-right" type="" name="email" value="<?= $data->email ?>">
+      <input class="dd-right" type="email" name="email" value="<?= $data->email ?>">
 
       <dt class="dt-label"><?=_('Phone Number')?></dt>
       <input class="dd-right" type="" name="phone_number" value="<?= $data->phone_number ?>">

@@ -5,11 +5,7 @@ class IngredientQuantity extends \app\core\Model {
 
 	public $iq_id;
 	public $ingredient_id;
-	#[\app\validators\NonNull]
-	#[\app\validators\NonEmpty]
 	public $arrival_date;
-	#[\app\validators\NonNull]
-	#[\app\validators\NonEmpty]
 	public $expired_date;
 	public $quantity;
 	public $price;

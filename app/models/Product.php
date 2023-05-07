@@ -35,6 +35,17 @@ class Product extends \app\core\Model {
 		return $STH->fetchAll();
 	}
 
+	public function getSearchedSum($name) {
+		$SQL = "SELECT COUNT(product_id) FROM product WHERE name LIKE :name;";
+		$STH = self::$connection->prepare($SQL);
+		$data = [
+			'name'=>"%$name%"
+		];
+		$STH->execute($data);
+		$STH->setFetchMode(\PDO::FETCH_CLASS, 'app\\models\\Product');
+		return $STH->fetch();
+	}
+
 	public function search($name) {
 		$SQL = "SELECT * FROM product WHERE name LIKE :name;";
 		$STH = self::$connection->prepare($SQL);

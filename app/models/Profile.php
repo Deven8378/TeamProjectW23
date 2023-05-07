@@ -7,25 +7,12 @@ class Profile extends \app\core\Model
 	public $first_name;
 	public $middle_name;
 	public $last_name;
-	# [\app\validators\ValidEmail]
-	protected $email;
+	public $email;
 	public $phone_number;
 	public $status;	
 
-	// protected function setFirstName($value){
-	// 	$this->first_name = htmlentities($value, ENT_QUOTES);
-	// }
-
-	// protected function setLastName($value){
-	// 	$this->last_name = htmlentities($value, ENT_QUOTES);
-	// }
-
-	protected function setEmail($value){
-		$this->first_name = htmlentities($value, ENT_QUOTES);
-	}	
-
 	
-	protected function insert()
+	public function insert()
 	{
 		$SQL = 'INSERT INTO profile(user_id, first_name, middle_name, last_name, email, phone_number, status) 
 				VALUES (:user_id, :first_name, :middle_name, :last_name, :email, :phone_number, :status)';
@@ -42,7 +29,7 @@ class Profile extends \app\core\Model
 
 		$STH->execute($data);
 
-		$this->service_id = self::$connection->lastInsertId();
+		return $STH->lastInsertId();
 	}
 
 	public function getByEmail($email)
@@ -88,7 +75,7 @@ class Profile extends \app\core\Model
 		return $STH->rowCount();
 	}
 
-	protected function editProfile($user_id)
+	public function editProfile($user_id)
 	{
 		$SQL = "UPDATE profile SET first_name=:first_name, middle_name=:middle_name, last_name=:last_name,email=:email,phone_number=:phone_number,status=:status WHERE user_id=:user_id";
 		$STH = self::$connection->prepare($SQL);
@@ -105,6 +92,5 @@ class Profile extends \app\core\Model
 		return $STH->rowCount();
 
 	}
-
 
 }

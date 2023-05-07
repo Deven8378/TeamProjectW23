@@ -174,7 +174,7 @@ class ITspecialist extends \app\core\Controller
                     header('location:/ITspecialist/edit/' . $user_id.'?error=Error when modifying Profile.');
                 }
             }else{
-                header('location:/ITspecialist/edit/' . $user_id.'?error=Fill up the dam things, except for middle name');
+                header('location:/ITspecialist/edit/' . $user_id.'?error=Please Fill the Required Fields.');
             }
 
         }else{ 

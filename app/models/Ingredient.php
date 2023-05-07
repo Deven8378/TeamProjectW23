@@ -4,13 +4,7 @@ namespace app\models;
 class Ingredient extends \app\core\Model {
 
 	public $ingredient_id;
-
-	#[\app\validators\NonNull]
-	#[\app\validators\NonEmpty]
 	public $name;
-
-	#[\app\validators\NonNull]
-	#[\app\validators\NonEmpty]
 	public $category;
 	
 	public $description;
