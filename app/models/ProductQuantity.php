@@ -66,17 +66,6 @@ class ProductQuantity extends \app\core\Model {
 		return $STH->rowCount();		
 	}
 
-	public function quantityUpdate($pq_id) {
-		$SQL = "UPDATE `product_quantity` SET `quantity`=:quantity WHERE pq_id=:pq_id;";
-		$STH = self::$connection->prepare($SQL);
-		$data = [
-			'pq_id'=>$pq_id,
-			'quantity'=>$this->quantity
-		];
-		$STH->execute($data);
-		return $STH->rowCount();		
-	}
-
 	public function deleteQuantity($pq_id){
 		$SQL = "DELETE FROM `product_quantity` WHERE pq_id=:pq_id;";
 		$STH = self::$connection->prepare($SQL);

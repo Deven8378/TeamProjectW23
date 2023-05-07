@@ -4,7 +4,6 @@ namespace app\controllers;
 use \app\models\User;
 use \app\models\Category;
 use \app\models\ProductQuantity;
-use \app\models\User;
 
 #[\app\filters\ProfileCreated]
 #[\app\filters\Status]
@@ -23,7 +22,7 @@ class Product extends \app\core\Controller
         $categories = $categories->getCategories();
         $numResults = $product->getSum();
 
-        $user = new \app\models\User();
+        $user = new User();
         $user = $user->getByUserType($_SESSION['user_id']);
         $isAdmin = false;
         if ($user->user_type == "admin")
@@ -46,17 +45,10 @@ class Product extends \app\core\Controller
         $isAdmin = false;
         if ($type == "admin")
             $isAdmin = true;
-<<<<<<< HEAD
-
-
 
         if($success){
             $this->view('Product/productDetails', [$success, $totalQuantity, $allQuantity,$isAdmin]);
-=======
 
-        if($success){
-            $this->view('Product/productDetails', [$success, $totalQuantity, $allQuantity, $isAdmin]);
->>>>>>> 7cc8cc612ec81f01dd007b95789a979db2387925
         } else {
             header('location:/Product/index?error=Product does not exists.');
         }
@@ -130,7 +122,7 @@ class Product extends \app\core\Controller
                 header('location:/Product/edit/' . $product_id. '?error=Please fill the required fields.');
             }
         } else {
-            $this->view('Product/editProduct', [$product,$categories]);
+            $this->view('Product/edit', [$product,$categories]);
         }
     }
 
@@ -151,13 +143,13 @@ class Product extends \app\core\Controller
     public function addQuantity($product_id) 
     {
         if (isset($_POST['action'])) {
-            if(!empty($_POST['arrival_date']) && !empty($_POST['expired_date']) &&
+            if(!empty($_POST['expired_date']) && !empty($_POST['produced_date']) &&
                 !empty($_POST['quantity']) && !empty($_POST['price']))
             {
-                if(strtotime($_POST['expired_date']) > strtotime($_POST['arrival_date']))
+                if(strtotime($_POST['expired_date']) > strtotime($_POST['produced_date']))
                 {
                     $product_quantity = new ProductQuantity();
-                    $product_quantity->arrival_date = $_POST['arrival_date'];
+                    $product_quantity->produced_date = $_POST['produced_date'];
                     $product_quantity->expired_date = $_POST['expired_date'];
                     $product_quantity->quantity = $_POST['quantity'];
                     $product_quantity->price = $_POST['price'];
@@ -175,15 +167,10 @@ class Product extends \app\core\Controller
                 header('location:/Product/addQuantity/' . $product_id. '?error=Please fill the required fields.');
             }
         } else {
-<<<<<<< HEAD
             $products = new \app\models\Product();
             $products = $products->getProductDetails($product_id);
             $this->view('Product/addQuantity',$products);
-=======
-            $product = new \app\models\Product();
-            $product = $product->getProductDetails($product_id);
-            $this->view('Product/addQuantity', $product);
->>>>>>> 7cc8cc612ec81f01dd007b95789a979db2387925
+
         }
     }
 
@@ -228,7 +215,6 @@ class Product extends \app\core\Controller
         $productQuantity = new ProductQuantity();
         $productQuantity = $productQuantity->getOneQuantity($iq_id);
 
-<<<<<<< HEAD
         if (isset($_POST['action'])) {
             if(!empty($_POST['produced_date']) && !empty($_POST['expired_date']) &&
                 !empty($_POST['quantity']) && !empty($_POST['price']))
@@ -255,21 +241,7 @@ class Product extends \app\core\Controller
         } else {
             $productQuantity = new ProductQuantity();
             $productQuantity = $productQuantity->getOneQuantity($pq_id);
-=======
-        if(isset($_POST['action']))
-        {
-            $productQuantity->quantity = $_POST['quantity'];
-            $success = $productQuantity->quantityUpdate($iq_id);
 
-            if($success){
-                header('location:/Product/productDetails/' . $productQuantity->product_id . '?success=Product Quantity Updated.');
-            } else {
-                header('location:/Product/editQuantity/' . $iq_id . '?error=Please modify in order to edit.');
-            }
-        } else {
-            $productQuantity = new ProductQuantity();
-            $productQuantity = $productQuantity->getOneQuantity($iq_id);
->>>>>>> 7cc8cc612ec81f01dd007b95789a979db2387925
             $this->view('Product/editQuantity', $productQuantity);
         }
     }
@@ -288,9 +260,9 @@ class Product extends \app\core\Controller
         }
     }
 
-<<<<<<< HEAD
+
     #[\app\filters\EmployeeAndAdmin]
-    public function quantityUpdate($pq_id) { 
+   /* public function quantityUpdate($pq_id) { 
         $productQuantity = new ProductQuantity();
         $productQuantity = $productQuantity->getOneQuantity($pq_id);
 
@@ -309,12 +281,9 @@ class Product extends \app\core\Controller
             $productQuantity = $productQuantity->getOneQuantity($pq_id);
             $this->view('Product/editQuantity', $productQuantity);
         }
-    }
-=======
+    } */
 
     // Filters
->>>>>>> 7cc8cc612ec81f01dd007b95789a979db2387925
-
     public function search() 
     {
         $products = new \app\models\Product();
@@ -348,7 +317,7 @@ class Product extends \app\core\Controller
 
         $numResults = $products->getFilteredSum($category_id);
 
-        $user = new \app\models\User();
+        $user = new User();
         $user = $user->getByUserType($_SESSION['user_id']);
         $isAdmin = false;
         if ($user->user_type == "admin")
