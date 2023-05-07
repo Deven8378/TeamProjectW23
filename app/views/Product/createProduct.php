@@ -22,9 +22,9 @@ align='center'>
 		</div>
 		<textarea class="input-inv" name="description" placeholder="<?= _('Description...') ?>" ></textarea>
 
-		<div class="grid-50" align="center">
+		<div class="grid-50" style="margin-right: 0px;" align="center">
 
-			<label>Picture</label>
+			<label><?=_('Picture')?></label>
 			<!-- Place holder for input type file might be useless -->
 			<label class="file-label" >
 				<input class="file-input" type="file" placeholder="<?=_('Picture')?>" name="productPicture">

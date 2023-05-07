@@ -35,7 +35,6 @@
 	.common-container {
 		background-color: #F3EBF6;
 	    width: 650px;
-/*	    height: 610px;*/
 		height: auto;
 	    margin: 3em auto;
 	    padding-bottom: 50px;
@@ -50,20 +49,17 @@
         --bs-gutter-y: 0;
         display: block;
         justify-content: center;
-        margin-top: calc(-1 * var(--bs-gutter-y));
-        margin-right: calc(-.5 * var(--bs-gutter-x));
-        margin-left: calc(-.5 * var(--bs-gutter-x));
+        margin-left: 20px;
+        margin-right: 20px;
         gap: 10px;
         align-items: flex-start !important;
         
     }
     .foodIMG-box{
-/*        flex: 0 0 auto; width: 41.66666667%;*/
+        margin-bottom: 5px;
     }
     .foodDetails-box {
-/*        font-size: 10px;*/
         font-size: clamp(0.625rem, 0.4808rem + 0.6154vw, 1rem);
-/*        flex: 0 0 auto; width: 58.33333333%*/
     }
     #foodIMG {
         width: 100%; 

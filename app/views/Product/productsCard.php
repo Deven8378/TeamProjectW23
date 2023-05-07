@@ -5,7 +5,7 @@ foreach ($data as $product) { ?>
     <div class="col">
       <a href="/Product/productDetails/<?= htmlentities($product->product_id) ?>">
       <div class="card">
-        <div id="ingredientIMG" ma>
+        <div id="ingredientIMG">
           <div class="image">
               <img style="width: 172px; height: 199.6px;" src="/productImages/<?= htmlentities($product->picture) ?>">
           </div>

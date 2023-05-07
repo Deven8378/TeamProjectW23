@@ -225,16 +225,12 @@ class Product extends \app\core\Controller
         $productQuantity = $productQuantity->getOneQuantity($pq_id);
 
         if (isset($_POST['action'])) {
-            if(!empty($_POST['produced_date']) && !empty($_POST['expired_date']) &&
-                !empty($_POST['quantity']) && !empty($_POST['price']))
+            if(!empty($_POST['quantity']))
             {
                 if(strtotime($_POST['expired_date']) > strtotime($_POST['produced_date']))
                 {
                     $productQuantity->quantity = $_POST['quantity'];
-                    $productQuantity->produced_date = $_POST['produced_date'];
-                    $productQuantity->expired_date = $_POST['expired_date'];
-                    $productQuantity->price = $_POST['price'];
-                    $success = $productQuantity->editQuantity($pq_id);
+                    $success = $productQuantity->quantityUpdate($pq_id);
 
                     if($success){
                         header('location:/Product/productDetails/' . $productQuantity->product_id . '?success=Product Quantity Updated.');
@@ -270,7 +266,7 @@ class Product extends \app\core\Controller
     }
 
 
-    #[\app\filters\EmployeeAndAdmin]
+   // #[\app\filters\EmployeeAndAdmin]
    /* public function quantityUpdate($pq_id) { 
         $productQuantity = new ProductQuantity();
         $productQuantity = $productQuantity->getOneQuantity($pq_id);

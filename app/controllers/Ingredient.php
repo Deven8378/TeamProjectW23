@@ -226,13 +226,18 @@ class Ingredient extends \app\core\Controller
 
         if(isset($_POST['action']))
         {
-            $ingredientQuantity->quantity = $_POST['quantity'];
-            $success = $ingredientQuantity->quantityUpdate($iq_id);
+            if(!empty($_POST['quantity']))
+            {
+                $ingredientQuantity->quantity = $_POST['quantity'];
+                $success = $ingredientQuantity->quantityUpdate($iq_id);
 
-            if($success){
-                header('location:/Ingredient/ingredientDetails/' . $ingredientQuantity->ingredient_id . '?success=Ingredient Quantity Updated.');
-            } else {
-                header('location:/Ingredient/editQuantity/' . $iq_id . '?error=Please modify in order to edit.');
+                if($success){
+                    header('location:/Ingredient/ingredientDetails/' . $ingredientQuantity->ingredient_id . '?success=Ingredient Quantity Updated.');
+                } else {
+                    header('location:/Ingredient/editQuantity/' . $iq_id . '?error=Please modify in order to edit.');
+                }
+            }else{
+                header('location:/Ingredient/editQuantity/' . $iq_id. '?error=Please fill the required fields.');
             }
         } else {
             $ingredientQuantity = new IngredientQuantity();

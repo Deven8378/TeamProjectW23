@@ -21,7 +21,7 @@
 		</select>
 
 
-		<textarea placeholder="<?= _('Description...') ?>" name="description" class="input-inv"><?= $data['0']->description ?></textarea><br>
+		<textarea placeholder="<?= _('Description...') ?>" name="description" class="input-inv"><?= $data['0']->description ?></textarea>
 
 		<div class="grid-50" style="margin-right: 0px;" align="center">
 			<label><?= _('Description') ?></label>
