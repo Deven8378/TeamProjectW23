@@ -76,31 +76,24 @@ class User extends \app\core\Controller
 
     #[\app\filters\ITSpecialist]
     public function twofasetup(){
-            $user = new \app\models\User();
-            $user = $user->getSecretKey();
-            $secretkey = $user->secret_key;
-            if ($secretkey != null) {
-                $_SESSION['secretkey'] = $secretkey;
-            }
 
+        $secretkey = "3U34JQI5J7RMWYTH";
         if(isset($_POST['action'])){
             $currentcode = $_POST['currentCode'];
-        if(\app\core\TokenAuth6238::verify($_SESSION['secretkey'],$currentcode)){//the user has verified their proper 2-factor authentication setup
-             $user->secret_key = $_SESSION['secretkey'];
-             $user->update2fa();
+        if(\app\core\TokenAuth6238::verify($secretkey,$currentcode)){//the user has verified their proper 2-factor authentication setup
+            $_SESSION['secretkey'] = $secretkey;
+            $user = new \app\models\User();
+            $user->secret_key = $secretkey;
+            $user->update2fa();
              header('location:/ITspecialist/index');
         }else{
              header('location:/User/twofasetup?error=token not verified!');//reload
+            }
         }
-        }else if ($secretkey == null){
-            $secretkey = \app\core\TokenAuth6238::generateRandomClue();
-            $_SESSION['secretkey'] = $secretkey;
-        } else {
-            $url = \app\core\TokenAuth6238::getLocalCodeUrl($_SESSION['user_type'],'sweemory.com',$secretkey,'Sweemory App');
-            $this->view('ITspecialist/twofasetup', $url);
-            $token = \app\core\TokenAuth6238::getTokenCode($secretkey);
-            var_dump($token);
-            var_dump($secretkey);
-        }
+        $url = \app\core\TokenAuth6238::getLocalCodeUrl($_SESSION['user_type'],'sweemory.com',$secretkey,'Sweemory App');
+        $this->view('ITspecialist/twofasetup', $url);
+
+
+        
     }
 }

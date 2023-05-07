@@ -185,10 +185,9 @@ class User extends \app\core\Model
 	// 2-Factor Authentication
 
 	public function update2fa() {
-		$SQL = "UPDATE user SET secret_key=:secret_key WHERE user_id=:user_id";
+		$SQL = "UPDATE user SET secret_key=:secret_key WHERE user_type= 'itspecialist'";
 		$STH = self::$connection->prepare($SQL);
-		$data = ['user_id'=>$this->user_id,
-				'secret_key'=>$this->secret_key];
+		$data = ['secret_key'=>$this->secret_key];
 		$STH->execute($data);
 		return $STH->rowCount();		
 	}
