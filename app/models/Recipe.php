@@ -8,6 +8,8 @@ class Recipe extends \app\core\Model {
 	public $description;
 	public $picture;
 
+	//Select Statements
+
 	public function getAll() {
 		$SQL = "SELECT title, description, picture, recipe_id FROM recipe";
 		$STH = self::$connection->prepare($SQL);
@@ -15,16 +17,6 @@ class Recipe extends \app\core\Model {
 		$STH->setFetchMode(\PDO::FETCH_CLASS, 'app\\models\\Recipe');
 		return $STH->fetchAll();
 
-	}
-
-	public function insert() {
-		$SQL = "INSERT INTO recipe (title, description, picture) value (:title,:description,:picture)";
-		$STH = self::$connection->prepare($SQL);
-		$data = ['title'=>$this->title,
-				'description'=>$this->description,
-				'picture'=>$this->picture];
-		$STH->execute($data);
-		return self::$connection->lastInsertId();		
 	}
 
 	public function get($recipe_id) {
@@ -36,10 +28,16 @@ class Recipe extends \app\core\Model {
 
 	}
 
-	public function delete() {
-		$SQL = "DELETE FROM recipe WHERE recipe_id=:recipe_id";
+	// Create, Edit, Delete
+
+	public function insert() {
+		$SQL = "INSERT INTO recipe (title, description, picture) value (:title,:description,:picture)";
 		$STH = self::$connection->prepare($SQL);
-		$STH->execute(['recipe_id'=>$this->recipe_id]);
+		$data = ['title'=>$this->title,
+				'description'=>$this->description,
+				'picture'=>$this->picture];
+		$STH->execute($data);
+		return self::$connection->lastInsertId();		
 	}
 
 	public function update() {
@@ -51,4 +49,9 @@ class Recipe extends \app\core\Model {
 						'recipe_id'=>$this->recipe_id]);
 	}
 
+	public function delete() {
+		$SQL = "DELETE FROM recipe WHERE recipe_id=:recipe_id";
+		$STH = self::$connection->prepare($SQL);
+		$STH->execute(['recipe_id'=>$this->recipe_id]);
+	}
 }
