@@ -5,6 +5,20 @@
     text-align: center !important
 }
 
+
+@media only screen and (max-width: 500px) {
+    .grid-50 {
+        display: grid; width: 50%; margin-right: 55px;
+    }
+}
+
+@media only screen and (min-width: 500px) {
+
+    .grid-50 {
+        display: grid; width: 50%; 
+    }
+}
+
 @media only screen and (max-width: 951px) {
 	.common-container {
 	    background-color: #F3EBF6;
@@ -289,9 +303,7 @@
     border: none;
 }
 
-.grid-50 {
-    display: grid; width: 50%;
-}
+
 .file-label {
     display: block;
     width: 100%;
