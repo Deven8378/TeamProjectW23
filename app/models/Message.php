@@ -10,6 +10,9 @@ class Message extends \app\core\Model{
 	public $receiver_full_name;
 	public $sender_full_name;
 
+
+	// Create, Delete
+
 	public function insert(){
 		$SQL = "INSERT INTO message (sender, receiver, message, receiver_full_name, sender_full_name) value (:sender, :receiver, :message, :receiver_full_name, :sender_full_name)";
 		$STH = self::$connection->prepare($SQL);
@@ -24,7 +27,6 @@ class Message extends \app\core\Model{
 	}
 
 	public function delete($message_id, $user_id){
-		//only the owner of the message can delete it
 		$SQL = "DELETE FROM message WHERE message_id=:message_id AND receiver=:receiver";
 		$STH = self::$connection->prepare($SQL);
 		$data = ['message_id'=>$message_id, 'receiver'=>$user_id];

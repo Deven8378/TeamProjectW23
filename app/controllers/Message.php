@@ -11,23 +11,29 @@ class Message extends \app\core\Controller
 	{
 		if(isset($_POST['action']))
 		{
-			$receiver = $_POST['receiver'] ?? '';
-			$profile = new Profile();
-			$profile = $profile->getByEmail($receiver);
-			$currentProfile = $profile->getByUserId($_SESSION['user_id']);
+			if($_POST['message'] != null && $_POST['message'] != "" &&
+				$_POST['receiver'] != null && $_POST['receiver'] != "")
+			{
+				$receiver = $_POST['receiver'] ?? '';
+				$profile = new Profile();
+				$profile = $profile->getByEmail($receiver);
+				$currentProfile = $profile->getByUserId($_SESSION['user_id']);
 
-			if($profile){
-				$message = new \app\models\Message();
-				$message->receiver = $profile->user_id;
-				//setting the FK to a PK value
-				$message->sender = $_SESSION['user_id'];
-				$message->message = $_POST['message'];
-				$message->receiver_full_name = $profile->first_name . ' ' . $profile->middle_name . ' ' . $profile->last_name;
-				$message->sender_full_name = $currentProfile->first_name . ' ' . $currentProfile->middle_name . ' ' . $currentProfile->last_name;
-				$message->insert();
-				header('location:/Message/index?success=Message Sent.');
+				if($profile){
+					$message = new \app\models\Message();
+					$message->receiver = $profile->user_id;
+					//setting the FK to a PK value
+					$message->sender = $_SESSION['user_id'];
+					$message->message = $_POST['message'];
+					$message->receiver_full_name = $profile->first_name . ' ' . $profile->middle_name . ' ' . $profile->last_name;
+					$message->sender_full_name = $currentProfile->first_name . ' ' . $currentProfile->middle_name . ' ' . $currentProfile->last_name;
+					$message->insert();
+					header('location:/Message/index#sendMessage?success=Message Sent.');
+				} else {
+					header('location:/Message/index#sendMessage?error=' . "$receiver is not a valid user. No message sent.");
+				}
 			} else {
-				header('location:/Message/index?error=' . "$receiver is not a valid user. No message sent.");
+				header('location:/Message/index?error=Please fill the required fields.');
 			}
 		} else {
 			$message = new \app\models\Message();
@@ -58,8 +64,7 @@ class Message extends \app\core\Controller
 		if($message){
 			$this->view('/Message/messageDetails', $message);
 		} else {
-			header('location:/Message/index?error=' . "There is no such message.");
+			header('location:/Message/index?error=There is no such message.');
 		}
-
 	}
 }
