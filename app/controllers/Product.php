@@ -3,6 +3,7 @@ namespace app\controllers;
 
 use \app\models\Category;
 use \app\models\ProductQuantity;
+use \app\models\User;
 
 #[\app\filters\ProfileCreated]
 #[\app\filters\Status]
@@ -56,10 +57,17 @@ class Product extends \app\core\Controller
         $totalQuantity = $totalQuantity->getTotalQuantity($product_id);
         $allQuantity = new ProductQuantity;
         $allQuantity = $allQuantity->getAll($product_id);
+        $user = new User();
+        $user = $user->getByUserId($_SESSION['user_id']);
+        $type = $user->user_type;
+        $isAdmin = false;
+        if ($type == "admin")
+            $isAdmin = true;
+
 
 
         if($success){
-            $this->view('Product/productDetails', [$success, $totalQuantity, $allQuantity]);
+            $this->view('Product/productDetails', [$success, $totalQuantity, $allQuantity,$isAdmin]);
         } else {
             header('location:/Product/index?error=Product does not exists.');
         }
@@ -122,32 +130,45 @@ class Product extends \app\core\Controller
                 header('location:/Product/edit/' . $product_id. '?error=Error.');
             }
         } else {
-            $this->view('Product/addQuantity');
+            $products = new \app\models\Product();
+            $products = $products->getProductDetails($product_id);
+            $this->view('Product/addQuantity',$products);
         }
     }
 
-    #[\app\filters\Admin]
+    #[\app\filters\EmployeeAndAdmin]
     public function editQuantity($pq_id)
     {  
         $productQuantity = new ProductQuantity();
         $productQuantity = $productQuantity->getOneQuantity($pq_id);
 
-        if(isset($_POST['action']))
-        {
-            $productQuantity->quantity = $_POST['quantity'];
-            $productQuantity->produced_date = $_POST['produced_date'];
-            $productQuantity->expired_date = $_POST['expired_date'];
-            $productQuantity->price = $_POST['price'];
-            $success = $productQuantity->editQuantity($pq_id);
+        if (isset($_POST['action'])) {
+            if(!empty($_POST['produced_date']) && !empty($_POST['expired_date']) &&
+                !empty($_POST['quantity']) && !empty($_POST['price']))
+            {
+                if(strtotime($_POST['expired_date']) > strtotime($_POST['produced_date']))
+                {
+                    $productQuantity->quantity = $_POST['quantity'];
+                    $productQuantity->arrival_date = $_POST['produced_date'];
+                    $productQuantity->expired_date = $_POST['expired_date'];
+                    $productQuantity->price = $_POST['price'];
+                    $success = $productQuantity->editQuantity($pq_id);
 
-            if($success){
-                header('location:/product/productDetails/' . $productQuantity->product_id . '?success=Product Quantity Updated.');
+                    if($success){
+                        header('location:/Product/productDetails/' . $productQuantity->product_id . '?success=Product Quantity Updated.');
+                    } else {
+                        header('location:/Product/editQuantity/' . $pq_id . '?error=Please modify in order to edit.');
+                    }
+                } else {
+                    header('location:/Product/editQuantity/' . $pq_id. '?error=Please recheck dates.');
+                }
             } else {
-                header('location:/product/productDetails/' . $productQuantity->product_id . '?error=Error.');
+                header('location:/Product/editQuantity/' . $pq_id. '?error=Please fill the required fields.');
             }
         } else {
-            echo $productQuantity->pq_id;
-            $this->view('product/editQuantity', $productQuantity);
+            $productQuantity = new ProductQuantity();
+            $productQuantity = $productQuantity->getOneQuantity($pq_id);
+            $this->view('Product/editQuantity', $productQuantity);
         }
     }
 
@@ -165,44 +186,26 @@ class Product extends \app\core\Controller
         }
     }
 
-    public function editQuantityOnly($product_id) //view that shows form when clicking Edit Quantity
-    {
-        $product = new \app\models\Product();
-        $success = $product->getProductDetails($product_id);
-        $totalQuantity = new ProductQuantity;
-        $totalQuantity = $totalQuantity->getTotalQuantity($product_id);
-        $allQuantity = new ProductQuantity;
-        $allQuantity = $allQuantity->getAll($product_id);
+    #[\app\filters\EmployeeAndAdmin]
+    public function quantityUpdate($pq_id) { 
+        $productQuantity = new ProductQuantity();
+        $productQuantity = $productQuantity->getOneQuantity($pq_id);
 
-        if($success){
-            $this->view('Product/editQuantityOnly', [$success, $totalQuantity, $allQuantity]);
-        }
+        if(isset($_POST['action']))
+        {
+            $productQuantity->quantity = $_POST['quantity'];
+            $success = $productQuantity->quantityUpdate($pq_id);
 
-     }
-
-    public function quantityUpdate($product_id) { //form action method
-        $allQuantity = new ProductQuantity;
-        $allQuantity = $allQuantity->getAll($product_id);
-        $counter = 1; //each product quantity row's input name is quantity$counter
-
-        if (isset($_POST['action'])) {
-                foreach ($allQuantity as $oneQuantity) {
-                $oneQuantity = $oneQuantity->getOneQuantity($oneQuantity->pq_id);
-                $oneQuantity->quantity = $_POST['quantity' . $counter];
-                ++$counter;
-                $success = $oneQuantity->editQuantity($oneQuantity->pq_id);
+            if($success){
+                header('location:/Product/productDetails/' . $productQuantity->product_id . '?success=productt Quantity Updated.');
+            } else {
+                header('location:/Product/editQuantity/' . $pq_id . '?error=Please modify in order to edit.');
             }
-           
-            if ($success) {
-        
-                 header('location:/product/productDetails/'. $product_id .'?success=Quantities Saved.');
-             } else {
-            
-            header('location:/product/productDetails/'. $product_id .'?error=Error occured.');
-            }
-
+        } else {
+            $productQuantity = new ProductQuantity();
+            $productQuantity = $productQuantity->getOneQuantity($pq_id);
+            $this->view('Product/editQuantity', $productQuantity);
         }
-
     }
 
     public function search() 

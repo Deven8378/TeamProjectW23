@@ -72,17 +72,6 @@
 			</div>
 			<div class="centering">
 				<div>
-					<div class="btn-group">
-					  <button style="width: 150px;" type="button" class="btn dropdown-toggle" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
-					    <?= _('Availabilities') ?>
-					  </button>
-					  <ul class="dropdown-menu dropdown-menu-end dropdown-menu-lg-start">
-					    <li><button class="dropdown-item" type="button"><?= _('Available') ?></button></li>
-					    <li><button class="dropdown-item" type="button"><?= _('Low on Stock') ?></button></li>
-					    <li><button class="dropdown-item" type="button"><?= _('About to Expire') ?></button></li>
-					    <li><button class="dropdown-item" type="button"><?= _('Expired') ?></button></li>
-					  </ul>
-					</div>
 				</div>
 			</div>
 		</div>
