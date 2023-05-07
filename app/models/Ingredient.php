@@ -6,12 +6,13 @@ class Ingredient extends \app\core\Model {
 	public $ingredient_id;
 	public $name;
 	public $category;
-	
 	public $description;
 	public $picture;
 
+	//Select Statements
+
 	public function getAll() {
-		$SQL = 'SELECT * FROM ingredient';
+		$SQL = 'SELECT `ingredient_id`, `name`, `category`, `description`, `picture` FROM ingredient';
 		$STH = self::$connection->prepare($SQL);
 		$STH->execute();
 		$STH->setFetchMode(\PDO::FETCH_CLASS, 'app\\models\\Ingredient');
@@ -46,7 +47,7 @@ class Ingredient extends \app\core\Model {
 
 	public function getIngredientByCategory($category_id)
 	{
-		$SQL = "SELECT * FROM `ingredient` WHERE `category` = :category;";
+		$SQL = "SELECT `ingredient_id`, `name`, `category`, `description`, `picture` FROM `ingredient` WHERE `category` = :category;";
 		$STH = self::$connection->prepare($SQL);
 		$data = ['category'=>$category_id];
 		$STH->execute($data);
@@ -56,7 +57,7 @@ class Ingredient extends \app\core\Model {
 
 	public function getIngredientByName($name)
 	{
-		$SQL = "SELECT * FROM `ingredient` WHERE `name` = :name;";
+		$SQL = "SELECT `ingredient_id`, `name`, `category`, `description`, `picture` FROM `ingredient` FROM `ingredient` WHERE `name` = :name;";
 		$STH = self::$connection->prepare($SQL);
 		$data = ['name'=>$name];
 		$STH->execute($data);
@@ -76,7 +77,7 @@ class Ingredient extends \app\core\Model {
 	}
 
 	public function search($name) {
-		$SQL = "SELECT * FROM ingredient WHERE name LIKE :name;";
+		$SQL = "SELECT `ingredient_id`, `name`, `category`, `description`, `picture` FROM ingredient WHERE name LIKE :name;";
 		$STH = self::$connection->prepare($SQL);
 		$data = [
 			'name'=>"%$name%"
@@ -85,6 +86,8 @@ class Ingredient extends \app\core\Model {
 		$STH->setFetchMode(\PDO::FETCH_CLASS, 'app\\models\\Ingredient');
 		return $STH->fetchAll();
 	}
+
+	// Create, Edit, Delete
 
 	public function addIngredient() {
 		$SQL = "INSERT INTO `ingredient` (`ingredient_id`, `name`, `category`, `description`, `picture`) value (:ingredient_id, :name, :category, :description, :picture)";

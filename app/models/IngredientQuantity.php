@@ -10,8 +10,10 @@ class IngredientQuantity extends \app\core\Model {
 	public $quantity;
 	public $price;
 
+	// Select Statements
+
 	public function getAll($ingredient_id) {
-		$SQL = 'SELECT *, DATEDIFF(expired_date, arrival_date) AS daysLeft FROM ingredient_quantity WHERE ingredient_id=:ingredient_id';
+		$SQL = 'SELECT `iq_id`, `ingredient_id`, `arrival_date`, `expired_date`, `quantity`, `price`, DATEDIFF(expired_date, arrival_date) AS daysLeft FROM ingredient_quantity WHERE ingredient_id=:ingredient_id';
 		$STH = self::$connection->prepare($SQL);
 		$data = ['ingredient_id'=>$ingredient_id];
 		$STH->execute($data);
@@ -29,7 +31,7 @@ class IngredientQuantity extends \app\core\Model {
 	}
 
 	public function getOneQuantity($iq_id) {
-		$SQL = 'SELECT * FROM ingredient_quantity WHERE iq_id=:iq_id';
+		$SQL = 'SELECT `iq_id`, `ingredient_id`, `arrival_date`, `expired_date`, `quantity`, `price` FROM ingredient_quantity WHERE iq_id=:iq_id';
 		$STH = self::$connection->prepare($SQL);
 		$data = [
 				'iq_id'=>$iq_id];
@@ -46,6 +48,8 @@ class IngredientQuantity extends \app\core\Model {
 		$STH->setFetchMode(\PDO::FETCH_CLASS, 'app\\models\\IngredientQuantity');
 		return $STH->fetchAll();
 	}
+
+	// Create, Edit, Delete
 
 	public function addIngredientQuantity($ingredient_id) {
 		$SQL = "INSERT INTO `ingredient_quantity` (`iq_id`, `ingredient_id`, `arrival_date`, `expired_date`, `quantity`, `price`) value (:iq_id, :ingredient_id, :arrival_date, :expired_date, :quantity, :price)";
