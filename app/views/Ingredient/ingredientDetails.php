@@ -34,7 +34,7 @@
             <div class="" style="grid-column-start: 2; grid-column-start: 3; margin-left: auto;">
               <?php if ($data[3] == true) { ?>
                 <div class="btn-group dropend">
-                  <button type="button" class="btn" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="bi bi-three-dots-vertical"></i>More</button>
+                  <button type="button" class="btn-more" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="bi bi-three-dots-vertical"></i>More</button>
                   <div class="dropdown-menu">
                       <li>
                         <a class="dropdown-item" href="/Ingredient/edit/<?= $data[0]->ingredient_id ?>">
@@ -97,7 +97,7 @@
                   <td><?= $quantity->daysLeft ?></td>
                   <td>
                     <div class="btn-group dropend">
-                      <button type="button" class="btn" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="bi bi-three-dots-vertical"></i>More</button>
+                      <button type="button" class="btn-more" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="bi bi-three-dots-vertical"></i>More</button>
                       <div class="dropdown-menu">
                           <li>
                             <a class="dropdown-item" href="/Ingredient/editQuantity/<?= $quantity->iq_id ?>">

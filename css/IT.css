@@ -20,6 +20,7 @@
     padding: var(--bs-btn-padding-y) var(--bs-btn-padding-x);
     font-family: var(--bs-btn-font-family);
     font-size: var(--bs-btn-font-size);
+/*    width: clamp(0.75rem, 0.6538rem + 0.4103vw, 1rem);*/
     font-size: clamp(0.75rem, 0.6538rem + 0.4103vw, 1rem);
     font-weight: var(--bs-btn-font-weight);
     line-height: var(--bs-btn-line-height);
