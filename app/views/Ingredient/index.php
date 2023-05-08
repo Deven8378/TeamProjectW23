@@ -1,10 +1,6 @@
 <?php $this->view('shared/header', "Ingredients"); ?>
 <?php $this->view('shared/navigation/nav'); ?>
 <?php $this->view('shared/navigation/switchToIngredients'); ?>
-<style type="text/css">
-	
-</style>
-
 
 <div class="container">
 	<div class="row-index">

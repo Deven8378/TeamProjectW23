@@ -19,7 +19,7 @@ if ($type == "admin")
         <div>
           <img id="foodIMG" src="/productImages/<?= htmlentities($data->picture) ?>">
           <?php if ($isAdmin) { ?>
-          <div class="spacer" style="height: 500px; flex-shrink: 0; margin: 0; padding: 0;"></div>
+          <!-- <div class="spacer" style="height: 500px; flex-shrink: 0; margin: 0; padding: 0;"></div> -->
           <a class="btn" href="/Recipe/edit/<?= htmlentities($data->recipe_id) ?>" role="button" style="background-color: #e8c8e7;">
             <?= _('Edit') ?>
           </a>

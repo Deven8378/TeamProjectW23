@@ -8,7 +8,8 @@
 	border: 10px solid #eeeeee; 
 }
 
-.recipeTitle {
+.recipe-sign {
+	font-size: 30px;
 	text-align: center;
 }
 
@@ -22,3 +23,127 @@
 	margin-left:auto;
 	margin-right: auto; 
 	border: 10px solid #eeeeee;
+}
+.card-ml {
+	flex: 1 0 0%; 
+	margin-left: 6%;
+}
+
+@media only screen and (max-width: 580px) {
+    
+	.row-recipe {
+	    --bs-gutter-x: 1.5rem;
+	    --bs-gutter-y: 0;
+	    margin-top: 50px;
+	    margin-right: calc(-.5 * var(--bs-gutter-x));
+	    margin-left: calc(-.5 * var(--bs-gutter-x))
+	}
+
+	.col-recipe {
+		display: grid;
+
+		grid-template-columns: auto auto auto;
+		margin-left: 20px;
+
+	}
+	.recipe-btn {
+		grid-column-start: 2;
+	}
+
+	.btn-recipe-divider {
+		display: none;
+	}
+	.col-recipe-divider {
+		display: none;
+		flex: 0 0 auto;
+	    width: 8.33333333%;
+	}
+	.recipe-divider {
+		border-right: 1px solid #d9d9d9;
+		height: 100%;
+	}
+}
+
+@media only screen and (min-width: 580px) {
+	.row-recipe {
+	    --bs-gutter-x: 1.5rem;
+	    --bs-gutter-y: 0;
+	    display: flex;
+	    flex-wrap: wrap;
+	    margin-top: 50px;
+	    margin-right: calc(-.5 * var(--bs-gutter-x));
+	    margin-left: calc(-.5 * var(--bs-gutter-x))
+	}
+
+	.col-recipe {
+
+	}
+	.btn-recipe-divider {
+		height:1px; 
+		border-width:0 ;
+		color: #d9d9d9; 
+		background-color:gray;
+	}
+	.col-recipe-divider {
+		flex: 0 0 auto;
+	    width: 8.33333333%;
+	}
+	.recipe-divider {
+		border-right: 1px solid #d9d9d9;
+		height: 100%;
+	}
+    
+}
+
+@media only screen and (max-width: 951px) {
+	
+
+
+}
+
+
+@media only screen and (min-width: 951px) {
+	
+
+}
+
+
+
+@media only screen and (max-width: 1350px) {
+    
+
+    
+ }
+
+
+@media only screen and (min-width: 1350px) {
+	.row-recipe {
+	    --bs-gutter-x: 1.5rem;
+	    --bs-gutter-y: 0;
+	    display: flex;
+	    flex-wrap: wrap;
+	    margin-top: 50px;
+	    margin-right: calc(-.5 * var(--bs-gutter-x));
+	    margin-left: calc(-.5 * var(--bs-gutter-x))
+	}
+
+	.col-recipe {
+
+	}
+	.btn-recipe-divider {
+		height:1px; 
+		border-width:0 ;
+		color: #d9d9d9; 
+		background-color:gray;
+	}
+	.col-recipe-divider {
+		flex: 0 0 auto;
+	    width: 8.33333333%;
+	}
+	.recipe-divider {
+		border-right: 1px solid #d9d9d9;
+		height: 100%;
+	}
+    
+
+}

@@ -1,111 +1,78 @@
 <?php $this->view('shared/header', "Products"); ?>
 <?php $this->view('shared/navigation/nav'); ?>
 <?php $this->view('shared/navigation/switchToProducts'); ?>
-<style type="text/css">
-	.vl {
-	  border-right: 1px solid #d9d9d9;
-	  height: 100%;
-	}
-	.rowing{
-		display: grid;
-	}
-
-	.centering {
-		display: flex;  
-		width: 100%; 
-		justify-content: center;
-	}
-</style>
-
 
 <div class="container">
-	<div class="row">
-		<div class="col-sm-2" style="padding-right: 10px;">
-			<?php if($data[3] == true) { ?>
-					<div class="centering">
+	<div class="row-index">
+		<div>
+			<div class="col-index" style="">
+				<?php if($data[3] == true) { ?>
+
 						<div>
-							<a class="btn" href="/Product/createProduct" role="button" style="background-color: #e8c8e7; width: 150px;">
+							<a class="btn-general" href="/Product/createProduct" role="button" style="width: 150px;">
 								<?= _('Add Product') ?>
 							</a>
 						</div>
-					</div>
-					<br>
-					<div class="centering">
+
 						<div>
-							<a href="/Category/index"  class="btn" style="background-color:#e8c8e8; width: 150px;">
+							<a href="/Category/index"  class="btn-general" style="background-color:#e8c8e8; width: 150px;">
 								<?= _('View categories') ?>
 							</a>
 						</div>
-					</div>
 
-					<hr style="height:1px; border-width:0 ;color: #d9d9d9; background-color:gray">
-			<?php } ?>
+						<hr class="col-dividor">
+				<?php } ?>
 
-			<div class="centering">
 				<a style=" " href="/Product/index">
 					<button style="width: 150px;" class="btn-general" type="button">
 		  				<?= _('Reset') ?>
 		  			</button>
 		  		</a>
-			</div>
-			<div class="centering">
-				<div>
-					<div class="btn-group">
-					  <button style="width: 150px;" type="button" class="btn dropdown-toggle" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
-					    <?= _('Categories') ?>
-					  </button>
 
-					  <ul class="dropdown-menu dropdown-menu-end dropdown-menu-lg-start">
+				<div class="btn-group" style="display: grid;">
 
-					  	<?php 
-					  		foreach ($data[1] as $category) { ?>
-					  			<li>
-					  				<form action="/Product/filterByCategory/<?= $category->category_id ?>" method="post">
-										<input class="dropdown-item" style=" width: 100%;" type="submit" name="" value="<?= $category->category_name ?>">
-									</form>
-							    </li>
-					  		<?php }
-					  	?>
-					  </ul>
-					</div>
+				  	<button style="width: 150px;" type="button" class="btn dropdown-toggle btn-general" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
+			    	<?= _('Categories') ?></button>
+
+				  	<ul class="dropdown-menu dropdown-menu-end dropdown-menu-lg-start">
+
+				  	<?php 
+				  		foreach ($data[1] as $category) { ?>
+				  			<li>
+				  				<form action="/Product/filterByCategory/<?= $category->category_id ?>" method="post">
+									<input class="dropdown-item" style=" width: 100%;" type="submit" name="" value="<?= $category->category_name ?>">
+								</form>
+						    </li>
+				  		<?php }
+				  	?>
+				  	</ul>
 				</div>
-			</div>
-			<div class="centering">
-				<div>
-				</div>
+
 			</div>
 		</div>
+		<div class="row-dividor"> <div class="vl"></div></div>
+<!-- ------------------------------------------------ -->
+		<div class="col-content">
+			<div class="col-content-header" style="">
 
-		<div class="col-sm-1"> 
-			<div class="vl"></div>
-		</div>
+				<p class="search-result" style=""><?= $data[2]->num_results ?> <?= _('Results') ?></p>
 
-		<div class="col offset-sm-1">
-			<div class="rowing" style="margin-bottom: 20px; margin-right: 10px">
-				<div style="display: flex; justify-content: space-between;">
+				<div class="search-div" style="">
 
-					<p style="font-weight: bold; font-size: 50"><?= $data[2]->num_results ?> <?= _('Results') ?></p>
+					<form action="/Product/search" class="search-form" style="">
 
-					<div style="border: 3px solid #ACABAB; border-radius: 5px; background-color: #DFDFDF; padding: 6px;">
+						<button class="search-btn" style=""><i class="bi bi-search" style="color: #ACABAB;"></i></button>
 
-						<form action="/Product/search" class="search-form" style="">
+						<input type="search" name="search" class="search-input" placeholder="<?=_('Search')?>" style="">
 
-							<button class="search-btn" style=""><i class="bi bi-search" style="color: #ACABAB;"></i></button>
-
-							<input type="search" name="search" class="search-input" placeholder="<?=_('Search')?>" style="">
-
-						</form>
-					</div>
+					</form>
 				</div>
 			</div>
-
-			<div class="centering">
-				<div>
-					<div class="row">
-					  <?php $this->view('Product/ProductsCard', $data[0]); ?>
-					</div>
-				</div>
+		
+			<div class="card-content" align="center">
+				 <?php $this->view('Product/ProductsCard', $data[0]); ?>
 			</div>
+
 		</div>
 
 	</div>
