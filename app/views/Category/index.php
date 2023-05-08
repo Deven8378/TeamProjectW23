@@ -1,8 +1,8 @@
 <?php $this->view('shared/header', _("View Categories")); ?>
 <?php $this->view('shared/navigation/nav'); ?>
 
-<div class="categoryContainer"  style="">
-	<div class="back-category" style="">
+<div class="categoryContainer">
+	<div class="back-category">
 		<a class="btn-general" style="margin-bottom: 0px;" id="backLink" href="/Ingredient/index" >
 			<i class="bi bi-arrow-left"></i><?= _('Back') ?>
 		</a>
