@@ -10,89 +10,73 @@
 	<div class="row-index">
 		<div>
 			<div class="col-index" style="">
-				<?php if($data[3] == true) { ?>
-						<!-- <div class="centering"> -->
-							<div class="grid-btn-one">
-								<a class="btn-general" href="/Ingredient/createIngredient" role="button" style="width: 150px;">
-									<?= _('Add Ingredient') ?>
-								</a>
-							</div>
-						<!-- </div> -->
+			<?php if($data[3] == true) { ?>
+					
+				<div class="grid-btn-one">
+					<a class="btn-general" href="/Ingredient/createIngredient" role="button" style="width: 150px;">
+						<?= _('Add Ingredient') ?>
+					</a>
+				</div>
 
-						<!-- <div class="centering"> -->
-							<div class="grid-btn-two">
-								<a href="/Category/index" class="btn-general" style="width: 150px;">
-									<?= _('View categories') ?>
-								</a>
-							</div>
-						<!-- </div> -->
+				<div class="grid-btn-two">
+					<a href="/Category/index" class="btn-general" style="width: 150px;">
+						<?= _('View categories') ?>
+					</a>
+				</div>
 
-						<hr class="col-dividor">
-				<?php } ?>
+				<hr class="col-dividor">
+			<?php } ?>
 
-				<!-- <div class="centering"> -->
-					<a href="/Ingredient/index" class="grid-btn-three">
-						<button style="width: 150px;" class="btn-general" type="button">
-			  				<?= _('Reset') ?>
-			  			</button>
-			  		</a>
-				<!-- </div> -->
-				<!-- <div class="centering"> -->
-					<!-- <div> -->
-						<div class="btn-group grid-btn-four" style="display: grid;" >
+				<a href="/Ingredient/index" class="grid-btn-three">
+					<button style="width: 150px;" class="btn-general" type="button">
+		  				<?= _('Reset') ?>
+		  			</button>
+		  		</a>
 
-						  <button style="width: 150px;" type="button" class="btn dropdown-toggle btn-general" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
-						  	<?= _('Categories') ?>
-						  		
-						  	</button>
+				<div class="btn-group grid-btn-four" style="display: grid;" >
 
-						  <ul class="dropdown-menu dropdown-menu-end dropdown-menu-lg-start">
+				  	<button style="width: 150px;" type="button" class="btn dropdown-toggle btn-general" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
+				  	<?= _('Categories') ?></button>
 
-						  	<?php 
-						  		foreach ($data[1] as $category) { ?>
-						  			<li>
-						  				<form action="/Ingredient/filterByCategory/<?= $category->category_id ?>" method="post">
-											<input class="dropdown-item" style=" width: 100%;" type="submit" name="" value="<?= $category->category_name ?>">
-										</form>
-								    </li>
-						  		<?php }
-						  	?>
-						  </ul>
-						</div>
-					<!-- </div> -->
-				<!-- </div> -->
+				  	<ul class="dropdown-menu dropdown-menu-end dropdown-menu-lg-start">
+
+				  	<?php 
+				  		foreach ($data[1] as $category) { ?>
+				  			<li>
+				  				<form action="/Ingredient/filterByCategory/<?= $category->category_id ?>" method="post">
+									<input class="dropdown-item" style=" width: 100%;" type="submit" name="" value="<?= $category->category_name ?>">
+								</form>
+						    </li>
+				  		<?php }
+				  	?>
+			  		</ul>
+				</div>
 
 			</div>
 		</div>
 		<div class="row-dividor"><div class="vl"></div></div>
 <!-- ------------------------------------------------ -->
 		<div class="col-content">
-			<!-- <div class="rowing" style=""> -->
-				<div style="display: flex; justify-content: space-between; margin-bottom: 20px; margin-right: 50px;">
+			<div class="col-content-header" style="">
 
-					<p style="font-weight: bold; font-size: 50"><?= $data[2]->num_results ?> <?= _('Results') ?></p>
+				<p class="search-result" style=""><?= $data[2]->num_results ?> <?= _('Results') ?></p>
 
-					<div style="border: 3px solid #ACABAB; border-radius: 5px; background-color: #DFDFDF; padding: 6px;">
+				<div class="search-div" style="">
 
-						<form action="/Ingredient/search" class="search-form" style="">
+					<form action="/Ingredient/search" class="search-form" style="">
 
-							<button class="search-btn" style=""><i class="bi bi-search" style="color: #ACABAB;"></i></button>
+						<button class="search-btn" style=""><i class="bi bi-search" style="color: #ACABAB;"></i></button>
 
-							<input type="search" name="search" class="search-input" placeholder="<?=_('Search')?>" style="">
+						<input type="search" name="search" class="search-input" placeholder="<?=_('Search')?>" style="">
 
-						</form>
-					</div>
+					</form>
 				</div>
-			<!-- </div> -->
+			</div>
 
-			<!-- <div class="centering"> -->
-			<!-- <div> -->
-				<!-- class="row" -->
-				<div  class="card-content" align="center">
-				  <?php $this->view('Ingredient/ingredientsCard', $data[0]); ?>
-				</div>
-			<!-- </div> -->
-			<!-- </div> -->
+			<div  class="card-content" align="center">
+			  <?php $this->view('Ingredient/ingredientsCard', $data[0]); ?>
+			</div>
+
 		</div>
 
 	</div>

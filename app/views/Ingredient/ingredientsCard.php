@@ -4,7 +4,7 @@
 foreach ($data as $ingredient) { ?>
     <div class="col">
       <a href="/Ingredient/ingredientDetails/<?= $ingredient->ingredient_id ?>">
-        <div class="card">
+        <div class="card item-card">
           <div id="ingredientIMG">
             <div class="image">
                 <img style="width: 172px; height: 199.6px;" src="/ingredientImages/<?= $ingredient->picture ?>">
