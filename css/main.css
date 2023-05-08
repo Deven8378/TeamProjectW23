@@ -55,39 +55,7 @@ body {
   opacity: 1;
 }
 
-.wrapper {
-  margin: 70px auto;
-  padding: 20px;
-  background: #e7e7e7;
-  border-radius: 5px;
-  width: 40%;
-  position: relative;
-  transition: all 5s ease-in-out;
-}
 
-.wrapper h2 {
-  margin-top: 0;
-  color: #333;
-}
-
-.wrapper .close {
-  position: absolute;
-  top: 20px;
-  right: 30px;
-  transition: all 200ms;
-  font-size: 30px;
-  font-weight: bold;
-  text-decoration: none;
-  color: #333;
-}
-.wrapper .close:hover {
-  color: #06D85F;
-}
-
-.wrapper .content {
-  max-height: 30%;
-  overflow: auto;
-}
 
 .container {
   border-radius: 5px;
@@ -208,3 +176,142 @@ form label {
   }
 }
 
+
+
+@media only screen and (max-width: 500px) {
+
+
+}
+
+@media only screen and (min-width: 500px) {
+  .wrapper {
+    margin: 70px auto;
+    padding: 20px;
+    background: #e7e7e7;
+    border-radius: 5px;
+/*    width: 60%;*/
+    position: relative;
+    transition: all 5s ease-in-out;
+  }
+
+  .wrapper h2 {
+    margin-top: 0;
+    color: #333;
+  }
+
+  .wrapper .close {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    transition: all 200ms;
+    font-size: 30px;
+    font-weight: bold;
+    text-decoration: none;
+    color: #333;
+  }
+  .wrapper .close:hover {
+    color: #06D85F;
+  }
+
+  .wrapper .content {
+    max-height: 30%;
+    overflow: auto;
+  }
+
+}
+
+@media only screen and (max-width: 951px) {
+
+  .wrapper {
+    margin: 70px auto;
+    padding: 20px;
+    background: #e7e7e7;
+    border-radius: 5px;
+    width: 60%;
+    position: relative;
+    transition: all 5s ease-in-out;
+  }
+
+  .wrapper h2 {
+    margin-top: 0;
+    color: #333;
+  }
+
+  .wrapper .close {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    transition: all 200ms;
+    font-size: 30px;
+    font-weight: bold;
+    text-decoration: none;
+    color: #333;
+  }
+  .wrapper .close:hover {
+    color: #06D85F;
+  }
+
+  .wrapper .content {
+    max-height: 30%;
+    overflow: auto;
+  }
+
+
+}
+
+
+@media only screen and (min-width: 951px) {
+
+  .wrapper {
+    margin: 70px auto;
+    padding: 20px;
+    background: #e7e7e7;
+    border-radius: 5px;
+    width: 40%;
+    position: relative;
+    transition: all 5s ease-in-out;
+  }
+
+  .wrapper h2 {
+    margin-top: 0;
+    color: #333;
+  }
+
+  .wrapper .close {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    transition: all 200ms;
+    font-size: 30px;
+    font-weight: bold;
+    text-decoration: none;
+    color: #333;
+  }
+  .wrapper .close:hover {
+    color: #06D85F;
+  }
+
+  .wrapper .content {
+    max-height: 30%;
+    overflow: auto;
+  }
+}
+
+@media only screen and (min-width: 992px) {
+    
+   
+
+}
+
+
+@media only screen and (max-width: 1350px) {
+    
+    
+ }
+
+
+@media only screen and (min-width: 1350px) {
+
+    
+
+}

@@ -25,7 +25,7 @@ if ($type == "admin")
             <a class="btn-general recipes-detail-btn" href="/Recipe/edit/<?= htmlentities($data->recipe_id) ?>" role="button" style="">
               <?= _('Edit') ?>
             </a>
-            <a class="btn-general recipes-detail-btn" href="/Recipe/delete/<?= htmlentities($data->recipe_id) ?>" role="button" style="">
+            <a class="btn-general recipes-detail-btn" href="#popupRecipes" role="button" style="">
               <?= _('Delete') ?>
             </a>
           </div>
@@ -38,16 +38,34 @@ if ($type == "admin")
           <h1 id="foodName"><?= htmlentities($data->title) ?></h1>
 
           <!-- <div class="recipe-container" id="ingredientContent"> -->
-
-            <div class="row align-items-start">
-
-              <h4 class="col"><?= _('Description') ?>: </h4>
-              <div class="col"><p><?= htmlentities($data->description) ?></p></div>
+            <!-- row-foodName -->
+            <div class="">
+              <!-- col -->
+              <div class="col-description-header" style=" "><?= _('Description') ?>: </div >
+              <div class="col-description" style=" "><p><?= htmlentities($data->description) ?></p></div>
             </div>
 
           </div>
         </div>
       </div>
     <!-- </div> -->
+  </div>
+</div>
+
+<div class="overlay" id="popupRecipes">
+  <div class="wrapper">
+      <div style="font-size: clamp(0.9375rem, 0.6731rem + 1.1282vw, 1.625rem);"><?= _('Confirmation') ?></div><a class="close" href="/Recipe/details/<?= htmlentities($data->recipe_id) ?>">&times;</a>
+      <!-- <div class="content"> -->
+          <div class="container">
+              <form  method="post" action="">
+                    <label style="font-size: clamp(0.75rem, 0.6538rem + 0.4103vw, 1rem);"><?=_('Are you certain you want to delete the following Recipe?')?></label>
+                    <div align="center">
+                      <a href="/Recipe/details/<?= htmlentities($data->recipe_id) ?>" class="btn-general" style=><?=_('Cancel')?></a>
+                      
+                      <a href="/Recipe/delete/<?= htmlentities($data->recipe_id) ?>" class="btn-general"><?=_('Delete')?></a>
+                </div>
+              </form>
+          </div>
+      <!-- </div> -->
   </div>
 </div>

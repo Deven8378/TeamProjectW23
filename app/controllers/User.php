@@ -24,8 +24,8 @@ class User extends \app\core\Controller
 
                         //Redirect the User to the correct page depending on the user_type
                         if($_SESSION['user_type'] =="itspecialist"){
-                           // header('location:/User/twofasetup');
-                            header('location:/itspecialist/index');
+                           header('location:/User/twofasetup');
+                            // header('location:/itspecialist/index');
                         }else
                         {
                             header('location:/Main/index');
