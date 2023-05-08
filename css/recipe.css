@@ -12,6 +12,9 @@
 	font-size: 30px;
 	text-align: center;
 }
+.btn-marginleft{
+        margin-left: 20px;
+    }
 
 .recipeDetailsImage {
 	float: center;
@@ -45,7 +48,7 @@
 	color: black;*/
 }
 
-#foodDetailsDiv {
+.recipes-details-container {
 	margin: 50px;
 	height: 75%;
 }
@@ -58,6 +61,7 @@
 	padding: 20px;
 	background-color: #f5f5f5;
 	text-align: left;
+	margin-bottom: 20px;
 
 }
 
@@ -256,6 +260,11 @@
     }
 }
 
+.btn-recipe-box {
+	display: flex; 
+	gap: 20px; 
+	justify-content: center;
+}
 .recipes-detail-btn {
 	margin-top: 20px; 
 	width: 30%;

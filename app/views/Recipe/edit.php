@@ -17,7 +17,7 @@
 			<label class="file-label" >
 				<input class="file-input" type="file" placeholder="<?=_('Picture')?>" name="recipePicture">
 			</label>
-			<input class="submit-inv" type="submit" value="<?=_('Add Recipe')?>" name="action"> 
+			<input class="submit-inv" type="submit" value="<?=_('Edit Recipe')?>" name="action"> 
 
 			<a class="btn-general" href="/Recipe/details/<?=$data->recipe_id?>" role="button" ><?= _('Back') ?></a>
 		</div>

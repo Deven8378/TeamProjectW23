@@ -111,11 +111,12 @@
 <!-- CONFIMATION MESSAGE TO DELETE PRODUCT -->
 <div class="overlay" id="popupProduct">
   <div class="wrapper">
-      <h2><?= _('Confirmation') ?></h2><a class="close" href="/Product/productDetails/<?= $data[0]->product_id ?>">&times;</a>
-      <div class="content">
+      <div class="wrapper-confirmation"><?= _('Confirmation') ?></div>
+      <a class="close" href="/Product/productDetails/<?= $data[0]->product_id ?>">&times;</a>
+      <!-- <div class="content"> -->
           <div class="container">
               <form  method="post" action="">
-                    <label><?=_('Are you certain you want to delete the following Product?')?></label>
+                    <label class="wrapper-message"><?=_('Are you certain you want to delete the following Product?')?></label>
                     <div align="center">
                       <a href="/Product/productDetails/<?= $data[0]->product_id ?>" class="btn-general"><?=_('Cancel')?></a>
                       
@@ -123,17 +124,17 @@
                 </div>
               </form>
           </div>
-      </div>
+      <!-- </div> -->
   </div>
 </div>
 <!-- CONFIMATION MESSAGE TO DELETE PRODUCT QUANTITY ROW -->
 <div class="overlay" id="popupQuantity">
   <div class="wrapper">
-      <h2><?= _('Confirmation') ?></h2><a class="close" href="/Product/productDetails/<?= $data[0]->product_id ?>">&times;</a>
-      <div class="content">
+      <div class="wrapper-confirmation"><?= _('Confirmation') ?></div><a class="close" href="/Product/productDetails/<?= $data[0]->product_id ?>">&times;</a>
+      <!-- <div class="content"> -->
           <div class="container">
               <form  method="post" action="">
-                    <label><?=_('Do you want to delete the entire Quantity row')?></label>
+                    <label class="wrapper-message"><?=_('Do you want to delete the entire Quantity row')?></label>
                     <div align="center">
                       <a href="/Product/productDetails/<?= $data[0]->product_id ?>" class="btn-general"><?=_('Cancel')?></a>
                       <!-- getting href from deleteLinkID javascript function -->
@@ -141,7 +142,7 @@
                 </div>
               </form>
           </div>
-      </div>
+      <!-- </div> -->
   </div>
 </div>
 

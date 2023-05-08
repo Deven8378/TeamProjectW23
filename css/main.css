@@ -170,9 +170,9 @@ form label {
   .overlay-userDetails {overflow-y: auto;}
   .overlay-userDetails a {font-size: 20px}
   .overlay-userDetails .closebtn {
-  font-size: 40px;
-  top: 15px;
-  right: 35px;
+    font-size: 40px;
+    top: 15px;
+    right: 35px;
   }
 }
 
@@ -255,6 +255,9 @@ form label {
     max-height: 30%;
     overflow: auto;
   }
+  .wrapper-confirmation{
+    font-size: clamp(0.9375rem, 0.6731rem + 1.1282vw, 1.625rem);
+  }
 
 
 }
@@ -294,6 +297,12 @@ form label {
   .wrapper .content {
     max-height: 30%;
     overflow: auto;
+  }
+  .wrapper-confirmation{
+    font-size: clamp(0.9375rem, 0.6731rem + 1.1282vw, 1.625rem);
+  }
+  .wrapper-message {
+    font-size: clamp(0.75rem, 0.6538rem + 0.4103vw, 1rem); 
   }
 }
 
