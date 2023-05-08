@@ -20,9 +20,9 @@ class Message extends \app\core\Controller
 				$receiver = $_POST['receiver'] ?? '';
 				$profile = new Profile();
 				$profile = $profile->getByEmail($receiver);
-				$currentProfile = $profile->getByUserId($_SESSION['user_id']);
 
 				if($profile){
+					$currentProfile = $profile->getByUserId($_SESSION['user_id']);
 					$message = new \app\models\Message();
 					$message->receiver = $profile->user_id;
 					//setting the FK to a PK value

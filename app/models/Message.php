@@ -5,15 +5,33 @@ class Message extends \app\core\Model{
 	public $message_id;
 	public $sender;
 	public $receiver;
-	public $message;
+	#[\app\validators\NonNull]
+	#[\app\validators\NonEmpty]
+	protected $message;
 	public $timestamp;
-	public $receiver_full_name;
-	public $sender_full_name;
+	#[\app\validators\NonNull]
+	#[\app\validators\NonEmpty]
+	protected $receiver_full_name;
+	#[\app\validators\NonNull]
+	#[\app\validators\NonEmpty]
+	protected $sender_full_name;
 
+	// Setters
+	protected function setmessage($value){
+		$this->message = htmlentities($value, ENT_QUOTES);
+	}	
+
+	protected function setreceiver_full_name($value){
+		$this->receiver_full_name = htmlentities($value, ENT_QUOTES);
+	}
+	
+	protected function setsender_full_name($value){
+		$this->sender_full_name = htmlentities($value, ENT_QUOTES);
+	}	
 
 	// Create, Delete
 
-	public function insert(){
+	protected function insert(){
 		$SQL = "INSERT INTO message (sender, receiver, message, receiver_full_name, sender_full_name) value (:sender, :receiver, :message, :receiver_full_name, :sender_full_name)";
 		$STH = self::$connection->prepare($SQL);
 		$data = ['sender'=>$this->sender,

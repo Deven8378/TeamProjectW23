@@ -19,7 +19,7 @@
 <div class="centeringPage">
 	<div class="wrapping" style="margin: 25px;">
 		<?php if($data->receiver == $_SESSION['user_id']) {?>
-			<a class="btn-general" href='/Message/delete/<?= htmlentities($message->message_id) ?>'>
+			<a class="btn-general" href='/Message/delete/<?= htmlentities($data->message_id) ?>'>
 				<i class="bi bi-x"></i>
 				<?= _('Delete') ?>
 			</a>

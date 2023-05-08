@@ -5,8 +5,13 @@ class Category extends \app\core\Model{
 	public $category_id;
 	#[\app\validators\NonNull]
 	#[\app\validators\NonEmpty]
-	public $category_name;
+	protected $category_name;
 	public $timestamp;
+
+	// Setters 
+	protected function setcategory_name($value){
+		$this->category_name = htmlentities($value, ENT_QUOTES);
+	}
 
 	// Select Statements
 
@@ -39,7 +44,7 @@ class Category extends \app\core\Model{
 
 	// Create, Edit, Delete
 
-	public function insert()
+	protected function insert()
 	{
 		$SQL = 'INSERT INTO category(category_name) 
 				VALUES (:category_name)';
@@ -49,7 +54,7 @@ class Category extends \app\core\Model{
 		return self::$connection->lastInsertId();
 	}
 
-	public function update($category_id){
+	protected function update($category_id){
 		//only the owner of the message can delete it
 		$SQL = "UPDATE `category` SET category_name=:category_name WHERE category_id=:category_id";
 		$STH = self::$connection->prepare($SQL);

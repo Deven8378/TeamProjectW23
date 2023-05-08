@@ -17,7 +17,7 @@ class IngredientQuantity extends \app\core\Model {
 	protected $price;
 
 	//Set Functions
-	protected function setproduced_date($value){
+	protected function setarrival_date($value){
 		$this->arrival_date = TimeHelper::DTInput($value);
 	}
 
