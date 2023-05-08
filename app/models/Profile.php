@@ -22,6 +22,28 @@ class Profile extends \app\core\Model
 	#[\app\validators\NonEmpty]	
 	protected $status;	
 
+	// Setters
+	protected function setfirst_name($value){
+		$this->first_name = htmlentities($value, ENT_QUOTES);
+	}
+
+	protected function setlast_name($value){
+		$this->last_name = htmlentities($value, ENT_QUOTES);
+	}
+
+
+	protected function setemail($value){
+		$this->email = htmlentities($value, ENT_QUOTES);
+	}
+
+	protected function setphone_number($value){
+		$this->phone_number = htmlentities($value, ENT_QUOTES);
+	}
+
+	protected function setstatus($value){
+		$this->status = htmlentities($value, ENT_QUOTES);
+	}
+
 	// Select Statements
 
 	public function getByEmail($email)

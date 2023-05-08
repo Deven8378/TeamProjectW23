@@ -46,11 +46,11 @@ class Recipe extends \app\core\Controller {
 				}
 
 				$success = $recipe->insert();
-				if($success) {
+				// if($success) {
 					header('location:/Recipe/index?success=Recipe Added');
-				} else {
-					header('location:/Recipe/create?error=Invalid or missing picture');
-				}
+				// } else {
+				// 	header('location:/Recipe/create?error=Invalid or missing picture');
+				// }
 			} else {
 				header('location:/Recipe/create?error=Please fill in the fields.');
 			}
@@ -78,11 +78,11 @@ class Recipe extends \app\core\Controller {
 				}
 				
 				$success = $recipe->update();
-				if($success){
+				// if($success){
 					header('location:/Recipe/details/' . $recipe_id . '?success=Recipe has been updated.');
-				} else {
-					header('location:/Recipe/details/' . $recipe_id . '?success=Error has occured.');
-				}
+				// } else {
+				// 	header('location:/Recipe/details/' . $recipe_id . '?success=Error has occured.');
+				// }
 					
 			} else {
 				header('location:/Recipe/edit/' . $recipe_id. '?error=Please fill in the form');

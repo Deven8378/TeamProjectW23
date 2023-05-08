@@ -1,14 +1,38 @@
 <?php
 namespace app\models;
 
+use app\core\TimeHelper;
+
 class IngredientQuantity extends \app\core\Model {
 
 	public $iq_id;
 	public $ingredient_id;
-	public $arrival_date;
-	public $expired_date;
-	public $quantity;
-	public $price;
+	#[\app\validators\DateTime]
+	protected $arrival_date;
+	#[\app\validators\DateTime]
+	protected $expired_date;
+	#[\app\validators\Number]
+	protected $quantity;
+	#[\app\validators\Number]
+	protected $price;
+
+	//Set Functions
+	protected function setproduced_date($value){
+		$this->arrival_date = TimeHelper::DTInput($value);
+	}
+
+	protected function setexpired_date($value){
+		$this->expired_date = TimeHelper::DTInput($value);
+	}
+
+
+	protected function setquantity($value){
+		$this->quantity = htmlentities($value, ENT_QUOTES);
+	}
+
+	protected function setprice($value){
+		$this->price = htmlentities($value, ENT_QUOTES);
+	}
 
 	// Select Statements
 
@@ -42,7 +66,7 @@ class IngredientQuantity extends \app\core\Model {
 
 	// Create, Edit, Delete
 
-	public function addIngredientQuantity($ingredient_id) {
+	protected function addIngredientQuantity($ingredient_id) {
 		$SQL = "INSERT INTO `ingredient_quantity` (`iq_id`, `ingredient_id`, `arrival_date`, `expired_date`, `quantity`, `price`) value (:iq_id, :ingredient_id, :arrival_date, :expired_date, :quantity, :price)";
 		$STH = self::$connection->prepare($SQL);
 		$data = ['iq_id'=>$this->iq_id,
@@ -55,7 +79,7 @@ class IngredientQuantity extends \app\core\Model {
 		return self::$connection->lastInsertId();
 	}
 
-	public function editQuantity($iq_id) {
+	protected function editQuantity($iq_id) {
 		$SQL = "UPDATE `ingredient_quantity` SET `arrival_date`=:arrival_date, `expired_date`=:expired_date, `quantity`=:quantity, `price`=:price WHERE iq_id=:iq_id;";
 		$STH = self::$connection->prepare($SQL);
 		$data = ['iq_id'=>$iq_id,
@@ -67,7 +91,7 @@ class IngredientQuantity extends \app\core\Model {
 		return $STH->rowCount();		
 	}
 
-	public function quantityUpdate($iq_id) {
+	protected function quantityUpdate($iq_id) {
 		$SQL = "UPDATE `ingredient_quantity` SET `quantity`=:quantity WHERE iq_id=:iq_id;";
 		$STH = self::$connection->prepare($SQL);
 		$data = [

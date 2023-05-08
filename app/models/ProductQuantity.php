@@ -1,14 +1,39 @@
 <?php
 namespace app\models;
 
+use app\core\TimeHelper;
+
 class ProductQuantity extends \app\core\Model {
 
 	public $pq_id;
 	public $product_id;
-	public $produced_date;
-	public $expired_date;
-	public $quantity;
-	public $price;
+	#[\app\validators\DateTime]
+	protected $produced_date;
+	#[\app\validators\DateTime]
+	protected $expired_date;
+	#[\app\validators\Number]
+	protected $quantity;
+	#[\app\validators\Number]
+	protected $price;
+
+	//Set Functions
+	protected function setproduced_date($value){
+		$this->produced_date = TimeHelper::DTInput($value);
+	}
+
+	protected function setexpired_date($value){
+		$this->expired_date = TimeHelper::DTInput($value);
+	}
+
+
+	protected function setquantity($value){
+		$this->quantity = htmlentities($value, ENT_QUOTES);
+	}
+
+	protected function setprice($value){
+		$this->price = htmlentities($value, ENT_QUOTES);
+	}
+
 
 	//Select Statements
 
@@ -41,7 +66,7 @@ class ProductQuantity extends \app\core\Model {
 
 	// Create, Edit, Delete
 
-	public function addProductQuantity($product_id) {
+	protected function addProductQuantity($product_id) {
 		$SQL = "INSERT INTO `product_quantity` (`pq_id`, `product_id`, `produced_date`, `expired_date`, `quantity`, `price`) value (:pq_id, :product_id, :produced_date, :expired_date, :quantity, :price)";
 		$STH = self::$connection->prepare($SQL);
 		$data = ['pq_id'=>$this->pq_id,
@@ -54,7 +79,7 @@ class ProductQuantity extends \app\core\Model {
 		return self::$connection->lastInsertId();
 	}
 
-	public function editQuantity($pq_id) {
+	protected function editQuantity($pq_id) {
 		$SQL = "UPDATE `product_quantity` SET `produced_date`=:produced_date, `expired_date`=:expired_date, `quantity`=:quantity, `price`=:price WHERE pq_id=:pq_id;";
 		$STH = self::$connection->prepare($SQL);
 		$data = ['pq_id'=>$pq_id,
@@ -66,7 +91,7 @@ class ProductQuantity extends \app\core\Model {
 		return $STH->rowCount();		
 	}
 
-	public function quantityUpdate($pq_id) {
+	protected function quantityUpdate($pq_id) {
 		$SQL = "UPDATE `product_quantity` SET `quantity`=:quantity WHERE pq_id=:pq_id;";
 		$STH = self::$connection->prepare($SQL);
 		$data = [
@@ -84,16 +109,5 @@ class ProductQuantity extends \app\core\Model {
 		$STH->execute($data);
 		return $STH->rowCount(); 
 	}
-
-	public function getAvailibility() {
-		$SQL = 'SELECT pq_id, quantity, DATEDIFF(expired_date, produced_date) AS daysLeft FROM product_quantity;';
-		$STH = self::$connection->prepare($SQL);
-		$data = ['product_id'=>$product_id];
-		$STH->execute($data);
-		$STH->setFetchMode(\PDO::FETCH_CLASS, 'app\\models\\productQuantity');
-		return $STH->fetchAll();
-	}
-
-
 
 }

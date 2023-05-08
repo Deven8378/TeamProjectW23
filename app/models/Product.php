@@ -4,10 +4,23 @@ namespace app\models;
 class Product extends \app\core\Model {
 
 	public $product_id;
-	public $name;
-	public $category;
+	#[\app\validators\NonNull]
+	#[\app\validators\NonEmpty]
+	protected $name;
+	#[\app\validators\NonNull]
+	#[\app\validators\NonEmpty]
+	protected $category;
 	public $description;
 	public $picture;
+
+	// Setters
+	protected function setname($value){
+		$this->name = htmlentities($value, ENT_QUOTES);
+	}
+
+	protected function setcategory($value){
+		$this->category = htmlentities($value, ENT_QUOTES);
+	}
 
 	//Select Statements
 
@@ -100,7 +113,7 @@ class Product extends \app\core\Model {
 
 	// Create, Edit, Delete
 
-	public function addProduct() {
+	protected function addProduct() {
 		$SQL = "INSERT INTO `product` (`product_id`, `name`, `category`, `description`, `picture`) value (:product_id, :name, :category, :description, :picture)";
 		$STH = self::$connection->prepare($SQL);
 		$data = ['product_id'=>$this->product_id,
@@ -112,7 +125,7 @@ class Product extends \app\core\Model {
 		return self::$connection->lastInsertId();
 	}
 
-	public function editProduct($product_id) {
+	protected function editProduct($product_id) {
 		$SQL = "UPDATE `product` SET `name`=:name, `category`=:category, `description`=:description, `picture`=:picture WHERE product_id=:product_id;";
 		$STH = self::$connection->prepare($SQL);
 		$data = ['product_id'=>$this->product_id,

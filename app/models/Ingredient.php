@@ -4,10 +4,23 @@ namespace app\models;
 class Ingredient extends \app\core\Model {
 
 	public $ingredient_id;
-	public $name;
-	public $category;
+	#[\app\validators\NonNull]
+	#[\app\validators\NonEmpty]
+	protected $name;
+	#[\app\validators\NonNull]
+	#[\app\validators\NonEmpty]
+	protected $category;
 	public $description;
 	public $picture;
+
+	// Setters
+	protected function setname($value){
+		$this->name = htmlentities($value, ENT_QUOTES);
+	}
+
+	protected function setcategory($value){
+		$this->category = htmlentities($value, ENT_QUOTES);
+	}	
 
 	//Select Statements
 
@@ -100,7 +113,7 @@ class Ingredient extends \app\core\Model {
 
 	// Create, Edit, Delete
 
-	public function addIngredient() {
+	protected function addIngredient() {
 		$SQL = "INSERT INTO `ingredient` (`ingredient_id`, `name`, `category`, `description`, `picture`) value (:ingredient_id, :name, :category, :description, :picture)";
 		$STH = self::$connection->prepare($SQL);
 		$data = ['ingredient_id'=>$this->ingredient_id,
@@ -112,7 +125,7 @@ class Ingredient extends \app\core\Model {
 		return self::$connection->lastInsertId();
 	}
 
-	public function editIngredient($ingredient_id) {
+	protected function editIngredient($ingredient_id) {
 		$SQL = "UPDATE `ingredient` SET `name`=:name, `category`=:category, `description`=:description, `picture`=:picture WHERE ingredient_id=:ingredient_id;";
 		$STH = self::$connection->prepare($SQL);
 		$data = ['ingredient_id'=>$this->ingredient_id,
