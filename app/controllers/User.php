@@ -6,7 +6,7 @@ class User extends \app\core\Controller
    
     public function index()
     {
-        if (!isset($_SESSION['user_id']))
+        if (!isset($_SESSION['user_id']) || !isset($_SESSION['secretkey']))
         {
             if(isset($_POST['action']))
             {

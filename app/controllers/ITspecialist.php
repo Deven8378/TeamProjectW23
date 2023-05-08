@@ -4,6 +4,7 @@ namespace app\controllers;
 use \app\models\User;
 use \app\models\Profile;
 #[\app\filters\ITSpecialist]
+ // #[\app\filters\TwoFactor]
 class ITspecialist extends \app\core\Controller 
 {
     // Viewing
