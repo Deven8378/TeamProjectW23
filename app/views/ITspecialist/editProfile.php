@@ -4,20 +4,20 @@
   <dl class="dl-viewUserDetails" style="">
     <div class="" style="flex:  50%; " >
       <dt class="dt-label"> <?= _('First Name')?> </dt>
-      <input class="dd-right" type="" name="first_name" value="<?= $data->first_name ?>">
+      <input class="dd-right" type="text" name="first_name" value="<?= $data->first_name ?>">
 
       <dt class="dt-label"><?=_('Middle Name')?></dt>
-      <input class="dd-right" type="" name="middle_name" value="<?= $data->middle_name ?>">
+      <input class="dd-right" type="text" name="middle_name" value="<?= $data->middle_name ?>">
 
       <dt class="dt-label"><?=_('Last Name')?></dt>
-      <input class="dd-right" type="" name="last_name" value="<?= $data->last_name ?>">
+      <input class="dd-right" type="text" name="last_name" value="<?= $data->last_name ?>">
     </div>
     <div class="" style="flex: 50%;" >
       <dt class="dt-label"><?=_('Email')?></dt>
       <input class="dd-right" type="email" name="email" value="<?= $data->email ?>">
 
       <dt class="dt-label"><?=_('Phone Number')?></dt>
-      <input class="dd-right" type="" name="phone_number" value="<?= $data->phone_number ?>">
+      <input class="dd-right" type="tel" pattern="[0-9]{10}" name="phone_number" value="<?= $data->phone_number ?>">
 
       <dt class="dt-label"><?=_('Status')?></dt>
 

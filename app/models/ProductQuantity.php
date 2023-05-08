@@ -7,24 +7,14 @@ class ProductQuantity extends \app\core\Model {
 
 	public $pq_id;
 	public $product_id;
-	#[\app\validators\DateTime]
-	protected $produced_date;
-	#[\app\validators\DateTime]
-	protected $expired_date;
+	public $produced_date;
+	public $expired_date;
 	#[\app\validators\Number]
 	protected $quantity;
 	#[\app\validators\Number]
 	protected $price;
 
-	//Set Functions
-	protected function setproduced_date($value){
-		$this->produced_date = TimeHelper::DTInput($value);
-	}
-
-	protected function setexpired_date($value){
-		$this->expired_date = TimeHelper::DTInput($value);
-	}
-
+	// Setters
 
 	protected function setquantity($value){
 		$this->quantity = htmlentities($value, ENT_QUOTES);

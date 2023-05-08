@@ -9,7 +9,7 @@
 		<input class="createInput" type="text" align="center" placeholder="middle_name" name="middle_name">
 		<input class="createInput" type="text" align="center" placeholder="last_name" name="last_name">
 		<input class="createInput" type="email" align="center" placeholder="email" name="email">
-		<input class="createInput" type="text" align="center" placeholder="phone_number" name="phone_number">
+		<input class="createInput" type="tel" pattern="[0-9]{10}" align="center" placeholder="phone_number" name="phone_number">
 		
 		<br>
 		<select name="status" id="status" class="dropdownUserType">

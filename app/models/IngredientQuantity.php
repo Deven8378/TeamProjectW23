@@ -7,24 +7,14 @@ class IngredientQuantity extends \app\core\Model {
 
 	public $iq_id;
 	public $ingredient_id;
-	#[\app\validators\DateTime]
-	protected $arrival_date;
-	#[\app\validators\DateTime]
-	protected $expired_date;
+	public $arrival_date;
+	public $expired_date;
 	#[\app\validators\Number]
 	protected $quantity;
 	#[\app\validators\Number]
 	protected $price;
 
-	//Set Functions
-	protected function setarrival_date($value){
-		$this->arrival_date = TimeHelper::DTInput($value);
-	}
-
-	protected function setexpired_date($value){
-		$this->expired_date = TimeHelper::DTInput($value);
-	}
-
+	// Setters
 
 	protected function setquantity($value){
 		$this->quantity = htmlentities($value, ENT_QUOTES);
@@ -37,7 +27,7 @@ class IngredientQuantity extends \app\core\Model {
 	// Select Statements
 
 	public function getAll($ingredient_id) {
-		$SQL = 'SELECT `iq_id`, `ingredient_id`, `arrival_date`, `expired_date`, `quantity`, `price`, DATEDIFF(expired_date, arrival_date) AS daysLeft FROM ingredient_quantity WHERE ingredient_id=:ingredient_id';
+		$SQL = 'SELECT `iq_id`, `ingredient_id`, `arrival_date`, `expired_date`, `quantity`, `price`, DATEDIFF(expired_date, CURRENT_DATE()) AS daysLeft FROM ingredient_quantity WHERE ingredient_id=:ingredient_id';
 		$STH = self::$connection->prepare($SQL);
 		$data = ['ingredient_id'=>$ingredient_id];
 		$STH->execute($data);

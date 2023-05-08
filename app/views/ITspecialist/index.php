@@ -19,7 +19,7 @@
 
 
 				<!-- Filters for easy search -->
-				<a class="btn-general" style=" width: 100%;" href="/ITspecialist/index"><?=_('view all')?></a>
+				<a class="btn-general" style=" width: 100%;" href="/ITspecialist/index"><?=_('View All')?></a>
 
 				<form action="/ITspecialist/allAdmins" method="post">
 					<input class="btn-general" style=" width: 100%;" type="submit" name="" value="<?=_('Admin')?>">
