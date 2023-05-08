@@ -22,10 +22,10 @@ if ($type == "admin")
           <?php if ($isAdmin) { ?>
           <!-- <div class="spacer" style="height: 500px; flex-shrink: 0; margin: 0; padding: 0;"></div> -->
           <div style="display: flex; gap: 20px; justify-content: center;">
-            <a class="btn-general" href="/Recipe/edit/<?= htmlentities($data->recipe_id) ?>" role="button" style="margin-top: 20px; width: 30%;">
+            <a class="btn-general recipes-detail-btn" href="/Recipe/edit/<?= htmlentities($data->recipe_id) ?>" role="button" style="">
               <?= _('Edit') ?>
             </a>
-            <a class="btn-general" href="/Recipe/delete/<?= htmlentities($data->recipe_id) ?>" role="button" style="margin-top: 20px; width: 30%;">
+            <a class="btn-general recipes-detail-btn" href="/Recipe/delete/<?= htmlentities($data->recipe_id) ?>" role="button" style="">
               <?= _('Delete') ?>
             </a>
           </div>
@@ -40,7 +40,7 @@ if ($type == "admin")
           <!-- <div class="recipe-container" id="ingredientContent"> -->
 
             <div class="row align-items-start">
-              
+
               <h4 class="col"><?= _('Description') ?>: </h4>
               <div class="col"><p><?= htmlentities($data->description) ?></p></div>
             </div>

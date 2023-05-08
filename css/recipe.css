@@ -58,7 +58,7 @@
 	padding: 20px;
 	background-color: #f5f5f5;
 	text-align: left;
-	
+
 }
 
 #foodName {
@@ -164,7 +164,7 @@
 	    padding-right: calc(var(--bs-gutter-x) * .5);
 	    padding-left: calc(var(--bs-gutter-x) * .5);
 	    margin-right: auto;
-	    margin-left: auto
+	    margin-left: auto;
 	}
     
  }
@@ -207,15 +207,15 @@
 	    padding-right: calc(var(--bs-gutter-x) * .5);
 	    padding-left: calc(var(--bs-gutter-x) * .5);
 	    margin-right: auto;
-	    margin-left: auto
+	    margin-left: auto;
 	}
 	.left-recipe-detail {
 		 flex: 0 0 auto;
-    	width: 41.66666667%
+    	width: 41.66666667%;
 	}
 	.right-recipe-detail {
 		flex: 0 0 auto;
-    	width: 58.33333333%
+    	width: 58.33333333%;
 	}
 }
 
@@ -223,35 +223,40 @@
 @media (min-width:576px) {
 
     .recipe-container {
-        max-width: 540px
+        max-width: 540px;
     }
 }
 
 @media (min-width:768px) {
 
     .recipe-container {
-        max-width: 720px
+        max-width: 720px;
     }
 }
 
 @media (min-width:992px) {
 
     .recipe-container {
-        max-width: 960px
+        max-width: 960px;
     }
 }
 
 @media (min-width:1200px) {
 
     .recipe-container{
-        max-width: 1140px
+       max-width: 1320px;
     }
 }
 
 @media (min-width:1400px) {
 
     .recipe-container {
-        max-width: 1320px
+        max-width: 1320px;
+
     }
 }
 
+.recipes-detail-btn {
+	margin-top: 20px; 
+	width: 30%;
+}
