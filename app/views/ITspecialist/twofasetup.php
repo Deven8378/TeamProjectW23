@@ -4,11 +4,25 @@
 $user = new \app\models\User();
 $user = $user->getSecretKey();
 $checkKey = $user->secret_key;
-
 ?>
+
+<style> 
+#qr {
+ 	display: block;
+  	margin-left: auto;
+  	margin-right: auto;
+  	width: 30%;
+}
+
+#verify {
+	margin-top: 20px;
+	text-align: center; 
+}
+</style>
 		<div class="main">
 			<?php if (empty($checkKey)) { ?>
-		<img src="/User/makeQRCode?data=<?=$data?>"/> <br>
+				<br>
+		<img id="qr" src="/User/makeQRCode?data=<?=$data?>"/> <br>
 			Please scan the QR-code with an authenticator app, such as Google Authenticator.<br>
 	<?php } ?>
 	<br>
@@ -16,7 +30,9 @@ $checkKey = $user->secret_key;
 		<form method="post" action="">
 			<label>Current code:<input type="text" name="currentCode"/>
 	</label>
-			<input type="submit" name="action" value="Verify code" />
+		<div id="verify">
+			<input class="btn-general" type="submit" name="action" value="Verify code" />
+		</div>
 	</form>
 </div>
 
