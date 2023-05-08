@@ -13,24 +13,19 @@
 	}
 </style>
 
-<div style="padding-left: 100px;margin-top: 50px;">
+<div style="margin-left: 100px;margin-top: 50px;">
 	<a href="/Message/index" class="btn-general" id="backLink"><i class="bi bi-arrow-left"></i><?= _('Back') ?></a>
 </div>
 
 <div class="centeringPage">
 	<div class="wrapping" style="margin: 25px;">
-		<?php if($data->receiver == $_SESSION['user_id']) {?>
-			<a class="btn-general" href='/Message/delete/<?= htmlentities($data->message_id) ?>'>
-				<i class="bi bi-x"></i>
-				<?= _('Delete') ?>
-			</a>
-		<?php } ?>
-
-		<p style="font-weight: bold;">From: <?= $data->sender_full_name ?></p>	
-		<p style="font-weight: bold;">To: <?= $data->receiver_full_name ?></p>
-		<p style="font-size: 12px;"><?= $data->timestamp ?></p>
-		<p style="word-wrap: break-word;"><?= $data->message ?></p>
-
+		<form  method="post" action="">
+            <label><?= _('To') ?></label>
+            <input placeholder="<?= _('Recipient') ?>" type="text" name="receiver" id="messageInput">
+            <label><?= _('Message') ?></label> 
+            <textarea placeholder="<?= _('Write something...') ?>" name="message" id="messageInput"></textarea>
+            <input class="btn" type="submit" name="action" value='<?= _('Send') ?>' style="background-color: #e8c8e7;" id="messageSubmit">
+        </form>
 	</div>
 </div>
 

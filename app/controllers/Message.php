@@ -12,6 +12,14 @@ class Message extends \app\core\Controller
 {
 	public function index()
 	{
+		$message = new \app\models\Message();
+		$inbox = $message->getInbox($_SESSION['user_id']);
+		$sent = $message->getSent($_SESSION['user_id']);
+		$this->view('/Message/index', [$inbox, $sent]);
+	}
+
+	public function sendMessage()
+	{
 		if(isset($_POST['action']))
 		{
 			if($_POST['message'] != null && $_POST['message'] != "" &&
@@ -39,10 +47,7 @@ class Message extends \app\core\Controller
 				header('location:/Message/index?error=Please fill the required fields.');
 			}
 		} else {
-			$message = new \app\models\Message();
-			$inbox = $message->getInbox($_SESSION['user_id']);
-			$sent = $message->getSent($_SESSION['user_id']);
-			$this->view('/Message/index', [$inbox, $sent]);
+			$this->view('/Message/sendMessage');
 		}
 	}
 
