@@ -6,17 +6,17 @@
 	<form action='' method='post' enctype="multipart/form-data">
 		
 		<div class="grid-50">
-			<label>Arrival Date</label>
+			<label><?= _('Arrival Date')?></label>
 			<input class="input-qty" type="date" required="" autocomplete="off" name="arrival_date">
 			
-			<label>Expired Date</label>
+			<label><?= _('Expired Date')?></label>
 			<input class="input-qty" type="date" required="" autocomplete="off" name="expired_date">
 			
-			<label>Quantity</label>
+			<label><?= _('Quantity')?></label>
 			<input class="input-qty" type="number" min="0" step="1" id="totalAmt" name="quantity">
 
 		
-			<label>Price</label>
+			<label><?= _('Price')?></label>
 			<input class="input-qty" type="number" min="0" step="0.01" id="totalAmt" name="price">
 
 			<input class="submit-inv" type="submit" align="" value="<?=_('Add Quantity')?>" name="action">

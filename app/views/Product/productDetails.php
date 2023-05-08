@@ -1,11 +1,6 @@
 <?php $this->view('shared/header', $data[0]->name . " Details"); ?>
 <?php $this->view('shared/navigation/nav'); ?>
 
-<style type="text/css">
-
-</style>
-
-
 <div id="foodDetailsDiv">
   <div class="btn-marginleft">
     <a href="/Product/index" class="btn-general" id="backLink"><i class="bi bi-arrow-left"></i><?= _('Back') ?></a>
@@ -29,7 +24,7 @@
             <div class="grid-box-3">
               <?php if ($data[3] == true) { ?>
                 <div class="btn-group dropend">
-                  <button type="button" class="btn-more" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="bi bi-three-dots-vertical"></i>More</button>
+                  <button type="button" class="btn-more" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="bi bi-three-dots-vertical"></i><?=_('More')?></button>
                   <div class="dropdown-menu">
                       <li>
                         <a class="dropdown-item" href="/Product/edit/<?= $data[0]->product_id ?>">
@@ -54,22 +49,22 @@
             <p class="grid-box-8"><?= htmlentities($data[1]->fullQuantity) ?></p>
             
             <?php if($data[3] == true) { ?>
-              <a class="btn-general grid-box-9" style="" href="/Product/addQuantity/<?= $data[0]->product_id ?>">
+              <a class="btn-general grid-box-9" href="/Product/addQuantity/<?= $data[0]->product_id ?>">
                 <?= _('Add Quantity') ?>
               </a>
             <?php } ?>
 
           </div>
 <!-- ----------------------------------------------------------------- -->
-          <div id="myDIV">
+          <div id="table-container">
             <table class="table table-hover">
               <thead>
                 <tr>
-                  <th scope="col">Quantity</th>
-                  <th scope="col">Arrival Date</th>
-                  <th scope="col">Expired Date</th>
-                  <th scope="col">Unit Price</th>
-                  <th scope="col">Days Left</th>
+                  <th scope="col"><?=_('Quantity')?></th>
+                  <th scope="col"><?=_('Arrival Date')?></th>
+                  <th scope="col"><?=_('Expired Date')?></th>
+                  <th scope="col"><?=_('Unit Price')?></th>
+                  <th scope="col"><?=_('Days Left')?></th>
                   <th scope="col"></th>
                 </tr>
               </thead>
@@ -83,7 +78,7 @@
                   <td><?= $quantity->daysLeft ?></td>
                   <td>
                     <div class="btn-group dropend">
-                      <button type="button" class="btn-more" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="bi bi-three-dots-vertical"></i>More</button>
+                      <button type="button" class="btn-more" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="bi bi-three-dots-vertical"></i><?=_('More')?></button>
                       <div class="dropdown-menu">
                           <li>
                             <a class="dropdown-item" href="/Product/editQuantity/<?= $quantity->pq_id ?>">
@@ -91,7 +86,6 @@
                             </a>
                           </li>
                         <?php if ($data[3] == true) { ?>
-                          
                           <li>
                             <a class="dropdown-item" href="#popupQuantity" id="<?= $quantity->pq_id ?>" onclick="deleteIngredientLinkID(this.id)">
                               <?= _('Delete') ?>
@@ -121,11 +115,11 @@
       <div class="content">
           <div class="container">
               <form  method="post" action="">
-                    <label>Are you certain you want to delete the following Product?</label>
+                    <label><?=_('Are you certain you want to delete the following Product?')?></label>
                     <div align="center">
-                      <a href="/Product/productDetails/<?= $data[0]->product_id ?>" class="btn-general"><?=_('cancel')?></a>
+                      <a href="/Product/productDetails/<?= $data[0]->product_id ?>" class="btn-general"><?=_('Cancel')?></a>
                       
-                      <a href="/Product/delete/<?= $data[0]->product_id ?>" class="btn-general"><?=_('delete')?></a>
+                      <a href="/Product/delete/<?= $data[0]->product_id ?>" class="btn-general"><?=_('Delete')?></a>
                 </div>
               </form>
           </div>
@@ -139,7 +133,7 @@
       <div class="content">
           <div class="container">
               <form  method="post" action="">
-                    <label>Do you want to delete the entire Quantity row</label>
+                    <label><?=_('Do you want to delete the entire Quantity row')?></label>
                     <div align="center">
                       <a href="/Product/productDetails/<?= $data[0]->product_id ?>" class="btn-general"><?=_('Cancel')?></a>
                       <!-- getting href from deleteLinkID javascript function -->

@@ -66,24 +66,7 @@ class ProductQuantity extends \app\core\Model {
 		return $STH->rowCount();		
 	}
 
-	public function deleteQuantity($pq_id){
-		$SQL = "DELETE FROM `product_quantity` WHERE pq_id=:pq_id;";
-		$STH = self::$connection->prepare($SQL);
-		$data = ['pq_id'=>$pq_id];
-		$STH->execute($data);
-		return $STH->rowCount(); 
-	}
-
-		public function getAvailibility() {
-		$SQL = 'SELECT pq_id, quantity, DATEDIFF(expired_date, produced_date) AS daysLeft FROM product_quantity;';
-		$STH = self::$connection->prepare($SQL);
-		$data = ['product_id'=>$product_id];
-		$STH->execute($data);
-		$STH->setFetchMode(\PDO::FETCH_CLASS, 'app\\models\\productQuantity');
-		return $STH->fetchAll();
-	}
-
-		public function quantityUpdate($pq_id) {
+	public function quantityUpdate($pq_id) {
 		$SQL = "UPDATE `product_quantity` SET `quantity`=:quantity WHERE pq_id=:pq_id;";
 		$STH = self::$connection->prepare($SQL);
 		$data = [
@@ -93,5 +76,24 @@ class ProductQuantity extends \app\core\Model {
 		$STH->execute($data);
 		return $STH->rowCount();		
 	}
+	
+	public function deleteQuantity($pq_id){
+		$SQL = "DELETE FROM `product_quantity` WHERE pq_id=:pq_id;";
+		$STH = self::$connection->prepare($SQL);
+		$data = ['pq_id'=>$pq_id];
+		$STH->execute($data);
+		return $STH->rowCount(); 
+	}
+
+	public function getAvailibility() {
+		$SQL = 'SELECT pq_id, quantity, DATEDIFF(expired_date, produced_date) AS daysLeft FROM product_quantity;';
+		$STH = self::$connection->prepare($SQL);
+		$data = ['product_id'=>$product_id];
+		$STH->execute($data);
+		$STH->setFetchMode(\PDO::FETCH_CLASS, 'app\\models\\productQuantity');
+		return $STH->fetchAll();
+	}
+
+
 
 }
