@@ -67,7 +67,7 @@ white-space: nowrap;
 </script>
 
 <div class="container" style="padding-top: 50px;">
-    <div class="row">
+    <div class="row-messages">
         <div class="col-md-2">
             <h2 class="grid-title"><i class="bi bi-inbox"></i> <?= _('Inbox') ?></h2>
                 <a class="btn" href="/Message/sendMessage" role="button" style="background-color: #e8c8e7;"><i class="bi bi-pencil-square"></i> <?= _('New Message') ?></a>

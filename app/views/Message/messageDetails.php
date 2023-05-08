@@ -26,8 +26,8 @@
 			</a>
 		<?php } ?>
 
-		<p style="font-weight: bold;">From: <?= $data->sender_full_name ?></p>	
-		<p style="font-weight: bold;">To: <?= $data->receiver_full_name ?></p>
+		<p style="font-weight: bold;"><?=_('From:')?> <?= $data->sender_full_name ?></p>	
+		<p style="font-weight: bold;"><?=_('To:')?> <?= $data->receiver_full_name ?></p>
 		<p style="font-size: 12px;"><?= $data->timestamp ?></p>
 		<p style="word-wrap: break-word;"><?= $data->message ?></p>
 

@@ -14,7 +14,7 @@
 	<link rel="stylesheet" type="text/css" href="/css/Category.css">
 	<link rel="stylesheet" type="text/css" href="/css/Inventory.css">
 	<link rel="stylesheet" type="text/css" href="/css/recipe.css">
-	<link rel="stylesheet" type="text/css" href="/css/buttons.css">
+	<link rel="stylesheet" type="text/css" href="/css/Message.css">
 
 	<title><?= $data ?></title>
 
