@@ -11,40 +11,43 @@ if ($type == "admin")
 <link rel="stylesheet" type="text/css" href="/css/foodDetails.css">
 
 <div id="foodDetailsDiv">
-  <a href="/Recipe/index" id="backLink"><i class="bi bi-arrow-left"></i><?= _('Back') ?></a>
-
-  <div class="container text-center">
-    <div class="row align-items-start">
-      <div class="col-5">
+  <div class="btn-marginleft">
+    <a href="/Recipe/index"class="btn-general" id="backLink" ><i class="bi bi-arrow-left"></i><?= _('Back') ?></a>
+  </div>
+  <div class="recipe-container text-center" style="">
+    <!-- <div class="row align-items-start"> -->
+      <div class="left-recipe-detail">
         <div>
-          <img id="foodIMG" src="/productImages/<?= htmlentities($data->picture) ?>">
+          <img class="b-5" id="foodIMG" src="/productImages/<?= htmlentities($data->picture) ?>">
           <?php if ($isAdmin) { ?>
           <!-- <div class="spacer" style="height: 500px; flex-shrink: 0; margin: 0; padding: 0;"></div> -->
-          <a class="btn" href="/Recipe/edit/<?= htmlentities($data->recipe_id) ?>" role="button" style="background-color: #e8c8e7;">
-            <?= _('Edit') ?>
-          </a>
-          <a class="btn" href="/Recipe/delete/<?= htmlentities($data->recipe_id) ?>" role="button" style="background-color: #e8c8e7;">
-            <?= _('Delete') ?>
-          </a>
+          <div style="display: flex; gap: 20px; justify-content: center;">
+            <a class="btn-general" href="/Recipe/edit/<?= htmlentities($data->recipe_id) ?>" role="button" style="margin-top: 20px; width: 30%;">
+              <?= _('Edit') ?>
+            </a>
+            <a class="btn-general" href="/Recipe/delete/<?= htmlentities($data->recipe_id) ?>" role="button" style="margin-top: 20px; width: 30%;">
+              <?= _('Delete') ?>
+            </a>
+          </div>
         <?php } ?>
         </div>
       </div>
-      <div class="col-7">
-        <div id="foodDetails">
-          <h1 id="foodName"><?= htmlentities($data->name) ?></h1>
+      <div class="right-recipe-detail">
+        <div class="description-box">
 
-          <div class="container" id="ingredientContent">
+          <h1 id="foodName"><?= htmlentities($data->title) ?></h1>
+
+          <!-- <div class="recipe-container" id="ingredientContent"> -->
+
             <div class="row align-items-start">
-              <div class="col">
-                <?= _('Description') ?>: 
-              </div>
-              <div class="col">
-                <p><?= htmlentities($data->description) ?></p>
-              </div>
+              
+              <h4 class="col"><?= _('Description') ?>: </h4>
+              <div class="col"><p><?= htmlentities($data->description) ?></p></div>
             </div>
+
           </div>
         </div>
       </div>
-    </div>
+    <!-- </div> -->
   </div>
 </div>

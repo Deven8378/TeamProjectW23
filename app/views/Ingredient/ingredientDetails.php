@@ -9,7 +9,7 @@
     <div class="row-details" align="center">
 
       <div class="foodIMG-box">
-          <img id="foodIMG" src="/ingredientImages/<?= $data[0]->picture ?>">
+          <img class="b-5" id="foodIMG" src="/ingredientImages/<?= $data[0]->picture ?>">
       </div>
       
       <div class="foodDetails-box">

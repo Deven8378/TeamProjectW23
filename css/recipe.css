@@ -29,6 +29,49 @@
 	margin-left: 6%;
 }
 
+/*-----------------------*/
+#foodIMG {
+	max-width: 500px;
+	max-height: 500px;
+	/*position: absolute;
+	padding-right: 20px;
+  	top: 50%;
+  	transform: translate(-50%,-50%);*/
+}
+
+#backLink {
+	/*padding: 50px;
+	margin: ;
+	color: black;*/
+}
+
+#foodDetailsDiv {
+	margin: 50px;
+	height: 75%;
+}
+
+.description-box {
+	width: 100%;
+	font-size: clamp(0.625rem, 0.4808rem + 0.6154vw, 1rem);
+/*	height: auto;*/
+	min-height: 500px;
+	padding: 20px;
+	background-color: #f5f5f5;
+	text-align: left;
+	
+}
+
+#foodName {
+	font-weight: bold;
+}
+
+#foodEverything {
+	padding-top: 20px;
+}
+
+/*-------------*/
+
+
 @media only screen and (max-width: 580px) {
     
 	.row-recipe {
@@ -111,7 +154,18 @@
 
 @media only screen and (max-width: 1350px) {
     
-
+	.recipe-container  {
+	    --bs-gutter-x: 1.5rem;
+	    --bs-gutter-y: 0;
+	    display: grid;
+	    grid-template-columns: auto;
+	    text-align: center;
+	    width: 100%;
+	    padding-right: calc(var(--bs-gutter-x) * .5);
+	    padding-left: calc(var(--bs-gutter-x) * .5);
+	    margin-right: auto;
+	    margin-left: auto
+	}
     
  }
 
@@ -145,5 +199,59 @@
 		height: 100%;
 	}
     
-
+	.recipe-container  {
+	    --bs-gutter-x: 1.5rem;
+	    --bs-gutter-y: 0;
+	    width: 100%;
+	    display: flex;
+	    padding-right: calc(var(--bs-gutter-x) * .5);
+	    padding-left: calc(var(--bs-gutter-x) * .5);
+	    margin-right: auto;
+	    margin-left: auto
+	}
+	.left-recipe-detail {
+		 flex: 0 0 auto;
+    	width: 41.66666667%
+	}
+	.right-recipe-detail {
+		flex: 0 0 auto;
+    	width: 58.33333333%
+	}
 }
+
+
+@media (min-width:576px) {
+
+    .recipe-container {
+        max-width: 540px
+    }
+}
+
+@media (min-width:768px) {
+
+    .recipe-container {
+        max-width: 720px
+    }
+}
+
+@media (min-width:992px) {
+
+    .recipe-container {
+        max-width: 960px
+    }
+}
+
+@media (min-width:1200px) {
+
+    .recipe-container{
+        max-width: 1140px
+    }
+}
+
+@media (min-width:1400px) {
+
+    .recipe-container {
+        max-width: 1320px
+    }
+}
+

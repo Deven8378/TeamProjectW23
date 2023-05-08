@@ -4,7 +4,7 @@
 foreach ($data as $recipe) { ?>
     <div class="col">
       <a href="/Recipe/details/<?= htmlentities($recipe->recipe_id) ?>">
-      <div class="card">
+      <div class="card card-glow">
         <div id="ingredientIMG" ma>
           <div class="image">
               <img style="width: 172px; height: 199.6px;" src="/productImages/<?= htmlentities($recipe->picture) ?>">
