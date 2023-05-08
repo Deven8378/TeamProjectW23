@@ -4,12 +4,23 @@ namespace app\models;
 class Profile extends \app\core\Model 
 {
 	public $user_id;
-	public $first_name;
+	#[\app\validators\NonNull]
+	#[\app\validators\NonEmpty]
+	protected $first_name;
 	public $middle_name;
-	public $last_name;
-	public $email;
-	public $phone_number;
-	public $status;	
+	#[\app\validators\NonNull]
+	#[\app\validators\NonEmpty]	
+	protected $last_name;
+	#[\app\validators\NonNull]
+	#[\app\validators\NonEmpty]	
+	#[\app\validators\ValidEmail]
+	protected $email;
+	#[\app\validators\NonNull]
+	#[\app\validators\NonEmpty]	
+	protected $phone_number;
+	#[\app\validators\NonNull]
+	#[\app\validators\NonEmpty]	
+	protected $status;	
 
 	// Select Statements
 
@@ -47,7 +58,7 @@ class Profile extends \app\core\Model
 
 	// Create, Edit, Delete
 	
-	public function insert()
+	protected function insert()
 	{
 		$SQL = 'INSERT INTO profile(user_id, first_name, middle_name, last_name, email, phone_number, status) 
 				VALUES (:user_id, :first_name, :middle_name, :last_name, :email, :phone_number, :status)';
@@ -67,7 +78,7 @@ class Profile extends \app\core\Model
 		return self::$connection->lastInsertId();
 	}
 
-	public function editProfile($user_id)
+	protected function editProfile($user_id)
 	{
 		$SQL = "UPDATE profile SET first_name=:first_name, middle_name=:middle_name, last_name=:last_name,email=:email,phone_number=:phone_number,status=:status WHERE user_id=:user_id";
 		$STH = self::$connection->prepare($SQL);
