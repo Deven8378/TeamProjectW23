@@ -88,7 +88,7 @@
 			<!-- <div class="centering"> -->
 			<!-- <div> -->
 				<!-- class="row" -->
-				<div  class="card-content">
+				<div  class="card-content" align="center">
 				  <?php $this->view('Ingredient/ingredientsCard', $data[0]); ?>
 				</div>
 			<!-- </div> -->

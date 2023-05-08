@@ -12,6 +12,14 @@
         width: 50%; 
         margin-right: 55px;
     }
+    .col-content {
+        align-items: center;
+    }
+    .card-content {
+        display: flex;
+        align-items: center;
+    }
+
 }
 
 @media only screen and (min-width: 500px) {
@@ -85,12 +93,17 @@
         margin-bottom: 20px; 
         margin-right: 10px
     }
-        .col-index {
+    .col-index {
         display: flex;
-        
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 5px;
         /*flex: 0 0 auto;
         width: 16.66666667%;
         padding-right: 10px;*/
+    }
+    .row-dividor {
+        display: none;
     }
 
 
