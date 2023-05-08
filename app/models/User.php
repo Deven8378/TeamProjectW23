@@ -4,10 +4,22 @@ namespace app\models;
 class User extends \app\core\Model 
 {
 	public $user_id;
-	public $username;
-	public $password_hash;
+	#[\app\validators\NameLength]
+	protected $username;
+	#[\app\validators\PasswordLength]
+	protected $password_hash;
 	public $user_type;
 	public $secret_key;
+
+	//Set functions
+	protected function setusername($value){
+		//on setting, change the timezone
+		$this->username = htmlentities($value, ENT_QUOTES);
+	}
+
+	protected function setpassword_hash($value){
+		$this->password_hash = htmlentities($value, ENT_QUOTES);
+	}
 
 	//Select Statements	
 
@@ -83,7 +95,7 @@ class User extends \app\core\Model
 
 	// Create, Edit, Delete
 	
-	public function insert()
+	protected function insert()
 	{
 		$SQL = 'INSERT INTO user(user_type, username, password_hash) 
 				VALUES (:user_type, :username, :password_hash)';
@@ -95,7 +107,7 @@ class User extends \app\core\Model
 		return self::$connection->lastInsertId();
 	}
 
-	public function editUser($user_id)
+	protected function editUser($user_id)
 	{
 		$SQL = "UPDATE user SET username=:username, user_type=:user_type WHERE user_id=:user_id";
 		$STH = self::$connection->prepare($SQL);
@@ -109,7 +121,7 @@ class User extends \app\core\Model
 
 	}
 
-	public function editUserPassword($user_id)
+	protected function editUserPassword($user_id)
 	{
 		$SQL = "UPDATE user SET username=:username, password_hash=:password_hash, user_type=:user_type WHERE user_id=:user_id";
 		$STH = self::$connection->prepare($SQL);

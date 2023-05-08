@@ -12,7 +12,7 @@ class App
         $params = [];
         
         if (file_exists('app/controllers/' . $request[0] . '.php'))
-        {            
+        {
             $controller = $request[0];
             unset($request[0]);
         }

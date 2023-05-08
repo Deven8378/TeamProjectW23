@@ -49,50 +49,53 @@ class Model
 
 	public function isValid() : bool
 	{
-		$reflection = new ReflectionClass($this);
+		$reflection = new \ReflectionClass($this);
 		$properties = $reflection->getProperties();
 
-		foreach ($properties as $property) 
-		{
-			$attributes = $property->getAttributes(
-				\app\core\Validator::class,
-				\ReflectionAttribute::IS_INSTANCEOF
-			);
-
-			$data = $property->getValue($this);
-
-			foreach ($attributes as $attribute) 
-			{
-				$validator = $attribute->newInstance();
-				if(!$validator->isValid($data))
-					return false;
-			}
-		}
+        foreach ($properties as $property) 
+        {
+            $attributes = $property->getAttributes(
+                \app\core\Validator::class, 
+                \ReflectionAttribute::IS_INSTANCEOF
+            );
+            $data = $property->getValue($this);
+            foreach ($attributes as $attribute) 
+            {
+                $validator = $attribute->newInstance();
+                if (!$validator->isValid($data))
+                    return false;
+            }
+        }
 		return true;
 	}
 
-	// public function __call($method, $arguments)
-	// {
-	// 	if($this->isValid())
-	// 	{
-	// 		call_user_func_array([$this, $method], $arguments);
-	// 	}
-	// }
+	public function __call($method, $arguments)
+	{
+		if($this->isValid())
+		{
+			call_user_func_array([$this, $method], $arguments);
+		}
+	}
 
-	// public function __set($name, $value)
-	// {
-	// 	$method = "set$name";
+	public function __set($name, $value)
+	{
+
+		$method = "set$name"; 
 		
-	// 	if(method_exists($this, $method))
-	// 		$this->$method($value);
-	// }
+		if(method_exists($this, $method)){
+			$this->$method($value);
+		}else{
+			$this->$name = $value; 
+		}
 
-	// public function __get($name)
-	// {
-	// 	if(isset($this->$name))
-	// 		return $this->$name;
-	// 	else
-	// 		return '';
-	// }
+	}
 
+	public function __get($name)
+	{
+		if(isset($this->$name)){
+			return $this->$name;
+		}else{
+			return '';
+		}
+	}
 }

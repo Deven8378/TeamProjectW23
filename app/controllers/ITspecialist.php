@@ -56,7 +56,8 @@ class ITspecialist extends \app\core\Controller
                     $user->user_type = htmlentities($_POST['user_type']);
                     $user->user_id = $user->insert();
 
-                    header('location:/ITspecialist/createProfile/' . $user->user_id);
+                    // header('location:/ITspecialist/createProfile/' . $user->user_id);
+                    header('location:/ITspecialist/index?success=User made. Please Create Profile for User.');
                 }
                 else
                 {
@@ -92,14 +93,15 @@ class ITspecialist extends \app\core\Controller
                 $profile->status = htmlentities($_POST['status']);
 
                 $success = $profile->insert();
+                header('location:/ITspecialist/index?success=Profile created for new User.');
 
-                if($success)
-                {
-                    header('location:/ITspecialist/index?success=New User Created');
-                }else{
+                // if($success)
+                // {
+                //     header('location:/ITspecialist/index?success=New User Created');
+                // }else{
 
-                    header('location:/ITspecialist/createProfile/' . $user_id.'?error=Something went wrong');
-                }
+                //     header('location:/ITspecialist/createProfile/' . $user_id.'?error=Something went wrong');
+                // }
             }else{
                 header('location:/ITspecialist/createProfile/' . $user_id.'?error=Please fill the fields. (Exceptiion: Middle Name)');
             }
@@ -161,13 +163,15 @@ class ITspecialist extends \app\core\Controller
 
                 $success = $profile->editProfile($user_id);
 
-                if($success)
-                {
-                    header('location:/ITspecialist/edit/' . $user_id. '?success=User Profile Was Updated.');
-                }else{
+                header('location:/ITspecialist/edit/' . $user_id. '?success=User Profile Was Updated.');
 
-                    header('location:/ITspecialist/edit/' . $user_id.'?error=Error when modifying Profile.');
-                }
+                // if($success)
+                // {
+                //     header('location:/ITspecialist/edit/' . $user_id. '?success=User Profile Was Updated.');
+                // }else{
+
+                //     header('location:/ITspecialist/edit/' . $user_id.'?error=Error when modifying Profile.');
+                // }
             }else{
                 header('location:/ITspecialist/edit/' . $user_id.'?error=Please fill the required fields.');
             }
@@ -197,16 +201,17 @@ class ITspecialist extends \app\core\Controller
 
                     $user->password_hash = password_hash($_POST['password'], PASSWORD_DEFAULT);
                     $success = $user->editUserPassword($user_id);
-
+                    header('location:/ITspecialist/edit/' . $user_id. '?success=Password Was Updated.');
                 }else{
 
                     $success = $user->editUser($user_id);
-                    if($success){
-                        // echo 'sdsds';
-                        header('location:/ITspecialist/edit/' . $user_id. '?success=User Account Was Updated.');
-                    } else {
-                        header('location:/ITspecialist/edit/' . $user_id. '?error=Error when modifying User Account.');
-                    }
+                    header('location:/ITspecialist/edit/' . $user_id. '?success=User Account Was Updated.');
+                    // if($success){
+                    //     // echo 'sdsds';
+                    //     header('location:/ITspecialist/edit/' . $user_id. '?success=User Account Was Updated.');
+                    // } else {
+                    //     header('location:/ITspecialist/edit/' . $user_id. '?error=Error when modifying User Account.');
+                    // }
                 }
             }else{
                 header('location:/ITspecialist/edit/' . $user_id.'?error=Please fill the fields to modify.');

@@ -4,9 +4,16 @@ namespace app\models;
 class Recipe extends \app\core\Model {
 
 	public $recipe_id;
-	public $title;
+	#[\app\validators\NonNull]
+	#[\app\validators\NonEmpty]
+	protected $title;
 	public $description;
 	public $picture;
+
+	//Set functions
+	protected function settitle($value){
+		$this->title = htmlentities($value, ENT_QUOTES);
+	}
 
 	//Select Statements
 
@@ -30,7 +37,7 @@ class Recipe extends \app\core\Model {
 
 	// Create, Edit, Delete
 
-	public function insert() {
+	protected function insert() {
 		$SQL = "INSERT INTO recipe (title, description, picture) value (:title,:description,:picture)";
 		$STH = self::$connection->prepare($SQL);
 		$data = ['title'=>$this->title,
@@ -40,7 +47,7 @@ class Recipe extends \app\core\Model {
 		return self::$connection->lastInsertId();		
 	}
 
-	public function update() {
+	protected function update() {
 		$SQL = "UPDATE recipe SET title=:title, picture=:picture, description=:description WHERE recipe_id =:recipe_id ";
 		$STH = self::$connection->prepare($SQL);
 		$STH->execute(['title'=>$this->title,
