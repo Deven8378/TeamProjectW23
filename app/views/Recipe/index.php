@@ -1,14 +1,21 @@
 <?php $this->view('shared/header', "Recipes"); ?>
 <?php $this->view('shared/navigation/nav'); ?>
 
-
-<style type="text/css">
-.vl {
-  border-left: 1px solid #d9d9d9;
-  height: 800px;
+<style>
+.vl{
+	margin-top: 50px;
+	border-right: 1px solid #d9d9d9;
+	height: 100%;
 }
-</style>
 
+.row {
+	margin-top: 50px;
+}
+
+.col-sm-2 {
+	margin-top: 50px;
+}	
+</style>
 
 <div class="container">
 	<div class="row">
