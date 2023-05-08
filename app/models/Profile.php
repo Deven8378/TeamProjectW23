@@ -80,7 +80,7 @@ class Profile extends \app\core\Model
 
 	// Create, Edit, Delete
 	
-	protected function insert()
+	public function insert()
 	{
 		$SQL = 'INSERT INTO profile(user_id, first_name, middle_name, last_name, email, phone_number, status) 
 				VALUES (:user_id, :first_name, :middle_name, :last_name, :email, :phone_number, :status)';
@@ -97,7 +97,8 @@ class Profile extends \app\core\Model
 
 		$STH->execute($data);
 
-		return self::$connection->lastInsertId();
+		echo self::$connection->lastInsertId();
+		return $STH->rowCount();
 	}
 
 	protected function editProfile($user_id)

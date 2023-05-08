@@ -57,8 +57,7 @@ class ITspecialist extends \app\core\Controller
                     $user->user_type = htmlentities($_POST['user_type']);
                     $user->user_id = $user->insert();
 
-                    // header('location:/ITspecialist/createProfile/' . $user->user_id);
-                    header('location:/ITspecialist/index?success=User made. Please Create Profile for User.');
+                    header('location:/ITspecialist/createProfile/' . $user->user_id);
                 }
                 else
                 {
@@ -94,17 +93,16 @@ class ITspecialist extends \app\core\Controller
                 $profile->status = htmlentities($_POST['status']);
 
                 $success = $profile->insert();
-                header('location:/ITspecialist/index?success=Profile created for new User.');
+                echo "$success";
 
-                // if($success)
-                // {
-                //     header('location:/ITspecialist/index?success=New User Created');
-                // }else{
-
-                //     header('location:/ITspecialist/createProfile/' . $user_id.'?error=Something went wrong');
-                // }
+                if($success)
+                {
+                    header('location:/ITspecialist/index?success=New User Created');
+                }else{
+                    header('location:/ITspecialist/createProfile/' . $user_id.'?error=Something went wrong');
+                }
             }else{
-                header('location:/ITspecialist/createProfile/' . $user_id.'?error=Please fill the fields. (Exceptiion: Middle Name)');
+                header('location:/ITspecialist/createProfile/' . $user_id.'?error=Please fill the fields. (Exception: Middle Name)');
             }
         } 
         else 
@@ -155,24 +153,21 @@ class ITspecialist extends \app\core\Controller
 
                 $profile = new Profile();
                 $profile->user_id = $user_id;
-                $profile->first_name = htmlentities($_POST['first_name']);
+                $profile->first_name = $_POST['first_name'];
                 $profile->middle_name = htmlentities($_POST['middle_name']);
-                $profile->last_name = htmlentities($_POST['last_name']);
-                $profile->email = htmlentities($_POST['email']);
-                $profile->phone_number = htmlentities($_POST['phone_number']);
-                $profile->status = htmlentities($_POST['status']);
+                $profile->last_name = $_POST['last_name'];
+                $profile->email = $_POST['email'];
+                $profile->phone_number = $_POST['phone_number'];
+                $profile->status = $_POST['status'];
 
-                $success = $profile->editProfile($user_id);
+                $profile = $profile->editProfile($user_id);
 
-                header('location:/ITspecialist/edit/' . $user_id. '?success=User Profile Was Updated.');
-
-                // if($success)
-                // {
-                //     header('location:/ITspecialist/edit/' . $user_id. '?success=User Profile Was Updated.');
-                // }else{
-
-                //     header('location:/ITspecialist/edit/' . $user_id.'?error=Error when modifying Profile.');
-                // }
+                if($profile)
+                {
+                    header('location:/ITspecialist/edit/' . $user_id. '?success=User Profile Was Updated.');
+                } else {
+                    header('location:/ITspecialist/edit/' . $user_id.'?error=Error when modifying Profile.');
+                }
             }else{
                 header('location:/ITspecialist/edit/' . $user_id.'?error=Please fill the required fields.');
             }
@@ -187,24 +182,25 @@ class ITspecialist extends \app\core\Controller
     {
         if(isset($_POST['editUser']))
         {
-            if($_POST['username'] !="" && $_POST['username'] !=null && 
-                $_POST['user_type'] != ""  && $_POST['user_type'] != null )
-            {
+            if($_POST['username'] !=""
+                && $_POST['username'] !=null
+                && $_POST['user_type'] != ""
+                && $_POST['user_type'] != null
+            ){
                 $user = new User();
                 $user->username = htmlentities($_POST['username']);
                 $user->user_type = htmlentities($_POST['user_type']);
-
+                $success;
                 if($_POST['password'] != "" && $_POST['password'] != null){
 
                     $user->password_hash = password_hash($_POST['password'], PASSWORD_DEFAULT);
                     $success = $user->editUserPassword($user_id);
-                    header('location:/ITspecialist/edit/' . $user_id. '?success=Password Was Updated.');
+                    echo "12344";
+                    header('location:/ITspecialist/edit/' . $user_id . '?success=User Account Was Updated.');
                 }else{
+                    $user = $user->editUser($user_id);
 
-                    $success = $user->editUser($user_id);
-                    // header('location:/ITspecialist/edit/' . $user_id. '?success=User Account Was Updated.');
-                    if($success){
-                        // echo 'sdsds';
+                    if($user){
                         header('location:/ITspecialist/edit/' . $user_id. '?success=User Account Was Updated.');
                     } else {
                         header('location:/ITspecialist/edit/' . $user_id. '?error=Error when modifying User Account.');

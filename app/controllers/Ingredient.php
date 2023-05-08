@@ -84,11 +84,11 @@ class Ingredient extends \app\core\Controller
                 }
 
                 $success = $ingredient->addIngredient();
-                // if($success){
+                if($success){
                     header('location:/Ingredient/index?success='. $ingredient->name .' has been added');
-                // }else{
-                //      header('location:/Ingredient/index?error=Something went wrong when creating a new Ingredient. Please Try again.');
-                // }
+                }else{
+                     header('location:/Ingredient/index?error=Something went wrong when creating a new Ingredient. Please Try again.');
+                }
 
             }else{
                 header('location:/Ingredient/createIngredient?error=Please enter a Name and select a Category.');
@@ -122,11 +122,11 @@ class Ingredient extends \app\core\Controller
                 }
                 $success = $ingredient->editIngredient($ingredient_id);
 
-                // if($success){
+                if($success){
                     header('location:/Ingredient/ingredientDetails/' . $ingredient_id. '?success=Ingredient Updated.');
-                // } else {
-                //     header('location:/Ingredient/edit/' . $ingredient_id. '?error=Please modify in order to edit.');
-                // }
+                } else {
+                    header('location:/Ingredient/edit/' . $ingredient_id. '?error=Please modify in order to edit.');
+                }
             } else {
                 header('location:/Ingredient/edit/' . $ingredient_id. '?error=Please fill the required fields.');
             }
@@ -164,11 +164,11 @@ class Ingredient extends \app\core\Controller
                     $ingredient_quantity->price = $_POST['price'];
                     $success = $ingredient_quantity->addIngredientQuantity($ingredient_id);
 
-                    // if($success){
+                    if($success){
                         header('location:/Ingredient/ingredientDetails/' . $ingredient_id. '?success=Ingredient added quantity.');
-                    // } else {
-                    //     header('location:/Ingredient/ingredientDetails/' . $ingredient_id. '?error=Something went wrong when adding quantity. Please Try again.');
-                    // } 
+                    } else {
+                        header('location:/Ingredient/ingredientDetails/' . $ingredient_id. '?error=Something went wrong when adding quantity. Please Try again.');
+                    } 
                 } else {
                     header('location:/Ingredient/addQuantity/' . $ingredient_id. '?error=Please recheck dates.');
                 }
@@ -200,11 +200,11 @@ class Ingredient extends \app\core\Controller
                     $ingredientQuantity->price = $_POST['price'];
                     $success = $ingredientQuantity->editQuantity($iq_id);
 
-                    // if($success){
+                    if($success){
                         header('location:/Ingredient/ingredientDetails/' . $ingredientQuantity->ingredient_id . '?success=Ingredient Quantity Updated.');
-                    // } else {
-                    //     header('location:/Ingredient/editQuantity/' . $iq_id . '?error=Please modify in order to edit.');
-                    // }
+                    } else {
+                        header('location:/Ingredient/editQuantity/' . $iq_id . '?error=Please modify in order to edit.');
+                    }
                 } else {
                     header('location:/Ingredient/editQuantity/' . $iq_id. '?error=Please recheck dates.');
                 }
@@ -231,11 +231,11 @@ class Ingredient extends \app\core\Controller
                 $ingredientQuantity->quantity = $_POST['quantity'];
                 $success = $ingredientQuantity->quantityUpdate($iq_id);
 
-                // if($success){
+                if($success){
                     header('location:/Ingredient/ingredientDetails/' . $ingredientQuantity->ingredient_id . '?success=Ingredient Quantity Updated.');
-                // } else {
-                //     header('location:/Ingredient/editQuantity/' . $iq_id . '?error=Please modify in order to edit.');
-                // }
+                } else {
+                    header('location:/Ingredient/editQuantity/' . $iq_id . '?error=Please modify in order to edit.');
+                }
             }else{
                 header('location:/Ingredient/editQuantity/' . $iq_id. '?error=Please fill the required fields.');
             }

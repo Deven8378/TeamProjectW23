@@ -27,11 +27,11 @@ class Category extends \app\core\Controller
                 if(!$checkCategory){
                     $category->category_name = htmlentities($_POST['category_name']);
                     $success = $category->insert();
-                    // if($success){
+                    if($success){
                         header('location:/Category/index?success=' . $category->category_name . ' was added to Categories');
-                    // }else{
-                    //     header('location:/Category/index?error=Something went wrong when creating a new Category. Please Try again.');
-                    // } 
+                    }else{
+                        header('location:/Category/index?error=Something went wrong when creating a new Category. Please Try again.');
+                    } 
                 }else{
                     header('location:/Category/index?error=' . htmlentities($_POST['category_name']) .' already exits.');
                 }

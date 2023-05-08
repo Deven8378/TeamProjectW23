@@ -84,11 +84,11 @@ class Product extends \app\core\Controller
                 }
 
                 $success = $product->addProduct();
-                // if($success){
+                if($success){
                     header('location:/Product/index?success='. $product->name .' has been added');
-                // }else{
-                //      header('location:/Product/index?error=Something went wrong when creating a new Product. Please Try again.');
-                // }
+                }else{
+                     header('location:/Product/index?error=Something went wrong when creating a new Product. Please Try again.');
+                }
 
             }else{
                 header('location:/Product/createProduct?error=Please enter a Name and select a Category.');
@@ -122,11 +122,11 @@ class Product extends \app\core\Controller
                 }
                 $success = $product->editProduct($product_id);
 
-                // if($success){
+                if($success){
                     header('location:/Product/productDetails/' . $product_id. '?success=Product Updated.');
-                // } else {
-                //     header('location:/Product/edit/' . $product_id. '?error=Please modify in order to edit.');
-                // }
+                } else {
+                    header('location:/Product/edit/' . $product_id. '?error=Please modify in order to edit.');
+                }
             } else {
                 header('location:/Product/edit/' . $product_id. '?error=Please fill the required fields.');
             }
@@ -164,11 +164,11 @@ class Product extends \app\core\Controller
                     $product_quantity->price = $_POST['price'];
                     $success = $product_quantity->addProductQuantity($product_id);
 
-                    // if($success){
+                    if($success){
                         header('location:/Product/productDetails/' . $product_id. '?success=Product added quantity.');
-                    // } else {
-                    //     header('location:/Product/productDetails/' . $product_id. '?error=Something went wrong when adding quantity. Please Try again.');
-                    // } 
+                    } else {
+                        header('location:/Product/productDetails/' . $product_id. '?error=Something went wrong when adding quantity. Please Try again.');
+                    } 
                 } else {
                     header('location:/Product/addQuantity/' . $product_id. '?error=Please recheck dates.');
                 }
@@ -200,11 +200,11 @@ class Product extends \app\core\Controller
                     $productQuantity->price = $_POST['price'];
                     $success = $productQuantity->editQuantity($pq_id);
 
-                    // if($success){
+                    if($success){
                         header('location:/Product/productDetails/' . $productQuantity->product_id . '?success=Product Quantity Updated.');
-                    // } else {
-                    //     header('location:/Product/editQuantity/' . $pq_id . '?error=Please modify in order to edit.');
-                    // }
+                    } else {
+                        header('location:/Product/editQuantity/' . $pq_id . '?error=Please modify in order to edit.');
+                    }
                 } else {
                     header('location:/Product/editQuantity/' . $pq_id. '?error=Please recheck dates.');
                 }
@@ -232,11 +232,11 @@ class Product extends \app\core\Controller
                     $productQuantity->quantity = $_POST['quantity'];
                     $success = $productQuantity->quantityUpdate($pq_id);
 
-                    // if($success){
+                    if($success){
                         header('location:/Product/productDetails/' . $productQuantity->product_id . '?success=Product Quantity Updated.');
-                    // } else {
-                    //     header('location:/Product/editQuantity/' . $pq_id . '?error=Please modify in order to edit.');
-                    // }
+                    } else {
+                        header('location:/Product/editQuantity/' . $pq_id . '?error=Please modify in order to edit.');
+                    }
                 } else {
                     header('location:/Product/editQuantity/' . $pq_id. '?error=Please recheck dates.');
                 }

@@ -62,8 +62,9 @@ class Model
             foreach ($attributes as $attribute) 
             {
                 $validator = $attribute->newInstance();
-                if (!$validator->isValid($data))
+                if (!$validator->isValid($data)) {
                     return false;
+                }
             }
         }
 		return true;
@@ -73,8 +74,10 @@ class Model
 	{
 		if($this->isValid())
 		{
-			call_user_func_array([$this, $method], $arguments);
+			return call_user_func_array([$this, $method], $arguments);
 		}
+
+		return false;
 	}
 
 	public function __set($name, $value)

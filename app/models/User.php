@@ -6,19 +6,13 @@ class User extends \app\core\Model
 	public $user_id;
 	#[\app\validators\NameLength]
 	protected $username;
-	#[\app\validators\PasswordLength]
-	protected $password_hash;
+	public $password_hash;
 	public $user_type;
 	public $secret_key;
 
-	//Set functions
+	// Setters
 	protected function setusername($value){
-		//on setting, change the timezone
 		$this->username = htmlentities($value, ENT_QUOTES);
-	}
-
-	protected function setpassword_hash($value){
-		$this->password_hash = htmlentities($value, ENT_QUOTES);
 	}
 
 	//Select Statements	
@@ -58,16 +52,10 @@ class User extends \app\core\Model
 
 	public function getAllUserInfo()
 	{
-
-		// $SQL = "SELECT * FROM user WHERE user_type IN ('admin','employee')"; //KEEP THIS HERE FOR DEBUGGING SOME 
-		// $SQL = "SELECT * FROM user 
-		// 		JOIN profile ON user.user_id = profile.user_id 
-		// 		WHERE user.user_type IN ('admin', 'employee')";
-		
 		$SQL = "SELECT p.status, u.user_id, u.user_type, u.username, p.first_name, p.middle_name, p.last_name, p.email, p.phone_number
 			FROM user u
 			LEFT JOIN profile p ON u.user_id = p.user_id
-			WHERE u.user_type <> 'itspecialist'";
+			WHERE u.user_type <> 'itspecialist';";
 
 		$STH = self::$connection->prepare($SQL);
 		$STH->execute();
@@ -118,7 +106,6 @@ class User extends \app\core\Model
 		];
 		$STH->execute($data);
 		return $STH->rowCount();
-
 	}
 
 	protected function editUserPassword($user_id)
@@ -197,9 +184,10 @@ class User extends \app\core\Model
 	// 2-Factor Authentication
 
 	public function update2fa() {
-		$SQL = "UPDATE user SET secret_key=:secret_key WHERE user_type= 'itspecialist'";
+		$SQL = "UPDATE user SET secret_key=:secret_key WHERE user_id=:user_id";
 		$STH = self::$connection->prepare($SQL);
-		$data = ['secret_key'=>$this->secret_key];
+		$data = ['user_id'=>$this->user_id,
+				'secret_key'=>$this->secret_key];
 		$STH->execute($data);
 		return $STH->rowCount();		
 	}
