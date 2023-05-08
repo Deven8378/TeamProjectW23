@@ -1,4 +1,4 @@
-<?php $this->view('shared/header', "Products"); ?>
+<?php $this->view('shared/header', _('Products')); ?>
 <?php $this->view('shared/navigation/nav'); ?>
 <?php $this->view('shared/navigation/switchToProducts'); ?>
 
@@ -32,7 +32,8 @@
 				<div class="btn-group" style="display: grid;">
 
 				  	<button style="width: 150px;" type="button" class="btn dropdown-toggle btn-general" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
-			    	<?= _('Categories') ?></button>
+			    		<?= _('Categories') ?>
+			    	</button>
 
 				  	<ul class="dropdown-menu dropdown-menu-end dropdown-menu-lg-start">
 

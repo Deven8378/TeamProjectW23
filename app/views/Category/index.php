@@ -8,28 +8,37 @@
 		</a>
 	</div>
 	<div >
-		<div class="" style="" ><p class="sign" align="center"><?=_('Categories')?></p></div>  
+		<div>
+			<p class="sign" align="center"><?=_('Categories')?></p>
+		</div>  
 	</div>
 	<div>
 		<div class="row-category">
-			<div class="col-inner-category"><?php $this->view('Category/create',$data);?></div>
-			<div class="col-divider" align="center"><hr class="divider" style=""></div>
-			<div class="col-inner-category"><?php $this->view('Category/edit',$data) ?></div>
+			<div class="col-inner-category">
+				<?php $this->view('Category/create',$data);?>
+			</div>
+
+			<div class="col-divider" align="center"><hr class="divider"></div>
+
+			<div class="col-inner-category">
+				<?php $this->view('Category/edit',$data) ?>
+			</div>
 		</div>
+
 		<div>
 			<table class="table">
-			<tr>
-				<th><?=_('ID')?></th>
-				<th><?=_('Category')?></th>
-				<th><?=_('Actions')?></th>
-			</tr>
-		<?php foreach ($data as $category) { ?>
-			<tr>
-				<td><?= $category->category_id ?></td>
-				<td id="<?= $category->category_id ?>"><?= $category->category_name ?></td>
-				<td><a class="btn-general" href='/Category/delete/<?= $category->category_id ?>'><?=_('Delete')?></a></td>
-			</tr>
-		<?php }	?>	
+				<tr>
+					<th><?=_('ID')?></th>
+					<th><?=_('Category')?></th>
+					<th><?=_('Actions')?></th>
+				</tr>
+				<?php foreach ($data as $category) { ?>
+					<tr>
+						<td><?= $category->category_id ?></td>
+						<td id="<?= $category->category_id ?>"><?= $category->category_name ?></td>
+						<td><a class="btn-general" href='/Category/delete/<?= $category->category_id ?>'><?=_('Delete')?></a></td>
+					</tr>
+				<?php }	?>	
 			</table>
 		</div>
 	</div>

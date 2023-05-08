@@ -1,23 +1,23 @@
 
-<form action="/ITspecialist/editProfile/<?= $data->user_id?>" method="post" action="" class="form1" style="" >
-  <h2>Modify Profile</h2>
-  <dl class="dl-viewUserDetails" style="">
-    <div class="" style="flex:  50%; " >
+<form action="/ITspecialist/editProfile/<?= $data->user_id?>" method="post" action="" class="form1">
+  <h2><?= _('Modify Profile') ?></h2>
+  <dl class="dl-viewUserDetails">
+    <div style="flex:  50%; " >
       <dt class="dt-label"> <?= _('First Name')?> </dt>
-      <input class="dd-right" type="text" name="first_name" value="<?= $data->first_name ?>">
+      <input class="dd-right" type="text" name="first_name" value="<?= $data->first_name ?>" placeholder="<?= _('First Name') ?>">
 
       <dt class="dt-label"><?=_('Middle Name')?></dt>
-      <input class="dd-right" type="text" name="middle_name" value="<?= $data->middle_name ?>">
+      <input class="dd-right" type="text" name="middle_name" value="<?= $data->middle_name ?>" placeholder="<?= _('Middle Name') ?>">
 
       <dt class="dt-label"><?=_('Last Name')?></dt>
-      <input class="dd-right" type="text" name="last_name" value="<?= $data->last_name ?>">
+      <input class="dd-right" type="text" name="last_name" value="<?= $data->last_name ?>" placeholder="<?= _('Last Name') ?>">
     </div>
-    <div class="" style="flex: 50%;" >
+    <div style="flex: 50%;" >
       <dt class="dt-label"><?=_('Email')?></dt>
-      <input class="dd-right" type="email" name="email" value="<?= $data->email ?>">
+      <input class="dd-right" type="email" name="email" value="<?= $data->email ?>" placeholder="<?= _('Email') ?>">
 
       <dt class="dt-label"><?=_('Phone Number')?></dt>
-      <input class="dd-right" type="tel" pattern="[0-9]{10}" name="phone_number" value="<?= $data->phone_number ?>">
+      <input class="dd-right" type="tel" pattern="[0-9]{10}" name="phone_number" value="<?= $data->phone_number ?>" placeholder="<?= _('Phone Number') ?>">
 
       <dt class="dt-label"><?=_('Status')?></dt>
 
@@ -40,5 +40,5 @@
     </div>
    
   </dl> 
-  <input class="btn-general" type="submit" name="editProfile" value="Upload Profile Change">
+  <input class="btn-general" type="submit" name="editProfile" value="<?= _('Upload Profile Change') ?>">
 </form>

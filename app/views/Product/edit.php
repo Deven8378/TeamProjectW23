@@ -1,4 +1,4 @@
-<?php $this->view('shared/header', "Edit " . $data['0']->name); ?>
+<?php $this->view('shared/header', _('Edit ') . $data['0']->name); ?>
 <?php $this->view('shared/navigation/nav'); ?>
 
 <div class='common-container' align='center'>

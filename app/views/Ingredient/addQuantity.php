@@ -1,4 +1,4 @@
-<?php $this->view('shared/header', "Add New Quantity to Ingredient"); ?>
+<?php $this->view('shared/header', _('Add New Quantity to Ingredient')); ?>
 <?php $this->view('shared/navigation/nav'); ?>
 
 <div class='common-container' align='center'>
