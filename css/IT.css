@@ -349,8 +349,8 @@
   /*-----------View User details-----------*/
   .userDetails {
 
-    padding-left: 10rem;
-    padding-right: 10rem;
+    padding-left: 50px;
+    padding-right: 50px;
     padding-top: 2rem;
 
   }
@@ -367,6 +367,7 @@
     margin-bottom: .5rem;
   }
   .dd-left {
+    width: 100%;
     height: 36px;
     padding: .375rem .75rem;
     font-size: 1rem;
@@ -628,6 +629,7 @@
   }
   .dd-left {
     height: 36px;
+    width: 100%;
     padding: .375rem .75rem;
     font-size: 1rem;
     font-weight: 400;
@@ -644,7 +646,7 @@
 
   .dd-right {
     display: block;
-/*    width: 80%;*/
+    width: 80%;
     height: 36px;
     padding: .375rem .75rem;
     font-size: 1rem;
@@ -658,6 +660,7 @@
     border: 2px solid black;
     border-radius: .375rem;
   }
+ 
 
 
 

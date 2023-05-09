@@ -14,14 +14,14 @@
     </div>
     <div style="flex: 50%;" >
       <dt class="dt-label"><?=_('Email')?></dt>
-      <input class="dd-right" type="email" name="email" value="<?= $data->email ?>" placeholder="<?= _('Email') ?>">
+      <input class="dd-right" style="width: 100%;" type="email" name="email" value="<?= $data->email ?>" placeholder="<?= _('Email') ?>">
 
       <dt class="dt-label"><?=_('Phone Number')?></dt>
-      <input class="dd-right" type="tel" pattern="[0-9]{10}" name="phone_number" value="<?= $data->phone_number ?>" placeholder="<?= _('Phone Number') ?>">
+      <input class="dd-right" style="width: 100%;" type="tel" pattern="[0-9]{10}" name="phone_number" value="<?= $data->phone_number ?>" placeholder="<?= _('Phone Number') ?>">
 
       <dt class="dt-label"><?=_('Status')?></dt>
 
-      <select name="status" id="status" class="dropdownUserType">
+      <select style="width: 100%;" name="status" id="status" class="dropdownUserType">
         <?php
           if($data->status == "active"){
             echo "
