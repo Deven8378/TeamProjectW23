@@ -23,6 +23,5 @@
 		</div>
 	 
 	</form>
-
 </div>
 <?php $this->view('shared/footer'); ?>

@@ -7,7 +7,7 @@
 
 		<input class="createInput" type="text" align="" placeholder="<?=_('Title')?>" name="title">
 
-		<textarea class="createInput"name="description" placeholder="<?=_('Description')?>" rows="10" cols="50"> </textarea>
+		<textarea class="createInput"name="description" placeholder="<?=_('Description')?>" rows="10" cols="50"></textarea>
 
 		<div class="grid-50" style="margin-right: 0px;" align="center">
 

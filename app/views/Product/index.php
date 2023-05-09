@@ -5,7 +5,7 @@
 <div class="container">
 	<div class="row-index">
 		<div>
-			<div class="col-index" style="">
+			<div class="col-index">
 				<?php if($data[3] == true) { ?>
 
 						<div>
@@ -23,7 +23,7 @@
 						<hr class="col-dividor">
 				<?php } ?>
 
-				<a style=" " href="/Product/index">
+				<a href="/Product/index">
 					<button style="width: 150px;" class="btn-general" type="button">
 		  				<?= _('Reset') ?>
 		  			</button>
@@ -48,23 +48,23 @@
 				  	?>
 				  	</ul>
 				</div>
-
 			</div>
 		</div>
+
 		<div class="row-dividor"> <div class="vl"></div></div>
 <!-- ------------------------------------------------ -->
 		<div class="col-content">
-			<div class="col-content-header" style="">
+			<div class="col-content-header">
 
-				<p class="search-result" style=""><?= $data[2]->num_results ?> <?= _('Results') ?></p>
+				<p class="search-result"><?= $data[2]->num_results ?> <?= _('Results') ?></p>
 
-				<div class="search-div" style="">
+				<div class="search-div">
 
-					<form action="/Product/search" class="search-form" style="">
+					<form action="/Product/search" class="search-form">
 
-						<button class="search-btn" style=""><i class="bi bi-search" style="color: #ACABAB;"></i></button>
+						<button class="search-btn"><i class="bi bi-search" style="color: #ACABAB;"></i></button>
 
-						<input type="search" name="search" class="search-input" placeholder="<?=_('Search')?>" style="">
+						<input type="search" name="search" class="search-input" placeholder="<?=_('Search')?>">
 
 					</form>
 				</div>

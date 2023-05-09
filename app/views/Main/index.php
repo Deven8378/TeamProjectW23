@@ -4,7 +4,7 @@
 <div class="split-screen">
     <!-- Left content -->
     <div class="left_side">
-        <p style="font-size: 50px; " id="home_header"><?= _('Welcome Sweemory Team!') ?></p><br><br>
+        <p style="font-size: 50px; " id="home_header"><?= _('Welcome Sweemory Team!') ?></p>
     </div>
 
     <!-- Right content -->
@@ -12,10 +12,8 @@
       <img class="" src="/resources/sweemory1.png" height="563px" width="100%">
     </div>
 </div>
-
-<br>
-<h1><?= _('What would you like to do today?') ?></h1>
-<br>
+ 
+<h1 style="margin: 15px;"><?= _('What would you like to do today?') ?></h1>
 
 
 <div class="home_links">

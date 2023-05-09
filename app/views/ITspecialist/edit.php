@@ -12,8 +12,8 @@
     </div>
 
     <div>
-      <button id="toggle-to-account" class="btn-general"><?= _('View Profile Information') ?></button>
-      <button id="toggle-to-profile" class="btn-general"><?= _('View Account Information') ?></button>
+      <button id="toggle-to-account" class="btn-general" onclick="toggleUserDiv()"><?= _('View Profile Information') ?></button>
+      <button id="toggle-to-profile" class="btn-general" onclick="toggleUserDiv()"><?= _('View Account Information') ?></button>
     </div>
 
     <dl class="dl-viewUserDetails">
@@ -39,6 +39,7 @@
 
 <script>
 
+function toggleUserDiv() {
   const toggleTo2 = document.getElementById("toggle-to-profile");
   const toggleTo1 = document.getElementById("toggle-to-account");
 
@@ -60,6 +61,7 @@
     hide(div2);
     show(div1);
   });
+}
 </script>
      
 <?php $this->view('shared/footer'); ?>

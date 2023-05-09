@@ -1,4 +1,4 @@
-<?php $this->view('shared/header', $data[0]->name . " Details"); ?>
+<?php $this->view('shared/header', $data[0]->name . _(' Details')); ?>
 <?php $this->view('shared/navigation/nav'); ?>
 
 <div id="foodDetailsDiv">
@@ -43,9 +43,9 @@
 
             </div>
 
-            <label class="grid-box-4"><?= _('Description') ?>:</label>
+            <label class="grid-box-4"><?= _('Description :') ?></label>
             <p class="grid-box-5"><?= htmlentities($data[0]->description) ?></p>
-            <label class="grid-box-7"><?= _('Quantity') ?>:</label>
+            <label class="grid-box-7"><?= _('Quantity :') ?></label>
             <p class="grid-box-8"><?= htmlentities($data[1]->fullQuantity) ?></p>
             
             <?php if($data[3] == true) { ?>
@@ -80,6 +80,8 @@
                     <div class="btn-group dropend">
                       <button type="button" class="btn-more" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="bi bi-three-dots-vertical"></i><?=_('More')?></button>
                       <div class="dropdown-menu">
+
+                        
                           <li>
                             <a class="dropdown-item" href="/Product/editQuantity/<?= $quantity->pq_id ?>">
                               <?= _('Edit') ?>

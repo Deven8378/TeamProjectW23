@@ -46,8 +46,8 @@
                <?= _('Recipes') ?>
              </a>
           </li>
-          <li class="nav-item"><a class="nav-link" href='?lang=fr_CA'>Français (Canada)</a></li>
-          <li class="nav-item"><a class="nav-link" href='?lang=en'>English</a></li>
+          <li class="nav-item"><a class="nav-link" href='?lang=fr_CA'><?= _('Français') ?></a></li>
+          <li class="nav-item"><a class="nav-link" href='?lang=en'><?= _('English') ?></a></li>
         </ul>
 
         <div>
