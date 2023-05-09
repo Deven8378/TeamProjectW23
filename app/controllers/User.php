@@ -80,10 +80,10 @@ class User extends \app\core\Controller
         $secretkey = "3U34JQI5J7RMWYTH";
         if(isset($_POST['action'])){
             $currentcode = $_POST['currentCode'];
-            if(\app\core\TokenAuth6238::verify($secretkey,$currentcode)
+            if(\app\core\TokenAuth6238::verify($secretkey,$currentcode))
             {
             //the user has verified their proper 2-factor authentication setup
-                $_SESSION['secretkey'] = $secretkey;
+                $_SESSION['secretkey'] = $secretkey;    
                 $user = new \app\models\User();
                 $user->secret_key = $secretkey;
                 $user->update2fa();
