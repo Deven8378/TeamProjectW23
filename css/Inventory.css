@@ -571,6 +571,7 @@
     justify-content: space-between; 
     margin-bottom: 20px; 
     margin-right: 28px;
+    gap: 100px;
 }
 .search-result {
     font-weight: bold; 

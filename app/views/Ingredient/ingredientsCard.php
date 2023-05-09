@@ -3,7 +3,7 @@
 <?php
 foreach ($data as $ingredient) { ?>
     <div class="col">
-      <a href="/Ingredient/ingredientDetails/<?= $ingredient->ingredient_id ?>">
+      <a class="no-underline" href="/Ingredient/ingredientDetails/<?= $ingredient->ingredient_id ?>" >
         <div class="card card-glow">
           <div id="ingredientIMG">
             <div class="image">

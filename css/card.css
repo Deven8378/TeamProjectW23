@@ -7,7 +7,7 @@
   transition: all 120ms;
   display: flex;
   align-items: center;
-  justify-content: center;
+/*  justify-content: center;*/
   background: #fff;
   padding: 0.5em;
   padding-bottom: 3.4em;
@@ -17,7 +17,7 @@
 .card .title {
   font-family: Arial, Helvetica, sans-serif;
   font-size: 0.9em;
-  position: absolute;
+/*  position: absolute;*/
   left: 0.625em;
   bottom: 1.875em;
   font-weight: 400;
@@ -59,4 +59,8 @@
     height: 200px;
     border: 1px black solid;
     background: #369;
+}
+
+.no-underline{
+  text-decoration: none;
 }
