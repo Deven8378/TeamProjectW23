@@ -23,6 +23,11 @@ class AcceptanceTester extends \Codeception\Actor
 {
     use _generated\AcceptanceTesterActions;
 
+    public function cookies(){
+        $this->setCookie('lang', 'en');
+        $this->setCookie('TZ', 'America/Toronto');
+    }
+
     /**
      * Define custom actions here
      */
@@ -32,6 +37,7 @@ class AcceptanceTester extends \Codeception\Actor
      */
      public function iAmOnThePage($arg1)
      {
+        $this->cookies();
          $this->amOnPage($arg1);
      }
 
