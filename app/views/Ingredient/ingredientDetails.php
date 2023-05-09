@@ -33,7 +33,7 @@
                     </li>
                     
                     <li>
-                      <a class="dropdown-item" href="#popupIngredient">
+                      <a class="dropdown-item" href="#popupIngredient" id="deleteIngredient">
                         <?= _('Delete') ?>
                       </a>
                     </li>
