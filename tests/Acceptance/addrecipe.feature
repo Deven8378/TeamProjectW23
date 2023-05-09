@@ -1,14 +1,17 @@
-Feature: adduser
+Feature: addRecipe
 	In order to add a recipe
 	As an Admin
 	I need to press add recipe
 
-Scenario: try adding a recipe as admin
-	Given I am logged in as admin
-	And I am on the recipes page
-	And I click "Add Recipe"
-	And I input "Banana Ice Cream" in "recipeName"
-	And I input "Peel 1 Banana, chop and seal in container. Freeze banana for 2 hours. Blend until ice cream consistency." in "recipeDescription"
-	When I click "Add Recipe"
-	And I click "Confirm"
-	Then I see "Recipe has been added."
+Scenario: try adding Recipe as admin
+  Given I am on the "/User/index" page
+  And I fill field "Nicole" in "username"
+  And I fill field "1234" in "password"
+  And I click "Sign in"
+  And I click "Recipes"
+  And I click "Add Recipe"
+  And I fill field "Super Yummy Chocolate Ice Cream" in "title"
+  And I fill field "Super Yummy Chocolate Ice Cream" in "description"
+  And I attach file "chocoIceCream.jpg" in "recipePicture"
+  When I click "action"
+  Then I see "Super Yummy Chocolate Ice Cream"
