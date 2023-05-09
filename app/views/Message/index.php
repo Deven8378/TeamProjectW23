@@ -66,34 +66,44 @@ white-space: nowrap;
     }
 </script>
 
-<div class="container" style="padding-top: 50px;">
-    <div class="row-messages">
-        <div class="col-md-2">
-            <h2 class="grid-title"><i class="bi bi-inbox"></i> <?= _('Inbox') ?></h2>
-                <a class="btn" href="/Message/sendMessage" role="button" style="background-color: #e8c8e7;"><i class="bi bi-pencil-square"></i> <?= _('New Message') ?></a>
+<div class="messages-container" style="">
+
+    <div class="row-messages" style="" >
+
+        <div class="col-navigation">
+            <h2 ><i class="bi bi-inbox"></i> <?= _('Inbox') ?></h2>
+            <a class="btn-general" href="/Message/sendMessage" role="button" >
+                <i class="bi bi-pencil-square"></i> <?= _('New Message') ?>
+            </a>
             <hr>
 
-            <div class="container">
-              <div class="row">
-                <div class="col">
-                  <h5><?= _('Folders') ?></h5>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col">
-                    <button id="toggle-to-inbox" class="btn-general" onclick="toggleDiv()"><i class="bi bi-inbox"> 
-                        <?= _('Inbox') ?></i></button>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col">
-                    <button id="toggle-to-sent" class="btn-general" onclick="toggleDiv()"><i class="bi bi-send"> <?= _('Sent') ?></i></button>
-                </div>
-              </div>
+            <div class="folder-container">
+
+                <!-- <div class="row-me"> -->
+                    <!-- <div class="col"> -->
+                        <h5><?= _('Folders') ?></h5>
+                    <!-- </div> -->
+                <!-- </div> -->
+
+                <!-- <div class="row"> -->
+                    <!-- <div class="col"> -->
+                        <button id="toggle-to-inbox" class="btn-general" onclick="toggleDiv()">
+                            <i class="bi bi-inbox"> <?= _('Inbox') ?></i>
+                        </button>
+                    <!-- </div> -->
+                <!-- </div> -->
+
+                <!-- <div class="row"> -->
+                    <!-- <div class="col"> -->
+                        <button id="toggle-to-sent" class="btn-general" onclick="toggleDiv()"><i class="bi bi-send"> <?= _('Sent') ?></i></button>
+                    <!-- </div> -->
+                <!-- </div> -->
+
             </div>
         </div>
 
-        <div class="col-md-10">
+        <div class="" style="flex: 0 0 auto;
+        width: 83.33333333%;">
             <div class="row">
                 <div style="padding-top: 50px;"></div> 
 
@@ -130,6 +140,7 @@ white-space: nowrap;
                         </table>
                     </div>
                 </div>
+
                 <div id="sent" style="display: none;">
                     <div class="table-responsive">
                         <table class="table table-hover">
@@ -162,6 +173,7 @@ white-space: nowrap;
                         </table>
                     </div>              
                 </div>
+
             </div>
         </div>
     </div>

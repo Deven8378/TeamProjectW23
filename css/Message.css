@@ -1,11 +1,98 @@
- 
- .row-messages {
+
+.messages-container{
+/*    width: 100%;*/
+	padding-top: 50px;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+
+}
+
+.navbar>.messages-container{
+    display: flex;
+    flex-wrap: inherit;
+    align-items: center;
+    justify-content: space-between
+}
+@media (min-width:576px) {
+
+    .messages-container{
+        max-width: 540px;
+       
+    }
+}
+
+@media (min-width:768px) {
+
+    .messages-container{
+        max-width: 720px;
+       
+    }
+}
+
+@media (min-width:992px) {
+
+    .messages-container{
+        max-width: 960px;
+        
+    }
+}
+
+@media (min-width:1200px) {
+
+    .messages-container{
+        max-width: 1140px;
+       
+    }
+}
+
+@media (min-width:1400px) {
+
+    .messages-container	{
+        max-width: 1320px;
+       
+
+    }
+    .navbar>.messages-container{
+	    display: flex;
+	    flex-wrap: inherit;
+	    align-items: center;
+	    justify-content: space-between
+	}
+}
+
+.row-messages {
     --bs-gutter-x: 1.5rem;
     --bs-gutter-y: 0;
     display: flex;
-    flex-wrap: wrap;
+/*    flex-wrap: wrap;*/
     margin-top: calc(-1 * var(--bs-gutter-y));
     margin-right: calc(-.5 * var(--bs-gutter-x));
-    margin-left: calc(-.5 * var(--bs-gutter-x))
+    margin-left: calc(-.5 * var(--bs-gutter-x));
+    margin-left: 50px; margin-right: 100px; 
 }
 
+.row-messages>* {
+    flex-shrink: 0;
+    width: 100%;
+    max-width: 100%;
+    padding-right: calc(var(--bs-gutter-x) * .5);
+    padding-left: calc(var(--bs-gutter-x) * .5);
+    margin-top: var(--bs-gutter-y)
+}
+*,
+::after,
+::before {
+    box-sizing: border-box
+}
+.col-navigation {
+	flex: 0 0 auto;
+	width: 16.66666667%;
+}
+
+.folder-container {
+	display: grid;
+	width: 75%;
+	align-content: center;
+}
