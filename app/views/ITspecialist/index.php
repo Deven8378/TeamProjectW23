@@ -46,7 +46,7 @@
 
 				<form action="/ITspecialist/search" class="search-form">
 
-					<button class="search-btn" style=""><i class="bi bi-search" style="color: #ACABAB;"></i></button>
+					<button class="search-btn" style=""><i class="bi bi-search" style="color: #ACABAB;"></i> </button>
 
 					<input type="search" name="search" class="search-input" placeholder="<?=_('Search')?>">
 

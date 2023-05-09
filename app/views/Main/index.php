@@ -13,7 +13,7 @@
     </div>
 </div>
  
-<h1 style="font-size: clamp(1.25rem, 0.5288rem + 3.0769vw, 3.125rem);"><?= _('What would you like to do today?') ?></h1>
+<h1 style="font-size: clamp(1.25rem, 0.7692rem + 2.0513vw, 2.5rem); margin-left: 20px;"><?= _('What would you like to do today?') ?></h1>
 
 
 <div class="home_links">
