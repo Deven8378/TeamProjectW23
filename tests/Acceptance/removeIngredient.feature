@@ -1,7 +1,7 @@
 Feature: editingredient
 	In order to delete a ingredient
 	As an Admin
-	I need to press edit ingredient
+	I need to press delete ingredient
 
 Scenario: try editing an ingredient as admin
 	Given I am on the "/User/index" page

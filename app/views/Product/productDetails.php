@@ -32,7 +32,7 @@
                         </a>
                       </li>
                       <li>
-                        <a class="dropdown-item" 
+                        <a id="deleteProduct" class="dropdown-item" 
                         href="#popupProduct">
                           <?= _('Delete') ?>
                         </a>

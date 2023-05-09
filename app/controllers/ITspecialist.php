@@ -120,7 +120,7 @@ class ITspecialist extends \app\core\Controller
         if($success){
             $user = new User();
             $user->delete($user_id);
-            header('location:/ITspecialist/index?success=Profile for user ID ' . $user_id . ' has been deleted');
+            header('location:/ITspecialist/index?success=Profile for user has been deleted');
         }else{
             header('location:/ITspecialist/userDetails/$user_id?error=Profile for user ID ' . $user_id . ' was not deleted');
         }

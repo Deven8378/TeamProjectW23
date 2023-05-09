@@ -83,7 +83,7 @@
 	                  	<label>Are you certain you want to delete this user?</label>
 	                  	<div align="center">
 	                  		<a href="/ITspecialist/userDetails/<?=$data->user_id?>" class="btn" style="background-color: #e8c8e7;" ><?=_('Cancel')?></a>
-	            			<a href="/ITspecialist/delete/<?= $data->user_id ?>" class="btn" style="background-color: #e8c8e7;" ><?=_('Delete')?></a>
+	            			<a id="itdelete" href="/ITspecialist/delete/<?= $data->user_id ?>" class="btn" style="background-color: #e8c8e7;" ><?=_('Delete')?></a>
             			</div>
 	              </form>
 	          </div>

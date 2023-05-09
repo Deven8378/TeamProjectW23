@@ -14,11 +14,10 @@
 	<link rel="stylesheet" type="text/css" href="/css/Inventory.css">
 	<link rel="stylesheet" type="text/css" href="/css/recipe.css">
 	<link rel="stylesheet" type="text/css" href="/css/Message.css">
-	
+		
 	<title><?= $data ?></title>
 
 <title><?=htmlentities($data)?></title>
 	
 </head>
 <body>
-	<script type="text/javascript" src="/javascript/main.js" ></script>

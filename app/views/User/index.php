@@ -12,7 +12,7 @@
 		<input type="submit" id="submitLink" name="action" class="submit" align="center" value="<?= _('Sign in') ?>">
 	</form>
 
-	<div style="text-align: center; margin: 10px;">
+	<div class="languages">
 		<a class="nav-link" href='?lang=en'><?= _('English') ?></a>
 		<a class="nav-link" href='?lang=fr_CA'><?= _('Français') ?></a>
 	</div>
