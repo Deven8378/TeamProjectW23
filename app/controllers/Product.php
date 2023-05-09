@@ -24,10 +24,8 @@ class Product extends \app\core\Controller
         
         $numResults = $product->getSum();
 
-        $user = new User();
-        $user = $user->getByUserType($_SESSION['user_id']);
         $isAdmin = false;
-        if ($user->user_type == "admin"){
+        if ($_SESSION['user_type'] == "admin"){
             $isAdmin = true;
         }
         $this->view('Product/index', [$products, $categories, $numResults, $isAdmin]);
@@ -45,12 +43,8 @@ class Product extends \app\core\Controller
         $allQuantity = new ProductQuantity;
         $allQuantity = $allQuantity->getAll($product_id);
 
-        $user = new User();
-        $user = $user->getByUserId($_SESSION['user_id']);
-
-        $type = $user->user_type;
         $isAdmin = false;
-        if ($type == "admin"){
+        if ($_SESSION['user_type'] == "admin"){
             $isAdmin = true;
         }
 
@@ -277,10 +271,8 @@ class Product extends \app\core\Controller
         $numResults = new \app\models\Product();
         $numResults = $numResults->getSearchedSum($_GET['search']);
 
-        $user = new \app\models\User();
-        $user = $user->getByUserType($_SESSION['user_id']);
         $isAdmin = false;
-        if ($user->user_type == "admin")
+        if ($_SESSION['user_type'] == "admin")
             $isAdmin = true;
 
         if($numResults->num_results != 0){
@@ -299,10 +291,9 @@ class Product extends \app\core\Controller
 
         $numResults = $products->getFilteredSum($category_id);
 
-        $user = new User();
-        $user = $user->getByUserType($_SESSION['user_id']);
+
         $isAdmin = false;
-        if ($user->user_type == "admin")
+        if ($_SESSION['user_type'] == "admin")
             $isAdmin = true;
 
         if($numResults->num_results != 0){

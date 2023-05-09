@@ -24,10 +24,8 @@ class Ingredient extends \app\core\Controller
 
         $numResults = $ingredient->getSum();
 
-        $user = new User();
-        $user = $user->getByUserType(htmlentities($_SESSION['user_id']));
         $isAdmin = false;
-        if ($user->user_type == "admin"){
+        if ($_SESSION['user_type'] == "admin"){
             $isAdmin = true;
         }
         $this->view('Ingredient/index', [$ingredients, $categories, $numResults, $isAdmin]);
@@ -45,12 +43,8 @@ class Ingredient extends \app\core\Controller
         $allQuantity = new IngredientQuantity;
         $allQuantity = $allQuantity->getAll($ingredient_id);
 
-        $user = new User();
-        $user = $user->getByUserId($_SESSION['user_id']);
-
-        $type = $user->user_type;
         $isAdmin = false;
-        if ($type == "admin"){
+        if ($_SESSION['user_type'] == "admin"){
             $isAdmin = true;
         }
 
@@ -274,12 +268,10 @@ class Ingredient extends \app\core\Controller
         $numResults = new \app\models\Ingredient();
         $numResults = $numResults->getSearchedSum($_GET['search']);
 
-        $user = new \app\models\User();
-        $user = $user->getByUserType($_SESSION['user_id']);
         $isAdmin = false;
-        if ($user->user_type == "admin")
+        if ($_SESSION['user_type'] == "admin"){
             $isAdmin = true;
-
+        }
         if($numResults->num_results != 0){
             $this->view('Ingredient/index', [$searched, $categories, $numResults, $isAdmin]);
         } else {
@@ -297,12 +289,10 @@ class Ingredient extends \app\core\Controller
 
         $numResults = $ingredients->getFilteredSum($category_id);
 
-        $user = new \app\models\User();
-        $user = $user->getByUserType($_SESSION['user_id']);
         $isAdmin = false;
-        if ($user->user_type == "admin")
+        if ($_SESSION['user_type'] == "admin"){
             $isAdmin = true;
-
+        }
         if($numResults->num_results != 0){
             $this->view('Ingredient/index', [$searched, $categories, $numResults, $isAdmin]);
         } else {
