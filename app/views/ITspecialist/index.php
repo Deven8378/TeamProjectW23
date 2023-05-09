@@ -9,7 +9,7 @@
 
 		<div class="btn-addUser">
 			<a href="/ITspecialist/createUser" style="text-decoration: none; color: #757575; ">
-				<i class="bi bi-plus-square"> <?=_('Add User')?></i>
+				<i class="bi bi-plus-square"></i> <?=_('Add User')?>
 			</a>
 		</div>
 

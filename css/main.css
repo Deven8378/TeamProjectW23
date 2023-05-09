@@ -8,35 +8,63 @@ body {
   background-color: #e8c8e7;
 }
 
-
 /*-------Home Screen--------*/
 
-.split-screen {
-    display: flex;
-}
+@media only screen and (min-width: 800px) {
+  .split-screen {
+      display: flex;
+  }
 
-.left_side {
-    flex: 1;
-    margin: auto;
-    background-color: black;
-    padding: 10px;
-    width: 50%;
-    color: white;
-    height: 562px;
-    display: flex;
-    align-items: center;
-}
+  .left_side {
+      flex: 1;
+      margin: auto;
+      background-color: black;
+      padding: 10px;
+      width: 50%;
+      color: white;
+      height: 562px;
+      display: flex;
+      align-items: center;
+  }
 
-.right_side {
-    flex: 1;
-}
+  .right_side {
+      flex: 1;
+  }
 
-#home_links{
-  width: 150px;
+  #home_links{
+    width: 150px;
+  }
+  
 }
+@media only screen and (max-width: 800px) {
+  .split-screen {
+      display: grid;
+  }
+  .menu-image{
+    height: 400px;
+  }
 
+  .left_side {
+      margin-top: 5px;
+      background-color: black;
+      padding: 4  0px;
+      width: 100%;
+      color: white;
+      height: auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+  }
+
+  .right_side {
+      flex: 1;
+  }
+
+  #home_links{
+    width: 150px;
+  }
+}
 /*-------END--------*/
-
 /*-------Messages Screen--------*/
 
 .overlay {
@@ -54,8 +82,6 @@ body {
   visibility: visible;
   opacity: 1;
 }
-
-
 
 .container {
   border-radius: 5px;
@@ -100,87 +126,16 @@ form label {
 }
 /*----------------------------------*/
 
-/*--Create Ingredient Submit Button--*/
-/*Moved to inventory css*/
-/*.submitIngredient {
-  cursor: pointer;
-  border-radius: 10px;
-  color: #fff;
-  background: linear-gradient(to right, #9C27B0, #E040FB);
-  border: 0;
-  width: 200px;
-  padding-left: 40px;
-  padding-right: 40px;
-  padding-bottom: 10px;
-  padding-top: 10px;
-  font-family: 'Ubuntu', sans-serif;*/
-/*  margin-bottom: 5%;*/
-  /*box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.04);
-}*/
-/*-----------------------------------*/
-
 /*-----------------IT Confirmation message------------------*/
-.overlay-userDetails {
-  height: 0%;
-  width: 100%;
-  position: fixed;
-  z-index: 1;
-  top: 0;
-  left: 0;
-  background-color: #F3EBF6;
-  background-color: rgba(243,235,246, 0.5);
-  overflow-y: hidden;
-  transition: 0.5s;
-}
-
-.overlay-content-userDetails {
-  position: relative;
-  top: 25%;
-  width: 100%;
-  text-align: center;
-  margin-top: 30px;
-}
-
-.overlay-userDetails a {
-  padding: 8px;
-  text-decoration: none;
-  font-size: 36px;
-  color: #818181;
-  display: block;
-  transition: 0.3s;
-}
-
-.overlay-userDetails > a:hover {
-  color: #e166ff;
-}
-
-/*.btn-container a:hover, .btn-container a:focus {
-  color: #fff;
-  background-color: #e9baf5;
-}*/
-
-.overlay-userDetails .closebtn {
-  position: absolute;
-  top: 20px;
-  right: 45px;
-  font-size: 60px;
-}
 
 @media screen and (max-height: 450px) {
   .overlay-userDetails {overflow-y: auto;}
   .overlay-userDetails a {font-size: 20px}
-  .overlay-userDetails .closebtn {
+  .overlay-userDetails .closebtn {  
     font-size: 40px;
     top: 15px;
     right: 35px;
   }
-}
-
-
-
-@media only screen and (max-width: 500px) {
-
-
 }
 
 @media only screen and (min-width: 500px) {
@@ -189,7 +144,6 @@ form label {
     padding: 20px;
     background: #e7e7e7;
     border-radius: 5px;
-/*    width: 60%;*/
     position: relative;
     transition: all 5s ease-in-out;
   }
@@ -304,23 +258,4 @@ form label {
   .wrapper-message {
     font-size: clamp(0.75rem, 0.6538rem + 0.4103vw, 1rem); 
   }
-}
-
-@media only screen and (min-width: 992px) {
-    
-   
-
-}
-
-
-@media only screen and (max-width: 1350px) {
-    
-    
- }
-
-
-@media only screen and (min-width: 1350px) {
-
-    
-
 }
