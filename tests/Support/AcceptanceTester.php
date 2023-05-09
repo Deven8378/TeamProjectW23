@@ -38,7 +38,7 @@ class AcceptanceTester extends \Codeception\Actor
      public function iAmOnThePage($arg1)
      {
         $this->cookies();
-         $this->amOnPage($arg1);
+        $this->amOnPage($arg1);
      }
 
     /**
@@ -46,8 +46,8 @@ class AcceptanceTester extends \Codeception\Actor
      */
      public function iFillFieldIn($value, $fieldName)
      {
-         // throw new \PHPUnit\Framework\IncompleteTestError("Step `I fill field :arg1 in :arg2` is not defined");
-         $this->fillField($fieldName, $value);
+        $this->cookies();
+        $this->fillField($fieldName, $value);
      }
 
     /**
@@ -55,8 +55,8 @@ class AcceptanceTester extends \Codeception\Actor
      */
      public function iClick($text)
      {
-         // throw new \PHPUnit\Framework\IncompleteTestError("Step `I click :arg1` is not defined");
-         $this->click($text);
+        $this->cookies();
+        $this->click($text);
      }
 
     /**
@@ -64,8 +64,8 @@ class AcceptanceTester extends \Codeception\Actor
      */
      public function iSee($text)
      {
-         // throw new \PHPUnit\Framework\IncompleteTestError("Step `I see :arg1` is not defined");
-         $this->see($text);
+        $this->cookies();
+        $this->see($text);
      }
 
      /**
@@ -73,7 +73,8 @@ class AcceptanceTester extends \Codeception\Actor
      */
      public function iSelectIn($arg1, $arg2)
      {
-         $this->selectOption($arg2,$arg1);
+        $this->cookies();
+        $this->selectOption($arg2,$arg1);
      }
 
      /**
@@ -81,7 +82,8 @@ class AcceptanceTester extends \Codeception\Actor
      */
      public function iAttachFileIn($arg1, $arg2)
      {
-         $this->attachFile($arg2, $arg1); 
+        $this->cookies();
+        $this->attachFile($arg2, $arg1); 
      }
 
 
