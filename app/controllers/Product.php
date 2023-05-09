@@ -265,29 +265,6 @@ class Product extends \app\core\Controller
         }
     }
 
-
-   // #[\app\filters\EmployeeAndAdmin]
-   /* public function quantityUpdate($pq_id) { 
-        $productQuantity = new ProductQuantity();
-        $productQuantity = $productQuantity->getOneQuantity($pq_id);
-
-        if(isset($_POST['action']))
-        {
-            $productQuantity->quantity = $_POST['quantity'];
-            $success = $productQuantity->quantityUpdate($pq_id);
-
-            if($success){
-                header('location:/Product/productDetails/' . $productQuantity->product_id . '?success=productt Quantity Updated.');
-            } else {
-                header('location:/Product/editQuantity/' . $pq_id . '?error=Please modify in order to edit.');
-            }
-        } else {
-            $productQuantity = new ProductQuantity();
-            $productQuantity = $productQuantity->getOneQuantity($pq_id);
-            $this->view('Product/editQuantity', $productQuantity);
-        }
-    } */
-
     // Filters
     public function search() 
     {

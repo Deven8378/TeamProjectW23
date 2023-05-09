@@ -27,8 +27,6 @@ class ITspecialist extends \app\core\Controller
             $users = $user->getUserInfo($user_id);
             $this->view('ITspecialist/userDetails', $users);
         }else{
-            // $user = new \app\models\User();
-            // $user = $user->getByUserId($user_id);
             header('location:/ITspecialist/createProfile/' . $user_id);
         }
     }
@@ -117,7 +115,6 @@ class ITspecialist extends \app\core\Controller
     {
         
         $profile = new Profile();
-        // $profile->delete($user_id);
         $success = $profile->delete($user_id);
 
         if($success){
