@@ -19,7 +19,7 @@
     <dl class="dl-viewUserDetails">
 
     <!-- Left side -->
-    <div class="" style="flex: 70%; " >
+    <div class="" style="" >
 
       <div id="profile">
         <?php $this->view('ITspecialist/editProfile', $data); ?> 

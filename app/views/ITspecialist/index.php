@@ -56,7 +56,7 @@
 			</div>
 		</div>
 
-		<table class="table">
+		<table class="table" style="">
 			<!-- table-striped table-bordered -->
             <thead class="table-secondary">
                 <tr style="height: 50px;" align="center">

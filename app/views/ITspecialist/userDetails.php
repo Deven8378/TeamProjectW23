@@ -11,6 +11,10 @@
 		
 		<!-- Left side -->
     	<div style="flex: 30%;" >
+
+    		<div class="col-4">
+	        	<a href="/ITspecialist/index" type="submit" class="btn-general"><?=_('Back')?></a>
+		  	</div>
 			
 			<div style="border-radius: 100%; height: 230px;" align="center">
 				<?php
@@ -37,9 +41,7 @@
 	        	</div>
 	        </div>
 			
-			<div class="col-4">
-	        	<a href="/ITspecialist/index" type="submit" class="btn-general"><?=_('Back')?></a>
-		  	</div>
+			
           	
 
 		</div>

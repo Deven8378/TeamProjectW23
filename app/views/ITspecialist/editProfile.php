@@ -4,13 +4,13 @@
   <dl class="dl-viewUserDetails">
     <div style="flex:  50%; " >
       <dt class="dt-label"> <?= _('First Name')?> </dt>
-      <input class="dd-right" type="text" name="first_name" value="<?= $data->first_name ?>" placeholder="<?= _('First Name') ?>">
+      <input class="dd-right" style="width: 100%;" type="text" name="first_name" value="<?= $data->first_name ?>" placeholder="<?= _('First Name') ?>">
 
       <dt class="dt-label"><?=_('Middle Name')?></dt>
-      <input class="dd-right" type="text" name="middle_name" value="<?= $data->middle_name ?>" placeholder="<?= _('Middle Name') ?>">
+      <input class="dd-right" style="width: 100%;" type="text" name="middle_name" value="<?= $data->middle_name ?>" placeholder="<?= _('Middle Name') ?>">
 
       <dt class="dt-label"><?=_('Last Name')?></dt>
-      <input class="dd-right" type="text" name="last_name" value="<?= $data->last_name ?>" placeholder="<?= _('Last Name') ?>">
+      <input class="dd-right" style="width: 100%;" type="text" name="last_name" value="<?= $data->last_name ?>" placeholder="<?= _('Last Name') ?>">
     </div>
     <div style="flex: 50%;" >
       <dt class="dt-label"><?=_('Email')?></dt>

@@ -2,6 +2,8 @@
 namespace app\controllers;
 
 use \app\models\Ingredient;
+use \app\models\Product;
+
 
 #[\app\filters\ProfileCreated]
 #[\app\filters\Status]
@@ -80,9 +82,12 @@ class Category extends \app\core\Controller
         $ingredient = new Ingredient();
         $ingredient = $ingredient->getIngredientByCategory($category_id);
 
-        if(empty($ingredient)){
+        $product = new Product();
+        $product = $product->getProductByCategory($category_id);
+
+        if(empty($ingredient) && empty($product)){
             $category = new \app\models\Category();
-            $category = $category->getSpecificcategory($category_id);
+            $category = $category->getSpecificCategory($category_id);
             $success = $category->delete($category_id);
             if($success){
                 header('location:/Category/index?success=Item Deleted: '. $category->category_name );

@@ -227,6 +227,7 @@
   table {
       table-layout: fixed;
       width: 100%;   
+      font-size: clamp(0.75rem, 0.6538rem + 0.4103vw, 1rem);
   }
 
   th,td {

@@ -34,7 +34,7 @@ class Category extends \app\core\Model{
 		return $STH->fetch();
 	}
 
-	public function getSpecificcategory($category_id){
+	public function getSpecificCategory($category_id){
 		$SQL = "SELECT * FROM `category` WHERE category_id=:category_id;";
 		$STH = self::$connection->prepare($SQL);
 		$STH->execute(['category_id'=>$category_id]);
