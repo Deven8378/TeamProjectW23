@@ -35,7 +35,8 @@
 				<?php foreach ($data as $category) { ?>
 					<tr>
 						<td><?= $category->category_id ?></td>
-						<td id="<?= $category->category_id ?>"><?= $category->category_name ?></td>
+						<td id="<?= $category->category_id ?>">
+							<?= $category->category_name ?></td>
 						<td><a class="btn-general" href='/Category/delete/<?= $category->category_id ?>'><?=_('Delete')?></a></td>
 					</tr>
 				<?php }	?>	

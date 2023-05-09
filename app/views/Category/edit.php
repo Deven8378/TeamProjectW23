@@ -6,7 +6,7 @@
 			<?php
 			foreach ($data as $category) { ?>
 			 	<option value="<?=$category->category_id ?>">
-			 		<?= $category->category_id ?>
+			 		<?= $category->category_name ?>
 			 	</option>
 			<?php  } ?>
 		</select>

@@ -1,9 +1,9 @@
-Feature: addIngredient
-  In order to add an ingredient
+Feature: addIngredientQuantity
+  In order to add an ingredient quantity
   As a Admin
-  I need to press add ingredient
+  I need to press add ingredient quantity
 
-Scenario: try adding ingredient as admin
+Scenario: try adding ingredient quantity as admin
   Given I am on the "/User/index" page
   And I fill field "Nicole" in "username"
   And I fill field "1234" in "password"
