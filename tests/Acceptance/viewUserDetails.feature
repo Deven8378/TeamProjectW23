@@ -4,13 +4,13 @@ Feature: viewUserDetails
   I need to click a users username
 
   Scenario: try viewing admin information
-    Given I am on the "Welcome Sweemory Team!!" page
+    Given I am on the "/User/index" page
     And I fill field "itspecialist" in "username"
     And I fill field "1234" in "password"
     And I click "Sign in"
     And I see "List of Employee and Admin"
-    When I click "EM3"
-    Then I see "First Name"
+    When I click "testingUserAdmin"
+    Then I see "testingUserAdmin"
 
   Scenario: try viewing employee information
     Given I am on the "Welcome Sweemory Team!!" page
@@ -18,5 +18,5 @@ Feature: viewUserDetails
     And I fill field "1234" in "password"
     And I click "Sign in"
     And I see "List of Employee and Admin"
-    When I click "AD10"
-    Then I see "First Name"
+    When I click "testingUserEmployee"
+    Then I see "testingUserEmployee"

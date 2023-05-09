@@ -4,7 +4,7 @@ Feature: viewUsers
   I want to login as an itspecialist
 
   Scenario: try viewing user
-    Given I am on the "Welcome Sweemory Team!!" page
+    Given I am on the "/User/index" page
     And I fill field "itspecialist" in "username"
     And I fill field "1234" in "password"
     When I click "Sign in"

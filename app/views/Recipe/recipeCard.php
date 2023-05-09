@@ -3,7 +3,7 @@
 <?php
 foreach ($data as $recipe) { ?>
     <div class="col">
-      <a href="/Recipe/details/<?= htmlentities($recipe->recipe_id) ?>">
+      <a class="no-underline" href="/Recipe/details/<?= htmlentities($recipe->recipe_id) ?>">
       <div class="card card-glow">
         <div id="ingredientIMG" ma>
           <div class="image">
