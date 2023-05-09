@@ -2,7 +2,7 @@
 	<div class="col-category">
 		<h3 align="center"><?=_('Edit a Category')?>:</h3>
 		<select name="editCategory_id" id="selectBox" onchange="getValueUsingID()">
-			<option selected disabled>---<?= _('Select the ID') ?>---</option>
+			<option selected disabled>---<?= _('Select the Category') ?>---</option>
 			<?php
 			foreach ($data as $category) { ?>
 			 	<option value="<?=$category->category_id ?>">

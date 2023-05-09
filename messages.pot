@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-05-08 23:19-0400\n"
+"POT-Creation-Date: 2023-05-09 17:43-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -29,30 +29,13 @@ msgstr ""
 msgid "Add"
 msgstr ""
 
-#: app/views/Category/edit.php:3
-msgid "Edit a Category"
-msgstr ""
-
-#: app/views/Category/edit.php:5
-msgid "Select the ID"
-msgstr ""
-
-#: app/views/Category/edit.php:16 app/views/ITspecialist/userDetails.php:68
-#: app/views/Ingredient/edit.php:5
-#: app/views/Ingredient/ingredientDetails.php:31
-#: app/views/Ingredient/ingredientDetails.php:85 app/views/Product/edit.php:5
-#: app/views/Product/productDetails.php:31
-#: app/views/Product/productDetails.php:87 app/views/Recipe/details.php:19
-msgid "Edit"
-msgstr ""
-
 #: app/views/Category/index.php:1
 msgid "View Categories"
 msgstr ""
 
 #: app/views/Category/index.php:7 app/views/ITspecialist/createUser.php:27
-#: app/views/ITspecialist/edit.php:7 app/views/ITspecialist/userDetails.php:41
-#: app/views/ITspecialist/createProfile.php:25
+#: app/views/ITspecialist/createProfile.php:29
+#: app/views/ITspecialist/edit.php:7 app/views/ITspecialist/userDetails.php:16
 #: app/views/Ingredient/addQuantity.php:24
 #: app/views/Ingredient/createIngredient.php:34
 #: app/views/Ingredient/edit.php:36 app/views/Ingredient/editQuantity.php:31
@@ -70,9 +53,8 @@ msgstr ""
 msgid "Categories"
 msgstr ""
 
-#: app/views/Category/index.php:31 app/views/ITspecialist/editUser.php:4
-#: app/views/ITspecialist/userDetails.php:27
-#: app/views/ITspecialist/index.php:64
+#: app/views/Category/index.php:31 app/views/ITspecialist/userDetails.php:31
+#: app/views/ITspecialist/editUser.php:4
 msgid "ID"
 msgstr ""
 
@@ -84,8 +66,8 @@ msgstr ""
 msgid "Actions"
 msgstr ""
 
-#: app/views/Category/index.php:39 app/views/ITspecialist/userDetails.php:69
-#: app/views/ITspecialist/userDetails.php:84
+#: app/views/Category/index.php:40 app/views/ITspecialist/userDetails.php:71
+#: app/views/ITspecialist/userDetails.php:86
 #: app/views/Ingredient/ingredientDetails.php:37
 #: app/views/Ingredient/ingredientDetails.php:92
 #: app/views/Ingredient/ingredientDetails.php:122
@@ -95,6 +77,23 @@ msgstr ""
 #: app/views/Product/productDetails.php:125 app/views/Recipe/details.php:22
 #: app/views/Recipe/details.php:60
 msgid "Delete"
+msgstr ""
+
+#: app/views/Category/edit.php:3
+msgid "Edit a Category"
+msgstr ""
+
+#: app/views/Category/edit.php:5
+msgid "Select the Category"
+msgstr ""
+
+#: app/views/Category/edit.php:16 app/views/ITspecialist/userDetails.php:70
+#: app/views/Ingredient/edit.php:5
+#: app/views/Ingredient/ingredientDetails.php:31
+#: app/views/Ingredient/ingredientDetails.php:85 app/views/Product/edit.php:5
+#: app/views/Product/productDetails.php:31
+#: app/views/Product/productDetails.php:87 app/views/Recipe/details.php:19
+msgid "Edit"
 msgstr ""
 
 #: app/views/ITspecialist/createUser.php:1
@@ -107,15 +106,15 @@ msgid "Create a new user"
 msgstr ""
 
 #: app/views/ITspecialist/createUser.php:11
+#: app/views/ITspecialist/index.php:64
+#: app/views/ITspecialist/userDetails.php:35
 #: app/views/ITspecialist/editUser.php:7 app/views/ITspecialist/editUser.php:8
-#: app/views/ITspecialist/userDetails.php:31
-#: app/views/ITspecialist/index.php:65 app/views/User/index.php:10
 msgid "Username"
 msgstr ""
 
 #: app/views/ITspecialist/createUser.php:14
+#: app/views/ITspecialist/userDetails.php:39
 #: app/views/ITspecialist/editUser.php:11
-#: app/views/ITspecialist/userDetails.php:35 app/views/User/index.php:11
 msgid "Password"
 msgstr ""
 
@@ -124,15 +123,102 @@ msgid "--Select a User Type--"
 msgstr ""
 
 #: app/views/ITspecialist/createUser.php:19
-#: app/views/ITspecialist/editUser.php:18
-#: app/views/ITspecialist/editUser.php:23 app/views/ITspecialist/index.php:24
+#: app/views/ITspecialist/index.php:24 app/views/ITspecialist/editUser.php:18
+#: app/views/ITspecialist/editUser.php:23
 msgid "Admin"
 msgstr ""
 
 #: app/views/ITspecialist/createUser.php:20
-#: app/views/ITspecialist/editUser.php:19
-#: app/views/ITspecialist/editUser.php:24 app/views/ITspecialist/index.php:27
+#: app/views/ITspecialist/index.php:27 app/views/ITspecialist/editUser.php:19
+#: app/views/ITspecialist/editUser.php:24
 msgid "Employee"
+msgstr ""
+
+#: app/views/ITspecialist/createProfile.php:1
+#: app/views/ITspecialist/createProfile.php:27
+msgid "Create Profile"
+msgstr ""
+
+#: app/views/ITspecialist/createProfile.php:6
+msgid "Create a profile for "
+msgstr ""
+
+#: app/views/ITspecialist/createProfile.php:8
+#: app/views/ITspecialist/index.php:65
+#: app/views/ITspecialist/userDetails.php:51
+#: app/views/ITspecialist/editProfile.php:6
+#: app/views/ITspecialist/editProfile.php:7
+msgid "First Name"
+msgstr ""
+
+#: app/views/ITspecialist/createProfile.php:10
+#: app/views/ITspecialist/index.php:66
+#: app/views/ITspecialist/userDetails.php:54
+#: app/views/ITspecialist/editProfile.php:9
+#: app/views/ITspecialist/editProfile.php:10
+msgid "Middle Name"
+msgstr ""
+
+#: app/views/ITspecialist/createProfile.php:12
+#: app/views/ITspecialist/index.php:67
+#: app/views/ITspecialist/userDetails.php:57
+#: app/views/ITspecialist/editProfile.php:12
+#: app/views/ITspecialist/editProfile.php:13
+msgid "Last Name"
+msgstr ""
+
+#: app/views/ITspecialist/createProfile.php:14
+#: app/views/ITspecialist/index.php:68
+#: app/views/ITspecialist/userDetails.php:60
+#: app/views/ITspecialist/editProfile.php:16
+#: app/views/ITspecialist/editProfile.php:17
+msgid "Email"
+msgstr ""
+
+#: app/views/ITspecialist/createProfile.php:16
+#: app/views/ITspecialist/index.php:69
+#: app/views/ITspecialist/userDetails.php:63
+#: app/views/ITspecialist/editProfile.php:19
+#: app/views/ITspecialist/editProfile.php:20
+msgid "Phone Number"
+msgstr ""
+
+#: app/views/ITspecialist/createProfile.php:20
+msgid "--Select a User Status--"
+msgstr ""
+
+#: app/views/ITspecialist/createProfile.php:21
+#: app/views/ITspecialist/editProfile.php:28
+#: app/views/ITspecialist/editProfile.php:33
+msgid "Active"
+msgstr ""
+
+#: app/views/ITspecialist/createProfile.php:22
+#: app/views/ITspecialist/editProfile.php:29
+#: app/views/ITspecialist/editProfile.php:34
+msgid "Inactive"
+msgstr ""
+
+#: app/views/ITspecialist/twofasetup.php:1
+msgid "2-Factor Authentication"
+msgstr ""
+
+#: app/views/ITspecialist/twofasetup.php:20
+msgid ""
+"Please scan the QR-code with an authenticator app, such as Google "
+"Authenticator."
+msgstr ""
+
+#: app/views/ITspecialist/twofasetup.php:23
+msgid "Please enter the code you have received on your autenticator app."
+msgstr ""
+
+#: app/views/ITspecialist/twofasetup.php:27
+msgid "Current code:"
+msgstr ""
+
+#: app/views/ITspecialist/twofasetup.php:30
+msgid "Verify code"
 msgstr ""
 
 #: app/views/ITspecialist/edit.php:1
@@ -145,147 +231,6 @@ msgstr ""
 
 #: app/views/ITspecialist/edit.php:16
 msgid "View Account Information"
-msgstr ""
-
-#: app/views/ITspecialist/editProfile.php:3
-msgid "Modify Profile"
-msgstr ""
-
-#: app/views/ITspecialist/editProfile.php:6
-#: app/views/ITspecialist/editProfile.php:7
-#: app/views/ITspecialist/userDetails.php:49
-#: app/views/ITspecialist/createProfile.php:8
-#: app/views/ITspecialist/index.php:66
-msgid "First Name"
-msgstr ""
-
-#: app/views/ITspecialist/editProfile.php:9
-#: app/views/ITspecialist/editProfile.php:10
-#: app/views/ITspecialist/userDetails.php:52
-#: app/views/ITspecialist/createProfile.php:9
-#: app/views/ITspecialist/index.php:67
-msgid "Middle Name"
-msgstr ""
-
-#: app/views/ITspecialist/editProfile.php:12
-#: app/views/ITspecialist/editProfile.php:13
-#: app/views/ITspecialist/userDetails.php:55
-#: app/views/ITspecialist/createProfile.php:10
-#: app/views/ITspecialist/index.php:68
-msgid "Last Name"
-msgstr ""
-
-#: app/views/ITspecialist/editProfile.php:16
-#: app/views/ITspecialist/editProfile.php:17
-#: app/views/ITspecialist/userDetails.php:58
-#: app/views/ITspecialist/createProfile.php:11
-#: app/views/ITspecialist/index.php:69
-msgid "Email"
-msgstr ""
-
-#: app/views/ITspecialist/editProfile.php:19
-#: app/views/ITspecialist/editProfile.php:20
-#: app/views/ITspecialist/userDetails.php:61
-#: app/views/ITspecialist/createProfile.php:12
-#: app/views/ITspecialist/index.php:70
-msgid "Phone Number"
-msgstr ""
-
-#: app/views/ITspecialist/editProfile.php:22
-#: app/views/ITspecialist/userDetails.php:64
-#: app/views/ITspecialist/index.php:63
-msgid "Status"
-msgstr ""
-
-#: app/views/ITspecialist/editProfile.php:28
-#: app/views/ITspecialist/editProfile.php:33
-#: app/views/ITspecialist/createProfile.php:17
-msgid "Active"
-msgstr ""
-
-#: app/views/ITspecialist/editProfile.php:29
-#: app/views/ITspecialist/editProfile.php:34
-#: app/views/ITspecialist/createProfile.php:18
-msgid "Inactive"
-msgstr ""
-
-#: app/views/ITspecialist/editProfile.php:43
-msgid "Upload Profile Change"
-msgstr ""
-
-#: app/views/ITspecialist/editUser.php:2
-msgid "Modify User Account"
-msgstr ""
-
-#: app/views/ITspecialist/editUser.php:10
-msgid "Modify Password"
-msgstr ""
-
-#: app/views/ITspecialist/editUser.php:13
-msgid "Type of User:"
-msgstr ""
-
-#: app/views/ITspecialist/editUser.php:30
-msgid "Upload Account Change"
-msgstr ""
-
-#: app/views/ITspecialist/userDetails.php:1
-msgid "User Profile"
-msgstr ""
-
-#: app/views/ITspecialist/userDetails.php:7
-msgid "Profile Page:"
-msgstr ""
-
-#: app/views/ITspecialist/userDetails.php:77
-#: app/views/Ingredient/ingredientDetails.php:112
-#: app/views/Ingredient/ingredientDetails.php:131
-#: app/views/Product/productDetails.php:116
-#: app/views/Product/productDetails.php:135 app/views/Recipe/details.php:50
-msgid "Confirmation"
-msgstr ""
-
-#: app/views/ITspecialist/userDetails.php:83
-#: app/views/Ingredient/ingredientDetails.php:120
-#: app/views/Ingredient/ingredientDetails.php:140
-#: app/views/Product/productDetails.php:123
-#: app/views/Product/productDetails.php:141 app/views/Recipe/details.php:58
-msgid "Cancel"
-msgstr ""
-
-#: app/views/ITspecialist/createProfile.php:1
-#: app/views/ITspecialist/createProfile.php:23
-msgid "Create Profile"
-msgstr ""
-
-#: app/views/ITspecialist/createProfile.php:6
-msgid "Create a profile for "
-msgstr ""
-
-#: app/views/ITspecialist/createProfile.php:16
-msgid "--Select a User Status--"
-msgstr ""
-
-#: app/views/ITspecialist/twofasetup.php:1
-msgid "2-Factor Authentication"
-msgstr ""
-
-#: app/views/ITspecialist/twofasetup.php:21
-msgid ""
-"Please scan the QR-code with an authenticator app, such as Google "
-"Authenticator."
-msgstr ""
-
-#: app/views/ITspecialist/twofasetup.php:24
-msgid "Please enter the code you have received on your autenticator app."
-msgstr ""
-
-#: app/views/ITspecialist/twofasetup.php:28
-msgid "Current code:"
-msgstr ""
-
-#: app/views/ITspecialist/twofasetup.php:31
-msgid "Verify code"
 msgstr ""
 
 #: app/views/ITspecialist/index.php:1
@@ -313,12 +258,58 @@ msgstr ""
 msgid "Search"
 msgstr ""
 
-#: app/views/ITspecialist/index.php:99
-msgid "AD"
+#: app/views/ITspecialist/index.php:63
+#: app/views/ITspecialist/userDetails.php:66
+#: app/views/ITspecialist/editProfile.php:22
+msgid "Status"
 msgstr ""
 
-#: app/views/ITspecialist/index.php:101
-msgid "EM"
+#: app/views/ITspecialist/userDetails.php:1
+msgid "User Profile"
+msgstr ""
+
+#: app/views/ITspecialist/userDetails.php:7
+msgid "Profile Page:"
+msgstr ""
+
+#: app/views/ITspecialist/userDetails.php:79
+#: app/views/Ingredient/ingredientDetails.php:112
+#: app/views/Ingredient/ingredientDetails.php:131
+#: app/views/Product/productDetails.php:116
+#: app/views/Product/productDetails.php:135 app/views/Recipe/details.php:50
+msgid "Confirmation"
+msgstr ""
+
+#: app/views/ITspecialist/userDetails.php:85
+#: app/views/Ingredient/ingredientDetails.php:120
+#: app/views/Ingredient/ingredientDetails.php:140
+#: app/views/Product/productDetails.php:123
+#: app/views/Product/productDetails.php:141 app/views/Recipe/details.php:58
+msgid "Cancel"
+msgstr ""
+
+#: app/views/ITspecialist/editProfile.php:3
+msgid "Modify Profile"
+msgstr ""
+
+#: app/views/ITspecialist/editProfile.php:43
+msgid "Upload Profile Change"
+msgstr ""
+
+#: app/views/ITspecialist/editUser.php:2
+msgid "Modify User Account"
+msgstr ""
+
+#: app/views/ITspecialist/editUser.php:10
+msgid "Modify Password"
+msgstr ""
+
+#: app/views/ITspecialist/editUser.php:13
+msgid "Type of User:"
+msgstr ""
+
+#: app/views/ITspecialist/editUser.php:30
+msgid "Upload Account Change"
 msgstr ""
 
 #: app/views/Ingredient/addQuantity.php:1
@@ -428,7 +419,7 @@ msgstr ""
 msgid "Edit Ingredient Quantity"
 msgstr ""
 
-#: app/views/Ingredient/index.php:1
+#: app/views/Ingredient/index.php:1 app/views/shared/navigation/nav.php:39
 #: app/views/shared/navigation/switchToIngredients.php:4
 #: app/views/shared/navigation/switchToProducts.php:4
 msgid "Ingredients"
@@ -496,8 +487,7 @@ msgstr ""
 msgid "Home Page"
 msgstr ""
 
-#: app/views/Main/index.php:7 app/views/User/index.php:1
-#: app/views/User/index.php:5
+#: app/views/Main/index.php:7
 msgid "Welcome Sweemory Team!"
 msgstr ""
 
@@ -505,15 +495,16 @@ msgstr ""
 msgid "What would you like to do today?"
 msgstr ""
 
-#: app/views/Main/index.php:23
+#: app/views/Main/index.php:23 app/views/shared/navigation/nav.php:30
 msgid "Messages"
 msgstr ""
 
-#: app/views/Main/index.php:26
+#: app/views/Main/index.php:26 app/views/shared/navigation/nav.php:36
 msgid "Inventory"
 msgstr ""
 
 #: app/views/Main/index.php:29 app/views/Recipe/index.php:1
+#: app/views/shared/navigation/nav.php:46
 msgid "Recipes"
 msgstr ""
 
@@ -521,35 +512,35 @@ msgstr ""
 msgid "Read your Messages"
 msgstr ""
 
-#: app/views/Message/index.php:40 app/views/Message/index.php:51
+#: app/views/Message/index.php:35 app/views/Message/index.php:46
 msgid "Inbox"
 msgstr ""
 
-#: app/views/Message/index.php:42
+#: app/views/Message/index.php:37
 msgid "New Message"
 msgstr ""
 
-#: app/views/Message/index.php:48
+#: app/views/Message/index.php:43
 msgid "Folders"
 msgstr ""
 
-#: app/views/Message/index.php:54
+#: app/views/Message/index.php:49
 msgid "Sent"
 msgstr ""
 
-#: app/views/Message/index.php:67
+#: app/views/Message/index.php:62
 msgid "FROM"
 msgstr ""
 
-#: app/views/Message/index.php:68 app/views/Message/index.php:101
+#: app/views/Message/index.php:63 app/views/Message/index.php:98
 msgid "MESSAGE"
 msgstr ""
 
-#: app/views/Message/index.php:69 app/views/Message/index.php:102
+#: app/views/Message/index.php:64 app/views/Message/index.php:99
 msgid "TIME"
 msgstr ""
 
-#: app/views/Message/index.php:100
+#: app/views/Message/index.php:97
 msgid "TO"
 msgstr ""
 
@@ -618,7 +609,7 @@ msgstr ""
 msgid "Edit Product Quantity"
 msgstr ""
 
-#: app/views/Product/index.php:1
+#: app/views/Product/index.php:1 app/views/shared/navigation/nav.php:40
 #: app/views/shared/navigation/switchToIngredients.php:7
 #: app/views/shared/navigation/switchToProducts.php:7
 msgid "Products"
@@ -657,14 +648,11 @@ msgstr ""
 msgid "Edit this Recipe"
 msgstr ""
 
-#: app/views/User/index.php:7
-msgid "Please login to access your account"
+#: app/views/shared/navigation/nav.php:23
+msgid "Home"
 msgstr ""
 
-#: app/views/User/index.php:12
-msgid "Sign in"
-msgstr ""
-
+#: app/views/shared/navigation/nav.php:52
 #: app/views/shared/navigation/itnav.php:3
 msgid "Log Out"
 msgstr ""
