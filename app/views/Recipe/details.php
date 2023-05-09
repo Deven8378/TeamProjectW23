@@ -30,12 +30,12 @@
     <div class="right-recipe-detail">
       <div class="description-box">
 
-        <h1 id="foodName"><?= htmlentities($data->title) ?></h1>
+        <h1 id="foodName"><?= $data->title ?></h1>
 
 
         <div class="">
           <div class="col-description-header"><?= _('Description') ?>: </div >
-          <div class="col-description"><p><?= htmlentities($data->description) ?></p></div>
+          <div class="col-description"><p><?= $data->description ?></p></div>
         </div>
 
       </div>

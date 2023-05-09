@@ -50,10 +50,12 @@ class Recipe extends \app\core\Model {
 	protected function update() {
 		$SQL = "UPDATE recipe SET title=:title, picture=:picture, description=:description WHERE recipe_id =:recipe_id ";
 		$STH = self::$connection->prepare($SQL);
-		$STH->execute(['title'=>$this->title,
-						'description'=>$this->description,
-						'picture'=>$this->picture,
-						'recipe_id'=>$this->recipe_id]);
+		$data = ['title'=>$this->title,
+				'description'=>$this->description,
+				'picture'=>$this->picture,
+				'recipe_id'=>$this->recipe_id];
+		$STH->execute($data);
+		return $STH->rowCount();
 	}
 
 	public function delete() {

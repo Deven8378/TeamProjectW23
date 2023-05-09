@@ -35,7 +35,7 @@ class Recipe extends \app\core\Controller {
 			if (!empty($_POST['title']) && !empty($_POST['description']) && !ctype_space($_POST['description']) && !ctype_space($_POST['title'])) 
 			{
 				$recipe = new \app\models\Recipe();
-				$recipe->title = htmlentities($_POST['title']);
+				$recipe->title = $_POST['title'];
 				$recipe->description = htmlentities($_POST['description']);
 				$picture = $this->saveProduct($_FILES['recipePicture']);
 
@@ -69,7 +69,7 @@ class Recipe extends \app\core\Controller {
 		{
 			if (!empty($_POST['title']) && !empty($_POST['description']) && !ctype_space($_POST['description']) && !ctype_space($_POST['title'])) 
 			{
-				$recipe->title = htmlentities($_POST['title']);
+				$recipe->title = $_POST['title'];
 				$recipe->description = htmlentities($_POST['description']);
 				$picture = $this->saveProduct($_FILES['recipePicture']);
 
@@ -81,7 +81,7 @@ class Recipe extends \app\core\Controller {
 				if($success){
 					header('location:/Recipe/details/' . $recipe_id . '?success=Recipe has been updated.');
 				} else {
-					header('location:/Recipe/details/' . $recipe_id . '?success=Error has occured.');
+					header('location:/Recipe/details/' . $recipe_id . '?error=Error has occured.');
 				}
 					
 			} else {
