@@ -1,15 +1,15 @@
-<?php $this->view('shared/header','Create Profile'); ?>
+<?php $this->view('shared/header', _('Create Profile')); ?>
 <?php $this->view('shared/navigation/itnav'); ?>
 
 <div class="createProfile" align="center">
 
 	<p class="sign" align="center"><?= _('Create a profile for ') ?> <?= $data->username ?></p>
 	<form method="post" action="" class="form1">
-		<input class="createInput" type="text" align="center" placeholder="first_name" name="first_name">
-		<input class="createInput" type="text" align="center" placeholder="middle_name" name="middle_name">
-		<input class="createInput" type="text" align="center" placeholder="last_name" name="last_name">
-		<input class="createInput" type="email" align="center" placeholder="email" name="email">
-		<input class="createInput" type="tel" pattern="[0-9]{10}" align="center" placeholder="phone_number" name="phone_number">
+		<input class="createInput" type="text" align="center" placeholder="<?= _('First Name') ?>" name="first_name">
+		<input class="createInput" type="text" align="center" placeholder="<?= _('Middle Name') ?>" name="middle_name">
+		<input class="createInput" type="text" align="center" placeholder="<?= _('Last Name') ?>" name="last_name">
+		<input class="createInput" type="email" align="center" placeholder="<?= _('Email') ?>" name="email">
+		<input class="createInput" type="tel" pattern="[0-9]{10}" align="center" placeholder="<?= _('Phone Number') ?>" name="phone_number">
 		
 		<br>
 		<select name="status" id="status" class="dropdownUserType">
@@ -20,7 +20,7 @@
 
 		<br>
 
-		<input type="submit" id="submitLink" name="action" class="submitUser" align="center" value="Create Profile">
+		<input type="submit" id="submitLink" name="action" class="submitUser" align="center" value="<?= _('Create Profile') ?>">
 		<br>
 		<a class="btn" href="/ITspecialist/index"><?= _('Back') ?></a>
 	</form>

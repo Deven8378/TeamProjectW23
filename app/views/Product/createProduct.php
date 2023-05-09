@@ -1,4 +1,4 @@
-<?php $this->view('shared/header', "Add Product"); ?>
+<?php $this->view('shared/header', _('Add Product')); ?>
 <?php $this->view('shared/navigation/nav'); ?>
 
 <div class='common-container' 

@@ -1,4 +1,4 @@
-<?php $this->view('shared/header', "Edit " . $data['0']->name); ?>
+<?php $this->view('shared/header', _('Edit ') . $data['0']->name); ?>
 <?php $this->view('shared/navigation/nav'); ?>
 
 <div class='common-container' align='center'>
@@ -8,7 +8,7 @@
 		<input class="input-inv" type="text" align="center" placeholder="<?= _('Name') ?>" name="name" value="<?= $data['0']->name ?>">
 
 		<select name="category" id="status" class="dropdown-inv">
-			<option selected disabled><?= _('--Select a Category--') ?></option>
+			<option selected disabled>--<?= _('Select a Category') ?>--</option>
 			<?php
 			foreach ($data['1'] as $category) { ?>
 			 	<option value="<?=$category->category_id ?>"

@@ -1,4 +1,4 @@
-<?php $this->view('shared/header','Create User'); ?>
+<?php $this->view('shared/header', _('Create User')); ?>
 <?php $this->view('shared/navigation/itnav'); ?>
 
 <!-- <div class="container" style=""> -->
@@ -15,7 +15,7 @@
 
 			<!-- <div align="center" style="align-items: center;"> -->
 				<select name="user_type" id="user_type"  class="dropdownUserType" style="">
-					<option selected disabled>--<?=_('Select a User Type')?>--</option>
+					<option selected disabled><?=_('--Select a User Type--')?></option>
 					<option value="admin" name="admin"><?= _('Admin') ?></option>
 					<option value="employee" name="employee"><?= _('Employee') ?></option>
 				</select>

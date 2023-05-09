@@ -1,4 +1,4 @@
-<?php $this->view('shared/header', "Edit Quantity"); ?>
+<?php $this->view('shared/header', _('Edit Quantity')); ?>
 <?php $this->view('shared/navigation/nav'); ?>
 
 <?php 

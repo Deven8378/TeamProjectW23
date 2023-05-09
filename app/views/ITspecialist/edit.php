@@ -1,4 +1,4 @@
-<?php $this->view('shared/header','Edit Profile'); ?>
+<?php $this->view('shared/header', _('Edit Profile')); ?>
 <?php $this->view('shared/navigation/itnav'); ?>
 
 <div class="userDetails">
@@ -6,18 +6,17 @@
         <a href="/ITspecialist/userDetails/<?=$data->user_id?>" id="backLink" class="btn-general">
           <i class="bi bi-arrow-left"></i><?= _('Back') ?></a>
     </div>   
-      <!-- <input type="submit" id="option" onclick="myFunction()" value="Edit Account"> -->
 
     <div class="alert" style="background-color: rgb(216,212,212);">
       <h3><?= $data->username ?> <?= $data->user_id ?></h3>
     </div>
 
     <div>
-      <button id="toggle-to-account" class="btn-general" style="" >View Profile Information</button>
-      <button id="toggle-to-profile" class="btn-general" style="">View Account Information</button>
+      <button id="toggle-to-account" class="btn-general"><?= _('View Profile Information') ?></button>
+      <button id="toggle-to-profile" class="btn-general"><?= _('View Account Information') ?></button>
     </div>
 
-    <dl class="dl-viewUserDetails" style="">
+    <dl class="dl-viewUserDetails">
 
     <!-- Left side -->
     <div class="" style="flex: 70%; " >

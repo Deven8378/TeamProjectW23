@@ -1,16 +1,15 @@
-<?php $this->view('shared/header', "Add Ingredient"); ?>
+<?php $this->view('shared/header', _('Add Ingredient')); ?>
 <?php $this->view('shared/navigation/nav'); ?>
 
-<div class='common-container' 
-align='center'>
+<div class='common-container' align='center'>
 	<p class="sign" align="center"><?=_('Add a New Ingredient')?></p>
+
 	<form action='' method='post' enctype="multipart/form-data">
 
 		<input class="input-inv" type="text" align="center" placeholder="<?= _('Name') ?>" name="name" required>
 
 		<div align="center">
-			<select class="dropdown-inv" 
-			name="category" id="status" >
+			<select class="dropdown-inv" name="category" id="status" >
 				<option selected disabled><?= _('--Select a Category--') ?></option>
 				<?php
 				foreach ($data as $category) { ?>
@@ -29,6 +28,7 @@ align='center'>
 			<label class="file-label" >
 				<input class="file-input" type="file" placeholder="<?=_('Picture')?>" name="ingredientPicture">
 			</label>
+			
 			<input class="submit-inv" type="submit" value="<?=_('Add Ingredient')?>" name="action"> 
 
 			<a class="btn-general" href="/Ingredient/index" role="button" ><?= _('Back') ?></a>

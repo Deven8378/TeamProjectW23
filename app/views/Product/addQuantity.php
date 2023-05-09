@@ -1,4 +1,4 @@
-<?php $this->view('shared/header', "Add New Quantity to Product"); ?>
+<?php $this->view('shared/header', _('Add New Quantity to Product')); ?>
 <?php $this->view('shared/navigation/nav'); ?>
 
 <div class='common-container' align='center'>
@@ -19,7 +19,7 @@
 			<label><?= _('Price')?></label>
 			<input class="input-qty" type="number" min="0" step="0.01" id="totalAmt" name="price">
 
-			<input class="submit-inv" type="submit" align="" value="<?=_('Add Quantity')?>" name="action">
+			<input class="submit-inv" type="submit" value="<?=_('Add Quantity')?>" name="action">
 
 			<a class="btn-general" href="/Product/productDetails/<?=$data->product_id?>" role="button" ><?= _('Back') ?></a>
 		</div>

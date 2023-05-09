@@ -1,10 +1,5 @@
-<?php $this->view('shared/header','2 Factor Authentication'); ?>
+<?php $this->view('shared/header', _('2-Factor Authentication')); ?>
 <?php $this->view('shared/errorAndSuccessMessages'); ?>
-<?php
-$user = new \app\models\User();
-$user = $user->getSecretKey();
-$checkKey = $user->secret_key;
-?>
 
 <style> 
 #qr {
@@ -19,19 +14,21 @@ $checkKey = $user->secret_key;
 	text-align: center; 
 }
 </style>
-		<div class="main">
-			<?php if (empty($checkKey)) { ?>
-				<br>
-		<img id="qr" src="/User/makeQRCode?data=<?=$data?>"/> <br>
-			Please scan the QR-code with an authenticator app, such as Google Authenticator.<br>
+
+<div class="main">
+	<?php if (empty($data[1])) { ?>
+		<img id="qr" src="/User/makeQRCode?data=<?=$data[0]?>"/>
+		<p><?= _('Please scan the QR-code with an authenticator app, such as Google Authenticator.') ?></p>
 	<?php } ?>
-	<br>
-			 <br> Please enter the code you have received on your autenticator app.
-		<form method="post" action="">
-			<label>Current code:<input type="text" name="currentCode"/>
-	</label>
+
+	<p><?= _('Please enter the code you have received on your autenticator app.') ?></p>
+
+	<form method="post" action="">
+		<label>
+			<?= _('Current code:') ?><input type="text" name="currentCode"/>
+		</label>
 		<div id="verify">
-			<input class="btn-general" type="submit" name="action" value="Verify code" />
+			<input class="btn-general" type="submit" name="action" value="<?= _('Verify code') ?>" />
 		</div>
 	</form>
 </div>

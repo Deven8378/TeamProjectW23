@@ -1,11 +1,11 @@
-<?php $this->view('shared/header', "Ingredients"); ?>
+<?php $this->view('shared/header', _('Ingredients')); ?>
 <?php $this->view('shared/navigation/nav'); ?>
 <?php $this->view('shared/navigation/switchToIngredients'); ?>
 
 <div class="container">
 	<div class="row-index">
 		<div>
-			<div class="col-index" style="">
+			<div class="col-index">
 			<?php if($data[3] == true) { ?>
 					
 				<div class="grid-btn-one">
@@ -32,38 +32,39 @@
 				<div class="btn-group grid-btn-four" style="display: grid;" >
 
 				  	<button style="width: 150px;" type="button" class="btn dropdown-toggle btn-general" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
-				  	<?= _('Categories') ?></button>
+				  		<?= _('Categories') ?>
+				  	</button>
 
 				  	<ul class="dropdown-menu dropdown-menu-end dropdown-menu-lg-start">
 
 				  	<?php 
-				  		foreach ($data[1] as $category) { ?>
+				  	foreach ($data[1] as $category) { ?>
 				  			<li>
 				  				<form action="/Ingredient/filterByCategory/<?= $category->category_id ?>" method="post">
 									<input class="dropdown-item" style=" width: 100%;" type="submit" name="" value="<?= $category->category_name ?>">
 								</form>
 						    </li>
-				  		<?php }
-				  	?>
+				  	<?php } ?>
 			  		</ul>
 				</div>
 
 			</div>
 		</div>
+
 		<div class="row-dividor"><div class="vl"></div></div>
 <!-- ------------------------------------------------ -->
 		<div class="col-content">
-			<div class="col-content-header" style="">
+			<div class="col-content-header">
 
-				<p class="search-result" style=""><?= $data[2]->num_results ?> <?= _('Results') ?></p>
+				<p class="search-result"><?= $data[2]->num_results ?> <?= _('Results') ?></p>
 
-				<div class="search-div" style="">
+				<div class="search-div">
 
-					<form action="/Ingredient/search" class="search-form" style="">
+					<form action="/Ingredient/search" class="search-form">
 
-						<button class="search-btn" style=""><i class="bi bi-search" style="color: #ACABAB;"></i></button>
+						<button class="search-btn"><i class="bi bi-search" style="color: #ACABAB;"></i></button>
 
-						<input type="search" name="search" class="search-input" placeholder="<?=_('Search')?>" style="">
+						<input type="search" name="search" class="search-input" placeholder="<?=_('Search')?>">
 
 					</form>
 				</div>

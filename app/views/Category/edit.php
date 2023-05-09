@@ -1,8 +1,8 @@
-<form action='/Category/edit' method='post' enctype="">
-	<div class="col-category" style="">
+<form action='/Category/edit' method='post'>
+	<div class="col-category">
 		<h3 align="center"><?=_('Edit a Category')?>:</h3>
-		<select class="" style="" name="editCategory_id" id="selectBox" onchange="getValueUsingID()">
-			<option selected disabled><?= _('-ID-') ?></option>
+		<select name="editCategory_id" id="selectBox" onchange="getValueUsingID()">
+			<option selected disabled>---<?= _('Select the ID') ?>---</option>
 			<?php
 			foreach ($data as $category) { ?>
 			 	<option value="<?=$category->category_id ?>">
@@ -11,7 +11,7 @@
 			<?php  } ?>
 		</select>
 
-		<input style="" class="" id="editing" type="text" placeholder="<?= _('Category Name')?>" name="editCategory_name">
+		<input id="editing" type="text" placeholder="<?= _('Category Name')?>" name="editCategory_name">
 
 		<input class="btn-general" style="background-color: #c98bc8;" type="submit" name="edit" value="<?=_('Edit')?>">
 	</div>

@@ -1,4 +1,4 @@
-<?php $this->view('shared/header', "Read your Messages"); ?>
+<?php $this->view('shared/header', _('Read your Messages')); ?>
 <?php $this->view('shared/navigation/nav'); ?>
 
 <style type="text/css">
