@@ -18,7 +18,7 @@
             <a class="btn-general recipes-detail-btn" href="/Recipe/edit/<?= htmlentities($data->recipe_id) ?>" role="button">
               <?= _('Edit') ?>
             </a>
-            <a class="btn-general recipes-detail-btn" href="#popupRecipes" role="button">
+            <a id="beforeDelete" class="btn-general recipes-detail-btn" href="#popupRecipes" role="button">
               <?= _('Delete') ?>
             </a>
           </div>
@@ -57,7 +57,7 @@
                 <div align="center">
                   <a href="/Recipe/details/<?= htmlentities($data->recipe_id) ?>" class="btn-general"><?=_('Cancel')?></a>
                   
-                  <a href="/Recipe/delete/<?= htmlentities($data->recipe_id) ?>" class="btn-general"><?=_('Delete')?></a>
+                  <a id="confirmDelete" href="/Recipe/delete/<?= htmlentities($data->recipe_id) ?>" class="btn-general"><?=_('Delete')?></a>
             </div>
           </form>
       </div>

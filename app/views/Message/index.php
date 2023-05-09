@@ -1,11 +1,6 @@
 <?php $this->view('shared/header', _('Read your Messages')); ?>
 <?php $this->view('shared/navigation/nav'); ?>
 
-<style type="text/css">
-
-
-</style>
-
 <script>
     function toggleDiv(){
         const toggleTo2 = document.getElementById("toggle-to-sent");
@@ -80,7 +75,9 @@
                                         </td>
                                         <td class="subject">
                                             <div class="overflowing">
-                                                <?= htmlentities($message->message) ?>
+                                                <a class="detailsLink" href="/Message/messageDetails/<?= $message->message_id ?>">
+                                                    <?= htmlentities($message->message) ?>
+                                                </a>
                                             </div>
                                         </td>
                                         <td class="time"><?= htmlentities($message->timestamp) ?></td>

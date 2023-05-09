@@ -60,8 +60,7 @@
 			<!-- table-striped table-bordered -->
             <thead class="table-secondary">
                 <tr style="height: 50px;" align="center">
-                    <th scope="col" style="border-top-left-radius: 10px;"><?=_('Status')?></th>
-                    <th scope="col" style="width:7%;"><?=_('ID')?></th>
+                    <th scope="col" style="border-top-left-radius: 10px;"><?=_('Status')?></th></th>
                     <th scope="col"><?=_('Username')?></th>
                     <th scope="col"><?=_('First Name')?></th>
                     <th scope="col"><?=_('Middle Name')?></th>
@@ -94,17 +93,10 @@
                     	</th>
 
 	                    <td>
-                    	<?php
-		            		if($user->user_type == "admin") { ?>
-		            			<a href='/ITspecialist/userDetails/<?=$user->user_id?>'><?= _('AD') ?><?= $user->user_id ?></a>
-		            		<?php }else if ($user->user_type == "employee"){ ?>
-		            			<a href='/ITspecialist/userDetails/<?=$user->user_id?>'><?= _('EM') ?><?= $user->user_id ?></a>
-		            		<?php }else{ 
-		            			echo "ERROR";
-		            		}
-		            	?>
-                    	</td>
-	                    <td><?= $user->username ?></td>
+	                    	<a href='/ITspecialist/userDetails/<?=$user->user_id?>'>
+	                    		<?= $user->username ?>
+	                    	</a>
+	                    </td>
 	                    <td><?= $user->first_name ?></td>
 	                    <td><?= $user->middle_name ?></td>
 	                    <td><?=$user->last_name ?></td>

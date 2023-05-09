@@ -5,10 +5,14 @@
 
 	<p class="sign" align="center"><?= _('Create a profile for ') ?> <?= $data->username ?></p>
 	<form method="post" action="" class="form1">
-		<input class="createInput" type="text" align="center" placeholder="<?= _('First Name') ?>" name="first_name">
+		<input class="createInput" type="text" align="center" placeholder="<?= _('First Name') ?>" name="first_name" id="first_name">
+
 		<input class="createInput" type="text" align="center" placeholder="<?= _('Middle Name') ?>" name="middle_name">
+
 		<input class="createInput" type="text" align="center" placeholder="<?= _('Last Name') ?>" name="last_name">
+
 		<input class="createInput" type="email" align="center" placeholder="<?= _('Email') ?>" name="email">
+
 		<input class="createInput" type="tel" pattern="[0-9]{10}" align="center" placeholder="<?= _('Phone Number') ?>" name="phone_number">
 		
 		<br>
