@@ -24,8 +24,8 @@ class User extends \app\core\Controller
 
                         //Redirect the User to the correct page depending on the user_type
                         if($_SESSION['user_type'] =="itspecialist"){
-                           // header('location:/User/twofasetup');
-                            header('location:/itspecialist/index');
+                            //header('location:/User/twofasetup');
+                           header('location:/itspecialist/index');
                         }else
                         {
                             header('location:/Main/index');
@@ -79,12 +79,13 @@ class User extends \app\core\Controller
 
         $secretkey = "3U34JQI5J7RMWYTH";
         if(isset($_POST['action'])){
-            $currentcode = $_POST['currentCode'];
+            $currentcode = str_replace(' ', '', $_POST['currentCode']);
             if(\app\core\TokenAuth6238::verify($secretkey,$currentcode))
             {
             //the user has verified their proper 2-factor authentication setup
                 $_SESSION['secretkey'] = $secretkey;    
                 $user = new \app\models\User();
+                $user->user_id = $_SESSION['user_id'];
                 $user->secret_key = $secretkey;
                 $user->update2fa();
                  header('location:/ITspecialist/index');

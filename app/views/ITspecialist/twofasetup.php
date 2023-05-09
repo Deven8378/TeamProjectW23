@@ -14,7 +14,6 @@
 	text-align: center; 
 }
 </style>
-
 <div class="main">
 	<?php if (empty($data[1])) { ?>
 		<img id="qr" src="/User/makeQRCode?data=<?=$data[0]?>"/>
