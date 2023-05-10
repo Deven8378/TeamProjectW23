@@ -35,10 +35,6 @@
 	        		<dt class="dt-label"><?=_('Username')?></dt>
 	        		<dd class="dd-left"><?= $data->username?></dd>
 	        	</div>
-	        	<div >
-	        		<dt  class="dt-label"><?=_('Password')?></dt>
-	        		<dd  class="dd-left"><?= $data->password_hash ?></dd>
-	        	</div>
 	        </div>
 			
 			
