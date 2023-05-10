@@ -23,7 +23,7 @@
         <a class="btn-general" id="home_links" href="/Message/index" role="button" style="background-color: #e8c8e7;"><?= _('Messages') ?></a>
       </div>
       <div class="col">
-        <a class="btn-general" id="home_links" href="/Ingredient/index" role="button" style="background-color: #e8c8e7;"><?= _('Inventory') ?></a>
+        <a class="btn-general" id="home_links" href="/Product/index" role="button" style="background-color: #e8c8e7;"><?= _('Inventory') ?></a>
       </div>
       <div class="col">
         <a class="btn-general" id="home_links" href="/Recipe/index" role="button" style="background-color: #e8c8e7;"><?= _('Recipes') ?></a>
