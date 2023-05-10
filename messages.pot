@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-05-09 17:43-0400\n"
+"POT-Creation-Date: 2023-05-10 03:49-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -38,13 +38,15 @@ msgstr ""
 #: app/views/ITspecialist/edit.php:7 app/views/ITspecialist/userDetails.php:16
 #: app/views/Ingredient/addQuantity.php:24
 #: app/views/Ingredient/createIngredient.php:34
-#: app/views/Ingredient/edit.php:36 app/views/Ingredient/editQuantity.php:31
+#: app/views/Ingredient/editQuantity.php:31
 #: app/views/Ingredient/ingredientDetails.php:6
-#: app/views/Message/messageDetails.php:7 app/views/Message/sendMessage.php:5
-#: app/views/Product/addQuantity.php:24 app/views/Product/createProduct.php:34
-#: app/views/Product/edit.php:36 app/views/Product/editQuantity.php:31
-#: app/views/Product/productDetails.php:6 app/views/Recipe/create.php:21
-#: app/views/Recipe/details.php:7 app/views/Recipe/edit.php:22
+#: app/views/Ingredient/edit.php:36 app/views/Message/messageDetails.php:7
+#: app/views/Message/sendMessage.php:5 app/views/Product/addQuantity.php:24
+#: app/views/Product/createProduct.php:34
+#: app/views/Product/editQuantity.php:31
+#: app/views/Product/productDetails.php:6 app/views/Product/edit.php:36
+#: app/views/Recipe/create.php:21 app/views/Recipe/edit.php:22
+#: app/views/Recipe/details.php:7
 msgid "Back"
 msgstr ""
 
@@ -53,8 +55,8 @@ msgstr ""
 msgid "Categories"
 msgstr ""
 
-#: app/views/Category/index.php:31 app/views/ITspecialist/userDetails.php:31
-#: app/views/ITspecialist/editUser.php:4
+#: app/views/Category/index.php:31 app/views/ITspecialist/editUser.php:4
+#: app/views/ITspecialist/userDetails.php:31
 msgid "ID"
 msgstr ""
 
@@ -88,11 +90,11 @@ msgid "Select the Category"
 msgstr ""
 
 #: app/views/Category/edit.php:16 app/views/ITspecialist/userDetails.php:70
-#: app/views/Ingredient/edit.php:5
 #: app/views/Ingredient/ingredientDetails.php:31
-#: app/views/Ingredient/ingredientDetails.php:85 app/views/Product/edit.php:5
-#: app/views/Product/productDetails.php:31
-#: app/views/Product/productDetails.php:87 app/views/Recipe/details.php:19
+#: app/views/Ingredient/ingredientDetails.php:85
+#: app/views/Ingredient/edit.php:5 app/views/Product/productDetails.php:31
+#: app/views/Product/productDetails.php:87 app/views/Product/edit.php:5
+#: app/views/Recipe/details.php:19
 msgid "Edit"
 msgstr ""
 
@@ -106,15 +108,15 @@ msgid "Create a new user"
 msgstr ""
 
 #: app/views/ITspecialist/createUser.php:11
-#: app/views/ITspecialist/index.php:64
+#: app/views/ITspecialist/index.php:64 app/views/ITspecialist/editUser.php:7
+#: app/views/ITspecialist/editUser.php:8
 #: app/views/ITspecialist/userDetails.php:35
-#: app/views/ITspecialist/editUser.php:7 app/views/ITspecialist/editUser.php:8
 msgid "Username"
 msgstr ""
 
 #: app/views/ITspecialist/createUser.php:14
-#: app/views/ITspecialist/userDetails.php:39
 #: app/views/ITspecialist/editUser.php:11
+#: app/views/ITspecialist/userDetails.php:39
 msgid "Password"
 msgstr ""
 
@@ -145,41 +147,41 @@ msgstr ""
 
 #: app/views/ITspecialist/createProfile.php:8
 #: app/views/ITspecialist/index.php:65
-#: app/views/ITspecialist/userDetails.php:51
 #: app/views/ITspecialist/editProfile.php:6
 #: app/views/ITspecialist/editProfile.php:7
+#: app/views/ITspecialist/userDetails.php:51
 msgid "First Name"
 msgstr ""
 
 #: app/views/ITspecialist/createProfile.php:10
 #: app/views/ITspecialist/index.php:66
-#: app/views/ITspecialist/userDetails.php:54
 #: app/views/ITspecialist/editProfile.php:9
 #: app/views/ITspecialist/editProfile.php:10
+#: app/views/ITspecialist/userDetails.php:54
 msgid "Middle Name"
 msgstr ""
 
 #: app/views/ITspecialist/createProfile.php:12
 #: app/views/ITspecialist/index.php:67
-#: app/views/ITspecialist/userDetails.php:57
 #: app/views/ITspecialist/editProfile.php:12
 #: app/views/ITspecialist/editProfile.php:13
+#: app/views/ITspecialist/userDetails.php:57
 msgid "Last Name"
 msgstr ""
 
 #: app/views/ITspecialist/createProfile.php:14
 #: app/views/ITspecialist/index.php:68
-#: app/views/ITspecialist/userDetails.php:60
 #: app/views/ITspecialist/editProfile.php:16
 #: app/views/ITspecialist/editProfile.php:17
+#: app/views/ITspecialist/userDetails.php:60
 msgid "Email"
 msgstr ""
 
 #: app/views/ITspecialist/createProfile.php:16
 #: app/views/ITspecialist/index.php:69
-#: app/views/ITspecialist/userDetails.php:63
 #: app/views/ITspecialist/editProfile.php:19
 #: app/views/ITspecialist/editProfile.php:20
+#: app/views/ITspecialist/userDetails.php:63
 msgid "Phone Number"
 msgstr ""
 
@@ -197,40 +199,6 @@ msgstr ""
 #: app/views/ITspecialist/editProfile.php:29
 #: app/views/ITspecialist/editProfile.php:34
 msgid "Inactive"
-msgstr ""
-
-#: app/views/ITspecialist/twofasetup.php:1
-msgid "2-Factor Authentication"
-msgstr ""
-
-#: app/views/ITspecialist/twofasetup.php:20
-msgid ""
-"Please scan the QR-code with an authenticator app, such as Google "
-"Authenticator."
-msgstr ""
-
-#: app/views/ITspecialist/twofasetup.php:23
-msgid "Please enter the code you have received on your autenticator app."
-msgstr ""
-
-#: app/views/ITspecialist/twofasetup.php:27
-msgid "Current code:"
-msgstr ""
-
-#: app/views/ITspecialist/twofasetup.php:30
-msgid "Verify code"
-msgstr ""
-
-#: app/views/ITspecialist/edit.php:1
-msgid "Edit Profile"
-msgstr ""
-
-#: app/views/ITspecialist/edit.php:15
-msgid "View Profile Information"
-msgstr ""
-
-#: app/views/ITspecialist/edit.php:16
-msgid "View Account Information"
 msgstr ""
 
 #: app/views/ITspecialist/index.php:1
@@ -259,33 +227,9 @@ msgid "Search"
 msgstr ""
 
 #: app/views/ITspecialist/index.php:63
-#: app/views/ITspecialist/userDetails.php:66
 #: app/views/ITspecialist/editProfile.php:22
+#: app/views/ITspecialist/userDetails.php:66
 msgid "Status"
-msgstr ""
-
-#: app/views/ITspecialist/userDetails.php:1
-msgid "User Profile"
-msgstr ""
-
-#: app/views/ITspecialist/userDetails.php:7
-msgid "Profile Page:"
-msgstr ""
-
-#: app/views/ITspecialist/userDetails.php:79
-#: app/views/Ingredient/ingredientDetails.php:112
-#: app/views/Ingredient/ingredientDetails.php:131
-#: app/views/Product/productDetails.php:116
-#: app/views/Product/productDetails.php:135 app/views/Recipe/details.php:50
-msgid "Confirmation"
-msgstr ""
-
-#: app/views/ITspecialist/userDetails.php:85
-#: app/views/Ingredient/ingredientDetails.php:120
-#: app/views/Ingredient/ingredientDetails.php:140
-#: app/views/Product/productDetails.php:123
-#: app/views/Product/productDetails.php:141 app/views/Recipe/details.php:58
-msgid "Cancel"
 msgstr ""
 
 #: app/views/ITspecialist/editProfile.php:3
@@ -310,6 +254,66 @@ msgstr ""
 
 #: app/views/ITspecialist/editUser.php:30
 msgid "Upload Account Change"
+msgstr ""
+
+#: app/views/ITspecialist/edit.php:1
+msgid "Edit Profile"
+msgstr ""
+
+#: app/views/ITspecialist/edit.php:15
+msgid "View Profile Information"
+msgstr ""
+
+#: app/views/ITspecialist/edit.php:16
+msgid "View Account Information"
+msgstr ""
+
+#: app/views/ITspecialist/userDetails.php:1
+msgid "User Profile"
+msgstr ""
+
+#: app/views/ITspecialist/userDetails.php:7
+msgid "Profile Page:"
+msgstr ""
+
+#: app/views/ITspecialist/userDetails.php:79
+#: app/views/Ingredient/ingredientDetails.php:112
+#: app/views/Ingredient/ingredientDetails.php:131
+#: app/views/Message/messageDetails.php:30
+#: app/views/Product/productDetails.php:116
+#: app/views/Product/productDetails.php:135 app/views/Recipe/details.php:50
+msgid "Confirmation"
+msgstr ""
+
+#: app/views/ITspecialist/userDetails.php:85
+#: app/views/Ingredient/ingredientDetails.php:120
+#: app/views/Ingredient/ingredientDetails.php:140
+#: app/views/Message/messageDetails.php:36
+#: app/views/Product/productDetails.php:123
+#: app/views/Product/productDetails.php:141 app/views/Recipe/details.php:58
+msgid "Cancel"
+msgstr ""
+
+#: app/views/ITspecialist/twofasetup.php:1
+msgid "2-Factor Authentication"
+msgstr ""
+
+#: app/views/ITspecialist/twofasetup.php:21
+msgid ""
+"Please scan the QR-code with an authenticator app, such as Google "
+"Authenticator."
+msgstr ""
+
+#: app/views/ITspecialist/twofasetup.php:24
+msgid "Please enter the code you have received on your autenticator app."
+msgstr ""
+
+#: app/views/ITspecialist/twofasetup.php:29
+msgid "Current code:"
+msgstr ""
+
+#: app/views/ITspecialist/twofasetup.php:32
+msgid "Verify code"
 msgstr ""
 
 #: app/views/Ingredient/addQuantity.php:1
@@ -384,29 +388,13 @@ msgstr ""
 
 #: app/views/Ingredient/createIngredient.php:26
 #: app/views/Ingredient/createIngredient.php:29
-#: app/views/Ingredient/edit.php:30 app/views/Product/createProduct.php:27
-#: app/views/Product/createProduct.php:30 app/views/Product/edit.php:30
-#: app/views/Recipe/create.php:14 app/views/Recipe/create.php:17
-#: app/views/Recipe/edit.php:15 app/views/Recipe/edit.php:18
+#: app/views/Ingredient/edit.php:27 app/views/Ingredient/edit.php:30
+#: app/views/Product/createProduct.php:27
+#: app/views/Product/createProduct.php:30 app/views/Product/edit.php:27
+#: app/views/Product/edit.php:30 app/views/Recipe/create.php:14
+#: app/views/Recipe/create.php:17 app/views/Recipe/edit.php:15
+#: app/views/Recipe/edit.php:18
 msgid "Picture"
-msgstr ""
-
-#: app/views/Ingredient/edit.php:1 app/views/Product/edit.php:1
-msgid "Edit "
-msgstr ""
-
-#: app/views/Ingredient/edit.php:11
-msgid "Select a Category"
-msgstr ""
-
-#: app/views/Ingredient/edit.php:27 app/views/Product/edit.php:27
-#: app/views/Recipe/create.php:10 app/views/Recipe/details.php:37
-#: app/views/Recipe/edit.php:10
-msgid "Description"
-msgstr ""
-
-#: app/views/Ingredient/edit.php:34
-msgid "Edit Ingredient"
 msgstr ""
 
 #: app/views/Ingredient/editQuantity.php:1
@@ -420,8 +408,8 @@ msgid "Edit Ingredient Quantity"
 msgstr ""
 
 #: app/views/Ingredient/index.php:1 app/views/shared/navigation/nav.php:39
-#: app/views/shared/navigation/switchToIngredients.php:4
-#: app/views/shared/navigation/switchToProducts.php:4
+#: app/views/shared/navigation/switchToIngredients.php:8
+#: app/views/shared/navigation/switchToProducts.php:8
 msgid "Ingredients"
 msgstr ""
 
@@ -479,8 +467,21 @@ msgid "Do you want to delete the entire Quantity row"
 msgstr ""
 
 #: app/views/Ingredient/ingredientDetails.php:141
+#: app/views/Message/messageDetails.php:38
 #: app/views/Product/productDetails.php:143
 msgid "Confirm"
+msgstr ""
+
+#: app/views/Ingredient/edit.php:1 app/views/Product/edit.php:1
+msgid "Edit "
+msgstr ""
+
+#: app/views/Ingredient/edit.php:11
+msgid "Select a Category"
+msgstr ""
+
+#: app/views/Ingredient/edit.php:34
+msgid "Edit Ingredient"
 msgstr ""
 
 #: app/views/Main/index.php:1
@@ -556,6 +557,10 @@ msgstr ""
 msgid "To:"
 msgstr ""
 
+#: app/views/Message/messageDetails.php:34
+msgid "Do you want to delete this message?"
+msgstr ""
+
 #: app/views/Message/sendMessage.php:1
 msgid "Send a Message"
 msgstr ""
@@ -601,17 +606,13 @@ msgstr ""
 msgid "Add a New Product"
 msgstr ""
 
-#: app/views/Product/edit.php:34
-msgid "Edit Product"
-msgstr ""
-
 #: app/views/Product/editQuantity.php:5
 msgid "Edit Product Quantity"
 msgstr ""
 
 #: app/views/Product/index.php:1 app/views/shared/navigation/nav.php:40
-#: app/views/shared/navigation/switchToIngredients.php:7
-#: app/views/shared/navigation/switchToProducts.php:7
+#: app/views/shared/navigation/switchToIngredients.php:5
+#: app/views/shared/navigation/switchToProducts.php:5
 msgid "Products"
 msgstr ""
 
@@ -619,8 +620,12 @@ msgstr ""
 msgid "Are you certain you want to delete the following Product?"
 msgstr ""
 
+#: app/views/Product/edit.php:34
+msgid "Edit Product"
+msgstr ""
+
 #: app/views/Recipe/create.php:1 app/views/Recipe/create.php:19
-#: app/views/Recipe/index.php:8
+#: app/views/Recipe/index.php:9
 msgid "Add Recipe"
 msgstr ""
 
@@ -632,12 +637,13 @@ msgstr ""
 msgid "Title"
 msgstr ""
 
-#: app/views/Recipe/index.php:5
-msgid "Recipes Page"
+#: app/views/Recipe/create.php:10 app/views/Recipe/edit.php:10
+#: app/views/Recipe/details.php:37
+msgid "Description"
 msgstr ""
 
-#: app/views/Recipe/details.php:56
-msgid "Are you certain you want to delete the following Recipe?"
+#: app/views/Recipe/index.php:5
+msgid "Recipes Page"
 msgstr ""
 
 #: app/views/Recipe/edit.php:1 app/views/Recipe/edit.php:20
@@ -646,6 +652,10 @@ msgstr ""
 
 #: app/views/Recipe/edit.php:5
 msgid "Edit this Recipe"
+msgstr ""
+
+#: app/views/Recipe/details.php:56
+msgid "Are you certain you want to delete the following Recipe?"
 msgstr ""
 
 #: app/views/shared/navigation/nav.php:23
