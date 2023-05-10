@@ -24,7 +24,7 @@
 		<textarea placeholder="<?= _('Description...') ?>" name="description" class="input-inv"><?= $data['0']->description ?></textarea>
 
 		<div class="grid-50" style="margin-right: 0px;" align="center">
-			<label><?= _('Description') ?></label>
+			<label><?= _('Picture') ?></label>
 			<!-- Place holder for input type file might be useless -->
 			<label class="file-label" >
 				<input class="file-input" type="file" name="productPicture" value="<?= $data['0']->picture ?>" placeholder="<?=_('Picture')?>" >
