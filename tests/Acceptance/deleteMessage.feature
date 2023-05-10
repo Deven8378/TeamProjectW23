@@ -1,4 +1,4 @@
-Feature: sendMessage
+Feature: deleteMessage
 	In order to delete message
 	As an Admin or Employee
 	I need to press delete message
@@ -20,6 +20,7 @@ Scenario: try to delete a message a message as admin
   And I click "Sign in"
   And I click "Messages"
   And I click "Trying to delete a message as admin"
+  And I click "delete"
   When I click "Delete"
   Then I see "Message deleted."
 Scenario: try to delete a message a message as employee
@@ -39,5 +40,6 @@ Scenario: try to delete a message a message as employee
   And I click "Sign in"
   And I click "Messages"
   And I click "Trying to delete a message as employee"
+  And I click "delete"
   When I click "Delete"
   Then I see "Message deleted."

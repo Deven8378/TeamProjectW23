@@ -9,6 +9,7 @@ Scenario: try editing an ingredient as admin
 	And I fill field "1234" in "password"
 	And I click "Sign in"
 	And I click "Inventory"
+	And I click "Ingredients"
 	And I click "Add Ingredient"
 	And I fill field "Green Banana" in "name"
 	And I select "3" in "category"
