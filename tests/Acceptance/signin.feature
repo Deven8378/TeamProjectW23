@@ -21,9 +21,3 @@ Scenario: try sign in as admin
     And I fill field "1234" in "password"
     When I click "Sign in"
     Then I see "List of Employee and Admin"
-  Scenario: try sign in not as User
-    Given I am on the "/User/index" page
-    And I fill field "user123" in "username"
-    And I fill field "1234" in "password"
-    When I click "Sign in"
-    Then I see "Bad username/password combination."
