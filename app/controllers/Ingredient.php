@@ -4,6 +4,7 @@ namespace app\controllers;
 use \app\models\Category;
 use \app\models\IngredientQuantity;
 use \app\models\User;
+use \app\core\TimeHelper;
 
 #[\app\filters\ProfileCreated]
 #[\app\filters\Status]
@@ -151,18 +152,24 @@ class Ingredient extends \app\core\Controller
             {
                 if(strtotime($_POST['expired_date']) > strtotime($_POST['arrival_date']))
                 {
-                    $ingredient_quantity = new IngredientQuantity();
-                    $ingredient_quantity->arrival_date = $_POST['arrival_date'];
-                    $ingredient_quantity->expired_date = $_POST['expired_date'];
-                    $ingredient_quantity->quantity = $_POST['quantity'];
-                    $ingredient_quantity->price = $_POST['price'];
-                    $success = $ingredient_quantity->addIngredientQuantity($ingredient_id);
+                    if(TimeHelper::DTExpiredDate($_POST['expired_date']) > TimeHelper::DTToday() ){
 
-                    if($success){
-                        header('location:/Ingredient/ingredientDetails/' . $ingredient_id. '?success=Ingredient added quantity.');
-                    } else {
-                        header('location:/Ingredient/ingredientDetails/' . $ingredient_id. '?error=Something went wrong when adding quantity. Please Try again.');
-                    } 
+                        $ingredient_quantity = new IngredientQuantity();
+                        $ingredient_quantity->arrival_date = $_POST['arrival_date'];
+                        $ingredient_quantity->expired_date = $_POST['expired_date'];
+                        $ingredient_quantity->quantity = $_POST['quantity'];
+                        $ingredient_quantity->price = $_POST['price'];
+                        $success = $ingredient_quantity->addIngredientQuantity($ingredient_id);
+
+                        if($success){
+                            header('location:/Ingredient/ingredientDetails/' . $ingredient_id. '?success=Ingredient added quantity. ' );
+                        } else {
+                            header('location:/Ingredient/ingredientDetails/' . $ingredient_id. '?error=Something went wrong when adding quantity. Please Try again.');
+                        } 
+
+                    }else{
+                        header('location:/Ingredient/addQuantity/' . $ingredient_id. '?error=Please recheck expired dates.');
+                    }
                 } else {
                     header('location:/Ingredient/addQuantity/' . $ingredient_id. '?error=Please recheck dates.');
                 }
@@ -188,17 +195,21 @@ class Ingredient extends \app\core\Controller
             {
                 if(strtotime($_POST['expired_date']) > strtotime($_POST['arrival_date']))
                 {
-                    $ingredientQuantity->quantity = $_POST['quantity'];
-                    $ingredientQuantity->arrival_date = $_POST['arrival_date'];
-                    $ingredientQuantity->expired_date = $_POST['expired_date'];
-                    $ingredientQuantity->price = $_POST['price'];
-                    $success = $ingredientQuantity->editQuantity($iq_id);
+                    if(TimeHelper::DTExpiredDate($_POST['expired_date']) > TimeHelper::DTToday() ){
+                        $ingredientQuantity->quantity = $_POST['quantity'];
+                        $ingredientQuantity->arrival_date = $_POST['arrival_date'];
+                        $ingredientQuantity->expired_date = $_POST['expired_date'];
+                        $ingredientQuantity->price = $_POST['price'];
+                        $success = $ingredientQuantity->editQuantity($iq_id);
 
-                    if($success){
-                        header('location:/Ingredient/ingredientDetails/' . $ingredientQuantity->ingredient_id . '?success=Ingredient Quantity Updated.');
-                    } else {
-                        header('location:/Ingredient/editQuantity/' . $iq_id . '?error=Please modify in order to edit.');
-                    }
+                        if($success){
+                            header('location:/Ingredient/ingredientDetails/' . $ingredientQuantity->ingredient_id . '?success=Ingredient Quantity Updated.');
+                        } else {
+                            header('location:/Ingredient/editQuantity/' . $iq_id . '?error=Please modify in order to edit.');
+                        }
+                    }else{
+                        header('location:/Ingredient/editQuantity/' . $iq_id. '?error=Please recheck expired dates.');
+                    }   
                 } else {
                     header('location:/Ingredient/editQuantity/' . $iq_id. '?error=Please recheck dates.');
                 }

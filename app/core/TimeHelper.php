@@ -44,4 +44,13 @@ class TimeHelper{
 		//return to a standard string format
 		return $datetime->format('Y-m-d H:i:s');
 	}
+	
+	public static function DTToday(){
+		$todayDate = strtotime('now');
+		return date('Y-m-d', $todayDate);
+	}
+	public static function DTExpiredDate($s_datetime){
+		$expiredDate = strtotime($s_datetime);
+		return date('Y-m-d', $expiredDate);
+	}
 }

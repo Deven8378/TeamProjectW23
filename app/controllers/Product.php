@@ -4,6 +4,7 @@ namespace app\controllers;
 use \app\models\User;
 use \app\models\Category;
 use \app\models\ProductQuantity;
+use \app\core\TimeHelper;
 
 #[\app\filters\ProfileCreated]
 #[\app\filters\Status]
@@ -151,18 +152,24 @@ class Product extends \app\core\Controller
             {
                 if(strtotime($_POST['expired_date']) > strtotime($_POST['produced_date']))
                 {
-                    $product_quantity = new ProductQuantity();
-                    $product_quantity->produced_date = $_POST['produced_date'];
-                    $product_quantity->expired_date = $_POST['expired_date'];
-                    $product_quantity->quantity = $_POST['quantity'];
-                    $product_quantity->price = $_POST['price'];
-                    $success = $product_quantity->addProductQuantity($product_id);
 
-                    if($success){
-                        header('location:/Product/productDetails/' . $product_id. '?success=Product added quantity.');
-                    } else {
-                        header('location:/Product/productDetails/' . $product_id. '?error=Something went wrong when adding quantity. Please Try again.');
-                    } 
+                    if(TimeHelper::DTExpiredDate($_POST['expired_date']) > TimeHelper::DTToday() ){
+                        $product_quantity = new ProductQuantity();
+                        $product_quantity->produced_date = $_POST['produced_date'];
+                        $product_quantity->expired_date = $_POST['expired_date'];
+                        $product_quantity->quantity = $_POST['quantity'];
+                        $product_quantity->price = $_POST['price'];
+                        $success = $product_quantity->addProductQuantity($product_id);
+
+                        if($success){
+                            header('location:/Product/productDetails/' . $product_id. '?success=Product added quantity.');
+                        } else {
+                            header('location:/Product/productDetails/' . $product_id. '?error=Something went wrong when adding quantity. Please Try again.');
+                        } 
+                    }else{
+                        header('location:/Product/addQuantity/' . $product_id. '?error=Please recheck expired dates.');
+                        
+                    }
                 } else {
                     header('location:/Product/addQuantity/' . $product_id. '?error=Please recheck dates.');
                 }
@@ -188,16 +195,21 @@ class Product extends \app\core\Controller
             {
                 if(strtotime($_POST['expired_date']) > strtotime($_POST['produced_date']))
                 {
-                    $productQuantity->quantity = $_POST['quantity'];
-                    $productQuantity->produced_date = $_POST['produced_date'];
-                    $productQuantity->expired_date = $_POST['expired_date'];
-                    $productQuantity->price = $_POST['price'];
-                    $success = $productQuantity->editQuantity($pq_id);
+                    if(TimeHelper::DTExpiredDate($_POST['expired_date']) > TimeHelper::DTToday() ){
+                        $productQuantity->quantity = $_POST['quantity'];
+                        $productQuantity->produced_date = $_POST['produced_date'];
+                        $productQuantity->expired_date = $_POST['expired_date'];
+                        $productQuantity->price = $_POST['price'];
+                        $success = $productQuantity->editQuantity($pq_id);
 
-                    if($success){
-                        header('location:/Product/productDetails/' . $productQuantity->product_id . '?success=Product Quantity Updated.');
-                    } else {
-                        header('location:/Product/editQuantity/' . $pq_id . '?error=Please modify in order to edit.');
+                        if($success){
+                            header('location:/Product/productDetails/' . $productQuantity->product_id . '?success=Product Quantity Updated.');
+                        } else {
+                            header('location:/Product/editQuantity/' . $pq_id . '?error=Please modify in order to edit.');
+                        }
+                    }else{
+                        header('location:/Product/editQuantity/' . $pq_id. '?error=Please recheck expired dates.');
+                        
                     }
                 } else {
                     header('location:/Product/editQuantity/' . $pq_id. '?error=Please recheck dates.');

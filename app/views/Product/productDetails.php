@@ -75,7 +75,16 @@
                   <td><?= $quantity->produced_date ?></td>
                   <td><?= $quantity->expired_date ?></td>
                   <td><?= $quantity->price ?></td>
-                  <td><?= $quantity->daysLeft ?></td>
+                  <!-- <td><?= $quantity->daysLeft ?></td> -->
+                  <!--  -->
+                  <?php if  ($quantity->daysLeft == 0){ ?>
+                    <td style='color:red; font-weight:bold;'>Expired Today</td>
+                  <?php } else if ($quantity->daysLeft < 0){ ?>
+                    <td style='color:red; font-weight:bold;'>Expired: <?=abs($quantity->daysLeft)?> day(s) ago </td>
+                  <?php }else{ ?>
+                    <td style='color:#6eba7f; font-weight:bold;'> <?= $quantity->daysLeft?>  </td>
+                  <?php } ?>
+                  <!--  -->
                   <td>
                     <div class="btn-group dropend">
                       <button type="button" class="btn-more" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="bi bi-three-dots-vertical"></i><?=_('More')?></button>

@@ -28,7 +28,7 @@ class ProductQuantity extends \app\core\Model {
 	//Select Statements
 
 	public function getAll($product_id) {
-		$SQL = 'SELECT `pq_id`, `product_id`, `produced_date`, `expired_date`, `quantity`, `price`, DATEDIFF(expired_date, produced_date) AS daysLeft FROM product_quantity WHERE product_id=:product_id';
+		$SQL = 'SELECT `pq_id`, `product_id`, `produced_date`, `expired_date`, `quantity`, `price`, DATEDIFF(expired_date, CURRENT_DATE()) AS daysLeft FROM product_quantity WHERE product_id=:product_id';
 		$STH = self::$connection->prepare($SQL);
 		$data = ['product_id'=>$product_id];
 		$STH->execute($data);
