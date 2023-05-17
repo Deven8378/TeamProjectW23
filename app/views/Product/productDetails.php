@@ -14,7 +14,7 @@
 
       <div class="foodDetails-box">
         <div id="foodDetails">
-<!-- ----------------------------------------------------------------- -->
+
           <div class="grid-details">
 
             <div class="grid-box-1">
@@ -26,17 +26,17 @@
                 <div class="btn-group dropend">
                   <button type="button" class="btn-more" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="bi bi-three-dots-vertical"></i><?=_('More')?></button>
                   <div class="dropdown-menu">
-                      <li>
-                        <a class="dropdown-item" href="/Product/edit/<?= $data[0]->product_id ?>">
-                          <?= _('Edit') ?>
-                        </a>
-                      </li>
-                      <li>
-                        <a id="deleteProduct" class="dropdown-item" 
-                        href="#popupProduct">
-                          <?= _('Delete') ?>
-                        </a>
-                      </li>
+                    <li>
+                      <a class="dropdown-item" href="/Product/edit/<?= $data[0]->product_id ?>">
+                        <?= _('Edit') ?>
+                      </a>
+                    </li>
+                    <li>
+                      <a id="deleteProduct" class="dropdown-item" 
+                      href="#popupProduct">
+                        <?= _('Delete') ?>
+                      </a>
+                    </li>
                   </div>
                 </div>
               <?php } ?>
@@ -55,7 +55,7 @@
             <?php } ?>
 
           </div>
-<!-- ----------------------------------------------------------------- -->
+
           <div id="table-container">
             <table class="table table-hover">
               <thead>
@@ -75,7 +75,6 @@
                   <td><?= $quantity->produced_date ?></td>
                   <td><?= $quantity->expired_date ?></td>
                   <td><?= $quantity->price ?></td>
-                  <!-- <td><?= $quantity->daysLeft ?></td> -->
                   <!--  -->
                   <?php if  ($quantity->daysLeft == 0){ ?>
                     <td style='color:red; font-weight:bold;'>Expired Today</td>
@@ -89,7 +88,6 @@
                     <div class="btn-group dropend">
                       <button type="button" class="btn-more" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="bi bi-three-dots-vertical"></i><?=_('More')?></button>
                       <div class="dropdown-menu">
-
                         
                           <li>
                             <a class="dropdown-item" href="/Product/editQuantity/<?= $quantity->pq_id ?>">
@@ -124,43 +122,37 @@
   <div class="wrapper">
       <div class="wrapper-confirmation"><?= _('Confirmation') ?></div>
       <a class="close" href="/Product/productDetails/<?= $data[0]->product_id ?>">&times;</a>
-      <!-- <div class="content"> -->
-          <div class="container">
-              <form  method="post" action="">
-                    <label class="wrapper-message"><?=_('Are you certain you want to delete the following Product?')?></label>
-                    <div align="center">
-                      <a href="/Product/productDetails/<?= $data[0]->product_id ?>" class="btn-general"><?=_('Cancel')?></a>
-                      
-                      <a href="/Product/delete/<?= $data[0]->product_id ?>" class="btn-general"><?=_('Delete')?></a>
-                </div>
-              </form>
-          </div>
-      <!-- </div> -->
+        <div class="container">
+            <form  method="post" action="">
+                  <label class="wrapper-message"><?=_('Are you certain you want to delete the following Product?')?></label>
+                  <div align="center">
+                    <a href="/Product/productDetails/<?= $data[0]->product_id ?>" class="btn-general"><?=_('Cancel')?></a>
+                    
+                    <a href="/Product/delete/<?= $data[0]->product_id ?>" class="btn-general"><?=_('Delete')?></a>
+              </div>
+            </form>
+        </div>
   </div>
 </div>
 <!-- CONFIMATION MESSAGE TO DELETE PRODUCT QUANTITY ROW -->
 <div class="overlay" id="popupQuantity">
   <div class="wrapper">
       <div class="wrapper-confirmation"><?= _('Confirmation') ?></div><a class="close" href="/Product/productDetails/<?= $data[0]->product_id ?>">&times;</a>
-      <!-- <div class="content"> -->
-          <div class="container">
-              <form  method="post" action="">
-                    <label class="wrapper-message"><?=_('Do you want to delete the entire Quantity row')?></label>
-                    <div align="center">
-                      <a href="/Product/productDetails/<?= $data[0]->product_id ?>" class="btn-general"><?=_('Cancel')?></a>
-                      <!-- getting href from deleteLinkID javascript function -->
-                      <a id="deleteQuantity" href="" class="btn-general"><?=_('Confirm')?></a>
-                </div>
-              </form>
-          </div>
-      <!-- </div> -->
+        <div class="container">
+            <form  method="post" action="">
+                  <label class="wrapper-message"><?=_('Do you want to delete the entire Quantity row')?></label>
+                  <div align="center">
+                    <a href="/Product/productDetails/<?= $data[0]->product_id ?>" class="btn-general"><?=_('Cancel')?></a>
+                    <a id="deleteQuantity" href="" class="btn-general"><?=_('Confirm')?></a>
+              </div>
+            </form>
+        </div>
   </div>
 </div>
 
 <script type="text/javascript">
   
   function deleteIngredientLinkID(linkID){
-    // var selectLink = document.getElementById(linkID);
     var setLinkInDelete = document.getElementById('deleteQuantity');
     setLinkInDelete.href = "/Product/deleteQuantity/" + linkID;
   }

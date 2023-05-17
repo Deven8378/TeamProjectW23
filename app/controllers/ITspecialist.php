@@ -9,9 +9,8 @@ class ITspecialist extends \app\core\Controller
 {
     // Viewing
 
-	public function index() //viewUsers
+	public function index() 
 	{
-		//see all the employees and admins from the User table
         $user = new User();
         $users = $user->getAllUserInfo();
         $this->view('ITspecialist/index', $users);
@@ -35,7 +34,6 @@ class ITspecialist extends \app\core\Controller
 
 	public function createUser()
 	{
-		//adding an admin or employee to the User Table
 
         if(isset($_POST['action']))
         {
@@ -75,7 +73,6 @@ class ITspecialist extends \app\core\Controller
 
     public function createProfile($user_id)
     {
-        //Once the User is created, You will create a profile for them
         if(isset($_POST['action']))
         {
             if($_POST['first_name'] != '' && $_POST['last_name'] != '' && $_POST['email'] != '' && $_POST['phone_number'] != '' && $_POST['status'] != ''

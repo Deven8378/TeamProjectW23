@@ -14,7 +14,7 @@
     
     <div class="foodDetails-box">
       <div id="foodDetails">
-<!-- ----------------------------------------------------------------- -->
+
         <div class="grid-details">
 
           <div class="grid-box-1">
@@ -55,7 +55,7 @@
         <?php } ?>  
 
       </div>
-<!-- ----------------------------------------------------------------- -->
+
         <div id="table-container">
           <table class="table table-hover">
             <thead>
@@ -75,7 +75,6 @@
                 <td><?= $quantity->arrival_date ?></td>
                 <td><?= $quantity->expired_date ?></td>
                 <td><?= $quantity->price ?></td>
-                <!-- <td><?= $quantity->daysLeft ?></td> -->
                 <!--  -->
                 <?php if  ($quantity->daysLeft == 0){ ?>
                   <td style='color:red; font-weight:bold;'>Expired Today</td>
@@ -157,7 +156,6 @@
 <script type="text/javascript">
   
   function deleteProductLinkID(linkID){
-    // var selectLink = document.getElementById(linkID);
     var setLinkInDelete = document.getElementById('deleteQuantity');
     setLinkInDelete.href = "/Ingredient/deleteQuantity/" + linkID;
   }
